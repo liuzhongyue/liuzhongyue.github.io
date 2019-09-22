@@ -79,13 +79,21 @@
 
 
 
-<meta property="og:type" content="website">
+<meta name="description" content="🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址。 代码： 1234567891011121314151617181920212223242526272829303132import java.net.InetAddress;import java.net.UnknownHostException;import java.util.Arrays;/** * @paragram:">
+<meta property="og:type" content="article">
 <meta property="og:title" content="刘二狗的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/09/22/为什么输入IP无法访问网站/index.html">
 <meta property="og:site_name" content="刘二狗的博客">
+<meta property="og:description" content="🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址。 代码： 1234567891011121314151617181920212223242526272829303132import java.net.InetAddress;import java.net.UnknownHostException;import java.util.Arrays;/** * @paragram:">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921225214.png">
+<meta property="og:updated_time" content="2019-09-21T14:52:38.068Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刘二狗的博客">
+<meta name="twitter:description" content="🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址。 代码： 1234567891011121314151617181920212223242526272829303132import java.net.InetAddress;import java.net.UnknownHostException;import java.util.Arrays;/** * @paragram:">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.png">
 
 
 
@@ -115,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/22/为什么输入IP无法访问网站/">
 
 
 
 
 
-  <title>刘二狗的博客</title>
+  <title> | 刘二狗的博客</title>
   
 
 
@@ -140,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -214,162 +221,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/22/Java集合类/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="刘二狗">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="刘二狗的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/22/Java集合类/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-22T11:27:25+08:00">
-                2019-09-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>Java众多的集合类由两大接口衍生而来：Collection接口和Map接口</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568860752143.png" alt></p>
-<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><h2 id="List-有序，可重复"><a href="#List-有序，可重复" class="headerlink" title="List(有序，可重复)"></a>List(有序，可重复)</h2><h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p><strong>优点：</strong>底层数据结构是数组，具有数组本身的特点：查询快，增删慢。</p>
-<p><strong>缺点：</strong>线程不安全，效率高。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/ArrayList.png" alt></p>
-<blockquote>
-<p>ArrayList.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The array buffer into which the elements of the ArrayList are stored.</span></span><br><span class="line"><span class="comment"> * The capacity of the ArrayList is the length of this array buffer. Any</span></span><br><span class="line"><span class="comment"> * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span></span><br><span class="line"><span class="comment"> * will be expanded to DEFAULT_CAPACITY when the first element is added.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">transient</span> Object[] elementData; <span class="comment">// non-private to simplify nested class access</span></span><br></pre></td></tr></table></figure>
-
-<p>上面的elementData就是ArrayList的底层数组的实现。</p>
-<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p><strong>优点：</strong>底层数据结构是数组，具有数组本身的特点：查询快，增删慢。</p>
-<p><strong>缺点：</strong>线程安全，效率低。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/Vector.png" alt></p>
-<blockquote>
-<p>Vector.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Appends the specified element to the end of this Vector.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> e element to be appended to this Vector</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@code</span> true&#125; (as specified by &#123;<span class="doctag">@link</span> Collection#add&#125;)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 1.2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    ensureCapacityHelper(elementCount + <span class="number">1</span>);</span><br><span class="line">    elementData[elementCount++] = e;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>查看Vector的源码可以发现，大部分源码都加上了synchronized关键字，比如上面的add方法，这也是Vector线程安全的原因。</p>
-<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p><strong>优点:</strong> 底层数据结构是链表，查询慢，增删快。<br><strong>缺点:</strong> 线程不安全，效率高。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/LinkedList.png" alt></p>
-<p>比较LinkedList和前两个集合类的区别，可以发现LinkedList实现了Deque接口，并且缺少了一个[RandomAccess接口](# RamdomAccess接口)。</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="RamdomAccess接口"><a href="#RamdomAccess接口" class="headerlink" title="RamdomAccess接口"></a>RamdomAccess接口</h2>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -399,9 +253,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/22/为什么输入IP无法访问网站/" itemprop="url">未命名</a></h1>
+          <h1 class="post-title" itemprop="name headline"></h1>
         
 
         <div class="post-meta">
@@ -451,9 +303,7 @@
       
 
       
-        
-          
-            <p>🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址。</p>
+        <p>🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址。</p>
 <p><strong>代码：</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.UnknownHostException;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: DNSDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 域名解析</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-09-18 15:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Test tester = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="comment">// tester.resolveDomain("www.baidu.com");</span></span><br><span class="line">        tester.resolveDomain(<span class="string">"www.zhihu.com"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resolveDomain</span><span class="params">(String domain)</span> </span>&#123;</span><br><span class="line">        InetAddress[] address;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            address = InetAddress.getAllByName(domain);</span><br><span class="line">            Arrays.stream(address)</span><br><span class="line">                .map(InetAddress::getHostAddress)</span><br><span class="line">                .forEach(System.out::println);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -525,8 +375,6 @@
 <p>一个IP可能对应多个web站点，仅仅凭借IP无法找到相应的站点。通过域名访问就可以借助HOST分辨到底是要访问哪个站点。如果使用虚拟主机技术，那么利用HOST + IP的方式就可以访问；如果使用反向代理技术，通过代理服务器找到站点实际服务器的IP也可以访问。</p>
 </blockquote>
 
-          
-        
       
     </div>
     
@@ -543,12 +391,28 @@
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/22/Java集合类/" rel="prev" title>
+                 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -558,10 +422,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -569,6 +434,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -589,8 +458,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -632,6 +510,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#只输入IP地址无法访问网站的原因"><span class="nav-number">1.</span> <span class="nav-text">只输入IP地址无法访问网站的原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#虚拟主机技术"><span class="nav-number">1.1.</span> <span class="nav-text">虚拟主机技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反向代理技术"><span class="nav-number">1.2.</span> <span class="nav-text">反向代理技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正向代理"><span class="nav-number">1.2.1.</span> <span class="nav-text">正向代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反向代理"><span class="nav-number">1.2.2.</span> <span class="nav-text">反向代理</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -781,6 +675,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

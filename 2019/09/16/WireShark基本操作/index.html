@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="计算机网络,WireShark,">
 
 
 
@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="Later equals never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="1. 拦截本地回环数据（需要的时候再开启）机访问本机的回环数据是不经过网卡的，比如我们在本机访问搭建在本机上的web服务，但我们经常有服务搭建在本机的操作也经常有拦截本地回环数据包加以分析的需求，所以我们环要拦载回环数据包。操作如下。 首先，以管理员身份运行cmd（普通用户没有路由表操作权限，会提示“请求的操作需要提升”） 然后，使用ipconfig查看本机ip和网关： ipconfig  再然后">
+<meta name="keywords" content="计算机网络,WireShark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WireShark基本操作">
+<meta property="og:url" content="http://yoursite.com/2019/09/16/WireShark基本操作/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="Later equals never.">
+<meta property="og:description" content="1. 拦截本地回环数据（需要的时候再开启）机访问本机的回环数据是不经过网卡的，比如我们在本机访问搭建在本机上的web服务，但我们经常有服务搭建在本机的操作也经常有拦截本地回环数据包加以分析的需求，所以我们环要拦载回环数据包。操作如下。 首先，以管理员身份运行cmd（普通用户没有路由表操作权限，会提示“请求的操作需要提升”） 然后，使用ipconfig查看本机ip和网关： ipconfig  再然后">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-09-22T04:39:34.407Z">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/2019-09-08_20-30-04.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568195049000.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568194936552.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568205797632.png">
+<meta property="og:updated_time" content="2019-09-23T07:53:00.955Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="Later equals never.">
+<meta name="twitter:title" content="WireShark基本操作">
+<meta name="twitter:description" content="1. 拦截本地回环数据（需要的时候再开启）机访问本机的回环数据是不经过网卡的，比如我们在本机访问搭建在本机上的web服务，但我们经常有服务搭建在本机的操作也经常有拦截本地回环数据包加以分析的需求，所以我们环要拦载回环数据包。操作如下。 首先，以管理员身份运行cmd（普通用户没有路由表操作权限，会提示“请求的操作需要提升”） 然后，使用ipconfig查看本机ip和网关： ipconfig  再然后">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/2019-09-08_20-30-04.png">
 
 
 
@@ -119,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/16/WireShark基本操作/">
 
 
 
 
 
-  <title>tags | ergo's blog</title>
+  <title>WireShark基本操作 | ergo's blog</title>
   
 
 
@@ -272,40 +278,303 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/16/WireShark基本操作/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="刘二狗">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ergo's blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">tags</h1>
-
-
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-                目前共计 4 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/DNS/" style="font-size: 12px; color: #ccc">DNS</a> <a href="/tags/Java/" style="font-size: 12px; color: #ccc">Java</a> <a href="/tags/WireShark/" style="font-size: 12px; color: #ccc">WireShark</a> <a href="/tags/计算机网络/" style="font-size: 30px; color: #111">计算机网络</a>
-            </div>
-          </div>
+          <h1 class="post-title" itemprop="name headline">WireShark基本操作</h1>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-16T00:00:00+08:00">
+                2019-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/WireShark/" itemprop="url" rel="index">
+                    <span itemprop="name">WireShark</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="1-拦截本地回环数据（需要的时候再开启）"><a href="#1-拦截本地回环数据（需要的时候再开启）" class="headerlink" title="1. 拦截本地回环数据（需要的时候再开启）"></a>1. 拦截本地回环数据（需要的时候再开启）</h2><p>机访问本机的回环数据是不经过网卡的，比如我们在本机访问搭建在本机上的web服务，但我们经常有服务搭建在本机的操作也经常有拦截本地回环数据包加以分析的需求，所以我们环要拦载回环数据包。操作如下。</p>
+<p>首先，以管理员身份运行cmd（普通用户没有路由表操作权限，会提示“请求的操作需要提升”）</p>
+<p>然后，使用ipconfig查看本机ip和网关：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
+
+<p>再然后，使用以下命令添加路由，指定回环数据也要先转发到网关（使用上一步获取本的本机ip和网关替换其中的<your_ip>和<gateway_ip>）：</gateway_ip></your_ip></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">route add &lt;your_IP&gt; mask 255.255.255.255 &lt;gateway_IP&gt; metric 1</span><br></pre></td></tr></table></figure>
+
+<p>最后，查看路由表中路由是否已添加成功：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">route print</span><br></pre></td></tr></table></figure>
+
+<p>回环数据经网关再回来会增加网卡的压力，可使用以下命令删除路由（使用前边获取本的本机ip替换其中的<your_ip>）：</your_ip></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">route delete &lt;your_IP&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-WireShark-界面说明"><a href="#2-WireShark-界面说明" class="headerlink" title="2. WireShark 界面说明"></a>2. WireShark 界面说明</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/2019-09-08_20-30-04.png" alt></p>
+<p>区域1：该区域展示的是wireshark捕获到的所有数据包的列表。注意最后一列Info列是wireshark组织的说明列并不一定是该数据包中的原始内容。</p>
+<p>区域 2：该区域是区域 1 中选定的数据包的分协议层展示。</p>
+<p>区域 3：该区域是区域 1 中选定的数据包的源数据，其中左侧是十六进制表示右侧是ASCII码表示。另外在2号窗口中选中某层或某字段，3号窗口对应位置也会被高亮。 </p>
+<h2 id="2-捕获过滤器表达式"><a href="#2-捕获过滤器表达式" class="headerlink" title="2. 捕获过滤器表达式"></a>2. 捕获过滤器表达式</h2><p>在欢迎页面可以看到管理捕获过滤器。<img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568195049000.png" alt></p>
+<p>打开以后，可以看到过滤器的各种写法。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568194936552.png" alt></p>
+<h2 id="3-显示过滤器表达式及其书写规律"><a href="#3-显示过滤器表达式及其书写规律" class="headerlink" title="3. 显示过滤器表达式及其书写规律"></a>3. 显示过滤器表达式及其书写规律</h2><p>显示过滤器会在WireShark捕获数据包之后，按照过滤表达的条件，有选择性地显示已经捕获的所有数据包。</p>
+<h3 id="3-1-基本过滤表达式"><a href="#3-1-基本过滤表达式" class="headerlink" title="3.1. 基本过滤表达式"></a>3.1. 基本过滤表达式</h3><p>一个基本的表达式由过滤项、过滤关系、过滤值三个部分组成。</p>
+<p>比如ip.addr == 192.168.1.1这条表达式</p>
+<ul>
+<li>ip.addr是过滤项</li>
+<li>== 是过滤关系</li>
+<li>192.168.1.1是过滤值</li>
+</ul>
+<p>表达式的意思为找出所有ip协议中源或目标地址为192.168.1.1的数据包。</p>
+<h4 id="3-1-1-过滤项"><a href="#3-1-1-过滤项" class="headerlink" title="3.1.1. 过滤项"></a>3.1.1. 过滤项</h4><p>==过滤项 = 协议 + 协议字段==</p>
+<p>以端口为例，端口出现于tcp协议中所以有端口这个过滤项且其写法就是tcp.port。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568205797632.png" alt></p>
+<p>当在应用过滤显示器中输入时，会有相应的提示。</p>
+<h4 id="3-1-2-过滤关系"><a href="#3-1-2-过滤关系" class="headerlink" title="3.1.2. 过滤关系"></a>3.1.2. 过滤关系</h4><p>过滤关系可以使用“English”和“C-like”两种方式，例如“==”可以写作“eq”。</p>
+<h4 id="3-1-3-过滤值"><a href="#3-1-3-过滤值" class="headerlink" title="3.1.3 过滤值"></a>3.1.3 过滤值</h4><p>不解释。</p>
+<p>###3.2. 复合规律表达式</p>
+<table>
+<thead>
+<tr>
+<th align="left">English</th>
+<th align="left">C-like</th>
+<th align="left">Description</th>
+<th align="left">Example</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">and</td>
+<td align="left">&amp;&amp;</td>
+<td align="left">Logical AND</td>
+<td align="left"><code>ip.src==10.0.0.5 and tcp.flags.fin</code></td>
+</tr>
+<tr>
+<td align="left">or</td>
+<td align="left">||</td>
+<td align="left">Logical OR</td>
+<td align="left"><code>ip.scr==10.0.0.5 or ip.src==192.1.1.1</code></td>
+</tr>
+<tr>
+<td align="left">xor</td>
+<td align="left">^^</td>
+<td align="left">Logical XOR</td>
+<td align="left"><code>tr.dst[0:3] == 0.6.29 xor tr.src[0:3] == 0.6.29</code></td>
+</tr>
+<tr>
+<td align="left">not</td>
+<td align="left">!</td>
+<td align="left">Logical NOT</td>
+<td align="left"><code>not llc</code></td>
+</tr>
+<tr>
+<td align="left">[…]</td>
+<td align="left"></td>
+<td align="left">Subsequence</td>
+<td align="left"><code>See “Slice Operator” below.</code></td>
+</tr>
+<tr>
+<td align="left">in</td>
+<td align="left"></td>
+<td align="left">Set Membership</td>
+<td align="left"><code>http.request.method in {&quot;HEAD&quot; &quot;GET&quot;}. See “Membership Operator” below.</code></td>
+</tr>
+</tbody></table>
+<h3 id="3-3-常见用显示过滤需求及其对应表达式"><a href="#3-3-常见用显示过滤需求及其对应表达式" class="headerlink" title="3.3. 常见用显示过滤需求及其对应表达式"></a>3.3. 常见用显示过滤需求及其对应表达式</h3><p><strong>数据链路层：</strong></p>
+<p>筛选mac地址为04:f9:38:ad:13:26的数据包—-eth.src == 04:f9:38:ad:13:26</p>
+<p>筛选源mac地址为04:f9:38:ad:13:26的数据包—-eth.src == 04:f9:38:ad:13:26</p>
+<p><strong>网络层：</strong></p>
+<p>筛选ip地址为192.168.1.1的数据包—-ip.addr == 192.168.1.1</p>
+<p>筛选192.168.1.0网段的数据—- ip contains “192.168.1”</p>
+<p>筛选192.168.1.1和192.168.1.2之间的数据包—-ip.addr == 192.168.1.1 &amp;&amp; ip.addr == 192.168.1.2</p>
+<p>筛选从192.168.1.1到192.168.1.2的数据包—-ip.src == 192.168.1.1 &amp;&amp; ip.dst == 192.168.1.2</p>
+<p><strong>传输层：</strong></p>
+<p>筛选tcp协议的数据包—-tcp</p>
+<p>筛选除tcp协议以外的数据包—-!tcp</p>
+<p>筛选端口为80的数据包—-tcp.port == 80</p>
+<p>筛选12345端口和80端口之间的数据包—-tcp.port == 12345 &amp;&amp; tcp.port == 80</p>
+<p>筛选从12345端口到80端口的数据包—-tcp.srcport == 12345 &amp;&amp; tcp.dstport == 80</p>
+<p><strong>应用层：</strong></p>
+<p>特别说明—-http中http.request表示请求头中的第一行（如GET index.jsp HTTP/1.1），http.response表示响应头中的第一行（如HTTP/1.1 200 OK），其他头部都用http.header_name形式。</p>
+<p>筛选url中包含.php的http数据包—-http.request.uri contains “.php”</p>
+<p>筛选内容包含username的http数据包—-http contains “username”</p>
+
       
     </div>
     
     
     
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="刘二狗 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"># 计算机网络</a>
+          
+            <a href="/tags/WireShark/" rel="tag"># WireShark</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/20/为什么输入IP无法访问网站/" rel="prev" title="为什么输入IP地址无法访问网站">
+                为什么输入IP地址无法访问网站 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -338,8 +607,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -411,6 +689,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-拦截本地回环数据（需要的时候再开启）"><span class="nav-number">1.</span> <span class="nav-text">1. 拦截本地回环数据（需要的时候再开启）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-WireShark-界面说明"><span class="nav-number">2.</span> <span class="nav-text">2. WireShark 界面说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-捕获过滤器表达式"><span class="nav-number">3.</span> <span class="nav-text">2. 捕获过滤器表达式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-显示过滤器表达式及其书写规律"><span class="nav-number">4.</span> <span class="nav-text">3. 显示过滤器表达式及其书写规律</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-基本过滤表达式"><span class="nav-number">4.1.</span> <span class="nav-text">3.1. 基本过滤表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-过滤项"><span class="nav-number">4.1.1.</span> <span class="nav-text">3.1.1. 过滤项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-过滤关系"><span class="nav-number">4.1.2.</span> <span class="nav-text">3.1.2. 过滤关系</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-过滤值"><span class="nav-number">4.1.3.</span> <span class="nav-text">3.1.3 过滤值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-常见用显示过滤需求及其对应表达式"><span class="nav-number">4.2.</span> <span class="nav-text">3.3. 常见用显示过滤需求及其对应表达式</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

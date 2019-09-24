@@ -572,8 +572,11 @@
 <p>类继承图</p>
 </blockquote>
 <p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/LinkedList.png" alt></p>
-<p>比较LinkedList和前两个集合类的区别，可以发现LinkedList实现了Deque接口，并且缺少了一个[RandomAccess接口](# RamdomAccess接口)。</p>
-<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><h2 id="RamdomAccess接口"><a href="#RamdomAccess接口" class="headerlink" title="RamdomAccess接口"></a>RamdomAccess接口</h2>
+<p>比较LinkedList和前两个集合类的区别，可以发现LinkedList实现了Deque接口，并且缺少了一个<a href="#random_access">    RandomAccess接口</a>。</p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><span id="random_access">
+## RandomAccess接口
+<span>
+</span></span>
           
         
       
@@ -725,7 +728,7 @@
       
         
           
-            <p>🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址。</p>
+            <p>🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址的小Demo。</p>
 <p><strong>代码：</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.UnknownHostException;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: DNSDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 域名解析</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-09-18 15:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Test tester = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="comment">// tester.resolveDomain("www.baidu.com");</span></span><br><span class="line">        tester.resolveDomain(<span class="string">"www.zhihu.com"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resolveDomain</span><span class="params">(String domain)</span> </span>&#123;</span><br><span class="line">        InetAddress[] address;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            address = InetAddress.getAllByName(domain);</span><br><span class="line">            Arrays.stream(address)</span><br><span class="line">                .map(InetAddress::getHostAddress)</span><br><span class="line">                .forEach(System.out::println);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -762,7 +765,7 @@
 <td align="left">/b/index</td>
 </tr>
 </tbody></table>
-<p>这样，域名和文件之间就存在映射关系了，当我们直接访问<a href="http://www.zhihu.com时，主要经历了以下几个步骤：" target="_blank" rel="noopener">www.zhihu.com时，主要经历了以下几个步骤：</a></p>
+<p>这样，域名和文件之间就存在映射关系了，当我们直接访问  <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> 时，主要经历了以下几个步骤：</p>
 <ol>
 <li>DNS域名解析，获得解析后的结果，比如是223.111.243.190。</li>
 <li>浏览器与IP为223.111.243.190的服务器进行三次握手，建立TCP连接。</li>
@@ -770,7 +773,7 @@
 </ol>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hypertext Transfer Protocol</span><br><span class="line">    GET / HTTP/1.1\r\n</span><br><span class="line">    Host: www.zhihu.com\r\n</span><br><span class="line">    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0\r\n</span><br><span class="line">    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8\r\n</span><br><span class="line">    Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2\r\n</span><br><span class="line">    Accept-Encoding: gzip, deflate\r\n</span><br><span class="line">    Connection: keep-alive\r\n</span><br><span class="line">    Upgrade-Insecure-Requests: 1\r\n</span><br><span class="line">    \r\n</span><br><span class="line">    [Full request URI: http://www.zhihu.com/]</span><br><span class="line">    [HTTP request 1/18]</span><br><span class="line">    [Response in frame: 121]</span><br></pre></td></tr></table></figure>
 
-<p>以上信息中，我们需要关注一行，就是Host: <a href="http://www.zhihu.com\r\n这一行，通过这个头部字段，服务器就可以知道" target="_blank" rel="noopener">www.zhihu.com\r\n这一行，通过这个头部字段，服务器就可以知道</a></p>
+<p>以上信息中，我们需要关注一行，就是Host: <a href="http://www.zhihu.com\r\n" target="_blank" rel="noopener">www.zhihu.com\r\n</a> 这一行，通过这个头部字段，服务器就可以知道</p>
 <p>到底访问的是哪个HOST，然后服务器就根据HOST和域名的对应关系，去寻找/zhihu/index文件。</p>
 <h3 id="反向代理技术"><a href="#反向代理技术" class="headerlink" title="反向代理技术"></a>反向代理技术</h3><p>先介绍一下正向代理和反向代理的区别：</p>
 <h4 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h4><p>正向代理，是在用户端的。比如需要访问某些国外网站，我们可能需要购买vpn。</p>
@@ -786,11 +789,11 @@
 <p>​    在计算机网络中，<strong>反向代理</strong>是代理服务器的一种。服务器根据客户端的请求，从其关联的一组或多组后端（如Web服务器）上获取资源，然后再将这些资源返回给客户端，客户端只会得知反向代理的IP地址，而不知道在代理服务器后面的服务器簇的存在。</p>
 </blockquote>
 <p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921225214.png" alt></p>
-<p>在这种情况下，直接访问IP的时候会访问反向代理服务器，这样访问<a href="http://www.zhihu.com的时候，过程如下：" target="_blank" rel="noopener">www.zhihu.com的时候，过程如下：</a></p>
+<p>在这种情况下，直接访问IP的时候会访问反向代理服务器，这样访问 <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> 的时候，过程如下：</p>
 <ol>
-<li>通过DNS解析获得<a href="http://www.zhihu.com的反向代理IP地址223.111.243.190。" target="_blank" rel="noopener">www.zhihu.com的反向代理IP地址223.111.243.190。</a></li>
+<li>通过DNS解析获得 <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> 的反向代理IP地址223.111.243.190。</li>
 <li>HTTP请求到达反向代理服务器之后，该服务器会对请求做转发。</li>
-<li>请求的HOST地址为<a href="http://www.zhihu.com，反向代理服务器会将请求报文转发到域名为www.zhihu.com的服务器上。" target="_blank" rel="noopener">www.zhihu.com，反向代理服务器会将请求报文转发到域名为www.zhihu.com的服务器上。</a></li>
+<li>请求的HOST地址为 <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> ，反向代理服务器会将请求报文转发到域名为<a href="http://www.zhihu.com的服务器上。" target="_blank" rel="noopener">www.zhihu.com的服务器上。</a></li>
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>直接使用IP无法访问站点的原因</strong></p>
 <blockquote>

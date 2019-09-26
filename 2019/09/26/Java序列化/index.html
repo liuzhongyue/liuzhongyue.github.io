@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java,">
 
 
 
@@ -79,22 +79,20 @@
 
 
 
-<meta name="description" content="在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。  开通OSS服务​    进入阿里云创建一个">
+<meta name="description" content="序列化介绍 序列化：将对象写入到IO流中 反序列化：将对象从IO流中恢复 序列化的意义：序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行的。 使用场景：所有在网络上传输的对象都需要进行序列化，比如在使用RMI(远程方法调用)时；所有需要">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云OSS+PicGo建立图床">
-<meta property="og:url" content="http://yoursite.com/2019/09/21/阿里云OSS+PicGo建立图床踩坑/index.html">
+<meta property="og:title" content="Java序列化">
+<meta property="og:url" content="http://yoursite.com/2019/09/26/Java序列化/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。  开通OSS服务​    进入阿里云创建一个">
+<meta property="og:description" content="序列化介绍 序列化：将对象写入到IO流中 反序列化：将对象从IO流中恢复 序列化的意义：序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行的。 使用场景：所有在网络上传输的对象都需要进行序列化，比如在使用RMI(远程方法调用)时；所有需要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234324.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234430.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921235014.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190922000638.png">
-<meta property="og:updated_time" content="2019-09-23T07:43:17.159Z">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190926235227.png">
+<meta property="og:updated_time" content="2019-09-26T15:59:28.529Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里云OSS+PicGo建立图床">
-<meta name="twitter:description" content="在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。  开通OSS服务​    进入阿里云创建一个">
-<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234324.png">
+<meta name="twitter:title" content="Java序列化">
+<meta name="twitter:description" content="序列化介绍 序列化：将对象写入到IO流中 反序列化：将对象从IO流中恢复 序列化的意义：序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行的。 使用场景：所有在网络上传输的对象都需要进行序列化，比如在使用RMI(远程方法调用)时；所有需要">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190926235227.png">
 
 
 
@@ -124,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/21/阿里云OSS+PicGo建立图床踩坑/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/26/Java序列化/">
 
 
 
 
 
-  <title>阿里云OSS+PicGo建立图床 | ergo's blog</title>
+  <title>Java序列化 | ergo's blog</title>
   
 
 
@@ -289,7 +287,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/阿里云OSS+PicGo建立图床踩坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/Java序列化/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="刘二狗">
@@ -306,7 +304,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">阿里云OSS+PicGo建立图床</h1>
+          <h1 class="post-title" itemprop="name headline">Java序列化</h1>
         
 
         <div class="post-meta">
@@ -318,8 +316,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T00:00:00+08:00">
-                2019-09-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-26T00:00:00+08:00">
+                2019-09-26
               </time>
             
 
@@ -341,8 +339,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -378,28 +376,52 @@
       
 
       
-        <blockquote>
-<p>在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。</p>
+        <h1 id="序列化介绍"><a href="#序列化介绍" class="headerlink" title="序列化介绍"></a>序列化介绍</h1><ul>
+<li><strong>序列化：</strong>将对象写入到IO流中</li>
+<li><strong>反序列化：</strong>将对象从IO流中恢复</li>
+<li><strong>序列化的意义：</strong>序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行的。</li>
+<li><strong>使用场景：</strong>所有在网络上传输的对象都需要进行序列化，比如在使用RMI(远程方法调用)时；所有需要保存到磁盘上的Java对象必须是可以被序列化的。通常程序创建的每个JavaBean都要实现Serializeable接口。</li>
+</ul>
+<h1 id="实现序列化"><a href="#实现序列化" class="headerlink" title="实现序列化"></a>实现序列化</h1><p>如果一个类要实现序列化，那么这个类应该实现<strong>Serializable</strong>接口或者<strong>Externalizable</strong>接口。</p>
+<h2 id="Serializable接口"><a href="#Serializable接口" class="headerlink" title="Serializable接口"></a>Serializable接口</h2><p>Serializable接口是个标记接口，和之前提到的RandomAccess接口一样，接口中没有任何方法。一旦实现了该类，就表明该类是可序列化的。</p>
+<h3 id="序列化步骤"><a href="#序列化步骤" class="headerlink" title="序列化步骤"></a>序列化步骤</h3><ol>
+<li>相应的类实现Serializeable接口。</li>
+</ol>
+<blockquote>
+<p>Student.java</p>
 </blockquote>
-<h1 id="开通OSS服务"><a href="#开通OSS服务" class="headerlink" title="开通OSS服务"></a>开通OSS服务</h1><p>​    进入阿里云创建一个对象存储OSS的服务，之后新建一个Bucket，创建Bucket之后，我们的存储空间就创建成功了。</p>
-<h1 id="使用PicGo快速上传图片"><a href="#使用PicGo快速上传图片" class="headerlink" title="使用PicGo快速上传图片"></a>使用PicGo快速上传图片</h1><blockquote>
-<p>PicGo下载地址<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">https://github.com/Molunerfinn/PicGo</a></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: SerializeDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 学生类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-09-26 21:55</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Student&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age='"</span> + age + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建一个ObjectOutputStream输出流，并调用ObjectOutputStream对象的writeObject输出可序列化对象。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"Student.txt"</span>));</span><br><span class="line">        Student student = <span class="keyword">new</span> Student(<span class="string">"二狗"</span>, <span class="number">18</span>);</span><br><span class="line">        objectOutputStream.writeObject(student);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时，会生成一个Student.txt文件。</p>
+<h3 id="反序列化步骤"><a href="#反序列化步骤" class="headerlink" title="反序列化步骤"></a>反序列化步骤</h3><p>创建一个ObjectInputStream输入，并调用ObjectInputStream对象的readObject方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">    	ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"Student.txt"</span>));</span><br><span class="line">       	Student student = (Student) objectInputStream.readObject();</span><br><span class="line">        System.out.println(student.toString());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">    	e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="comment">//Student&#123;name='二狗', age='18'&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>反序列化不需要调用构造方法，其反序列化的对象是由JVM自己生成的对象，不需要构造方法生成。</p>
+<h3 id="对同一个对象多次序列化"><a href="#对同一个对象多次序列化" class="headerlink" title="对同一个对象多次序列化"></a>对同一个对象多次序列化</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"Student"</span>));</span><br><span class="line">        Student student = <span class="keyword">new</span> Student(<span class="string">"二狗"</span>, <span class="number">18</span>);</span><br><span class="line">        Student student1 = <span class="keyword">new</span> Student(<span class="string">"大鹅"</span>, <span class="number">18</span>);</span><br><span class="line">        Student student2 = <span class="keyword">new</span> Student(<span class="string">"三虎"</span>, <span class="number">19</span>);</span><br><span class="line">        objectOutputStream.writeObject(student);</span><br><span class="line">        objectOutputStream.writeObject(student1);</span><br><span class="line">        objectOutputStream.writeObject(student2);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"Student"</span>));</span><br><span class="line">        Student student = (Student) objectInputStream.readObject();</span><br><span class="line">        System.out.println(student.toString());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line"><span class="comment">//Student&#123;name='二狗', age='18'&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>从运行结果可以看出，在对一个对象进行序列化之后，并不会再次对其进行序列化。</p>
+<p>所以，该序列化算法存在这样一个问题，如果在对一个对象进行序列化之后，需要修改该对象的内容，第二次序列化并不会成功。</p>
+<h1 id="transient关键字"><a href="#transient关键字" class="headerlink" title="transient关键字"></a>transient关键字</h1><p>如果有时候对象的某些属性不需要序列化。这时候就可以使用该关键字选择不需要序列化的属性。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时序列化的结果就变成了<code>Student{name=&#39;null&#39;, age=&#39;18&#39;}</code>，这样，序列化的时候就自动忽略了name这个属性。</p>
+<h1 id="Externalizable接口"><a href="#Externalizable接口" class="headerlink" title="Externalizable接口"></a>Externalizable接口</h1><blockquote>
+<p>Externalizable.java</p>
 </blockquote>
-<h2 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234324.png" alt></p>
-<p>​    KeyId和KeySecret可以从阿里的控制台获取。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234430.png" alt></p>
-<p>​    储存空间名就是Bucket的名称，存储区域在访问域名可以找到。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921235014.png" alt></p>
-<p>​    配置完成之后就可以使用PicGo上传图片了。</p>
-<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>​    第一次使用PicGo上传图片的时候，总是提示上传失败，检查了好几遍配置，都没有什么错误，可是就是上传不了。</p>
-<p>​    打开PicGo的配置文件之后，发现有下面的报错信息。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2019-09-21 21:33:11 [PicGo ERROR] StatusCodeError: 403 - &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;Error&gt;\n  RequestTimeTooSkewed\n  &lt;Message&gt;The difference between the request time and the current time is too large.&lt;/Message&gt;\n  &lt;RequestId&gt;5D8634B41BCC63B32BB5C43E&lt;/RequestId&gt;\n  &lt;HostId&gt;lzy-md-image.oss-cn-qingdao.aliyuncs.com&lt;/HostId&gt;\n  &lt;MaxAllowedSkewMilliseconds&gt;900000&lt;/MaxAllowedSkewMilliseconds&gt;\n  &lt;RequestTime&gt;2019-09-21T13:33:10.000Z&lt;/RequestTime&gt;\n  &lt;ServerTime&gt;2019-09-21T14:33:24.000Z&lt;/ServerTime&gt;\n&lt;/Error&gt;\n&quot;</span><br><span class="line">------Error Stack Begin------</span><br><span class="line">StatusCodeError: 403 - &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;Error&gt;\n  RequestTimeTooSkewed\n  &lt;Message&gt;The difference between the request time and the current time is too large.&lt;/Message&gt;\n  &lt;RequestId&gt;5D8634B41BCC63B32BB5C43E&lt;/RequestId&gt;\n  &lt;HostId&gt;lzy-md-image.oss-cn-qingdao.aliyuncs.com&lt;/HostId&gt;\n  &lt;MaxAllowedSkewMilliseconds&gt;900000&lt;/MaxAllowedSkewMilliseconds&gt;\n  &lt;RequestTime&gt;2019-09-21T13:33:10.000Z&lt;/RequestTime&gt;\n  &lt;ServerTime&gt;2019-09-21T14:33:24.000Z&lt;/ServerTime&gt;\n&lt;/Error&gt;\n&quot;</span><br><span class="line">    at new StatusCodeError (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\errors.js:32:15)</span><br><span class="line">    at Request.plumbing.callback (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\plumbing.js:104:33)</span><br><span class="line">    at Request.RP$callback [as _callback] (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\plumbing.js:46:31)</span><br><span class="line">    at Request.self.callback (E:\PicGo\resources\app.asar\node_modules\request\request.js:185:22)</span><br><span class="line">    at Request.emit (events.js:182:13)</span><br><span class="line">    at Request.&lt;anonymous&gt; (E:\PicGo\resources\app.asar\node_modules\request\request.js:1157:10)</span><br><span class="line">    at Request.emit (events.js:182:13)</span><br><span class="line">    at IncomingMessage.&lt;anonymous&gt; (E:\PicGo\resources\app.asar\node_modules\request\request.js:1079:12)</span><br><span class="line">    at Object.onceWrapper (events.js:273:13)</span><br><span class="line">    at IncomingMessage.emit (events.js:187:15)</span><br><span class="line">-------Error Stack End-------</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Externalizable</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">writeExternal</span><span class="params">(ObjectOutput out)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">readExternal</span><span class="params">(ObjectInput in)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​    重点关注<code>The difference between the request time and the current time is too large</code>这一部分，查找阿里云OS文档，403错误及排查。看到下面的部分，就明白了出问题的原因。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190922000638.png" alt></p>
-<p>​    由于我的电脑是Windows+Ubuntu双系统，每次切换系统的时候都会产生八个小时的时差，一直没有解决这个冲突问题，所以造成了Windows时间不正常，也就导致了今天的问题。</p>
-<p>​    解决方法就很简单了，重新同步一下时钟就好了。</p>
+<p>可以看到，该接口有两个方法，实现该接口，必须要实现writeExternal、readExternal两个方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Externalizable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeExternal</span><span class="params">(ObjectOutput out)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        StringBuffer reverseString = <span class="keyword">new</span> StringBuffer(<span class="keyword">this</span>.name).reverse();</span><br><span class="line">        out.writeObject(reverseString);</span><br><span class="line">        out.writeInt(<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readExternal</span><span class="params">(ObjectInput in)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = ((StringBuffer) in.readObject()).reverse().toString();</span><br><span class="line">        <span class="keyword">this</span>.age = in.readInt();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>Student类继承Externalizable接口之后，实现两个方法，在writeExternal方法中，可以对其进行一些简单的加密，注意要在readExternal方法中写相应的解密方法；而且如果不需要对某个属性进行序列化的话，就可以直接去掉某个属性序列化的语句，相当于实现了<code>transient</code>关键字的作用。</p>
+<p>⭐在这里，一开始运行的时候，报了以下异常，<code>no valid constructor</code>，没有合法的构造器，这是因为Student类中没有一个无参的构造器。在通过实现接口Externalizable进行序列化读取对象时，会调用被序列化类的无参构造器去创建一个新的对象，然后再将被保存对象的字段的值分别填充到新对象中。所以，实现Externalizable接口的类必须要提供一个public的无参的构造器，增加一个无参构造器之后就不会报这个异常了。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190926235227.png" alt></p>
+<h1 id="serialVersionUID"><a href="#serialVersionUID" class="headerlink" title="serialVersionUID"></a>serialVersionUID</h1>
       
     </div>
     
@@ -438,6 +460,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
 
       
       
@@ -447,8 +475,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/20/Java集合类/" rel="next" title="Java集合类">
-                <i class="fa fa-chevron-left"></i> Java集合类
+              <a href="/2019/09/24/RandomAccess接口/" rel="next" title="RandomAccess接口">
+                <i class="fa fa-chevron-left"></i> RandomAccess接口
               </a>
             
           </div>
@@ -456,10 +484,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/24/RandomAccess接口/" rel="prev" title="RandomAccess接口">
-                RandomAccess接口 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -603,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开通OSS服务"><span class="nav-number">1.</span> <span class="nav-text">开通OSS服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用PicGo快速上传图片"><span class="nav-number">2.</span> <span class="nav-text">使用PicGo快速上传图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置PicGo"><span class="nav-number">2.1.</span> <span class="nav-text">配置PicGo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩坑记录"><span class="nav-number">3.</span> <span class="nav-text">踩坑记录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#序列化介绍"><span class="nav-number">1.</span> <span class="nav-text">序列化介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现序列化"><span class="nav-number">2.</span> <span class="nav-text">实现序列化</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Serializable接口"><span class="nav-number">2.1.</span> <span class="nav-text">Serializable接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列化步骤"><span class="nav-number">2.1.1.</span> <span class="nav-text">序列化步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反序列化步骤"><span class="nav-number">2.1.2.</span> <span class="nav-text">反序列化步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对同一个对象多次序列化"><span class="nav-number">2.1.3.</span> <span class="nav-text">对同一个对象多次序列化</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transient关键字"><span class="nav-number">3.</span> <span class="nav-text">transient关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Externalizable接口"><span class="nav-number">4.</span> <span class="nav-text">Externalizable接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#serialVersionUID"><span class="nav-number">5.</span> <span class="nav-text">serialVersionUID</span></a></li></ol></div>
             
 
           </div>

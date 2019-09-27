@@ -88,7 +88,7 @@
 <meta property="og:description" content="通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。  RandomAccess.java  package java.util;/** * 一大堆注释... */public interface RandomAccess &amp;#123;&amp;#125">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190924232402.png">
-<meta property="og:updated_time" content="2019-09-25T11:44:24.945Z">
+<meta property="og:updated_time" content="2019-09-27T00:50:36.346Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RandomAccess接口">
 <meta name="twitter:description" content="通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。  RandomAccess.java  package java.util;/** * 一大堆注释... */public interface RandomAccess &amp;#123;&amp;#125">
@@ -399,7 +399,7 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(List&lt;? extends T&gt; list, T key, Comparator&lt;? <span class="keyword">super</span> T&gt; c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (c==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> binarySearch((List&lt;? extends Comparable&lt;? <span class="keyword">super</span> T&gt;&gt;) list, key);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess || list.size()&lt;BINARYSEARCH_THRESHOLD)</span><br><span class="line">        <span class="keyword">return</span> Collections.indexedBinarySearch(list, key, c);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> Collections.iteratorBinarySearch(list, key, c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上面的方法中，通过判断list是否实现了RandomAccess接口来判断执行indexedBinarySearch方法还是执行iteratorBinarySearch方法(<strong>instanceof关键字的作用是判断某个对象所在的类是否继承某个类或者是实现某个接口</strong>)，</p>
+<p>上面的方法中，通过判断list是否实现了RandomAccess接口来判断执行indexedBinarySearch方法还是执行iteratorBinarySearch方法(<strong>instanceof关键字的作用是判断某个对象所在的类是否继承某个类或者是实现某个接口</strong>)。</p>
 <h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>下面先做一个分别使用for循环和Iterator遍历ArrayList和LinkedList的实验。</p>
 <blockquote>
 <p>RamdomAccessDemo.java</p>
@@ -414,6 +414,9 @@
 <p>所以，我们在使用这些集合类的时候，应该想到对于不同的集合类采取不同的遍历方式，具体采取那种方式就可以<strong>采取通过判断该类是否实现了RandomAccess接口的方式</strong>。</p>
 <p>可以采用如下的模板：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traverseList</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>推荐使用增强for循环，增强for循环在底层也是实现的Iterator。</p>
+
       
     </div>
     

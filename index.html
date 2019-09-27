@@ -359,6 +359,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  2.9k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -377,102 +396,18 @@
       
         
           
-            <h1 id="序列化介绍"><a href="#序列化介绍" class="headerlink" title="序列化介绍"></a>序列化介绍</h1><ul>
-<li><strong>序列化：</strong>将对象写入到IO流中</li>
-<li><strong>反序列化：</strong>将对象从IO流中恢复</li>
-<li><strong>序列化的意义：</strong>序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行的。</li>
-<li><strong>使用场景：</strong>所有在网络上传输的对象都需要进行序列化，比如在使用RMI(远程方法调用)时；所有需要保存到磁盘上的Java对象必须是可以被序列化的。通常程序创建的每个JavaBean都要实现Serializeable接口。</li>
-</ul>
-<h1 id="实现序列化"><a href="#实现序列化" class="headerlink" title="实现序列化"></a>实现序列化</h1><p>如果一个类要实现序列化，那么这个类应该实现<strong>Serializable</strong>接口或者<strong>Externalizable</strong>接口。</p>
-<h2 id="Serializable接口"><a href="#Serializable接口" class="headerlink" title="Serializable接口"></a>Serializable接口</h2><p>Serializable接口是个标记接口，和之前提到的RandomAccess接口一样，接口中没有任何方法。一旦实现了该类，就表明该类是可序列化的。</p>
-<h3 id="序列化步骤"><a href="#序列化步骤" class="headerlink" title="序列化步骤"></a>序列化步骤</h3><ol>
-<li>相应的类实现Serializeable接口。</li>
-</ol>
-<blockquote>
-<p>Student.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: SerializeDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 学生类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-09-26 21:55</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"Student&#123;"</span> +</span><br><span class="line">                <span class="string">"name='"</span> + name + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">", age='"</span> + age + <span class="string">'\''</span> +</span><br><span class="line">                <span class="string">'&#125;'</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>创建一个ObjectOutputStream输出流，并调用ObjectOutputStream对象的writeObject输出可序列化对象。</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"Student.txt"</span>));</span><br><span class="line">        Student student = <span class="keyword">new</span> Student(<span class="string">"二狗"</span>, <span class="number">18</span>);</span><br><span class="line">        objectOutputStream.writeObject(student);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这时，会生成一个Student.txt文件。</p>
-<h3 id="反序列化步骤"><a href="#反序列化步骤" class="headerlink" title="反序列化步骤"></a>反序列化步骤</h3><p>创建一个ObjectInputStream输入，并调用ObjectInputStream对象的readObject方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">    	ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"Student.txt"</span>));</span><br><span class="line">       	Student student = (Student) objectInputStream.readObject();</span><br><span class="line">        System.out.println(student.toString());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">    	e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="comment">//Student&#123;name='二狗', age='18'&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>反序列化不需要调用构造方法，其反序列化的对象是由JVM自己生成的对象，不需要构造方法生成。</p>
-<h3 id="对同一个对象多次序列化"><a href="#对同一个对象多次序列化" class="headerlink" title="对同一个对象多次序列化"></a>对同一个对象多次序列化</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"Student"</span>));</span><br><span class="line">        Student student = <span class="keyword">new</span> Student(<span class="string">"二狗"</span>, <span class="number">18</span>);</span><br><span class="line">        Student student1 = <span class="keyword">new</span> Student(<span class="string">"大鹅"</span>, <span class="number">18</span>);</span><br><span class="line">        Student student2 = <span class="keyword">new</span> Student(<span class="string">"三虎"</span>, <span class="number">19</span>);</span><br><span class="line">        objectOutputStream.writeObject(student);</span><br><span class="line">        objectOutputStream.writeObject(student1);</span><br><span class="line">        objectOutputStream.writeObject(student2);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"Student"</span>));</span><br><span class="line">        Student student = (Student) objectInputStream.readObject();</span><br><span class="line">        System.out.println(student.toString());</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//运行结果</span></span><br><span class="line"><span class="comment">//Student&#123;name='二狗', age='18'&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>从运行结果可以看出，在对一个对象进行序列化之后，并不会再次对其进行序列化。</p>
-<p>所以，该序列化算法存在这样一个问题，如果在对一个对象进行序列化之后，需要修改该对象的内容，第二次序列化并不会成功。</p>
-<h1 id="transient关键字"><a href="#transient关键字" class="headerlink" title="transient关键字"></a>transient关键字</h1><p>如果有时候对象的某些属性不需要序列化。这时候就可以使用该关键字选择不需要序列化的属性。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Serializable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">transient</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这时序列化的结果就变成了<code>Student{name=&#39;null&#39;, age=&#39;18&#39;}</code>，这样，序列化的时候就自动忽略了name这个属性。</p>
-<h1 id="Externalizable接口"><a href="#Externalizable接口" class="headerlink" title="Externalizable接口"></a>Externalizable接口</h1><blockquote>
-<p>Externalizable.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Externalizable</span> <span class="keyword">extends</span> <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">writeExternal</span><span class="params">(ObjectOutput out)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">readExternal</span><span class="params">(ObjectInput in)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，该接口有两个方法，实现该接口，必须要实现writeExternal、readExternal两个方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Externalizable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeExternal</span><span class="params">(ObjectOutput out)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        StringBuffer reverseString = <span class="keyword">new</span> StringBuffer(<span class="keyword">this</span>.name).reverse();</span><br><span class="line">        out.writeObject(reverseString);</span><br><span class="line">        out.writeInt(<span class="keyword">this</span>.age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">readExternal</span><span class="params">(ObjectInput in)</span> <span class="keyword">throws</span> IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = ((StringBuffer) in.readObject()).reverse().toString();</span><br><span class="line">        <span class="keyword">this</span>.age = in.readInt();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>Student类继承Externalizable接口之后，实现两个方法，在writeExternal方法中，可以对其进行一加密以保证安全性，注意要在readExternal方法中写相应的解密方法；而且如果不需要对某个属性进行序列化的话，就可以直接去掉某个属性序列化的语句，相当于实现了<code>transient</code>关键字的作用。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception</span>&#123;</span><br><span class="line">    Student student = <span class="keyword">new</span> Student(<span class="string">"二狗"</span>, <span class="number">18</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"Student"</span>));</span><br><span class="line">        objectOutputStream.writeObject(student);</span><br><span class="line">        ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"Student"</span>));</span><br><span class="line">        Student student1 = (Student) objectInputStream.readObject();</span><br><span class="line">        System.out.println(student1);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>序列化和反序列化的代码和之前的是一样的，看到这里可能或产生一个问题，在上面的一段代码中，并没有看到刚刚的writeExternal和readExternal被显式调用，那么这两个方法到底是如何被调用的呢？</p>
-<p>查看ObjectOutputStream的源码，对于一个实现了EXternalizable接口的类来说，可以看出writeObject的调用栈：</p>
-<p><code>writeObject-&gt;writeObject0-&gt;writeOrdinaryObject-&gt;writeExternalData</code></p>
-<blockquote>
-<p>ObjectOutputStream.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject0</span><span class="params">(Object obj, <span class="keyword">boolean</span> unshared)</span></span></span><br><span class="line"><span class="function">        <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">......</span><br><span class="line"><span class="comment">// remaining cases</span></span><br><span class="line">	<span class="keyword">if</span> (obj <span class="keyword">instanceof</span> String) &#123;</span><br><span class="line">		writeString((String) obj, unshared);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (cl.isArray()) &#123;</span><br><span class="line">		writeArray(obj, desc, unshared);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Enum) &#123;</span><br><span class="line">		writeEnum((Enum&lt;?&gt;) obj, desc, unshared);</span><br><span class="line">	&#125; <span class="keyword">else</span> <span class="keyword">if</span> (obj <span class="keyword">instanceof</span> Serializable) &#123;</span><br><span class="line">		writeOrdinaryObject(obj, desc, unshared);</span><br><span class="line">	&#125;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeOrdinaryObject</span><span class="params">(Object obj,</span></span></span><br><span class="line"><span class="function"><span class="params">                                     ObjectStreamClass desc,</span></span></span><br><span class="line"><span class="function"><span class="params">                                     <span class="keyword">boolean</span> unshared)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> IOException</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">......</span><br><span class="line">	<span class="keyword">if</span> (desc.isExternalizable() &amp;&amp; !desc.isProxy()) &#123;</span><br><span class="line">    	writeExternalData((Externalizable) obj);</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   		writeSerialData(obj, desc);</span><br><span class="line">	&#125;</span><br><span class="line">......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Writes externalizable data of given object by invoking its</span></span><br><span class="line"><span class="comment"> * writeExternal() method.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeExternalData</span><span class="params">(Externalizable obj)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    PutFieldImpl oldPut = curPut;</span><br><span class="line">    curPut = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (extendedDebugInfo) &#123;</span><br><span class="line">        debugInfoStack.push(<span class="string">"writeExternal data"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    SerialCallbackContext oldContext = curContext;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        curContext = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span> (protocol == PROTOCOL_VERSION_1) &#123;</span><br><span class="line">            obj.writeExternal(<span class="keyword">this</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            bout.setBlockDataMode(<span class="keyword">true</span>);</span><br><span class="line">            obj.writeExternal(<span class="keyword">this</span>);</span><br><span class="line">            bout.setBlockDataMode(<span class="keyword">false</span>);</span><br><span class="line">            bout.writeByte(TC_ENDBLOCKDATA);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        curContext = oldContext;</span><br><span class="line">        <span class="keyword">if</span> (extendedDebugInfo) &#123;</span><br><span class="line">            debugInfoStack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>⭐上面的部分源码给出了调用栈的后三个方法，通过源码可以很清晰地看出，由于Externalizable接口也实现了Serializable接口，所以在<code>writeObject0</code>方法中首先经过<code>obj instanceof Serializable</code>进入<code>writeOrdinaryObject</code>方法，在这里对该对象是否实现了Externalizable接口进行了判断（如果是继承了Serializable接口，会调用<code>writeSerialData</code>方法，这种情况会在下面讲解），最后调用<code>writeExternalData</code>方法，可以看到在该方法中会调用在类中重写的<code>writeExternal</code>方法。</p>
-<p>🐞第一次运行的时候，报了以下异常，<code>no valid constructor</code>，没有合法的构造器，这是因为Student类中没有一个无参的构造器。在通过实现接口Externalizable进行序列化读取对象时，会调用被序列化类的无参构造器去创建一个新的对象，然后再将被保存对象的字段的值分别填充到新对象中。所以，实现Externalizable接口的类必须要提供一个public的无参的构造器，增加一个无参构造器之后就不会报这个异常了。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190926235227.png" alt></p>
-<h1 id="serialVersionUID"><a href="#serialVersionUID" class="headerlink" title="serialVersionUID"></a>serialVersionUID</h1><p>在学习集合类的时候经常能在源码中看见serialVersionUID，当时只是知道和序列化有关，今天就深入了解一下。</p>
-<p>JVM是否允许反序列化，不仅取决于类路径和功能代码是否一致，一个非常重要的一点是两个类的序列化 ID 是否一致，即serialVersionUID。</p>
-<p>如果反序列化时候的使用的序列化ID与序列化时使用的ID不同的话，就会报InvalidClassException异常。</p>
-<p><img src="E:%5CMyBlog%5Chexo%5Csource_posts%5Cimg%5C1569551796748.png" alt="1569551796748"></p>
-<p>需要特别说明的是，如果新类中实例变量的类型与序列化时类的类型不一致，则会反序列化失败，这时候需要更改serialVersionUID。</p>
-<p>⭐所以，在编写某个JavaBean时，最好是给这个serialVersionUID赋值，这样就可以避免以后在更新类的时候产生异常，方便升级。</p>
-<h1 id="ArrayList的序列化"><a href="#ArrayList的序列化" class="headerlink" title="ArrayList的序列化"></a>ArrayList的序列化</h1><p>最初学习序列化的原因，是因为一开始看ArrayList源码的时候，不知道serialVersionUID一大串数字是干嘛的，也不知道transient关键字的含义，现在学习完序列化之后再回过头来看ArrayList的源码。从ArrayList的源码开始，我们首先关注下面的部分。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ArrayList</span>&lt;<span class="title">E</span>&gt; <span class="keyword">extends</span> <span class="title">AbstractList</span>&lt;<span class="title">E</span>&gt;</span></span><br><span class="line"><span class="class">        <span class="keyword">implements</span> <span class="title">List</span>&lt;<span class="title">E</span>&gt;, <span class="title">RandomAccess</span>, <span class="title">Cloneable</span>, <span class="title">java</span>.<span class="title">io</span>.<span class="title">Serializable</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">8683452581122892189L</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">transient</span> Object[] elementData; <span class="comment">// non-private to simplify nested class access</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>可以看到，底层的实现数组使用了transient关键字，也就是说，ArrayList是不会被序列化的吗？</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    list.add(<span class="number">1</span>);</span><br><span class="line">    list.add(<span class="number">2</span>);</span><br><span class="line">    list.add(<span class="number">3</span>);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        ObjectOutputStream objectOutputStream = <span class="keyword">new</span> ObjectOutputStream(<span class="keyword">new</span> FileOutputStream(<span class="string">"ArrayList"</span>));</span><br><span class="line">        objectOutputStream.writeObject(list);</span><br><span class="line">        ObjectInputStream objectInputStream = <span class="keyword">new</span> ObjectInputStream(<span class="keyword">new</span> FileInputStream(<span class="string">"ArrayList"</span>));</span><br><span class="line">        ArrayList&lt;Integer&gt; list1 = (ArrayList&lt;Integer&gt;) objectInputStream.readObject();</span><br><span class="line">        System.out.println(list1);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException | ClassNotFoundException e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="comment">//[1, 2, 3]</span></span><br></pre></td></tr></table></figure>
-
-<p>然而在经过测试之后，可以发现，ArrayList被序列化成功了，那么使用了transient关键字为什么还会被序列化？既然要序列化ArrayList，又是为什么要使用该关键字呢？</p>
-<p>其实事情的真相就在于ArrayList中的两个方法<code>writeObject</code>和<code>readObject</code>方法，下面是两个方法的源码部分。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">writeObject</span><span class="params">(java.io.ObjectOutputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException</span>&#123;</span><br><span class="line">    <span class="comment">// Write out element count, and any hidden stuff</span></span><br><span class="line">    <span class="keyword">int</span> expectedModCount = modCount;</span><br><span class="line">    s.defaultWriteObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out size as capacity for behavioural compatibility with clone()</span></span><br><span class="line">    s.writeInt(size);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Write out all elements in the proper order.</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; i++) &#123;</span><br><span class="line">        s.writeObject(elementData[i]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (modCount != expectedModCount) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Reconstitute the &lt;tt&gt;ArrayList&lt;/tt&gt; instance from a stream (that is,</span></span><br><span class="line"><span class="comment"> * deserialize it).</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">readObject</span><span class="params">(java.io.ObjectInputStream s)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> java.io.IOException, ClassNotFoundException </span>&#123;</span><br><span class="line">    elementData = EMPTY_ELEMENTDATA;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in size, and any hidden stuff</span></span><br><span class="line">    s.defaultReadObject();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Read in capacity</span></span><br><span class="line">    s.readInt(); <span class="comment">// ignored</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (size &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// be like clone(), allocate array based upon size not capacity</span></span><br><span class="line">        <span class="keyword">int</span> capacity = calculateCapacity(elementData, size);</span><br><span class="line">        SharedSecrets.getJavaOISAccess().checkArray(s, Object[].class, capacity);</span><br><span class="line">        ensureCapacityInternal(size);</span><br><span class="line"></span><br><span class="line">        Object[] a = elementData;</span><br><span class="line">        <span class="comment">// Read in all elements in the proper order.</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;size; i++) &#123;</span><br><span class="line">            a[i] = s.readObject();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从源码可以看出，在序列化一个ArrayList时，会将size和elementData都写入输出流，这就是为什么加了transient关键字之后依然会被序列化的原因。那么为什么要加这个关键字呢？<strong>这是因为elementData是一个缓存数组，它通常会预留一些容量，等容量不足时再扩充容量，那么有些空间可能就没有实际存储元素，采用上面的方式来实现序列化时，就可以保证只序列化实际存储的那些元素，而不是整个数组，从而节省空间和时间。</strong></p>
-<p>现在还有一个问题就是，这两个方法是如何被调用的呢？有了前面对Externalizable接口分析的经验，直接查看ObjectOutputStream的<code>writeSerialData</code>方法，在该方法中调用了invokeWriteObject方法来实现序列化，下面直接看该方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">invokeWriteObject</span><span class="params">(Object obj, ObjectOutputStream out)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> IOException, UnsupportedOperationException</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    requireInitialized();</span><br><span class="line">    <span class="keyword">if</span> (writeObjectMethod != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            writeObjectMethod.invoke(obj, <span class="keyword">new</span> Object[]&#123; out &#125;);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InvocationTargetException ex) &#123;</span><br><span class="line">            Throwable th = ex.getTargetException();</span><br><span class="line">            <span class="keyword">if</span> (th <span class="keyword">instanceof</span> IOException) &#123;</span><br><span class="line">                <span class="keyword">throw</span> (IOException) th;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                throwMiscException(th);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IllegalAccessException ex) &#123;</span><br><span class="line">            <span class="comment">// should not occur, as access checks have been suppressed</span></span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> InternalError(ex);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> UnsupportedOperationException();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>ObjectStreamClass.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">writeObjectMethod = getPrivateMethod(cl, <span class="string">"writeObject"</span>,</span><br><span class="line">    <span class="keyword">new</span> Class&lt;?&gt;[] &#123; ObjectOutputStream.class &#125;,</span><br><span class="line">    Void.TYPE);</span><br><span class="line">readObjectMethod = getPrivateMethod(cl, <span class="string">"readObject"</span>,</span><br><span class="line">	<span class="keyword">new</span> Class&lt;?&gt;[] &#123; ObjectInputStream.class &#125;,</span><br><span class="line">	Void.TYPE);</span><br></pre></td></tr></table></figure>
-
-<p>重点关注<code>writeObjectMethod.invoke(obj, new Object[]{ out });</code>这一行，其中的writewriteObjectMethod对象就是在ObjectStreamClass类中定义的，通过反射的方式调用的两个方法。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><ol>
-<li>实现序列化的方式主要有以下几种：</li>
-</ol>
-<ul>
-<li>实现Serializable接口，调用ObjectOutputStream的writeObject方法，将对象序列化，这时，是使用的Java的自带的序列化方式。此时被transient关键字修饰的属性，不会被序列化。</li>
-<li>实现Serializable接口，同时提供writeObject方法，这时ObjectOutputStream就会通过反射的方式调用writeObject方法。此时transient修饰的字段，是否会被序列化，取决于writeObject方法。 </li>
-<li>实现 Externalizable接口，并实现两个方法，这时ObjectOutputStream就会自动调用writeObject方法。此时，transient关键字不会起作用，是否会被序列化，取决于writeObject方法。 </li>
-</ul>
-<ol start="2">
-<li>定义JavaBean时，最好都实现Serializable接口，并且定义serialVersionUID。</li>
-<li>静态变量不会被实例化。</li>
-</ol>
-
-          
+          序列化介绍
+序列化：将对象写入到IO流中
+反序列化：将对象从IO流中恢复
+序列化的意义：序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/26/Java序列化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -594,6 +529,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  978
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -612,48 +566,19 @@
       
         
           
-            <p>通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。</p>
-<blockquote>
-<p>RandomAccess.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 一大堆注释...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RandomAccess</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。
 
-<p>其实，该接口只是一个标识性接口(Marker)，除了RandomAccess接口外，还有<strong>Cloneable</strong> (可拷贝克隆)、<strong>Serializable</strong>(被序列化)，之后会有文章介绍这两个接口。</p>
-<h1 id="该接口的官方解释"><a href="#该接口的官方解释" class="headerlink" title="该接口的官方解释"></a>该接口的官方解释</h1><blockquote>
-<p>List实现使用的<code>标记</code>界面，表明它们支持快速（通常为恒定时间）随机访问。 此接口的主要目的是允许通用算法更改其行为，以便在应用于随机访问列表或顺序访问列表时提供良好的性能。</p>
-<p>当施加到顺序访问列表（如<code>LinkedList</code>），用于操纵随机接入列表（如<code>ArrayList</code>）最好算法可以产生二次行为。 鼓励通用列表算法在应用如果应用于顺序访问列表之前提供较差性能的算法，并且如果需要改变其行为以确保可接受的性能，则检查给定列表是否为<code>instanceof</code>此接口。</p>
-</blockquote>
-<p>此循环：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for (int i=0, n=list.size(); i &lt; n; i++)</span><br><span class="line">         list.get(i);</span><br></pre></td></tr></table></figure>
+RandomAccess.java
 
-<p>比这个循环运行得更快：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for (Iterator i=list.iterator(); i.hasNext(); )</span><br><span class="line">       i.next();</span><br></pre></td></tr></table></figure>
-
-<h1 id="Collections类中的使用"><a href="#Collections类中的使用" class="headerlink" title="Collections类中的使用"></a>Collections类中的使用</h1><p>此接口在Collections类中有很多地方都使用到了，比如下面的binarySearch方法</p>
-<blockquote>
-<p>Collection.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(List&lt;? extends T&gt; list, T key, Comparator&lt;? <span class="keyword">super</span> T&gt; c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (c==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> binarySearch((List&lt;? extends Comparable&lt;? <span class="keyword">super</span> T&gt;&gt;) list, key);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess || list.size()&lt;BINARYSEARCH_THRESHOLD)</span><br><span class="line">        <span class="keyword">return</span> Collections.indexedBinarySearch(list, key, c);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> Collections.iteratorBinarySearch(list, key, c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的方法中，通过判断list是否实现了RandomAccess接口来判断执行indexedBinarySearch方法还是执行iteratorBinarySearch方法(<strong>instanceof关键字的作用是判断某个对象所在的类是否继承某个类或者是实现某个接口</strong>)。</p>
-<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>下面先做一个分别使用for循环和Iterator遍历ArrayList和LinkedList的实验。</p>
-<blockquote>
-<p>RamdomAccessDemo.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: CollectionDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: RandomAccess接口Demo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-09-24 23:00</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomAccessDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"arrayList使用for循环遍历"</span> + arrayListFor());</span><br><span class="line">        System.out.println(<span class="string">"arrayList使用Iterator遍历"</span> + arrayListIterator());</span><br><span class="line">        System.out.println(<span class="string">"linkedList使用for循环遍历"</span> + linkedListFor());</span><br><span class="line">        System.out.println(<span class="string">"linkedList使用Iterator遍历"</span> + linkedListIterator());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//for循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">arrayListFor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            Object object = list.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Iterator循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">arrayListIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            Object object = iterator.next();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//for循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">linkedListFor</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List list = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            Object object = list.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Iterator循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">linkedListIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            Object object = iterator.next();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>运行结果</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190924232402.png" alt></p>
-<p>可以发现，使用for循环比使用Iterator遍历ArrayList快，使用Iterator比使用for循环快。</p>
-<p>所以，我们在使用这些集合类的时候，应该想到对于不同的集合类采取不同的遍历方式，具体采取那种方式就可以<strong>采取通过判断该类是否实现了RandomAccess接口的方式</strong>。</p>
-<p>可以采用如下的模板：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traverseList</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注：</strong>推荐使用增强for循环，增强for循环在底层也是实现的Iterator。</p>
-
-          
+package java.util;/** * 一大
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/24/RandomAccess接口/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -775,6 +700,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  834
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -793,29 +737,16 @@
       
         
           
-            <blockquote>
-<p>在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。</p>
-</blockquote>
-<h1 id="开通OSS服务"><a href="#开通OSS服务" class="headerlink" title="开通OSS服务"></a>开通OSS服务</h1><p>​    进入阿里云创建一个对象存储OSS的服务，之后新建一个Bucket，创建Bucket之后，我们的存储空间就创建成功了。</p>
-<h1 id="使用PicGo快速上传图片"><a href="#使用PicGo快速上传图片" class="headerlink" title="使用PicGo快速上传图片"></a>使用PicGo快速上传图片</h1><blockquote>
-<p>PicGo下载地址<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">https://github.com/Molunerfinn/PicGo</a></p>
-</blockquote>
-<h2 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234324.png" alt></p>
-<p>​    KeyId和KeySecret可以从阿里的控制台获取。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234430.png" alt></p>
-<p>​    储存空间名就是Bucket的名称，存储区域在访问域名可以找到。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921235014.png" alt></p>
-<p>​    配置完成之后就可以使用PicGo上传图片了。</p>
-<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>​    第一次使用PicGo上传图片的时候，总是提示上传失败，检查了好几遍配置，都没有什么错误，可是就是上传不了。</p>
-<p>​    打开PicGo的配置文件之后，发现有下面的报错信息。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2019-09-21 21:33:11 [PicGo ERROR] StatusCodeError: 403 - &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;Error&gt;\n  RequestTimeTooSkewed\n  &lt;Message&gt;The difference between the request time and the current time is too large.&lt;/Message&gt;\n  &lt;RequestId&gt;5D8634B41BCC63B32BB5C43E&lt;/RequestId&gt;\n  &lt;HostId&gt;lzy-md-image.oss-cn-qingdao.aliyuncs.com&lt;/HostId&gt;\n  &lt;MaxAllowedSkewMilliseconds&gt;900000&lt;/MaxAllowedSkewMilliseconds&gt;\n  &lt;RequestTime&gt;2019-09-21T13:33:10.000Z&lt;/RequestTime&gt;\n  &lt;ServerTime&gt;2019-09-21T14:33:24.000Z&lt;/ServerTime&gt;\n&lt;/Error&gt;\n&quot;</span><br><span class="line">------Error Stack Begin------</span><br><span class="line">StatusCodeError: 403 - &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;Error&gt;\n  RequestTimeTooSkewed\n  &lt;Message&gt;The difference between the request time and the current time is too large.&lt;/Message&gt;\n  &lt;RequestId&gt;5D8634B41BCC63B32BB5C43E&lt;/RequestId&gt;\n  &lt;HostId&gt;lzy-md-image.oss-cn-qingdao.aliyuncs.com&lt;/HostId&gt;\n  &lt;MaxAllowedSkewMilliseconds&gt;900000&lt;/MaxAllowedSkewMilliseconds&gt;\n  &lt;RequestTime&gt;2019-09-21T13:33:10.000Z&lt;/RequestTime&gt;\n  &lt;ServerTime&gt;2019-09-21T14:33:24.000Z&lt;/ServerTime&gt;\n&lt;/Error&gt;\n&quot;</span><br><span class="line">    at new StatusCodeError (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\errors.js:32:15)</span><br><span class="line">    at Request.plumbing.callback (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\plumbing.js:104:33)</span><br><span class="line">    at Request.RP$callback [as _callback] (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\plumbing.js:46:31)</span><br><span class="line">    at Request.self.callback (E:\PicGo\resources\app.asar\node_modules\request\request.js:185:22)</span><br><span class="line">    at Request.emit (events.js:182:13)</span><br><span class="line">    at Request.&lt;anonymous&gt; (E:\PicGo\resources\app.asar\node_modules\request\request.js:1157:10)</span><br><span class="line">    at Request.emit (events.js:182:13)</span><br><span class="line">    at IncomingMessage.&lt;anonymous&gt; (E:\PicGo\resources\app.asar\node_modules\request\request.js:1079:12)</span><br><span class="line">    at Object.onceWrapper (events.js:273:13)</span><br><span class="line">    at IncomingMessage.emit (events.js:187:15)</span><br><span class="line">-------Error Stack End-------</span><br></pre></td></tr></table></figure>
-
-<p>​    重点关注<code>The difference between the request time and the current time is too large</code>这一部分，查找阿里云OS文档，403错误及排查。看到下面的部分，就明白了出问题的原因。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190922000638.png" alt></p>
-<p>​    由于我的电脑是Windows+Ubuntu双系统，每次切换系统的时候都会产生八个小时的时差，一直没有解决这个冲突问题，所以造成了Windows时间不正常，也就导致了今天的问题。</p>
-<p>​    解决方法就很简单了，重新同步一下时钟就好了。</p>
-
           
+在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/21/阿里云OSS+PicGo建立图床踩坑/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -937,6 +868,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.7k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -955,147 +905,28 @@
       
         
           
-            <blockquote>
-<p>Java众多的集合类由两大接口衍生而来：Collection接口和Map接口</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190925203812.png" alt></p>
-<h1 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h1><h2 id="List-有序，可重复"><a href="#List-有序，可重复" class="headerlink" title="List(有序，可重复)"></a>List(有序，可重复)</h2><h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p><strong>优点：</strong>底层数据结构是数组，具有数组本身的特点：查询快，增删慢。</p>
-<p><strong>缺点：</strong>线程不安全，效率高。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/ArrayList.png" alt></p>
-<blockquote>
-<p>ArrayList.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The array buffer into which the elements of the ArrayList are stored.</span></span><br><span class="line"><span class="comment"> * The capacity of the ArrayList is the length of this array buffer. Any</span></span><br><span class="line"><span class="comment"> * empty ArrayList with elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA</span></span><br><span class="line"><span class="comment"> * will be expanded to DEFAULT_CAPACITY when the first element is added.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">transient</span> Object[] elementData; <span class="comment">// non-private to simplify nested class access</span></span><br></pre></td></tr></table></figure>
-
-<p>上面的elementData就是ArrayList的底层数组的实现。</p>
-<h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p><strong>优点：</strong>底层数据结构是数组，具有数组本身的特点：查询快，增删慢。</p>
-<p><strong>缺点：</strong>线程安全，效率低。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/Vector.png" alt></p>
-<blockquote>
-<p>Vector.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Appends the specified element to the end of this Vector.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> e element to be appended to this Vector</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> &#123;<span class="doctag">@code</span> true&#125; (as specified by &#123;<span class="doctag">@link</span> Collection#add&#125;)</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 1.2</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    modCount++;</span><br><span class="line">    ensureCapacityHelper(elementCount + <span class="number">1</span>);</span><br><span class="line">    elementData[elementCount++] = e;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>查看Vector的源码可以发现，大部分源码都加上了synchronized关键字，比如上面的add方法，这也是Vector线程安全的原因。</p>
-<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p><strong>优点:</strong> 底层数据结构是链表，查询慢，增删快。<br><strong>缺点:</strong> 线程不安全，效率高。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/LinkedList.png" alt></p>
-<p>比较LinkedList和前两个集合类的区别，可以发现LinkedList实现了Deque接口，并且没有实现<a href="#random_access">    RandomAccess接口</a>，表示此集合类不支持快速随机访问，此接口有专门的文章讲解。</p>
-<h2 id="Set-无序，唯一"><a href="#Set-无序，唯一" class="headerlink" title="Set(无序，唯一)"></a>Set(无序，唯一)</h2><h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>底层数据结构是哈希表（无序，唯一）。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/HashSet.png" alt></p>
-<p>可以看出，HashSet也是没有实现RandomAccess接口的，不支持快速随机访问，关于HashSet是如何保证元素的唯一性的，及其无序性的原因将在HashMap中解释。</p>
-<blockquote>
-<p> HashSet.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> HashMap&lt;E,Object&gt; map;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Dummy value to associate with an Object in the backing Map</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Object PRESENT = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(E e)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> map.put(e, PRESENT)==<span class="keyword">null</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>从上面的源码可以看出，HashSet的底层实现是HashMap，每次调用add方法时，Map的value部分仅仅put了一个一个Object对象，而HashMap的Key是唯一的，也就保证了HashSet的唯一性。</p>
-<h2 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h2><p>底层数据结构是哈希表和链表（有序，唯一），链表保证其有序，哈希表保证其唯一。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/LinkedHashSet.png" alt></p>
-<p>从类继承图可以看出，LinkedHashSet继承了HashSet，从下面的源码可以看出，LinkedHashSet主要是实现了HashSet的<code>HashSet(int initialCapacity, float loadFactor, boolean dummy)</code>构造方法，在该方法中新建了一个LinkedHashMap对象，链表部分的实现就在LikedHashMap中实现了。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//LinkedHashSet.java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">LinkedHashSet</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>(initialCapacity, loadFactor, <span class="keyword">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//HashSet.java</span></span><br><span class="line">HashSet(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor, <span class="keyword">boolean</span> dummy) &#123;</span><br><span class="line">    map = <span class="keyword">new</span> LinkedHashMap&lt;&gt;(initialCapacity, loadFactor);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h2><p>底层数据结构是红黑树（唯一，有序）。SortedSet接口保证了其有序性，主要用于排序。</p>
-<blockquote>
-<p>类继承图</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/TreeSet.png" alt></p>
-<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h1><h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><p>Map族主要包括HashMap、LinkedHashMap、TreeMap、Hashtable</p>
-<ul>
-<li>HashMap</li>
-</ul>
-<p>线程不安全，效率高，无序。</p>
-<p>HashMap允许空值，并且key和value都允许。key值具有唯一性，<strong>存在的话key值不会覆盖，新的value会替代旧的value</strong>，而且HashMap是无序的，之后会有源码讲解详细解释。</p>
-<ul>
-<li>LinkedHashMap</li>
-</ul>
-<p>内部维持了一个双向链表，相比于HashMap来说可以保证有序。</p>
-<ul>
-<li>TreeMap</li>
-</ul>
-<p>内部实现是红黑树，可以对插入的元素进行自动排序。</p>
-<ul>
-<li>Hashtable</li>
-</ul>
-<p>很多方法加上了<code>synchronized</code>，所以，Hashtable是线程安全的，而且Hashtable不允许空值。</p>
-<h1 id="对比分析"><a href="#对比分析" class="headerlink" title="对比分析"></a>对比分析</h1><h2 id="TreeSet，LinkedHashSet，HashSet对比"><a href="#TreeSet，LinkedHashSet，HashSet对比" class="headerlink" title="TreeSet，LinkedHashSet，HashSet对比"></a>TreeSet，LinkedHashSet，HashSet对比</h2><h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><ul>
-<li><p>由于实现了Set接口，都有唯一性的特点。</p>
-</li>
-<li><p>三者都不是线程安全的，如果想保证线程安全，可以使用Collections.synchronizedSet()方法。</p>
-</li>
-</ul>
-<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ul>
-<li>是否有序：HashSet直接实现了HanshMap，是无序的，而由于LinkedHashSet实现了链表，可以保证数据按照插入顺序排序，TreeSet会对插入的数据实现排序。</li>
-<li>是否允许空值：HashSet和LinkHashSet允许存在null数据，但是TreeSet中插入null数据时会报NullPointerException。</li>
-</ul>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">setTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    HashSet&lt;Integer&gt; hashSet = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">    LinkedHashSet&lt;Integer&gt; linkedHashSet = <span class="keyword">new</span> LinkedHashSet&lt;&gt;();</span><br><span class="line">    TreeSet&lt;Integer&gt; treeSet = <span class="keyword">new</span> TreeSet&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (Integer data: Arrays.asList(<span class="number">745</span>, <span class="number">3</span>, <span class="number">114</span>, <span class="number">526</span>, <span class="number">5</span>, <span class="number">7</span>, <span class="number">4</span>)) &#123;</span><br><span class="line">        hashSet.add(data);</span><br><span class="line">        linkedHashSet.add(data);</span><br><span class="line">        treeSet.add(data);</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">"HashSet："</span> + hashSet);</span><br><span class="line">    System.out.println(<span class="string">"LinkedHashSet："</span> + linkedHashSet);</span><br><span class="line">    System.out.println(<span class="string">"TreeSet："</span> + treeSet);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>运行结果</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569458612685.png" alt></p>
-<p>可以看出来，遍历HashSet的结果是无序的，遍历LinkedHashSet的结果是跟插入数据的顺序保持一致，TreeSet可以对数据进行排序。</p>
-<h2 id="HashMap、LinkedHashMap、TreeMap、Hashtable对比"><a href="#HashMap、LinkedHashMap、TreeMap、Hashtable对比" class="headerlink" title="HashMap、LinkedHashMap、TreeMap、Hashtable对比"></a>HashMap、LinkedHashMap、TreeMap、Hashtable对比</h2><h3 id="相同点-1"><a href="#相同点-1" class="headerlink" title="相同点"></a>相同点</h3><ul>
-<li>都是用于储存key/value键值对，key不能重复</li>
-</ul>
-<h3 id="不同点-1"><a href="#不同点-1" class="headerlink" title="不同点"></a>不同点</h3><ul>
-<li>是否支持多线程读写：HashMap、TreeMap、LinkedHashMap线程不安全，只有Hashtable线程安全。</li>
-<li>是否有序：HashMap、Hashtable无序，LikedHashMap可以保证数据按照插入顺序排序、TreeMap可以对数据进行排序。</li>
-<li>是否允许空值：HashMap、LikedHashMap允许存在一条键为null的记录，Hashtable、TreeMap不允许空值存在。</li>
-</ul>
-<h1 id="遍历方式"><a href="#遍历方式" class="headerlink" title="遍历方式"></a>遍历方式</h1><h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>主要有三种循环方式，for循环、增强for循环和迭代器方式。<strong>增强for循环的内部是调用iterator实现的，后两种方式的效果基本相同(在idea中也会有提示建议使用增强for循环的方式)。对于如何选择遍历方式，在RandomAccess接口中有讲到。</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//List遍历</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">traverseListTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;Integer&gt; arrayList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">20</span>; i++) &#123;</span><br><span class="line">        arrayList.add(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//for循环遍历</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">        System.out.println(arrayList.get(i));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//增强for循环</span></span><br><span class="line">    <span class="keyword">for</span> (Integer integer : arrayList) &#123;</span><br><span class="line">        System.out.println(integer);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//iterator方式</span></span><br><span class="line">    Iterator iterator = arrayList.iterator();</span><br><span class="line">    <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">        System.out.println(iterator.next());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Map-1"><a href="#Map-1" class="headerlink" title="Map"></a>Map</h2><p>遍历方式，主要的遍历方式有四种，第一中国方式仅仅遍历value或者key的话直接使用一个增强for循环，第二种方式是使用Map.keyset方法遍历key，可以再通过key找到value，第三种是使用Map.entrySet遍历，此方法是效率比较高的一种，第四种是使用Iterator遍历，和上一种方式基本相同，但是如果需要在遍历过程中删除元素的话，需要使用该方法。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Map遍历</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">traverseMapTest</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; map = <span class="keyword">new</span> HashMap();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100000</span>; i++) &#123;</span><br><span class="line">        map.put(i, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//仅遍历value</span></span><br><span class="line">    <span class="keyword">for</span> (Integer value : map.values()) &#123;</span><br><span class="line">        System.out.println(value);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//仅遍历key</span></span><br><span class="line">    <span class="keyword">for</span> (Integer key : map.keySet()) &#123;</span><br><span class="line">        System.out.println(key);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Map.keySet方法</span></span><br><span class="line">    <span class="keyword">for</span> (Integer key : map.keySet()) &#123;</span><br><span class="line">        System.out.println(key + <span class="string">" "</span> + map.get(key));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Map.entrySet方法</span></span><br><span class="line">    <span class="keyword">for</span> (Map.Entry&lt;Integer, Integer&gt; entry : map.entrySet()) &#123;</span><br><span class="line">        System.out.println(entry.getKey() + <span class="string">" "</span> + entry.getValue());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//Iterator方式</span></span><br><span class="line">    Iterator&lt;Map.Entry&lt;Integer, Integer&gt;&gt; iterator = map.entrySet().iterator();</span><br><span class="line">    <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">        System.out.println(iterator.next().getKey() + <span class="string">" "</span> + iterator.next().getValue());</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//lambada</span></span><br><span class="line">    map.forEach((key, value) -&gt; System.out.println(key + <span class="string">" "</span> + value));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="性能测试"><a href="#性能测试" class="headerlink" title="性能测试"></a>性能测试</h3><p>插入了500w条数据进行测试。</p>
-<table>
-<thead>
-<tr>
-<th>遍历方式</th>
-<th>时间（ms）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>KeySet</td>
-<td>13</td>
-</tr>
-<tr>
-<td>values</td>
-<td>42</td>
-</tr>
-<tr>
-<td>keySet    get(key)</td>
-<td>51</td>
-</tr>
-<tr>
-<td>entrySet</td>
-<td>41</td>
-</tr>
-<tr>
-<td>iterator</td>
-<td>39</td>
-</tr>
-</tbody></table>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
-<li>如果只是获取key或者value，推荐使用KeySet和values方式。</li>
-<li>同时需要key和value，推荐使用entrySet方式。</li>
-<li>如果需要在遍历的过程中删除元素，可以使用iterator方式。</li>
-</ul>
-
           
+Java众多的集合类由两大接口衍生而来：Collection接口和Map接口
+
+
+CollectionList(有序，可重复)ArrayList优点：底层数据结构是数组，具有数组本身的特点：查询快，增删慢。
+缺点：线程不安全，效率高。
+
+类继承图
+
+
+
+ArrayList.java
+
+/** * 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/20/Java集合类/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1228,6 +1059,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -1246,79 +1096,17 @@
       
         
           
-            <p>🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址的小Demo。</p>
-<p><strong>代码：</strong></p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.net.InetAddress;</span><br><span class="line"><span class="keyword">import</span> java.net.UnknownHostException;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: DNSDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 域名解析</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-09-18 15:41</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Test tester = <span class="keyword">new</span> Test();</span><br><span class="line">        <span class="comment">// tester.resolveDomain("www.baidu.com");</span></span><br><span class="line">        tester.resolveDomain(<span class="string">"www.zhihu.com"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">resolveDomain</span><span class="params">(String domain)</span> </span>&#123;</span><br><span class="line">        InetAddress[] address;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            address = InetAddress.getAllByName(domain);</span><br><span class="line">            Arrays.stream(address)</span><br><span class="line">                .map(InetAddress::getHostAddress)</span><br><span class="line">                .forEach(System.out::println);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>解析百度的IP地址以后，直接访问百度的IP地址可以正常访问，然而解析知乎的IP地址以后，无法正常访问。</p>
-<p><strong>域名可以访问然而IP不能访问，这是为什么呢？</strong></p>
-<h2 id="只输入IP地址无法访问网站的原因"><a href="#只输入IP地址无法访问网站的原因" class="headerlink" title="只输入IP地址无法访问网站的原因"></a>只输入IP地址无法访问网站的原因</h2><p>​    输入IP地址无法访问的原因就是<strong>多个站点在共用这一个IP</strong>，如果只输入IP地址的话，浏览器也不知道要访问哪个站点，所以就无法访问了。</p>
-<p>​    那么，浏览器不也是解析域名之后再访问的IP地址吗，最终也是访问的IP地址，那么越过DNS解析直接访问和前一种形式不应该一样吗？</p>
-<p>​    有两种技术可以上面的问题：</p>
-<ol>
-<li>虚拟主机技术</li>
-<li>反向代理技术</li>
-</ol>
-<h3 id="虚拟主机技术"><a href="#虚拟主机技术" class="headerlink" title="虚拟主机技术"></a>虚拟主机技术</h3><blockquote>
-<p>虚拟主机技术是apache，nginx等服务器所特有的一种功能，也就是实现多个站点在同一台服务器上放置。</p>
-</blockquote>
-<p>那么，知乎的某台服务器可能就是下面的样子：</p>
-<table>
-<thead>
-<tr>
-<th align="left">站点</th>
-<th align="left">文件存放路径</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a></td>
-<td align="left">/zhihu/index</td>
-</tr>
-<tr>
-<td align="left"><a href="http://www.a.com" target="_blank" rel="noopener">www.a.com</a></td>
-<td align="left">/a/index</td>
-</tr>
-<tr>
-<td align="left"><a href="http://www.b.com" target="_blank" rel="noopener">www.b.com</a></td>
-<td align="left">/b/index</td>
-</tr>
-</tbody></table>
-<p>这样，域名和文件之间就存在映射关系了，当我们直接访问  <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> 时，主要经历了以下几个步骤：</p>
-<ol>
-<li>DNS域名解析，获得解析后的结果，比如是223.111.243.190。</li>
-<li>浏览器与IP为223.111.243.190的服务器进行三次握手，建立TCP连接。</li>
-<li>浏览器开始构建HTTP请求报文，通过抓包可以看到报文格式：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hypertext Transfer Protocol</span><br><span class="line">    GET / HTTP/1.1\r\n</span><br><span class="line">    Host: www.zhihu.com\r\n</span><br><span class="line">    User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0\r\n</span><br><span class="line">    Accept: text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8\r\n</span><br><span class="line">    Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2\r\n</span><br><span class="line">    Accept-Encoding: gzip, deflate\r\n</span><br><span class="line">    Connection: keep-alive\r\n</span><br><span class="line">    Upgrade-Insecure-Requests: 1\r\n</span><br><span class="line">    \r\n</span><br><span class="line">    [Full request URI: http://www.zhihu.com/]</span><br><span class="line">    [HTTP request 1/18]</span><br><span class="line">    [Response in frame: 121]</span><br></pre></td></tr></table></figure>
-
-<p>以上信息中，我们需要关注一行，就是Host: <a href="http://www.zhihu.com\r\n" target="_blank" rel="noopener">www.zhihu.com\r\n</a> 这一行，通过这个头部字段，服务器就可以知道</p>
-<p>到底访问的是哪个HOST，然后服务器就根据HOST和域名的对应关系，去寻找/zhihu/index文件。</p>
-<h3 id="反向代理技术"><a href="#反向代理技术" class="headerlink" title="反向代理技术"></a>反向代理技术</h3><p>先介绍一下正向代理和反向代理的区别：</p>
-<h4 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h4><p>正向代理，是在用户端的。比如需要访问某些国外网站，我们可能需要购买vpn。</p>
-<p>并且<strong>vpn是在我们的用户浏览器端设置的</strong>(并不是在远端的服务器设置)。</p>
-<p>浏览器先访问vpn地址，vpn地址转发请求，并最后将请求结果原路返回来。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%E6%AD%A3%E5%90%91%E4%BB%A3%E7%90%86.png" alt></p>
-<h4 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h4><p>有正向代理，就有反向代理。</p>
-<p><strong>反向代理是作用在服务器端的，是一个虚拟IP(VIP)</strong>。对于用户的一个请求，会转发到多个后端处理器中的一台来处理该具体请求。</p>
-<p>大型网站都有DNS(域名解析服务器)，load balance(负载均衡器)等。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86.png" alt></p>
-<p><strong>下面主要介绍反向代理技术</strong></p>
-<blockquote>
-<p>​    在计算机网络中，<strong>反向代理</strong>是代理服务器的一种。服务器根据客户端的请求，从其关联的一组或多组后端（如Web服务器）上获取资源，然后再将这些资源返回给客户端，客户端只会得知反向代理的IP地址，而不知道在代理服务器后面的服务器簇的存在。</p>
-</blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921225214.png" alt></p>
-<p>在这种情况下，直接访问IP的时候会访问反向代理服务器，这样访问 <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> 的时候，过程如下：</p>
-<ol>
-<li>通过DNS解析获得 <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> 的反向代理IP地址223.111.243.190。</li>
-<li>HTTP请求到达反向代理服务器之后，该服务器会对请求做转发。</li>
-<li>请求的HOST地址为 <a href="http://www.zhihu.com" target="_blank" rel="noopener">www.zhihu.com</a> ，反向代理服务器会将请求报文转发到域名为<a href="http://www.zhihu.com的服务器上。" target="_blank" rel="noopener">www.zhihu.com的服务器上。</a></li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>直接使用IP无法访问站点的原因</strong></p>
-<blockquote>
-<p>一个IP可能对应多个web站点，仅仅凭借IP无法找到相应的站点。通过域名访问就可以借助HOST分辨到底是要访问哪个站点。如果使用虚拟主机技术，那么利用HOST + IP的方式就可以访问；如果使用反向代理技术，通过代理服务器找到站点实际服务器的IP也可以访问。</p>
-</blockquote>
-
-          
+          🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址的小Demo。
+代码：
+import java.net.InetAddress;import java.net.UnknownHostException;import java.util.Arrays;/** * @paragram
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/20/为什么输入IP无法访问网站/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1451,6 +1239,25 @@
           
 
           
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.2k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
 
           
 
@@ -1469,109 +1276,16 @@
       
         
           
-            <h2 id="1-拦截本地回环数据（需要的时候再开启）"><a href="#1-拦截本地回环数据（需要的时候再开启）" class="headerlink" title="1. 拦截本地回环数据（需要的时候再开启）"></a>1. 拦截本地回环数据（需要的时候再开启）</h2><p>机访问本机的回环数据是不经过网卡的，比如我们在本机访问搭建在本机上的web服务，但我们经常有服务搭建在本机的操作也经常有拦截本地回环数据包加以分析的需求，所以我们环要拦载回环数据包。操作如下。</p>
-<p>首先，以管理员身份运行cmd（普通用户没有路由表操作权限，会提示“请求的操作需要提升”）</p>
-<p>然后，使用ipconfig查看本机ip和网关：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ipconfig</span><br></pre></td></tr></table></figure>
-
-<p>再然后，使用以下命令添加路由，指定回环数据也要先转发到网关（使用上一步获取本的本机ip和网关替换其中的<your_ip>和<gateway_ip>）：</gateway_ip></your_ip></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">route add &lt;your_IP&gt; mask 255.255.255.255 &lt;gateway_IP&gt; metric 1</span><br></pre></td></tr></table></figure>
-
-<p>最后，查看路由表中路由是否已添加成功：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">route print</span><br></pre></td></tr></table></figure>
-
-<p>回环数据经网关再回来会增加网卡的压力，可使用以下命令删除路由（使用前边获取本的本机ip替换其中的<your_ip>）：</your_ip></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">route delete &lt;your_IP&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="2-WireShark-界面说明"><a href="#2-WireShark-界面说明" class="headerlink" title="2. WireShark 界面说明"></a>2. WireShark 界面说明</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/2019-09-08_20-30-04.png" alt></p>
-<p>区域1：该区域展示的是wireshark捕获到的所有数据包的列表。注意最后一列Info列是wireshark组织的说明列并不一定是该数据包中的原始内容。</p>
-<p>区域 2：该区域是区域 1 中选定的数据包的分协议层展示。</p>
-<p>区域 3：该区域是区域 1 中选定的数据包的源数据，其中左侧是十六进制表示右侧是ASCII码表示。另外在2号窗口中选中某层或某字段，3号窗口对应位置也会被高亮。 </p>
-<h2 id="2-捕获过滤器表达式"><a href="#2-捕获过滤器表达式" class="headerlink" title="2. 捕获过滤器表达式"></a>2. 捕获过滤器表达式</h2><p>在欢迎页面可以看到管理捕获过滤器。<img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568195049000.png" alt></p>
-<p>打开以后，可以看到过滤器的各种写法。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568194936552.png" alt></p>
-<h2 id="3-显示过滤器表达式及其书写规律"><a href="#3-显示过滤器表达式及其书写规律" class="headerlink" title="3. 显示过滤器表达式及其书写规律"></a>3. 显示过滤器表达式及其书写规律</h2><p>显示过滤器会在WireShark捕获数据包之后，按照过滤表达的条件，有选择性地显示已经捕获的所有数据包。</p>
-<h3 id="3-1-基本过滤表达式"><a href="#3-1-基本过滤表达式" class="headerlink" title="3.1. 基本过滤表达式"></a>3.1. 基本过滤表达式</h3><p>一个基本的表达式由过滤项、过滤关系、过滤值三个部分组成。</p>
-<p>比如ip.addr == 192.168.1.1这条表达式</p>
-<ul>
-<li>ip.addr是过滤项</li>
-<li>== 是过滤关系</li>
-<li>192.168.1.1是过滤值</li>
-</ul>
-<p>表达式的意思为找出所有ip协议中源或目标地址为192.168.1.1的数据包。</p>
-<h4 id="3-1-1-过滤项"><a href="#3-1-1-过滤项" class="headerlink" title="3.1.1. 过滤项"></a>3.1.1. 过滤项</h4><p>==过滤项 = 协议 + 协议字段==</p>
-<p>以端口为例，端口出现于tcp协议中所以有端口这个过滤项且其写法就是tcp.port。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1568205797632.png" alt></p>
-<p>当在应用过滤显示器中输入时，会有相应的提示。</p>
-<h4 id="3-1-2-过滤关系"><a href="#3-1-2-过滤关系" class="headerlink" title="3.1.2. 过滤关系"></a>3.1.2. 过滤关系</h4><p>过滤关系可以使用“English”和“C-like”两种方式，例如“==”可以写作“eq”。</p>
-<h4 id="3-1-3-过滤值"><a href="#3-1-3-过滤值" class="headerlink" title="3.1.3 过滤值"></a>3.1.3 过滤值</h4><p>不解释。</p>
-<p>###3.2. 复合规律表达式</p>
-<table>
-<thead>
-<tr>
-<th align="left">English</th>
-<th align="left">C-like</th>
-<th align="left">Description</th>
-<th align="left">Example</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">and</td>
-<td align="left">&amp;&amp;</td>
-<td align="left">Logical AND</td>
-<td align="left"><code>ip.src==10.0.0.5 and tcp.flags.fin</code></td>
-</tr>
-<tr>
-<td align="left">or</td>
-<td align="left">||</td>
-<td align="left">Logical OR</td>
-<td align="left"><code>ip.scr==10.0.0.5 or ip.src==192.1.1.1</code></td>
-</tr>
-<tr>
-<td align="left">xor</td>
-<td align="left">^^</td>
-<td align="left">Logical XOR</td>
-<td align="left"><code>tr.dst[0:3] == 0.6.29 xor tr.src[0:3] == 0.6.29</code></td>
-</tr>
-<tr>
-<td align="left">not</td>
-<td align="left">!</td>
-<td align="left">Logical NOT</td>
-<td align="left"><code>not llc</code></td>
-</tr>
-<tr>
-<td align="left">[…]</td>
-<td align="left"></td>
-<td align="left">Subsequence</td>
-<td align="left"><code>See “Slice Operator” below.</code></td>
-</tr>
-<tr>
-<td align="left">in</td>
-<td align="left"></td>
-<td align="left">Set Membership</td>
-<td align="left"><code>http.request.method in {&quot;HEAD&quot; &quot;GET&quot;}. See “Membership Operator” below.</code></td>
-</tr>
-</tbody></table>
-<h3 id="3-3-常见用显示过滤需求及其对应表达式"><a href="#3-3-常见用显示过滤需求及其对应表达式" class="headerlink" title="3.3. 常见用显示过滤需求及其对应表达式"></a>3.3. 常见用显示过滤需求及其对应表达式</h3><p><strong>数据链路层：</strong></p>
-<p>筛选mac地址为04:f9:38:ad:13:26的数据包—-eth.src == 04:f9:38:ad:13:26</p>
-<p>筛选源mac地址为04:f9:38:ad:13:26的数据包—-eth.src == 04:f9:38:ad:13:26</p>
-<p><strong>网络层：</strong></p>
-<p>筛选ip地址为192.168.1.1的数据包—-ip.addr == 192.168.1.1</p>
-<p>筛选192.168.1.0网段的数据—- ip contains “192.168.1”</p>
-<p>筛选192.168.1.1和192.168.1.2之间的数据包—-ip.addr == 192.168.1.1 &amp;&amp; ip.addr == 192.168.1.2</p>
-<p>筛选从192.168.1.1到192.168.1.2的数据包—-ip.src == 192.168.1.1 &amp;&amp; ip.dst == 192.168.1.2</p>
-<p><strong>传输层：</strong></p>
-<p>筛选tcp协议的数据包—-tcp</p>
-<p>筛选除tcp协议以外的数据包—-!tcp</p>
-<p>筛选端口为80的数据包—-tcp.port == 80</p>
-<p>筛选12345端口和80端口之间的数据包—-tcp.port == 12345 &amp;&amp; tcp.port == 80</p>
-<p>筛选从12345端口到80端口的数据包—-tcp.srcport == 12345 &amp;&amp; tcp.dstport == 80</p>
-<p><strong>应用层：</strong></p>
-<p>特别说明—-http中http.request表示请求头中的第一行（如GET index.jsp HTTP/1.1），http.response表示响应头中的第一行（如HTTP/1.1 200 OK），其他头部都用http.header_name形式。</p>
-<p>筛选url中包含.php的http数据包—-http.request.uri contains “.php”</p>
-<p>筛选内容包含username的http数据包—-http contains “username”</p>
-
-          
+          1. 拦截本地回环数据（需要的时候再开启）机访问本机的回环数据是不经过网卡的，比如我们在本机访问搭建在本机上的web服务，但我们经常有服务搭建在本机的操作也经常有拦截本地回环数据包加以分析的需求，所以我们环要拦载回环数据包。操作如下。
+首先，以管理员身份运行cmd（普通用户没有路由表操作权限，会提示
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/16/WireShark基本操作/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1728,6 +1442,15 @@
   </span>
   <span class="author" itemprop="copyrightHolder">刘二狗</span>
 
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">8.9k</span>
   
 </div>
 

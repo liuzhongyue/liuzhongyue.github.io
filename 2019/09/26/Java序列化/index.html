@@ -88,8 +88,8 @@
 <meta property="og:description" content="序列化介绍 序列化：将对象写入到IO流中 反序列化：将对象从IO流中恢复 序列化的意义：序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行的。 使用场景：所有在网络上传输的对象都需要进行序列化，比如在使用RMI(远程方法调用)时；所有需要">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190926235227.png">
-<meta property="og:image" content="e:%5CMyBlog%5Chexo%5Csource_posts%5Cimg%5C1569551796748.png">
-<meta property="og:updated_time" content="2019-09-27T03:38:06.061Z">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569551796748.png">
+<meta property="og:updated_time" content="2019-09-27T12:05:04.250Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java序列化">
 <meta name="twitter:description" content="序列化介绍 序列化：将对象写入到IO流中 反序列化：将对象从IO流中恢复 序列化的意义：序列化机制允许将实现序列化的Java对象转换位字节序列，这些字节序列可以保存在磁盘上，或通过网络传输，以达到以后恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在，而且这整个过程都是独立于JVM进行的。 使用场景：所有在网络上传输的对象都需要进行序列化，比如在使用RMI(远程方法调用)时；所有需要">
@@ -455,7 +455,7 @@
 <h1 id="serialVersionUID"><a href="#serialVersionUID" class="headerlink" title="serialVersionUID"></a>serialVersionUID</h1><p>在学习集合类的时候经常能在源码中看见serialVersionUID，当时只是知道和序列化有关，今天就深入了解一下。</p>
 <p>JVM是否允许反序列化，不仅取决于类路径和功能代码是否一致，一个非常重要的一点是两个类的序列化 ID 是否一致，即serialVersionUID。</p>
 <p>如果反序列化时候的使用的序列化ID与序列化时使用的ID不同的话，就会报InvalidClassException异常。</p>
-<p><img src="E:%5CMyBlog%5Chexo%5Csource_posts%5Cimg%5C1569551796748.png" alt="1569551796748"></p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569551796748.png" alt></p>
 <p>需要特别说明的是，如果新类中实例变量的类型与序列化时类的类型不一致，则会反序列化失败，这时候需要更改serialVersionUID。</p>
 <p>⭐所以，在编写某个JavaBean时，最好是给这个serialVersionUID赋值，这样就可以避免以后在更新类的时候产生异常，方便升级。</p>
 <h1 id="ArrayList的序列化"><a href="#ArrayList的序列化" class="headerlink" title="ArrayList的序列化"></a>ArrayList的序列化</h1><p>最初学习序列化的原因，是因为一开始看ArrayList源码的时候，不知道serialVersionUID一大串数字是干嘛的，也不知道transient关键字的含义，现在学习完序列化之后再回过头来看ArrayList的源码。从ArrayList的源码开始，我们首先关注下面的部分。</p>

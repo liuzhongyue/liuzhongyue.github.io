@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[配置WireShark抓取https数据包]]></title>
     <url>%2F2019%2F09%2F29%2F%E9%85%8D%E7%BD%AEWireShark%E6%8A%93%E5%8F%96https%E6%95%B0%E6%8D%AE%E5%8C%85%2F</url>
-    <content type="text"><![CDATA[配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。 完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。 配置WireShark。打开编辑-&gt;首选项-&gt;Protocols，打开SSL对其进行编辑（注：wireshark在某次版本更新之后去掉了SSL选项，没有SSL选项的需要设置TSL），将日志文件的路径添加到(Pre)-Master-Securet log file。 访问www.liuergo.top，可以发现https的数据包可以被抓到了。]]></content>
+    <content type="text"><![CDATA[配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。 完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。 配置WireShark。打开编辑-&gt;首选项-&gt;Protocols，打开SSL对其进行编辑（注：wireshark在某次版本更新之后去掉了SSL选项，没有SSL选项的需要设置TSL），将日志文件的路径添加到(Pre)-Master-Securet log file。 访问www.liuergo.top ，在WireShark中开始抓包，可以发现https的数据包可以被抓到了。]]></content>
       <categories>
         <category>计算机网络</category>
       </categories>

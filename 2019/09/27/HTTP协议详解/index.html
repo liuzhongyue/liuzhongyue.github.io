@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="计算机网络,HTTP,">
 
 
 
@@ -79,16 +79,24 @@
 
 
 
-<meta name="description" content="Later equals never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ergo&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/categories/计算机网络/WireShark/index.html">
+<meta name="description" content="本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析实验验证">
+<meta name="keywords" content="计算机网络,HTTP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP协议详解">
+<meta property="og:url" content="http://yoursite.com/2019/09/27/HTTP协议详解/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="Later equals never.">
+<meta property="og:description" content="本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析实验验证">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930162649.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930163757.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930165732.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170159.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170555.png">
+<meta property="og:updated_time" content="2019-09-30T09:16:46.351Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ergo&#39;s blog">
-<meta name="twitter:description" content="Later equals never.">
+<meta name="twitter:title" content="HTTP协议详解">
+<meta name="twitter:description" content="本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析实验验证">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930162649.png">
 
 
 
@@ -118,13 +126,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/计算机网络/WireShark/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/27/HTTP协议详解/">
 
 
 
 
 
-  <title>分类: WireShark | ergo's blog</title>
+  <title>HTTP协议详解 | ergo's blog</title>
   
 
 
@@ -143,7 +151,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,79 +277,280 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>WireShark<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/HTTP协议详解/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="机智刘二狗">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ergo's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/09/29/配置WireShark抓取https数据包/" itemprop="url">
-              
-                <span itemprop="name">配置WireShark抓取https数据包</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">HTTP协议详解</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-29T16:17:53+08:00" content="2019-09-29">
-          09-29
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T22:37:18+08:00">
+                2019-09-27
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-09-30T17:16:46+08:00">
+                2019-09-30
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  587
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/16/WireShark基本操作/" itemprop="url">
-              
-                <span itemprop="name">WireShark基本操作</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-16T00:00:00+08:00" content="2019-09-16">
-          09-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。</p>
+<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><blockquote>
+<p>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。</p>
+<p>HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p>
+</blockquote>
+<h1 id="协议报文解析"><a href="#协议报文解析" class="headerlink" title="协议报文解析"></a>协议报文解析</h1><h2 id="实验验证"><a href="#实验验证" class="headerlink" title="实验验证"></a>实验验证</h2><ol>
+<li><p>输入URL: <a href="http://gaia.cs.umass.edu/ethereal-labs/HTTP-ethereal-file3.html" target="_blank" rel="noopener">http://gaia.cs.umass.edu/ethereal-labs/HTTP-ethereal-file3.html</a> ，使用WireShark抓包。</p>
+</li>
+<li><p>输入过滤表达式<code>tcp &amp;&amp; ip.addr==128.119.245.12</code></p>
+</li>
+<li><p>观察抓到的数据包</p>
+</li>
+</ol>
+<p><strong>重点关注下面这一部分</strong></p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930162649.png" alt></p>
+<h3 id="352号包"><a href="#352号包" class="headerlink" title="352号包"></a>352号包</h3><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930163757.png" alt></p>
+<p>这个包就是客户端发送给服务端HTTPGET请求，由请求行、各种首部字段和空行组成，在GET请求中，<strong>没有请求的报文主体部分</strong>。</p>
+<h3 id="384号包"><a href="#384号包" class="headerlink" title="384号包"></a>384号包</h3><p>在TCP协议中，发送双方每发出一个包都要有响应，此包就是服务端对刚刚发送的HTTP的GET包的响应。</p>
+<h3 id="386、387、389、390号包"><a href="#386、387、389、390号包" class="headerlink" title="386、387、389、390号包"></a>386、387、389、390号包</h3><p>首先，介绍一下WireShark中TCP segment of a ressembled PDU的概念，在TCP协议中，会将一个较大的数据包分成很多个小包发出去，在WireShark中，TCP segment of a ressembled PDU就是被TCP协议所分成的一个个小的数据包。</p>
+<p>其实，这四个包都是TCP分成的小包，WireShark在最后一个http包中将所有的包都进行了重新拼包。</p>
+<p><strong>查看386号数据包</strong></p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930165732.png" alt></p>
+<p>点击TCP segment data，查看此segment的数据内容，发现其中的数据就是http报文，只不过是服务器返回的http长报文的一部分。</p>
+<p><strong>查看390号数据包</strong></p>
+<ol>
+<li>打开4 Reassembled TCP Segments，可以看到所有被TCP所分成的四个小数据包，正是386，387，389，390号包。</li>
+</ol>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170159.png" alt></p>
+<ol start="2">
+<li>查看HTTP数据包的内容</li>
+</ol>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170555.png" alt></p>
+<p>此数据包是服务端返回的HTTP报文，由状态行、首部字段、报文主体和空行组成。通过Line-based text data可以查看具体的报文主体部分的数据。</p>
+<h1 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h1><h2 id="GET：获取资源"><a href="#GET：获取资源" class="headerlink" title="GET：获取资源"></a>GET：获取资源</h2><p>GET方法用来请求访问已被URI识别的资源。指定的资源经服务端解析后返回响应的内容。</p>
+<h2 id="POST：传输实体的主体"><a href="#POST：传输实体的主体" class="headerlink" title="POST：传输实体的主体"></a>POST：传输实体的主体</h2><h1 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h1><p># </p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="机智刘二狗 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"> <i class="fa fa-tag"> 计算机网络</i></a>
+          
+            <a href="/tags/HTTP/" rel="tag"> <i class="fa fa-tag"> HTTP</i></a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/27/计算机网络知识点整理/" rel="next" title="计算机网络知识点整理（持续更新...）">
+                <i class="fa fa-chevron-left"></i> 计算机网络知识点整理（持续更新...）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/09/29/配置WireShark抓取https数据包/" rel="prev" title="配置WireShark抓取https数据包">
+                配置WireShark抓取https数据包 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -349,6 +558,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -369,8 +582,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -456,6 +678,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协议报文解析"><span class="nav-number">2.</span> <span class="nav-text">协议报文解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验验证"><span class="nav-number">2.1.</span> <span class="nav-text">实验验证</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#352号包"><span class="nav-number">2.1.1.</span> <span class="nav-text">352号包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#384号包"><span class="nav-number">2.1.2.</span> <span class="nav-text">384号包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#386、387、389、390号包"><span class="nav-number">2.1.3.</span> <span class="nav-text">386、387、389、390号包</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP方法"><span class="nav-number">3.</span> <span class="nav-text">HTTP方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GET：获取资源"><span class="nav-number">3.1.</span> <span class="nav-text">GET：获取资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POST：传输实体的主体"><span class="nav-number">3.2.</span> <span class="nav-text">POST：传输实体的主体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态码"><span class="nav-number">4.</span> <span class="nav-text">状态码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -628,6 +866,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1017,26 +1259,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

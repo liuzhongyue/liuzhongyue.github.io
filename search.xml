@@ -6,10 +6,25 @@
     <content type="text"><![CDATA[配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。 完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。 配置WireShark。打开编辑-&gt;首选项-&gt;Protocols，打开SSL对其进行编辑（注：wireshark在某次版本更新之后去掉了SSL选项，没有SSL选项的需要设置TSL），将日志文件的路径添加到(Pre)-Master-Securet log file。 访问www.liuergo.top ，在WireShark中开始抓包，可以发现https的数据包可以被抓到了。]]></content>
       <categories>
         <category>计算机网络</category>
+        <category>WireShark</category>
       </categories>
       <tags>
         <tag>计算机网络</tag>
+        <tag>http</tag>
         <tag>WireShark</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[HTTP协议详解]]></title>
+    <url>%2F2019%2F09%2F27%2FHTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。 协议报文解析实验验证 输入URL: http://gaia.cs.umass.edu/ethereal-labs/HTTP-ethereal-file3.html ，使用WireShark抓包。 输入过滤表达式tcp &amp;&amp; ip.addr==128.119.245.12 观察抓到的数据包 重点关注下面这一部分 352号包 这个包就是客户端发送给服务端HTTPGET请求，由请求行、各种首部字段和空行组成，在GET请求中，没有请求的报文主体部分。 384号包在TCP协议中，发送双方每发出一个包都要有响应，此包就是服务端对刚刚发送的HTTP的GET包的响应。 386、387、389、390号包首先，介绍一下WireShark中TCP segment of a ressembled PDU的概念，在TCP协议中，会将一个较大的数据包分成很多个小包发出去，在WireShark中，TCP segment of a ressembled PDU就是被TCP协议所分成的一个个小的数据包。 其实，这四个包都是TCP分成的小包，WireShark在最后一个http包中将所有的包都进行了重新拼包。 查看386号数据包 点击TCP segment data，查看此segment的数据内容，发现其中的数据就是http报文，只不过是服务器返回的http长报文的一部分。 查看390号数据包 打开4 Reassembled TCP Segments，可以看到所有被TCP所分成的四个小数据包，正是386，387，389，390号包。 查看HTTP数据包的内容 此数据包是服务端返回的HTTP报文，由状态行、首部字段、报文主体和空行组成。通过Line-based text data可以查看具体的报文主体部分的数据。 HTTP方法GET：获取资源GET方法用来请求访问已被URI识别的资源。指定的资源经服务端解析后返回响应的内容。 POST：传输实体的主体状态码#]]></content>
+      <categories>
+        <category>计算机网络</category>
+        <category>HTTP</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
+        <tag>HTTP</tag>
       </tags>
   </entry>
   <entry>
@@ -59,11 +74,12 @@
     <content type="text"><![CDATA[🌈学习完DNS解析之后，自己尝试写了一个Java程序解析DNS地址的小Demo。 代码： import java.net.InetAddress;import java.net.UnknownHostException;import java.util.Arrays;/** * @paragram: DNSDemo * @description: 域名解析 * @auhor: liuergo * @date: 2019-09-18 15:41 */public class Test &#123; public static void main(String[] args) &#123; Test tester = new Test(); // tester.resolveDomain("www.baidu.com"); tester.resolveDomain("www.zhihu.com"); &#125; private void resolveDomain(String domain) &#123; InetAddress[] address; try &#123; address = InetAddress.getAllByName(domain); Arrays.stream(address) .map(InetAddress::getHostAddress) .forEach(System.out::println); &#125; catch (UnknownHostException e) &#123; e.printStackTrace(); &#125; &#125;&#125; 解析百度的IP地址以后，直接访问百度的IP地址可以正常访问，然而解析知乎的IP地址以后，无法正常访问。 域名可以访问然而IP不能访问，这是为什么呢？ 只输入IP地址无法访问网站的原因​ 输入IP地址无法访问的原因就是多个站点在共用这一个IP，如果只输入IP地址的话，浏览器也不知道要访问哪个站点，所以就无法访问了。 ​ 那么，浏览器不也是解析域名之后再访问的IP地址吗，最终也是访问的IP地址，那么越过DNS解析直接访问和前一种形式不应该一样吗？ ​ 有两种技术可以上面的问题： 虚拟主机技术 反向代理技术 虚拟主机技术 虚拟主机技术是apache，nginx等服务器所特有的一种功能，也就是实现多个站点在同一台服务器上放置。 那么，知乎的某台服务器可能就是下面的样子： 站点 文件存放路径 www.zhihu.com /zhihu/index www.a.com /a/index www.b.com /b/index 这样，域名和文件之间就存在映射关系了，当我们直接访问 www.zhihu.com 时，主要经历了以下几个步骤： DNS域名解析，获得解析后的结果，比如是223.111.243.190。 浏览器与IP为223.111.243.190的服务器进行三次握手，建立TCP连接。 浏览器开始构建HTTP请求报文，通过抓包可以看到报文格式： Hypertext Transfer Protocol GET / HTTP/1.1\r\n Host: www.zhihu.com\r\n User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:68.0) Gecko/20100101 Firefox/68.0\r\n Accept: text/html,application/xhtml+xml,application/xml;q=0.9,/;q=0.8\r\n Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2\r\n Accept-Encoding: gzip, deflate\r\n Connection: keep-alive\r\n Upgrade-Insecure-Requests: 1\r\n \r\n [Full request URI: http://www.zhihu.com/] [HTTP request 1/18] [Response in frame: 121] 以上信息中，我们需要关注一行，就是Host: www.zhihu.com\r\n 这一行，通过这个头部字段，服务器就可以知道 到底访问的是哪个HOST，然后服务器就根据HOST和域名的对应关系，去寻找/zhihu/index文件。 反向代理技术先介绍一下正向代理和反向代理的区别： 正向代理正向代理，是在用户端的。比如需要访问某些国外网站，我们可能需要购买vpn。 并且vpn是在我们的用户浏览器端设置的(并不是在远端的服务器设置)。 浏览器先访问vpn地址，vpn地址转发请求，并最后将请求结果原路返回来。 反向代理有正向代理，就有反向代理。 反向代理是作用在服务器端的，是一个虚拟IP(VIP)。对于用户的一个请求，会转发到多个后端处理器中的一台来处理该具体请求。 大型网站都有DNS(域名解析服务器)，load balance(负载均衡器)等。 下面主要介绍反向代理技术 ​ 在计算机网络中，反向代理是代理服务器的一种。服务器根据客户端的请求，从其关联的一组或多组后端（如Web服务器）上获取资源，然后再将这些资源返回给客户端，客户端只会得知反向代理的IP地址，而不知道在代理服务器后面的服务器簇的存在。 在这种情况下，直接访问IP的时候会访问反向代理服务器，这样访问 www.zhihu.com 的时候，过程如下： 通过DNS解析获得 www.zhihu.com 的反向代理IP地址223.111.243.190。 HTTP请求到达反向代理服务器之后，该服务器会对请求做转发。 请求的HOST地址为 www.zhihu.com ，反向代理服务器会将请求报文转发到域名为www.zhihu.com的服务器上。 总结直接使用IP无法访问站点的原因 一个IP可能对应多个web站点，仅仅凭借IP无法找到相应的站点。通过域名访问就可以借助HOST分辨到底是要访问哪个站点。如果使用虚拟主机技术，那么利用HOST + IP的方式就可以访问；如果使用反向代理技术，通过代理服务器找到站点实际服务器的IP也可以访问。]]></content>
       <categories>
         <category>计算机网络</category>
-        <category>DNS</category>
+        <category>问题</category>
       </categories>
       <tags>
         <tag>计算机网络</tag>
-        <tag>DNS</tag>
+        <tag>http</tag>
+        <tag>反向代理</tag>
       </tags>
   </entry>
   <entry>

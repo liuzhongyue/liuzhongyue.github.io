@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2019%2F10%2F10%2FFinal%20arrays%20in%20Java%2F</url>
+    <content type="text"><![CDATA[之前在做第一个安卓项目时，在使用TimerTask和使用Thread创建新线程的时候，发现如果在匿名方法中对局部变量进行修改的时候会报错，但是可以访问局部变量，而使用成员变量的时候就不会报错。不过，如果将其写成下面就不会报错了，但是问题又来了，明明将变量声明成了final类型，为什么可以修改其值呢？ void myThread() &#123; final int[] i = &#123;0&#125;; Thread thread = new Thread(()-&gt; i[0]++); thread.start();&#125; 我们需要解决以下几个问题： 为什么在匿名方法中可以修改成员变量而不可以修改局部变量？ 为什么匿名方法中只能访问final类型的局部变量？ 为什么final数组的值可以被修改？ 在匿名方法中使用的局部变量为什么只能是final原因是Java设计者想要匿名函数或者Lambda函数内部外部保持数据一致性，在匿名方法中使用局部变量时，内部类并不是真正地使用该变量，而是在匿名方法中复制一个副本，由于是副本，所以即使是在匿名方法中修改了该变量，局部变量也不会发生变化，所以匿名方法使用的局部变量只能是final类型的变量。 注：在Java8以前，访问任何局部变量都要加final关键字，而在Java8之后，只要不涉及修改局部变量的操作，就可以不用加final关键字。 但是，对于成员变量来说，匿名方法会保存外部类的引用，因而内部类中对任何字段的修改都回真实的反应到外部类实例本身上，所以不需要用final来修饰它。具体可以参考该博客：https://www.cnblogs.com/qq78292959/p/3745348.html Final arrays如果非要对局部变量进行修改怎么办，那就只能用到上面的final数组方法。我们都知道，final类型的数据是不可以被修改的，但是为什么此处的final数组的值被修改了呢？ 下面是一个静态常量： public final int[] number = &#123;1, 2, 3&#125;; final关键字只能保证对于常量对象来说这点是成立的，但对于数组来说就不成立了，因为上面只能保证对象不变(意思是说final只能保证基本数据类型或原始数据类型不可变，比如：String，Double，int)，但number引用的对象是可以改变的。 注意：正是由于final数组的这个特性，所以在需要定义一个常量数组的时候，不要使用该方法，这样定义依然是会被修改值的。 文章开始的代码可以重写Thread类，定义Thread类的成员变量来实现相同的功能。 private void myThread()&#123; class MyThread extends Thread &#123; private int i = 0; @Override public void run() &#123; super.run(); i++; System.out.println(i); &#125; &#125; MyThread myThread = new MyThread(); myThread.start();&#125; 总结 在匿名方法中使用的局部变量只能是fianl类型的。 Java8以后，只要不对局部变量修改，局部变量即使不加final关键字也可以被匿名方法访问。 如果匿名方法要修改局部变量，可以将变量定义成final数组的形式。 如果要final发挥常量作用，final数组要慎用。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[配置WireShark抓取https数据包]]></title>
     <url>%2F2019%2F09%2F29%2F%E9%85%8D%E7%BD%AEWireShark%E6%8A%93%E5%8F%96https%E6%95%B0%E6%8D%AE%E5%8C%85%2F</url>
     <content type="text"><![CDATA[配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。 完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。 配置WireShark。打开编辑-&gt;首选项-&gt;Protocols，打开SSL对其进行编辑（注：wireshark在某次版本更新之后去掉了SSL选项，没有SSL选项的需要设置TSL），将日志文件的路径添加到(Pre)-Master-Securet log file。 访问www.liuergo.top ，在WireShark中开始抓包，可以发现https的数据包可以被抓到了。]]></content>
@@ -17,7 +28,7 @@
   <entry>
     <title><![CDATA[HTTP协议详解]]></title>
     <url>%2F2019%2F09%2F27%2FHTTP%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。 协议报文解析实验验证 输入URL: http://gaia.cs.umass.edu/ethereal-labs/HTTP-ethereal-file3.html ，使用WireShark抓包。 输入过滤表达式tcp &amp;&amp; ip.addr==128.119.245.12 观察抓到的数据包 重点关注下面这一部分 352号包 这个包就是客户端发送给服务端HTTPGET请求，由请求行、各种首部字段和空行组成，在GET请求中，没有请求的报文主体部分。 384号包在TCP协议中，发送双方每发出一个包都要有响应，此包就是服务端对刚刚发送的HTTP的GET包的响应。 386、387、389、390号包首先，介绍一下WireShark中TCP segment of a ressembled PDU的概念，在TCP协议中，会将一个较大的数据包分成很多个小包发出去，在WireShark中，TCP segment of a ressembled PDU就是被TCP协议所分成的一个个小的数据包。 其实，这四个包都是TCP分成的小包，WireShark在最后一个http包中将所有的包都进行了重新拼包。 查看386号数据包 点击TCP segment data，查看此segment的数据内容，发现其中的数据就是http报文，只不过是服务器返回的http长报文的一部分。 查看390号数据包 打开4 Reassembled TCP Segments，可以看到所有被TCP所分成的四个小数据包，正是386，387，389，390号包。 查看HTTP数据包的内容 此数据包是服务端返回的HTTP报文，由状态行、首部字段、报文主体和空行组成。通过Line-based text data可以查看具体的报文主体部分的数据。 HTTP方法GET：获取资源GET方法用来请求访问已被URI识别的资源。指定的资源经服务端解析后返回响应的内容。 POST：传输实体的主体状态码#]]></content>
+    <content type="text"><![CDATA[本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。 协议报文解析HTTP报文大致可分为报文首部和报文主体两部分，两者由一个空行划分。通常，不一定要有报文主体（GET方法就没有报文主体）。 请求行：包含用于请求的方法，请求的URI和HTTP版本。 状态行：包含表明响应结果的状态码，状态短语和HTTP版本。 首部字段：包含表示请求和响应的各种条件和属性的各类首部。 报文主体：应被发送的数据。 实验验证 输入URL: http://gaia.cs.umass.edu/ethereal-labs/HTTP-ethereal-file3.html ，使用WireShark抓包。 输入过滤表达式tcp &amp;&amp; ip.addr==128.119.245.12 观察抓到的数据包 重点关注下面这一部分 352号包 这个包就是客户端发送给服务端HTTPGET请求，由请求行、各种首部字段和空行组成，在GET请求中，没有请求的报文主体部分。 384号包 在TCP协议中，发送双方每发出一个包都要有响应，此包就是服务端对刚刚发送的HTTP的GET包的响应。 386、387、389、390号包 首先，介绍一下WireShark中TCP segment of a ressembled PDU的概念，在TCP协议中，会将一个较大的数据包分成很多个小包发出去，在WireShark中，TCP segment of a ressembled PDU就是被TCP协议所分成的一个个小的数据包。 其实，这四个包都是TCP分成的小包，WireShark在最后一个http包中将所有的包都进行了重新拼包。 查看386号数据包 点击TCP segment data，查看此segment的数据内容，发现其中的数据就是http报文，只不过是服务器返回的http长报文的一部分。 查看390号数据包 打开4 Reassembled TCP Segments，可以看到所有被TCP所分成的四个小数据包，正是386，387，389，390号包。 查看HTTP数据包的内容 此数据包是服务端返回的HTTP报文，由状态行、首部字段、报文主体和空行组成。通过Line-based text data可以查看具体的报文主体部分的数据。 HTTP方法GET：获取资源GET方法用来请求访问已被URI识别的资源。指定的资源经服务端解析后返回响应的内容。 POST：传输实体的主体状态码#]]></content>
       <categories>
         <category>计算机网络</category>
         <category>HTTP</category>

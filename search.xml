@@ -12,6 +12,17 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Java中的static关键字]]></title>
+    <url>%2F2019%2F10%2F10%2Fstatic%E5%85%B3%E9%94%AE%E5%AD%97%2F</url>
+    <content type="text"><![CDATA[static关键字是经常会使用到的，之前一直没有对该关键字进行过深入地学习过，下面就讲述一下该关键字以及用途。 static关键字static关键字表示全局或者静态的意思，可以实现类似全局变量的作用，用static修饰变量或者方法都是独立于某个类的，会被所有的该类的实例共享，所有实例的引用都指向同一个地方，任何一个实例对其的修改都会导致其他实例的变化。 public class Student &#123; private static int count; Student() &#123; count++; &#125; public static void main(String[] args) &#123; Student student = new Student(); Student student1 = new Student(); Student student2 = new Student(); System.out.println(Student.count); &#125;&#125;---------------Output:3 如上面的代码，运行结果为3，说明三个类的实例是共享静态变量count的，使用上面的代码可以统计一个类被实例化了多少次。 static关键字的用途 static方法就是没有this的方法。在static方法内部不能调用非静态方法，反过来是可以的。而且可以在没有创建任何对象的前提下，仅仅通过类本身来调用static方法。这实际上正是static方法的主要用途。 上面是《Thinking in Java》对static关键字作用的解释，总结一下，就是static方法可以在不用实例化对象的情况下使用。 static变量有static关键字修饰的变量为静态变量，而没有static修饰的变量是成员变量，在对类进行实例化的时候，无论进行多少次实例化，静态变量也只会被实例化一次，而成员变量则不同，它是伴随着实例的，每创建一个实例就会产生一个成员变量。 static成员变量的初始化顺序按照定义的顺序进行初始化。 在C/C++中static是可以作用域局部变量的，但是在Java中static是不允许用来修饰局部变量。 static方法有static关键字修饰的方法可以直接通过类名进行调用。由于static方法在类加载的时候就已经存在了，它不依赖于任何实例。 注意，在静态方法中不能调用非静态成员和非静态方法，在静态方法加载的时候非静态成员和方法还未加载；然而，在非静态方法中可以调用静态方法。 static代码块static关键字的一个比较特殊的用法就是静态代码块。静态代码块同样是在虚拟机加载类的时候就会会被加载执行，而且只执行一次。如果static代码块有多个，JVM将按照它们在类中出现的先后顺序依次执行它们。 静态代码块作用静态代码块的一个比较重要的作用就是可以优化性能。 比如下面的例子： public class Student &#123; private Date birthDate; public Student(Date birthDate) &#123; this.birthDate = birthDate; &#125; boolean isBornBoomer() &#123; Date startDate = Date.valueOf("1946"); Date endDate = Date.valueOf("1964"); return birthDate.compareTo(startDate)&gt;=0 &amp;&amp; birthDate.compareTo(endDate) &lt; 0; &#125;&#125; isBornBoomer是判断该人是否是1946年到1964年之间出生的，每次isBornBoomer被调用的时候都会生成startDate和endDate两个对象，造成了空间浪费，可以改成下面的形式： public class Student &#123; private Date birthDate; private static Date startDate,endDate; public Student(Date birthDate) &#123; this.birthDate = birthDate; &#125; static &#123; Date startDate = Date.valueOf("1946"); Date endDate = Date.valueOf("1964"); &#125; boolean isBornBoomer() &#123; return birthDate.compareTo(startDate)&gt;=0 &amp;&amp; birthDate.compareTo(endDate) &lt; 0; &#125;&#125; 所以，可以对只进行一次初始化的操作放在static代码块中进行。 静态代码块的执行时机在Java中，一个类的加载过程分为三个步骤：1. 装载 2. 连接 3. 初始化。 静态代码块是在类初始化的时候执行的，初始化阶段，jvm主要完成对静态变量的初始化，静态块执行等工作。 Class A&#123; static&#123; System.out.println("static block invoked!") &#125;&#125; 上面的代码中 new A()会执行static代码块中的内容。 Class.forName(&quot;A&quot;)会执行代码块中的内容；这个过程相当于Class.forName(&quot;A&quot;, true, A.class.getClassLoader())。 Class.forName(&quot;A&quot;, false, A.class.getClassLoader())不会执行代码块中的内容；因为false指明了在类加载的过程中不进行初始化，就不会执行static代码块了。]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[配置WireShark抓取https数据包]]></title>
     <url>%2F2019%2F09%2F29%2F%E9%85%8D%E7%BD%AEWireShark%E6%8A%93%E5%8F%96https%E6%95%B0%E6%8D%AE%E5%8C%85%2F</url>
     <content type="text"><![CDATA[配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。 完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。 配置WireShark。打开编辑-&gt;首选项-&gt;Protocols，打开SSL对其进行编辑（注：wireshark在某次版本更新之后去掉了SSL选项，没有SSL选项的需要设置TSL），将日志文件的路径添加到(Pre)-Master-Securet log file。 访问www.liuergo.top ，在WireShark中开始抓包，可以发现https的数据包可以被抓到了。]]></content>
@@ -21,8 +32,8 @@
       </categories>
       <tags>
         <tag>计算机网络</tag>
-        <tag>http</tag>
         <tag>WireShark</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>

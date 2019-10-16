@@ -2,14 +2,14 @@
 <search>
   <entry>
     <title><![CDATA[Two pointer]]></title>
-    <url>%2F2019%2F10%2F16%2FTwo%20pointer%2F</url>
+    <url>%2F2019%2F10%2F16%2FTwo%20pointers%2F</url>
     <content type="text"><![CDATA[盛最多水的容器 Category Difficulty Likes Dislikes algorithms Medium (58.43%) 847 - Tagsarray&nbsp;|&nbsp;two-pointers Companiesbloomberg 给定 n 个非负整数 a1，a2，…，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 说明：你不能倾斜容器，且 n 的值至少为 2。 图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。 示例: 输入: [1,8,6,2,5,4,8,3,7]输出: 49 作者：LeetCode链接：https://leetcode-cn.com/problems/container-with-most-water/来源：力扣（LeetCode）著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。 解题方法暴力法第一次Submit的时候，奈何不知道双指针，用的暴力法，还有一种LeetCode官方解答种使用Java内置Math工具类的比较简介的写法。 class Solution &#123; public int maxArea(int[] height) &#123;// //暴力法// int maxArea = 0;// for (int i = 0; i &lt; height.length; i++) &#123;// for (int j = i + 1; j &lt; height.length; j++) &#123;// int area = 0;// if (height[i] &lt;= height[j]) &#123;// area = height[i] * (j - i);// &#125; else &#123;// area = height[j] * (j - i);// &#125;// if (area &gt;= maxArea) &#123;// maxArea = area;// &#125;// &#125;// &#125;// return maxArea; //2.暴力法(精简) int maxArea = 0; for (int i = 0; i &lt; height.length; i++) &#123; for (int j = i + 1; j &lt; height.length; j++) &#123; maxArea = Math.max(maxArea, Math.min(height[i], height[j]) * (j - i)); &#125; &#125; return maxArea; &#125;&#125; 复杂度 时间复杂度：$O(n^2)​$。 空间复杂度：$O(1)$。 ##双指针法 思路：双指针分别位于容器两端，根据某个规则向内移动指针，并且更新面积的最大值，直到i == j，返回最大值。 水槽的面积公式：$S = min(h[i], h[j]) * (j - i)$ 如果短板或者长板向中间移动，j或者i就会-1，(j - i)就会-1。 如果移动长板，下一个短板min(h[i], h[j])会不变或者变小，然而只要指针发生了移动，(j - i)必变小，所以下一个水槽的面积一定不会大于上一个水槽的面积。 如果移动短板，下一个短板min(h[i], h[j])才可能会变大，所以下一个水槽的面积才有可能变大。 所以，移动规则就是每次向着短板的方向移动。 代码： class Solution &#123; public int maxArea(int[] height) &#123; //双指针法 int head = 0, tail = height.length - 1, maxArea = 0; while (head &lt; tail) &#123; if (height[head] &lt;= height[tail]) &#123; maxArea = Math.max(height[head] * (tail - head), maxArea); head++; &#125; else &#123; maxArea = Math.max(height[tail] * (tail - head), maxArea); tail--; &#125; &#125; return maxArea; &#125;&#125; 复杂度： 时间复杂度：$O(n)​$。 空间复杂度：$O(1)$。]]></content>
       <categories>
         <category>LeetCode</category>
       </categories>
       <tags>
         <tag>algorithm</tag>
-        <tag>two pointer</tag>
+        <tag>two-pointers</tag>
       </tags>
   </entry>
   <entry>

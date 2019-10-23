@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机网络,WireShark,http,">
+  <meta name="keywords" content="Java,并发,">
 
 
 
@@ -79,23 +79,18 @@
 
 
 
-<meta name="description" content="配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。    完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。    配置WireShark。打开编辑-&amp;gt;首选项-&amp;gt;Protocols，打开SSL对其进行编辑（注：wiresh">
-<meta name="keywords" content="计算机网络,WireShark,http">
+<meta name="description" content="多线程编程简单介绍几种创建线程的方法 线程的创建方法 继承Thread类，重写run方法；使用匿名内部类。  //继承Thread类，重写run方法class Thread0 extends Thread &amp;#123;    @Override    public void run() &amp;#123;        super.run();        //do something...    &amp;">
+<meta name="keywords" content="Java,并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置WireShark抓取https数据包">
-<meta property="og:url" content="http://yoursite.com/2019/09/29/配置WireShark抓取https数据包/index.html">
+<meta property="og:title" content="Java并发编程(1)">
+<meta property="og:url" content="http://yoursite.com/2019/10/21/Java并发编程(1)/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。    完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。    配置WireShark。打开编辑-&amp;gt;首选项-&amp;gt;Protocols，打开SSL对其进行编辑（注：wiresh">
+<meta property="og:description" content="多线程编程简单介绍几种创建线程的方法 线程的创建方法 继承Thread类，重写run方法；使用匿名内部类。  //继承Thread类，重写run方法class Thread0 extends Thread &amp;#123;    @Override    public void run() &amp;#123;        super.run();        //do something...    &amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929131829.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929133607.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735492337.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735920347.png">
-<meta property="og:updated_time" content="2019-09-30T09:17:47.711Z">
+<meta property="og:updated_time" content="2019-10-22T11:50:16.953Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="配置WireShark抓取https数据包">
-<meta name="twitter:description" content="配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。    完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。    配置WireShark。打开编辑-&amp;gt;首选项-&amp;gt;Protocols，打开SSL对其进行编辑（注：wiresh">
-<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929131829.png">
+<meta name="twitter:title" content="Java并发编程(1)">
+<meta name="twitter:description" content="多线程编程简单介绍几种创建线程的方法 线程的创建方法 继承Thread类，重写run方法；使用匿名内部类。  //继承Thread类，重写run方法class Thread0 extends Thread &amp;#123;    @Override    public void run() &amp;#123;        super.run();        //do something...    &amp;">
 
 
 
@@ -125,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/29/配置WireShark抓取https数据包/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/21/Java并发编程(1)/">
 
 
 
 
 
-  <title>配置WireShark抓取https数据包 | ergo's blog</title>
+  <title>Java并发编程(1) | ergo's blog</title>
   
 
 
@@ -290,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/29/配置WireShark抓取https数据包/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/Java并发编程(1)/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -307,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">配置WireShark抓取https数据包</h1>
+          <h1 class="post-title" itemprop="name headline">Java并发编程(1)</h1>
         
 
         <div class="post-meta">
@@ -319,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-29T16:17:53+08:00">
-                2019-09-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-21T18:13:47+08:00">
+                2019-10-21
               </time>
             
 
@@ -335,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-30T17:17:47+08:00">
-                2019-09-30
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-22T19:50:16+08:00">
+                2019-10-22
               </time>
             
           </span>
@@ -354,8 +349,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -365,8 +360,8 @@
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/WireShark/" itemprop="url" rel="index">
-                    <span itemprop="name">WireShark</span>
+                  <a href="/categories/Java/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
                   </a>
                 </span>
 
@@ -401,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  159
+                  521
                 </span>
               
 
@@ -426,22 +421,25 @@
       
 
       
-        <ol>
-<li>配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。</li>
-</ol>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929131829.png" alt></p>
-<ol start="2">
-<li>完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。</li>
-</ol>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929133607.png" alt></p>
-<ol start="3">
-<li>配置WireShark。打开编辑-&gt;首选项-&gt;Protocols，打开SSL对其进行编辑（注：wireshark在某次版本更新之后去掉了SSL选项，没有SSL选项的需要设置TSL），将日志文件的路径添加到(Pre)-Master-Securet log file。</li>
-</ol>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735492337.png" alt></p>
-<ol start="4">
-<li>访问<a href="http://www.liuergo.top" target="_blank" rel="noopener">www.liuergo.top</a> ，在WireShark中开始抓包，可以发现https的数据包可以被抓到了。</li>
-</ol>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735920347.png" alt></p>
+        <h1 id="多线程编程"><a href="#多线程编程" class="headerlink" title="多线程编程"></a>多线程编程</h1><p>简单介绍几种创建线程的方法</p>
+<h2 id="线程的创建方法"><a href="#线程的创建方法" class="headerlink" title="线程的创建方法"></a>线程的创建方法</h2><ul>
+<li>继承Thread类，重写run方法；使用匿名内部类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//继承Thread类，重写run方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread0</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匿名内部类</span></span><br><span class="line">Thread thread0 = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>实现Runnable接口，实现run方法；使用匿名内部类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实现Runnable接口，实现run方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread0</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do somrthing...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匿名内部类</span></span><br><span class="line">Thread thread0 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//do something...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Callable接口"><a href="#Callable接口" class="headerlink" title="Callable接口"></a>Callable接口</h2><p>除了以上两种方式创建线程以外，还可以通过实现Callable接口并实现call方法的方式实现多线程，利用这种方式，执行完一个线程之后可以通过一个FutureTask对象获取返回值，而Runnable是不能获取到返回值的。并且call方法可以抛出异常，而run方法不可以。</p>
+<p>看一个例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CallableThread</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"haha"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        CallableThread thread = <span class="keyword">new</span> CallableThread();</span><br><span class="line">        <span class="comment">//使用FutureTask类接收CallableThread返回的数据</span></span><br><span class="line">        FutureTask&lt;String&gt; task = <span class="keyword">new</span> FutureTask&lt;&gt;(thread);</span><br><span class="line">        <span class="keyword">new</span> Thread(task).start();</span><br><span class="line">        System.out.println(task.get());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关于run和start方法"><a href="#关于run和start方法" class="headerlink" title="关于run和start方法"></a>关于run和start方法</h2><p>虽然我们定义一个线程是重写或者实现的run方法，但是启动一个线程需要调用start方法，如果直接调用run方法，其实跟调用一个类的普通方法是一样的，run方法的执行还是处在调用该方法的线程中；调用start方法以后，虚拟机才会创建一个新的线程并且调用run方法。（同样地，继承Callable接口实现线程也不可以直接调用call方法）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Thread thread0 = <span class="keyword">new</span> Thread(() -&gt;</span><br><span class="line">	System.out.println(<span class="string">"Current thread: "</span> + Thread.currentThread().getName()));</span><br><span class="line">thread0.start();</span><br><span class="line">thread0.run();</span><br><span class="line"></span><br><span class="line">----Output----</span><br><span class="line">Current thread: main</span><br><span class="line">Current thread: Thread-<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>看上面的代码段，调用start方法之后输出新创建的线程Thread-0，调用run方法之后输出的是依然是主线程main。</p>
 
       
     </div>
@@ -483,11 +481,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/计算机网络/" rel="tag"> <i class="fa fa-tag"> 计算机网络</i></a>
+            <a href="/tags/Java/" rel="tag"> <i class="fa fa-tag"> Java</i></a>
           
-            <a href="/tags/WireShark/" rel="tag"> <i class="fa fa-tag"> WireShark</i></a>
-          
-            <a href="/tags/http/" rel="tag"> <i class="fa fa-tag"> http</i></a>
+            <a href="/tags/并发/" rel="tag"> <i class="fa fa-tag"> 并发</i></a>
           
         </div>
       
@@ -500,8 +496,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/27/HTTP协议详解/" rel="next" title="HTTP协议详解">
-                <i class="fa fa-chevron-left"></i> HTTP协议详解
+              <a href="/2019/10/20/Java中的深拷贝和浅拷贝/" rel="next" title="Java中的深拷贝和浅拷贝">
+                <i class="fa fa-chevron-left"></i> Java中的深拷贝和浅拷贝
               </a>
             
           </div>
@@ -509,10 +505,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/10/static关键字/" rel="prev" title="Java中的static关键字">
-                Java中的static关键字 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -564,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -651,6 +652,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#多线程编程"><span class="nav-number">1.</span> <span class="nav-text">多线程编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线程的创建方法"><span class="nav-number">1.1.</span> <span class="nav-text">线程的创建方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Callable接口"><span class="nav-number">1.2.</span> <span class="nav-text">Callable接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于run和start方法"><span class="nav-number">1.3.</span> <span class="nav-text">关于run和start方法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

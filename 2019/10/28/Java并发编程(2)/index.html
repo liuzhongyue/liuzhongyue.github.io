@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java,并发,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Later equals never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ergo&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/categories/Java/index.html">
+<meta name="description" content="线程安全与共享资源在《Java并发编程实战》书中对线程安全给出了下面的定义：  当多个线程访问某个类时，这个类始终都能表现处正确的行为  下面介绍一下各种变量的线程安全性。 基础类型局部变量 基础类型的局部变量储存在栈内存中，也就是说，局部变量永远不会被多个线程共享。所以说所有的基础类型的局部变量都是线程安全的。 引用类型局部变量 由于引用类型变量的属性都储存在堆中，但是在一般情况下，别的线程是获">
+<meta name="keywords" content="Java,并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发编程(2)">
+<meta property="og:url" content="http://yoursite.com/2019/10/28/Java并发编程(2)/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="Later equals never.">
+<meta property="og:description" content="线程安全与共享资源在《Java并发编程实战》书中对线程安全给出了下面的定义：  当多个线程访问某个类时，这个类始终都能表现处正确的行为  下面介绍一下各种变量的线程安全性。 基础类型局部变量 基础类型的局部变量储存在栈内存中，也就是说，局部变量永远不会被多个线程共享。所以说所有的基础类型的局部变量都是线程安全的。 引用类型局部变量 由于引用类型变量的属性都储存在堆中，但是在一般情况下，别的线程是获">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-10-28T09:14:11.784Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ergo&#39;s blog">
-<meta name="twitter:description" content="Later equals never.">
+<meta name="twitter:title" content="Java并发编程(2)">
+<meta name="twitter:description" content="线程安全与共享资源在《Java并发编程实战》书中对线程安全给出了下面的定义：  当多个线程访问某个类时，这个类始终都能表现处正确的行为  下面介绍一下各种变量的线程安全性。 基础类型局部变量 基础类型的局部变量储存在栈内存中，也就是说，局部变量永远不会被多个线程共享。所以说所有的基础类型的局部变量都是线程安全的。 引用类型局部变量 由于引用类型变量的属性都储存在堆中，但是在一般情况下，别的线程是获">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/Java/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/28/Java并发编程(2)/">
 
 
 
 
 
-  <title>分类: Java | ergo's blog</title>
+  <title>Java并发编程(2) | ergo's blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,261 +271,284 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Java<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/28/Java并发编程(2)/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="机智刘二狗">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ergo's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/10/28/Java并发编程(2)/" itemprop="url">
-              
-                <span itemprop="name">Java并发编程(2)</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">Java并发编程(2)</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-28T17:14:35+08:00" content="2019-10-28">
-          10-28
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T17:14:35+08:00">
+                2019-10-28
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-28T17:14:11+08:00">
+                2019-10-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/10/21/Java并发编程(1)/" itemprop="url">
-              
-                <span itemprop="name">Java并发编程(1)</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-21T18:13:47+08:00" content="2019-10-21">
-          10-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <h1 id="线程安全与共享资源"><a href="#线程安全与共享资源" class="headerlink" title="线程安全与共享资源"></a>线程安全与共享资源</h1><p>在《Java并发编程实战》书中对线程安全给出了下面的定义：</p>
+<blockquote>
+<p>当多个线程访问某个类时，这个类始终都能表现处正确的行为</p>
+</blockquote>
+<p>下面介绍一下各种变量的线程安全性。</p>
+<p><strong>基础类型局部变量</strong></p>
+<p>基础类型的局部变量储存在栈内存中，也就是说，局部变量永远不会被多个线程共享。所以说所有的基础类型的局部变量都是线程安全的。</p>
+<p><strong>引用类型局部变量</strong></p>
+<p>由于引用类型变量的属性都储存在堆中，但是在一般情况下，别的线程是获取不到该对象的，只要该对象不能够被其他方法获取到，那么他就是线程安全的。</p>
+<p><strong>成员变量</strong></p>
+<p>由于一个对象的成员是储存在堆内存上的，如果有多个线程同时更新同一个对象的同一个成员变量，那么这种情况就不是线程安全的。</p>
+<p><strong>需要说明的是，只有多个线程同时访问同一个资源而且多个线程都对此资源进行了些写操作，才会产生线程安全的问题，多个线程同时对同一个资源进行读操作时不会产生线程安全问题的。</strong></p>
+<h1 id="Java同步块"><a href="#Java同步块" class="headerlink" title="Java同步块"></a>Java同步块</h1><p>Java同步块（synchronized block）用来可以实现同步，可以用来避免线程安全问题的出现</p>
+<h1 id="synchronized关键字"><a href="#synchronized关键字" class="headerlink" title="synchronized关键字"></a>synchronized关键字</h1><h3 id="三种使用方式"><a href="#三种使用方式" class="headerlink" title="三种使用方式"></a>三种使用方式</h3><ul>
+<li>修饰实例方法，为当前实例加锁，需要拿到当前实例的锁。</li>
+<li>修饰静态方法，为当前类对象加锁，需要获得当前类对象的锁。</li>
+<li>修饰代码块，指定加锁对象。</li>
+</ul>
+<h3 id="修饰实例方法"><a href="#修饰实例方法" class="headerlink" title="修饰实例方法"></a>修饰实例方法</h3><p>看一个例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Example example = <span class="keyword">new</span> Example();</span><br><span class="line">        MyThread myThread = <span class="keyword">new</span> MyThread(example);</span><br><span class="line">        MyThread myThread1 = <span class="keyword">new</span> MyThread(example);</span><br><span class="line">        myThread.start();</span><br><span class="line">        myThread1.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(i);</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Example example;</span><br><span class="line">    MyThread(Example example) &#123;</span><br><span class="line">        <span class="keyword">this</span>.example = example;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            example.execute();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<p>在上面的代码中，为execute方法加上synchronized关键字之后，程序会先输出0<del>9，之后再输出一次0</del>9；如果去掉synchronized关键字之后，两个线程会同时会执行execute方法。</p>
+<p>这说明，如果一个方法加上了synchronized关键字，那么该方法就是一个同步方法，<strong>如果一个对象有synchronized方法，某一时刻某个线程已经进入到了synchronized方法，那么在该方法没有执行完毕前，其他线程是无法访问该对象的任何synchronized方法的。</strong> </p>
+<p>现在将每个MyThread构造方法的参数改为两个对象，再次运行，此时即使加上了synchronized关键字，execute方法仍然是同时执行的。这是因为Java中每个对象都有一个monitor，当一个线程去访问某个对象的synchronized方法时，会将该对象上锁，这时，任何一个线程都无法去访问该对象的同步方法了，直到此方法执行完毕或者抛出异常，该对象就会把锁释放，这时其他的线程才可以访问该方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">MyThread myThread = <span class="keyword">new</span> MyThread(<span class="keyword">new</span> Example());</span><br><span class="line">MyThread myThread1 = <span class="keyword">new</span> MyThread(<span class="keyword">new</span> Example());</span><br><span class="line">myThread.start();</span><br><span class="line">myThread1.start();</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/10/20/Java中的深拷贝和浅拷贝/" itemprop="url">
-              
-                <span itemprop="name">Java中的深拷贝和浅拷贝</span>
-              
-            </a>
-        
-      </h2>
+<h3 id="修饰静态方法"><a href="#修饰静态方法" class="headerlink" title="修饰静态方法"></a>修饰静态方法</h3><p>当synchronized作用于静态方法时，由于静态方法并不是属于对象，而是属于类，其锁是当前类的Class对象锁，而访问非静态的synchronized方法时，是使用的当前实例的对象锁。</p>
+<p>看一个例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        MyThread myThread = <span class="keyword">new</span> MyThread(<span class="keyword">new</span> Example());</span><br><span class="line">        MyThread myThread1 = <span class="keyword">new</span> MyThread(<span class="keyword">new</span> Example());</span><br><span class="line">        myThread.start();</span><br><span class="line">        myThread1.start();</span><br><span class="line">        <span class="keyword">synchronized</span> (Tester.class) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Example</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">"exe"</span> + i);</span><br><span class="line">            Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Example example;</span><br><span class="line">    MyThread(Example example) &#123;</span><br><span class="line">        <span class="keyword">this</span>.example = example;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Example.execute();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printSzaitackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-20T13:35:09+08:00" content="2019-10-20">
-          10-20
-        </time>
-      </div>
+<p>在synchronized修饰非静态方法时，如果对于不同的实例对象来说，拿到的锁也是不同的，但是对于static方法来说，即使对不同的实例操作，也是拿到的一个Class对象锁，所以对于上面的代码中，即使有两个不同的线程传入了两个不同的Example对象，但是两个线程依然会互相制约，必须先执行完一个再执行另外一个。</p>
+<h3 id="修饰代码块"><a href="#修饰代码块" class="headerlink" title="修饰代码块"></a>修饰代码块</h3><p>synchronized代码块写法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">synchronized</span> (object) &#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<p>表示再某个线程在执行的时候会将object对象上锁（该对象可以任意指定）。</p>
+<p>在第一种修饰实例方法给出的代码中，将synchronized方法修改为synchronized代码块。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">	<span class="keyword">synchronized</span> (<span class="keyword">this</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			System.out.println(<span class="string">"exe"</span> + i);</span><br><span class="line">			Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>上面传入的对象是Example对象本身，这时，该锁起到的作用和synchronized实例方法的作用是相同的。如果改为<code>synchronized(new Object())</code>，这时由于锁是针对Object对象的一个实例的，所以，该锁就不会起到相应的作用了。</p>
+<p>在第二种修饰静态方法给出的代码中，同样将synchronized静态方法修改为synchronized代码块.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">	<span class="keyword">synchronized</span> (Exmple.class) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">			System.out.println(<span class="string">"exe"</span> + i);</span><br><span class="line">			Thread.sleep(<span class="number">2000</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/10/19/Java内部类/" itemprop="url">
-              
-                <span itemprop="name">Java内部类</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-19T16:41:10+08:00" content="2019-10-19">
-          10-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/10/10/Final arrays in Java/" itemprop="url">
-              
-                <span itemprop="name">Final arrays in Java</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-10T10:06:58+08:00" content="2019-10-10">
-          10-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/10/10/static关键字/" itemprop="url">
-              
-                <span itemprop="name">Java中的static关键字</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-10T09:05:13+08:00" content="2019-10-10">
-          10-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/26/Java序列化/" itemprop="url">
-              
-                <span itemprop="name">Java序列化</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-26T00:00:00+08:00" content="2019-09-26">
-          09-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/24/RandomAccess接口/" itemprop="url">
-              
-                <span itemprop="name">RandomAccess接口</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-24T00:00:00+08:00" content="2019-09-24">
-          09-24
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/09/20/Java集合类/" itemprop="url">
-              
-                <span itemprop="name">Java集合类</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-09-20T00:00:00+08:00" content="2019-09-20">
-          09-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+<p>上面传入的对象是Example的Class对象，这时，该锁起到的作用和synchronized实例方法的作用是相同的。同样的，如果传入其他的对象，该锁就不会起到相应的作用了。</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="机智刘二狗 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"> <i class="fa fa-tag"> Java</i></a>
+          
+            <a href="/tags/并发/" rel="tag"> <i class="fa fa-tag"> 并发</i></a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/10/26/WebService接口开发/" rel="next" title="WebService接口开发">
+                <i class="fa fa-chevron-left"></i> WebService接口开发
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -531,6 +556,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -551,8 +580,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -638,6 +676,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程安全与共享资源"><span class="nav-number">1.</span> <span class="nav-text">线程安全与共享资源</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Java同步块"><span class="nav-number">2.</span> <span class="nav-text">Java同步块</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#synchronized关键字"><span class="nav-number">3.</span> <span class="nav-text">synchronized关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三种使用方式"><span class="nav-number">3.0.1.</span> <span class="nav-text">三种使用方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰实例方法"><span class="nav-number">3.0.2.</span> <span class="nav-text">修饰实例方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰静态方法"><span class="nav-number">3.0.3.</span> <span class="nav-text">修饰静态方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修饰代码块"><span class="nav-number">3.0.4.</span> <span class="nav-text">修饰代码块</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -810,6 +864,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1199,26 +1257,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

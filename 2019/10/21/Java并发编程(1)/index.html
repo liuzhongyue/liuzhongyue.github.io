@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ergo&#39;s blog">
 <meta property="og:description" content="多线程编程简单介绍几种创建线程的方法 线程的创建方法 继承Thread类，重写run方法；使用匿名内部类。  //继承Thread类，重写run方法class Thread0 extends Thread &amp;#123;    @Override    public void run() &amp;#123;        super.run();        //do something...    &amp;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-22T11:50:16.953Z">
+<meta property="og:updated_time" content="2019-10-27T12:30:32.290Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发编程(1)">
 <meta name="twitter:description" content="多线程编程简单介绍几种创建线程的方法 线程的创建方法 继承Thread类，重写run方法；使用匿名内部类。  //继承Thread类，重写run方法class Thread0 extends Thread &amp;#123;    @Override    public void run() &amp;#123;        super.run();        //do something...    &amp;">
@@ -330,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-22T19:50:16+08:00">
-                2019-10-22
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-27T20:30:32+08:00">
+                2019-10-27
               </time>
             
           </span>
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  521
+                  543
                 </span>
               
 
@@ -425,12 +425,12 @@
 <h2 id="线程的创建方法"><a href="#线程的创建方法" class="headerlink" title="线程的创建方法"></a>线程的创建方法</h2><ul>
 <li>继承Thread类，重写run方法；使用匿名内部类。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//继承Thread类，重写run方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread0</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匿名内部类</span></span><br><span class="line">Thread thread0 = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//继承Thread类，重写run方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread0</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匿名内部类</span></span><br><span class="line">Thread thread0 = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.run();</span><br><span class="line">        <span class="comment">//do something...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    Thread0 thread = <span class="keyword">new</span> Thread0();</span><br><span class="line">    thread.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>实现Runnable接口，实现run方法；使用匿名内部类。</li>
 </ul>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实现Runnable接口，实现run方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread0</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do somrthing...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匿名内部类</span></span><br><span class="line">Thread thread0 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//do something...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//实现Runnable接口，实现run方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Thread0</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//do somrthing...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//匿名内部类</span></span><br><span class="line">Thread thread0 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//do something...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">    Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Thread0());</span><br><span class="line">    thread.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="Callable接口"><a href="#Callable接口" class="headerlink" title="Callable接口"></a>Callable接口</h2><p>除了以上两种方式创建线程以外，还可以通过实现Callable接口并实现call方法的方式实现多线程，利用这种方式，执行完一个线程之后可以通过一个FutureTask对象获取返回值，而Runnable是不能获取到返回值的。并且call方法可以抛出异常，而run方法不可以。</p>
 <p>看一个例子：</p>
@@ -587,7 +587,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -700,7 +700,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">19.9k</span>
+    <span title="Site words total count">21.4k</span>
   
 </div>
 

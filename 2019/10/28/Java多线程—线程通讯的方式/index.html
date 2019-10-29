@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java,并发,">
 
 
 
@@ -79,22 +79,18 @@
 
 
 
-<meta name="description" content="在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。  开通OSS服务​    进入阿里云创建一个">
+<meta name="description" content="线程通讯线程通讯的目的是使线程之间能够互相发送信号。 另一方面，线程通信使线程能够等待其他线程的信号。  线程通讯的方式：  wait()/notify()机制  Condition类 ThreadLocal方式 管道方式  wait()/notify()机制wait和notify还有notifyAll方法是Object类的三个方法。 调用wait方法，相当于让当前线程释放锁，然后进入等待状态。">
+<meta name="keywords" content="Java,并发">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里云OSS+PicGo建立图床">
-<meta property="og:url" content="http://yoursite.com/2019/09/21/阿里云OSS+PicGo建立图床踩坑/index.html">
+<meta property="og:title" content="Java多线程—线程通讯的方式">
+<meta property="og:url" content="http://yoursite.com/2019/10/28/Java多线程—线程通讯的方式/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。  开通OSS服务​    进入阿里云创建一个">
+<meta property="og:description" content="线程通讯线程通讯的目的是使线程之间能够互相发送信号。 另一方面，线程通信使线程能够等待其他线程的信号。  线程通讯的方式：  wait()/notify()机制  Condition类 ThreadLocal方式 管道方式  wait()/notify()机制wait和notify还有notifyAll方法是Object类的三个方法。 调用wait方法，相当于让当前线程释放锁，然后进入等待状态。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234324.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234430.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921235014.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190922000638.png">
-<meta property="og:updated_time" content="2019-09-23T07:43:17.159Z">
+<meta property="og:updated_time" content="2019-10-29T08:29:19.792Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里云OSS+PicGo建立图床">
-<meta name="twitter:description" content="在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。  开通OSS服务​    进入阿里云创建一个">
-<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234324.png">
+<meta name="twitter:title" content="Java多线程—线程通讯的方式">
+<meta name="twitter:description" content="线程通讯线程通讯的目的是使线程之间能够互相发送信号。 另一方面，线程通信使线程能够等待其他线程的信号。  线程通讯的方式：  wait()/notify()机制  Condition类 ThreadLocal方式 管道方式  wait()/notify()机制wait和notify还有notifyAll方法是Object类的三个方法。 调用wait方法，相当于让当前线程释放锁，然后进入等待状态。">
 
 
 
@@ -124,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/21/阿里云OSS+PicGo建立图床踩坑/">
+  <link rel="canonical" href="http://yoursite.com/2019/10/28/Java多线程—线程通讯的方式/">
 
 
 
 
 
-  <title>阿里云OSS+PicGo建立图床 | ergo's blog</title>
+  <title>Java多线程—线程通讯的方式 | ergo's blog</title>
   
 
 
@@ -289,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/21/阿里云OSS+PicGo建立图床踩坑/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/28/Java多线程—线程通讯的方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -306,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">阿里云OSS+PicGo建立图床</h1>
+          <h1 class="post-title" itemprop="name headline">Java多线程—线程通讯的方式</h1>
         
 
         <div class="post-meta">
@@ -318,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-21T00:00:00+08:00">
-                2019-09-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-28T14:23:13+08:00">
+                2019-10-28
               </time>
             
 
@@ -334,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-23T15:43:17+08:00">
-                2019-09-23
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-29T16:29:19+08:00">
+                2019-10-29
               </time>
             
           </span>
@@ -353,8 +349,19 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他/" itemprop="url" rel="index">
-                    <span itemprop="name">其他</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/并发编程/" itemprop="url" rel="index">
+                    <span itemprop="name">并发编程</span>
                   </a>
                 </span>
 
@@ -389,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  834
+                  1.2k
                 </span>
               
 
@@ -414,28 +421,34 @@
       
 
       
-        <blockquote>
-<p>在本地写md文档时候插入图片是一件挺麻烦的事情，使用本地图片的话，每次在给别人分享文档或者上传博客的时候就比较难顶了。网上有两种方法可以解决这个问题，一种是使用图片的base64编码，但是图片转换为base64编码之后，编码长度会很大，文档的可读性不好，而且也会使文档的体积急剧变大，这种方法显然不太好。所以，最终使用了图床的方法将图片储存在阿里云中。</p>
+        <h1 id="线程通讯"><a href="#线程通讯" class="headerlink" title="线程通讯"></a>线程通讯</h1><p>线程通讯的目的是使线程之间能够互相发送信号。 另一方面，线程通信使线程能够等待其他线程的信号。 </p>
+<p>线程通讯的方式：</p>
+<ul>
+<li>wait()/notify()机制 </li>
+<li>Condition类</li>
+<li>ThreadLocal方式</li>
+<li>管道方式</li>
+</ul>
+<h2 id="wait-notify-机制"><a href="#wait-notify-机制" class="headerlink" title="wait()/notify()机制"></a>wait()/notify()机制</h2><p>wait和notify还有notifyAll方法是Object类的三个方法。</p>
+<p>调用wait方法，相当于让当前线程释放锁，然后进入等待状态。</p>
+<p>notify()方法主要的作用就是此方法可以唤醒一个正在等待此对象的锁释放的线程，如果所有线程都在此对象上等待，则会选择其中一个唤醒。而notifyAll()方法的作用就是将所有等待此对象的锁的线程都唤醒。</p>
+<p>在wait方法中有这样的一句话<code>The current thread must own this object&#39;s monitor.</code>，也就是说使用wait方法的前提是该线程必须拥有这个对象的锁，因此调用wait方法时必须存在synchronized方法或者synchronized代码块，如果当前线程没有拥有锁的对象，就会抛出IllegalMonitorStateException。</p>
+<blockquote>
+<p>生产者消费者模型</p>
 </blockquote>
-<h1 id="开通OSS服务"><a href="#开通OSS服务" class="headerlink" title="开通OSS服务"></a>开通OSS服务</h1><p>​    进入阿里云创建一个对象存储OSS的服务，之后新建一个Bucket，创建Bucket之后，我们的存储空间就创建成功了。</p>
-<h1 id="使用PicGo快速上传图片"><a href="#使用PicGo快速上传图片" class="headerlink" title="使用PicGo快速上传图片"></a>使用PicGo快速上传图片</h1><blockquote>
-<p>PicGo下载地址<a href="https://github.com/Molunerfinn/PicGo" target="_blank" rel="noopener">https://github.com/Molunerfinn/PicGo</a></p>
-</blockquote>
-<h2 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234324.png" alt></p>
-<p>​    KeyId和KeySecret可以从阿里的控制台获取。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921234430.png" alt></p>
-<p>​    储存空间名就是Bucket的名称，存储区域在访问域名可以找到。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190921235014.png" alt></p>
-<p>​    配置完成之后就可以使用PicGo上传图片了。</p>
-<h1 id="踩坑记录"><a href="#踩坑记录" class="headerlink" title="踩坑记录"></a>踩坑记录</h1><p>​    第一次使用PicGo上传图片的时候，总是提示上传失败，检查了好几遍配置，都没有什么错误，可是就是上传不了。</p>
-<p>​    打开PicGo的配置文件之后，发现有下面的报错信息。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2019-09-21 21:33:11 [PicGo ERROR] StatusCodeError: 403 - &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;Error&gt;\n  RequestTimeTooSkewed\n  &lt;Message&gt;The difference between the request time and the current time is too large.&lt;/Message&gt;\n  &lt;RequestId&gt;5D8634B41BCC63B32BB5C43E&lt;/RequestId&gt;\n  &lt;HostId&gt;lzy-md-image.oss-cn-qingdao.aliyuncs.com&lt;/HostId&gt;\n  &lt;MaxAllowedSkewMilliseconds&gt;900000&lt;/MaxAllowedSkewMilliseconds&gt;\n  &lt;RequestTime&gt;2019-09-21T13:33:10.000Z&lt;/RequestTime&gt;\n  &lt;ServerTime&gt;2019-09-21T14:33:24.000Z&lt;/ServerTime&gt;\n&lt;/Error&gt;\n&quot;</span><br><span class="line">------Error Stack Begin------</span><br><span class="line">StatusCodeError: 403 - &quot;&lt;?xml version=\&quot;1.0\&quot; encoding=\&quot;UTF-8\&quot;?&gt;\n&lt;Error&gt;\n  RequestTimeTooSkewed\n  &lt;Message&gt;The difference between the request time and the current time is too large.&lt;/Message&gt;\n  &lt;RequestId&gt;5D8634B41BCC63B32BB5C43E&lt;/RequestId&gt;\n  &lt;HostId&gt;lzy-md-image.oss-cn-qingdao.aliyuncs.com&lt;/HostId&gt;\n  &lt;MaxAllowedSkewMilliseconds&gt;900000&lt;/MaxAllowedSkewMilliseconds&gt;\n  &lt;RequestTime&gt;2019-09-21T13:33:10.000Z&lt;/RequestTime&gt;\n  &lt;ServerTime&gt;2019-09-21T14:33:24.000Z&lt;/ServerTime&gt;\n&lt;/Error&gt;\n&quot;</span><br><span class="line">    at new StatusCodeError (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\errors.js:32:15)</span><br><span class="line">    at Request.plumbing.callback (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\plumbing.js:104:33)</span><br><span class="line">    at Request.RP$callback [as _callback] (E:\PicGo\resources\app.asar\node_modules\request-promise-core\lib\plumbing.js:46:31)</span><br><span class="line">    at Request.self.callback (E:\PicGo\resources\app.asar\node_modules\request\request.js:185:22)</span><br><span class="line">    at Request.emit (events.js:182:13)</span><br><span class="line">    at Request.&lt;anonymous&gt; (E:\PicGo\resources\app.asar\node_modules\request\request.js:1157:10)</span><br><span class="line">    at Request.emit (events.js:182:13)</span><br><span class="line">    at IncomingMessage.&lt;anonymous&gt; (E:\PicGo\resources\app.asar\node_modules\request\request.js:1079:12)</span><br><span class="line">    at Object.onceWrapper (events.js:273:13)</span><br><span class="line">    at IncomingMessage.emit (events.js:187:15)</span><br><span class="line">-------Error Stack End-------</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    Object lock = <span class="keyword">new</span> Object();</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Tester tester = <span class="keyword">new</span> Tester();</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(tester.new Producer(<span class="string">"producer 0"</span>));</span><br><span class="line">        Thread thread0 = <span class="keyword">new</span> Thread(tester.new Producer(<span class="string">"producer 1"</span>));</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(tester.new Consumer(<span class="string">"consumer 0"</span>));</span><br><span class="line">        thread.start();</span><br><span class="line">        thread0.start();</span><br><span class="line">        thread1.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Producer</span> <span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                    <span class="keyword">while</span> (count == <span class="number">5</span>) &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            lock.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(name + <span class="string">" produced.."</span>);</span><br><span class="line">                    count++;</span><br><span class="line">                    System.out.println(<span class="string">"Current buffer size:"</span> + count);</span><br><span class="line">                    lock.notifyAll();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">synchronized</span> (lock) &#123;</span><br><span class="line">                    <span class="keyword">while</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="keyword">try</span> &#123;</span><br><span class="line">                            lock.wait();</span><br><span class="line">                        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                            e.printStackTrace();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    System.out.println(name + <span class="string">" consumed.."</span>);</span><br><span class="line">                    count--;</span><br><span class="line">                    System.out.println(<span class="string">"Current buffer size:"</span> + count);</span><br><span class="line">                    lock.notifyAll();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>​    重点关注<code>The difference between the request time and the current time is too large</code>这一部分，查找阿里云OS文档，403错误及排查。看到下面的部分，就明白了出问题的原因。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190922000638.png" alt></p>
-<p>​    由于我的电脑是Windows+Ubuntu双系统，每次切换系统的时候都会产生八个小时的时差，一直没有解决这个冲突问题，所以造成了Windows时间不正常，也就导致了今天的问题。</p>
-<p>​    解决方法就很简单了，重新同步一下时钟就好了。</p>
+<p>上面就是一个生产者消费者模型的例子，当缓冲区满了的时候生产者会停止生产，这时，如果消费者消费了一个产品，生产者就会被唤醒；当缓冲区为空的时候消费者会停止消费，这时，如果生产者了一个产品，消费者就会被唤醒。</p>
+<h2 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h2><p>Condition是可以用来代替传统的wait/notify方式，此方式更加安全和高效，比较推荐使用该方法。</p>
+<ul>
+<li>Condition是一个接口，其基本方法有await()、signal()以及signalAll()，分别对应Object类的wait()、notify()、notifyAll()。</li>
+<li>有关方法必须在lock和unlock之间使用。</li>
+</ul>
+<p>下面是Condition类实现生产者消费者的例子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    Lock lock = <span class="keyword">new</span> ReentrantLock(); <span class="comment">//可重入锁，并发包会讲到</span></span><br><span class="line">    Condition condition = lock.newCondition();</span><br><span class="line">    <span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        Tester tester = <span class="keyword">new</span> Tester();</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(tester.new Producer(<span class="string">"producer 0"</span>));</span><br><span class="line">        Thread thread0 = <span class="keyword">new</span> Thread(tester.new Producer(<span class="string">"producer 1"</span>));</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(tester.new Consumer(<span class="string">"consumer 0"</span>));</span><br><span class="line">        thread.start();</span><br><span class="line">        thread0.start();</span><br><span class="line">        thread1.start();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">500</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">while</span> (count == <span class="number">5</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        condition.await();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(name + <span class="string">" produced.."</span>);</span><br><span class="line">                count++;</span><br><span class="line">                System.out.println(<span class="string">"Current buffer size:"</span> + count);</span><br><span class="line">                condition.signalAll();</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.name = name;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    Thread.sleep(<span class="number">3000</span>);</span><br><span class="line">                &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                    e.printStackTrace();</span><br><span class="line">                &#125;</span><br><span class="line">                lock.lock();</span><br><span class="line">                <span class="keyword">while</span> (count == <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">try</span> &#123;</span><br><span class="line">                        condition.await();</span><br><span class="line">                    &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                        e.printStackTrace();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                System.out.println(name + <span class="string">" consumed.."</span>);</span><br><span class="line">                count--;</span><br><span class="line">                System.out.println(<span class="string">"Current buffer size:"</span> + count);</span><br><span class="line">                condition.signalAll();</span><br><span class="line">                lock.unlock();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h1 id="管道方式"><a href="#管道方式" class="headerlink" title="管道方式"></a>管道方式</h1><p>之前在操作系统这门课中也接触到过这种方式只不过是C版本的，现在也当再次重温一下。此方式是利用管道流在不同线程之间直接传输数据，一个线程向管道中写入数据，另一个线程从管道中读数据。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PipedStreamDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        PipedOutputStream outputStream = <span class="keyword">new</span> PipedOutputStream();</span><br><span class="line">        PipedInputStream inputStream = <span class="keyword">new</span> PipedInputStream();</span><br><span class="line">        outputStream.connect(inputStream);</span><br><span class="line">        ThreadWrite threadWrite = <span class="keyword">new</span> ThreadWrite(outputStream);</span><br><span class="line">        ThreadRead threadRead = <span class="keyword">new</span> ThreadRead(inputStream);</span><br><span class="line">        Thread thread = <span class="keyword">new</span> Thread(threadRead);</span><br><span class="line">        Thread thread1 = <span class="keyword">new</span> Thread(threadWrite);</span><br><span class="line">        thread.start();</span><br><span class="line">        thread1.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadWrite</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    PipedOutputStream pipedOutputStream;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ThreadWrite</span><span class="params">(PipedOutputStream pipedOutputStream)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pipedOutputStream = pipedOutputStream;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">write</span><span class="params">(PipedOutputStream pipedOutputStream)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"write:"</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++) &#123;</span><br><span class="line">            String data = <span class="string">""</span> + i;</span><br><span class="line">            pipedOutputStream.write(data.getBytes());</span><br><span class="line">            System.out.println(data);</span><br><span class="line">        &#125;</span><br><span class="line">        pipedOutputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.write(pipedOutputStream);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThreadRead</span> <span class="keyword">implements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    PipedInputStream pipedInputStream;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">ThreadRead</span><span class="params">(PipedInputStream pipedInputStream)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.pipedInputStream = pipedInputStream;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">read</span><span class="params">(PipedInputStream pipedInputStream)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"read:"</span>);</span><br><span class="line">        <span class="keyword">byte</span>[] bytes = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="keyword">int</span> readLength = pipedInputStream.read(bytes);</span><br><span class="line">        <span class="keyword">while</span> (readLength != -<span class="number">1</span>) &#123;</span><br><span class="line">            String newData = <span class="keyword">new</span> String(bytes, <span class="number">0</span>, readLength);</span><br><span class="line">            System.out.print(newData);</span><br><span class="line">            readLength = pipedInputStream.read(bytes);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        pipedInputStream.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">this</span>.read(<span class="keyword">this</span>.pipedInputStream);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -474,6 +487,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag"> <i class="fa fa-tag"> Java</i></a>
+          
+            <a href="/tags/并发/" rel="tag"> <i class="fa fa-tag"> 并发</i></a>
+          
+        </div>
+      
 
       
       
@@ -483,8 +504,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/20/为什么输入IP无法访问网站/" rel="next" title="为什么输入IP地址无法访问网站">
-                <i class="fa fa-chevron-left"></i> 为什么输入IP地址无法访问网站
+              <a href="/2019/10/26/WebService接口开发/" rel="next" title="WebService接口开发">
+                <i class="fa fa-chevron-left"></i> WebService接口开发
               </a>
             
           </div>
@@ -492,10 +513,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/24/RandomAccess接口/" rel="prev" title="RandomAccess接口">
-                RandomAccess接口 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -653,7 +670,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开通OSS服务"><span class="nav-number">1.</span> <span class="nav-text">开通OSS服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用PicGo快速上传图片"><span class="nav-number">2.</span> <span class="nav-text">使用PicGo快速上传图片</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置PicGo"><span class="nav-number">2.1.</span> <span class="nav-text">配置PicGo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#踩坑记录"><span class="nav-number">3.</span> <span class="nav-text">踩坑记录</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#线程通讯"><span class="nav-number">1.</span> <span class="nav-text">线程通讯</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#wait-notify-机制"><span class="nav-number">1.1.</span> <span class="nav-text">wait()/notify()机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Condition"><span class="nav-number">1.2.</span> <span class="nav-text">Condition</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#管道方式"><span class="nav-number">2.</span> <span class="nav-text">管道方式</span></a></li></ol></div>
             
 
           </div>

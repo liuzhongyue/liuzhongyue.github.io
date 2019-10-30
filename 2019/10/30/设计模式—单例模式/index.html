@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ergo&#39;s blog">
 <meta property="og:description" content="在上次的Android项目中，数据库对象以及netty连接的对象都使用过单例模式，但是对单例模式一直也是一知半解，借着刚在软件工程导论课上讲了单例模式，深入了解一下。 单例模式（singleton pattern）单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。 这种模式涉及到一个单一的类，该类负">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T14:46:39.193Z">
+<meta property="og:updated_time" content="2019-10-30T15:01:09.306Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式—单例模式">
 <meta name="twitter:description" content="在上次的Android项目中，数据库对象以及netty连接的对象都使用过单例模式，但是对单例模式一直也是一知半解，借着刚在软件工程导论课上讲了单例模式，深入了解一下。 单例模式（singleton pattern）单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。 这种模式涉及到一个单一的类，该类负">
@@ -330,7 +330,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-30T22:46:39+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-30T23:01:09+08:00">
                 2019-10-30
               </time>
             
@@ -440,7 +440,7 @@
 <ol>
 <li><p>双重检查，相对于懒汉式（线程安全）方式，DCL方式在同步代码块外面又加了一个判断，这样既保证了线程安全，而且保证了只有在单例未被实例化的时候synchronized才会生效，保证了效率</p>
 </li>
-<li><p>volatile关键字的使用。可以看到上面基本上就可以保证线程安全了，但是为什么还要使用volatile关键字呢？在<a href="2019/10/29/Java多线程—volatile关键字">volatile关键字</a>中，介绍过volatile关键字可以保证变量的有序性和可见性，在此处，使用volatile关键字就是为了保证有序性。</p>
+<li><p>volatile关键字的使用。可以看到上面基本上就可以保证线程安全了，但是为什么还要使用volatile关键字呢？在<a href="/2019/10/29/Java多线程—volatile关键字">volatile关键字</a>中，介绍过volatile关键字可以保证变量的有序性和可见性，在此处，使用volatile关键字就是为了保证有序性。</p>
 </li>
 </ol>
 <h2 id="volatile关键字保证有序性"><a href="#volatile关键字保证有序性" class="headerlink" title="volatile关键字保证有序性"></a>volatile关键字保证有序性</h2><blockquote>
@@ -491,7 +491,7 @@
 <p>加上volatile关键字就可以防止JVM对其进行重排序了，就可以解决这种隐患。</p>
 <h1 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//静态内部类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">static</span> Singleton instance = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>关于内部类可以看此博客<a href="2019/10/19/Java内部类">Java内部类</a>。</p>
+<p>关于内部类可以看此博客<a href="/2019/10/19/Java内部类">Java内部类</a>。</p>
 <p>通过静态内部类实现，既可以实现懒汉式的懒加载又可以实现饿汉式的线程安全。</p>
 <p>此方法同样是使用了类加载机制保证初始化单例的只有一个线程，但是此方式在Singleton类被初始化之后，instance并不会被初始化，只有当显式地调用getInstance方法之后，才会实例化instance。所以此方法可以保证懒加载。</p>
 <h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><blockquote>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ergo&#39;s blog">
 <meta property="og:description" content="在上次的Android项目中，数据库对象以及netty连接的对象都使用过单例模式，但是对单例模式一直也是一知半解，借着刚在软件工程导论课上讲了单例模式，深入了解一下。 单例模式（singleton pattern）单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。 这种模式涉及到一个单一的类，该类负">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-30T13:29:45.617Z">
+<meta property="og:updated_time" content="2019-10-30T14:46:39.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="设计模式—单例模式">
 <meta name="twitter:description" content="在上次的Android项目中，数据库对象以及netty连接的对象都使用过单例模式，但是对单例模式一直也是一知半解，借着刚在软件工程导论课上讲了单例模式，深入了解一下。 单例模式（singleton pattern）单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。 这种模式涉及到一个单一的类，该类负">
@@ -330,7 +330,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-30T21:29:45+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-10-30T22:46:39+08:00">
                 2019-10-30
               </time>
             
@@ -425,18 +425,23 @@
 <h1 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//懒汉式(线程不安全)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">            singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>此方式是懒加载的，也就是说，只有当调用<code>getInstance()</code>方法且当前类从未被实例化过，当前类才会被实例化，另外，此方法不适用于多线程，是线程不安全的。</p>
+<h1 id="懒汉式（线程安全方式）"><a href="#懒汉式（线程安全方式）" class="headerlink" title="懒汉式（线程安全方式）"></a>懒汉式（线程安全方式）</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//懒汉式(线程不安全)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">synchronized</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">            singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>将getInstance方法改为同步方法就可以保证线程安全了，但是由于同步代码的执行效率是很低的，所以，此方法不是很推荐。</p>
 <h1 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//饿汉式(线程安全)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> Singleton singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span> <span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>此方法在类初始化的时候就完成了实例化，线程不安全的问题只会在首次实例化对象的时候才会发生，所以这种方式并不会产生线程不安全的问题。</p>
 <h1 id="双重校验锁-DCL"><a href="#双重校验锁-DCL" class="headerlink" title="双重校验锁(DCL)"></a>双重校验锁(DCL)</h1><blockquote>
-<p>JDK1.5以后</p>
+<p>JDK1.5以后可以使用</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//DLC(线程安全)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                singleton = <span class="keyword">new</span> Singleton();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//DCL(线程安全)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">static</span> Singleton singleton;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123; &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">            <span class="keyword">synchronized</span> (Singleton.class) &#123;</span><br><span class="line">                <span class="keyword">if</span> (singleton == <span class="keyword">null</span>) &#123;</span><br><span class="line">                	singleton = <span class="keyword">new</span> Singleton();    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> singleton;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>此方法有两个需要注意的地方(其实就是双重锁的使用)：</p>
+<p>此方法有两个需要注意的地方：</p>
 <ol>
-<li>synchronized关键字的使用，保证了线程安全，而且只有在第一次创建实例的时候才使用synchronized代码块，相比较为该方法直接加上synchronized关键字，一定程度上提高了性能。（不明白为什么有些博客还会将为该方法直接加上synchronized方式单独拿出来作为懒汉式的线程安全版本，我认为这种方法完全没必要介绍，既缺少volatile关键字，而且在多线程下性能极差~）。</li>
-<li>volatile关键字的使用。可以看到上面基本上就可以保证线程安全了，但是为什么还要使用volatile关键字呢？在<a href="2019/10/29/Java多线程—volatile关键字">volatile关键字</a>中，介绍过volatile关键字可以保证变量的有序性和可见性，在此处，使用volatile关键字就是为了保证有序性。</li>
+<li><p>双重检查，相对于懒汉式（线程安全）方式，DCL方式在同步代码块外面又加了一个判断，这样既保证了线程安全，而且保证了只有在单例未被实例化的时候synchronized才会生效，保证了效率</p>
+</li>
+<li><p>volatile关键字的使用。可以看到上面基本上就可以保证线程安全了，但是为什么还要使用volatile关键字呢？在<a href="2019/10/29/Java多线程—volatile关键字">volatile关键字</a>中，介绍过volatile关键字可以保证变量的有序性和可见性，在此处，使用volatile关键字就是为了保证有序性。</p>
+</li>
 </ol>
 <h2 id="volatile关键字保证有序性"><a href="#volatile关键字保证有序性" class="headerlink" title="volatile关键字保证有序性"></a>volatile关键字保证有序性</h2><blockquote>
 <p>今天上软件工程导论的时候，老师讲到了单例模式，并且举到了DCL的例子，但是只字不提volatile关键字……</p>
@@ -490,12 +495,12 @@
 <p>通过静态内部类实现，既可以实现懒汉式的懒加载又可以实现饿汉式的线程安全。</p>
 <p>此方法同样是使用了类加载机制保证初始化单例的只有一个线程，但是此方式在Singleton类被初始化之后，instance并不会被初始化，只有当显式地调用getInstance方法之后，才会实例化instance。所以此方法可以保证懒加载。</p>
 <h1 id="枚举类"><a href="#枚举类" class="headerlink" title="枚举类"></a>枚举类</h1><blockquote>
-<p>JDK1.5以后</p>
+<p>JDK1.5以后可以使用</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> Singleton &#123;  </span><br><span class="line">    INSTANCE;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">whateverMethod</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>这种方式是 Effective Java 作者 Josh Bloch 提倡的方式，它不仅能避免多线程同步问题，而且还自动支持序列化机制，防止反序列化重新创建新的对象，绝对防止多次实例化。 而且也不能通过反射来调用私有的构造方法。</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在一般情况下，使用饿汉式就可以了，如果明确要求懒加载，可以使用静态内部类的方法，了解DLC可以帮助我们更好的理解synchronized关键字以及volatile关键字的作用，最后一种枚举类方式虽然用的少，但是还是很推荐使用该方式（毕竟是Effective Java的作者推荐的写法，听大神说的就对了👍）。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>在一般情况下，使用饿汉式就可以了，如果明确要求懒加载，可以使用静态内部类的方法，了解DCL可以帮助我们更好的理解synchronized关键字以及volatile关键字的作用，最后一种枚举类方式虽然用的少，但是还是很推荐使用该方式（毕竟是Effective Java的作者推荐的写法，听大神说的就对了👍）。</p>
 
       
     </div>
@@ -720,7 +725,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式（singleton-pattern）"><span class="nav-number">1.</span> <span class="nav-text">单例模式（singleton pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#懒汉式"><span class="nav-number">2.</span> <span class="nav-text">懒汉式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#饿汉式"><span class="nav-number">3.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双重校验锁-DCL"><span class="nav-number">4.</span> <span class="nav-text">双重校验锁(DCL)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile关键字保证有序性"><span class="nav-number">4.1.</span> <span class="nav-text">volatile关键字保证有序性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态内部类"><span class="nav-number">5.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举类"><span class="nav-number">6.</span> <span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">7.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单例模式（singleton-pattern）"><span class="nav-number">1.</span> <span class="nav-text">单例模式（singleton pattern）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#懒汉式"><span class="nav-number">2.</span> <span class="nav-text">懒汉式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#懒汉式（线程安全方式）"><span class="nav-number">3.</span> <span class="nav-text">懒汉式（线程安全方式）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#饿汉式"><span class="nav-number">4.</span> <span class="nav-text">饿汉式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#双重校验锁-DCL"><span class="nav-number">5.</span> <span class="nav-text">双重校验锁(DCL)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile关键字保证有序性"><span class="nav-number">5.1.</span> <span class="nav-text">volatile关键字保证有序性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态内部类"><span class="nav-number">6.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#枚举类"><span class="nav-number">7.</span> <span class="nav-text">枚举类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -754,7 +759,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.5k</span>
+    <span title="Site words total count">25.6k</span>
   
 </div>
 

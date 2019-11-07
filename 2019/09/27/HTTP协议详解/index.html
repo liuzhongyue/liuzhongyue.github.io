@@ -93,7 +93,7 @@
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930165732.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170159.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170555.png">
-<meta property="og:updated_time" content="2019-10-22T07:43:37.525Z">
+<meta property="og:updated_time" content="2019-11-07T15:54:42.842Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP协议详解">
 <meta name="twitter:description" content="本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析HTTP">
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-22T15:43:37+08:00">
-                2019-10-22
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-07T23:54:42+08:00">
+                2019-11-07
               </time>
             
           </span>
@@ -403,7 +403,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  717
+                  1.1k
                 </span>
               
 
@@ -470,8 +470,51 @@
 </ol>
 <p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170555.png" alt></p>
 <p>此数据包是服务端返回的HTTP报文，由状态行、首部字段、报文主体和空行组成。通过Line-based text data可以查看具体的报文主体部分的数据。</p>
-<h1 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h1><h2 id="GET：获取资源"><a href="#GET：获取资源" class="headerlink" title="GET：获取资源"></a>GET：获取资源</h2><p>GET方法用来请求访问已被URI识别的资源。指定的资源经服务端解析后返回响应的内容。</p>
-<h2 id="POST：传输实体的主体"><a href="#POST：传输实体的主体" class="headerlink" title="POST：传输实体的主体"></a>POST：传输实体的主体</h2><h1 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h1><p>## </p>
+<h1 id="HTTP方法"><a href="#HTTP方法" class="headerlink" title="HTTP方法"></a>HTTP方法</h1><h2 id="GET：获取资源"><a href="#GET：获取资源" class="headerlink" title="GET：获取资源"></a>GET：获取资源</h2><p>GET方法用于从服务器端获取数据，包括静态资源(HTML、CSS、JS、Image等等)。 </p>
+<h2 id="POST：传输实体的主体"><a href="#POST：传输实体的主体" class="headerlink" title="POST：传输实体的主体"></a>POST：传输实体的主体</h2><p>POST方法用于向服务器提交数据，比如增删改数据，提交一个表单新建一个用户、或修改一个用户等。 </p>
+<p>GET主要目的，获取资源；POST主要目的，发送数据对指定资源做处理。</p>
+<p><a href="https://www.zhihu.com/question/28586791" target="_blank" rel="noopener">GET和POST到底有什么区别？</a></p>
+<h2 id="PUT：传输文件"><a href="#PUT：传输文件" class="headerlink" title="PUT：传输文件"></a>PUT：传输文件</h2><p>向服务端增加某个资源文件。</p>
+<p>##DELETE：删除文件</p>
+<p>删除指定的资源文件。</p>
+<p>在RESTful风格的接口中，PUT、DELETE、GET、POST分别对应对资源的增删查改。</p>
+<h1 id="状态码"><a href="#状态码" class="headerlink" title="状态码"></a>状态码</h1><p><strong>分类</strong></p>
+<table>
+<thead>
+<tr>
+<th align="left">分类</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1XX</td>
+<td align="left">信息，服务器收到请求，需要请求者继续执行操作</td>
+</tr>
+<tr>
+<td align="left"><strong>2XX</strong></td>
+<td align="left"><strong>成功，操作被成功接收并处理</strong></td>
+</tr>
+<tr>
+<td align="left">3XX</td>
+<td align="left">重定向，需要进一步的操作以完成请求(除304)</td>
+</tr>
+<tr>
+<td align="left"><strong>4XX</strong></td>
+<td align="left"><strong>客户端错误，请求包含语法错误或无法完成请求</strong></td>
+</tr>
+<tr>
+<td align="left"><strong>5XX</strong></td>
+<td align="left"><strong>服务器错误，服务器在处理请求的过程中发生了错误</strong></td>
+</tr>
+</tbody></table>
+<h2 id="2XX成功"><a href="#2XX成功" class="headerlink" title="2XX成功"></a>2XX成功</h2><h3 id="200-OK"><a href="#200-OK" class="headerlink" title="200 OK"></a>200 OK</h3><p>表示从客户端发来的请求在服务端被正常处理了，请求资源成功。</p>
+<h2 id="3XX重定向"><a href="#3XX重定向" class="headerlink" title="3XX重定向"></a>3XX重定向</h2><h3 id="301-Moved-Permanently"><a href="#301-Moved-Permanently" class="headerlink" title="301 Moved Permanently"></a>301 Moved Permanently</h3><p>永久重定向。表示请求的资源已经被永久地转移到了某个新的URI。</p>
+<p>例如http协议重定向至https协议。</p>
+<h3 id="302-Found"><a href="#302-Found" class="headerlink" title="302 Found"></a>302 Found</h3><p>临时重定向。表示请求的资源是临时被分配到一个新的URI中。</p>
+<h3 id="304-Not-Modified"><a href="#304-Not-Modified" class="headerlink" title="304 Not Modified"></a>304 Not Modified</h3><p>表示服务器端资源未发生改变，可以直接使用服务器缓存。</p>
+<h2 id="4XX"><a href="#4XX" class="headerlink" title="4XX"></a>4XX</h2><h3 id="403-Forbidden"><a href="#403-Forbidden" class="headerlink" title="403 Forbidden"></a>403 Forbidden</h3><p>资源访问被拒绝。一般没有响应的权限的话会返回该状态码。</p>
+<h3 id="404-Not-Found"><a href="#404-Not-Found" class="headerlink" title="404 Not Found"></a>404 Not Found</h3><p>服务器上无法找到请求的资源。</p>
+<h2 id="5XX"><a href="#5XX" class="headerlink" title="5XX"></a>5XX</h2><h3 id="500-Internal-Server-Error"><a href="#500-Internal-Server-Error" class="headerlink" title="500 Internal Server Error"></a>500 Internal Server Error</h3><p>服务端出BUG。 </p>
 
       
     </div>
@@ -698,7 +741,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协议报文解析"><span class="nav-number">2.</span> <span class="nav-text">协议报文解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验验证"><span class="nav-number">2.1.</span> <span class="nav-text">实验验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP方法"><span class="nav-number">3.</span> <span class="nav-text">HTTP方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GET：获取资源"><span class="nav-number">3.1.</span> <span class="nav-text">GET：获取资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POST：传输实体的主体"><span class="nav-number">3.2.</span> <span class="nav-text">POST：传输实体的主体</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态码"><span class="nav-number">4.</span> <span class="nav-text">状态码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP协议"><span class="nav-number">1.</span> <span class="nav-text">HTTP协议</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#协议报文解析"><span class="nav-number">2.</span> <span class="nav-text">协议报文解析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验验证"><span class="nav-number">2.1.</span> <span class="nav-text">实验验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTP方法"><span class="nav-number">3.</span> <span class="nav-text">HTTP方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GET：获取资源"><span class="nav-number">3.1.</span> <span class="nav-text">GET：获取资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POST：传输实体的主体"><span class="nav-number">3.2.</span> <span class="nav-text">POST：传输实体的主体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PUT：传输文件"><span class="nav-number">3.3.</span> <span class="nav-text">PUT：传输文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#状态码"><span class="nav-number">4.</span> <span class="nav-text">状态码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2XX成功"><span class="nav-number">4.1.</span> <span class="nav-text">2XX成功</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#200-OK"><span class="nav-number">4.1.1.</span> <span class="nav-text">200 OK</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3XX重定向"><span class="nav-number">4.2.</span> <span class="nav-text">3XX重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#301-Moved-Permanently"><span class="nav-number">4.2.1.</span> <span class="nav-text">301 Moved Permanently</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#302-Found"><span class="nav-number">4.2.2.</span> <span class="nav-text">302 Found</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#304-Not-Modified"><span class="nav-number">4.2.3.</span> <span class="nav-text">304 Not Modified</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4XX"><span class="nav-number">4.3.</span> <span class="nav-text">4XX</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#403-Forbidden"><span class="nav-number">4.3.1.</span> <span class="nav-text">403 Forbidden</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#404-Not-Found"><span class="nav-number">4.3.2.</span> <span class="nav-text">404 Not Found</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5XX"><span class="nav-number">4.4.</span> <span class="nav-text">5XX</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#500-Internal-Server-Error"><span class="nav-number">4.4.1.</span> <span class="nav-text">500 Internal Server Error</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -732,7 +775,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">25.6k</span>
+    <span title="Site words total count">26k</span>
   
 </div>
 

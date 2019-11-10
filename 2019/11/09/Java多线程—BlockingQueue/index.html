@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,">
+  <meta name="keywords" content="Java,多线程,">
 
 
 
@@ -79,20 +79,18 @@
 
 
 
-<meta name="description" content="通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。  RandomAccess.java  package java.util;/** * 一大堆注释... */public interface RandomAccess &amp;#123;&amp;#125">
-<meta name="keywords" content="Java">
+<meta name="description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
+<meta name="keywords" content="Java,多线程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RandomAccess接口">
-<meta property="og:url" content="http://yoursite.com/2019/09/24/RandomAccess接口/index.html">
+<meta property="og:title" content="Java多线程—BlockingQueue">
+<meta property="og:url" content="http://yoursite.com/2019/11/09/Java多线程—BlockingQueue/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。  RandomAccess.java  package java.util;/** * 一大堆注释... */public interface RandomAccess &amp;#123;&amp;#125">
+<meta property="og:description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190924232402.png">
-<meta property="og:updated_time" content="2019-09-27T00:50:36.346Z">
+<meta property="og:updated_time" content="2019-11-10T08:03:17.050Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RandomAccess接口">
-<meta name="twitter:description" content="通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。  RandomAccess.java  package java.util;/** * 一大堆注释... */public interface RandomAccess &amp;#123;&amp;#125">
-<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190924232402.png">
+<meta name="twitter:title" content="Java多线程—BlockingQueue">
+<meta name="twitter:description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
 
 
 
@@ -122,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/09/24/RandomAccess接口/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/09/Java多线程—BlockingQueue/">
 
 
 
 
 
-  <title>RandomAccess接口 | ergo's blog</title>
+  <title>Java多线程—BlockingQueue | ergo's blog</title>
   
 
 
@@ -287,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/RandomAccess接口/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/09/Java多线程—BlockingQueue/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -304,7 +302,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RandomAccess接口</h1>
+          <h1 class="post-title" itemprop="name headline">Java多线程—BlockingQueue</h1>
         
 
         <div class="post-meta">
@@ -316,8 +314,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-24T00:00:00+08:00">
-                2019-09-24
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-09T13:42:39+08:00">
+                2019-11-09
               </time>
             
 
@@ -332,8 +330,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-09-27T08:50:36+08:00">
-                2019-09-27
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-10T16:03:17+08:00">
+                2019-11-10
               </time>
             
           </span>
@@ -387,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  978
+                  738
                 </span>
               
 
@@ -412,47 +410,78 @@
       
 
       
-        <p>通过在Java集合类中，查看类继承图和源码可以看出ArrayList和Vector都实现了RandomAccess接口，而LinkList却没有实现该接口，查看RandomAccess接口，发现里面是空的。</p>
+        <h1 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h1><p>阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。</p>
+<h1 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h1><h2 id="压入元素"><a href="#压入元素" class="headerlink" title="压入元素"></a>压入元素</h2><ul>
+<li><code>add(E e)</code>：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用<code>offer()</code>方法。</li>
+<li><code>offer(E e)</code>：向队尾增加元素，设置成功返回true，如果队列中没有多余的空间返回false。</li>
+<li><code>put(E e)</code>：向队尾增加元素，如果队列中没有多余的空间，该方法会一直阻塞。</li>
+</ul>
+<h2 id="弹出元素"><a href="#弹出元素" class="headerlink" title="弹出元素"></a>弹出元素</h2><ul>
+<li><p><code>poll()</code>：获取并移除队首元素，如果队列为空，返回null。</p>
+</li>
+<li><p><code>take()</code>：获取并移除队首元素，如果队列为空，该方法会一直阻塞。</p>
+</li>
+<li><p><code>peek()</code>：获取但是并不移除队首元素，如果队列为空，返回null。</p>
+</li>
+</ul>
+<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><ul>
+<li><code>contains(Obeject o)</code>：判断队列中是否包含该元素。</li>
+<li><code>int drainTo(Collection&lt;? super E&gt; c)</code>：将队列转化为集合。</li>
+</ul>
+<h1 id="实现类"><a href="#实现类" class="headerlink" title="实现类"></a>实现类</h1><table>
+<thead>
+<tr>
+<th>实现类</th>
+<th>底层数据结构</th>
+<th>是否有界</th>
+<th>其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ArrayBlockingQueue</td>
+<td>arrayList</td>
+<td>有界</td>
+<td>只有一把锁，入队高并发或出队高并发的情况下推荐使用</td>
+</tr>
+<tr>
+<td>LinkedBlockingQueue</td>
+<td>linkedList</td>
+<td>默认无界，可指定上限</td>
+<td>两把锁，在入队与出队都高并发的情况下推荐使用</td>
+</tr>
+<tr>
+<td>DelayQueue</td>
+<td>heap</td>
+<td>无界</td>
+<td>延迟期满时才能从中提取元素</td>
+</tr>
+<tr>
+<td>PriorityBlockingQueue</td>
+<td>heap</td>
+<td>无界</td>
+<td>基于优先级的阻塞队列</td>
+</tr>
+<tr>
+<td>SynchronousQueue</td>
+<td>无</td>
+<td>有界</td>
+<td>无缓冲的阻塞队列，只能容纳一个元素，向队列中插入一个新元素的线程将会阻塞，直到另一个线程将该元素从队列中抽走。</td>
+</tr>
+</tbody></table>
+<h1 id="生产者消费者例子"><a href="#生产者消费者例子" class="headerlink" title="生产者消费者例子"></a>生产者消费者例子</h1><blockquote>
+<p>Producer.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.BlockingQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 生产者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-10 00:23</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BlockingQueue&lt;Integer&gt; queue;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(BlockingQueue&lt;Integer&gt; queue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxProductNum = <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxProductNum; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">                 <span class="comment">//生产者生产</span></span><br><span class="line">                queue.put(i);</span><br><span class="line">                System.out.println(<span class="string">"Producer produced "</span> + i);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <blockquote>
-<p>RandomAccess.java</p>
+<p>Consumer.java</p>
 </blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> java.util;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 一大堆注释...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">RandomAccess</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其实，该接口只是一个标识性接口(Marker)，除了RandomAccess接口外，还有<strong>Cloneable</strong> (可拷贝克隆)、<strong>Serializable</strong>(被序列化)，之后会有文章介绍这两个接口。</p>
-<h1 id="该接口的官方解释"><a href="#该接口的官方解释" class="headerlink" title="该接口的官方解释"></a>该接口的官方解释</h1><blockquote>
-<p>List实现使用的<code>标记</code>界面，表明它们支持快速（通常为恒定时间）随机访问。 此接口的主要目的是允许通用算法更改其行为，以便在应用于随机访问列表或顺序访问列表时提供良好的性能。</p>
-<p>当施加到顺序访问列表（如<code>LinkedList</code>），用于操纵随机接入列表（如<code>ArrayList</code>）最好算法可以产生二次行为。 鼓励通用列表算法在应用如果应用于顺序访问列表之前提供较差性能的算法，并且如果需要改变其行为以确保可接受的性能，则检查给定列表是否为<code>instanceof</code>此接口。</p>
-</blockquote>
-<p>此循环：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for (int i=0, n=list.size(); i &lt; n; i++)</span><br><span class="line">         list.get(i);</span><br></pre></td></tr></table></figure>
-
-<p>比这个循环运行得更快：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for (Iterator i=list.iterator(); i.hasNext(); )</span><br><span class="line">       i.next();</span><br></pre></td></tr></table></figure>
-
-<h1 id="Collections类中的使用"><a href="#Collections类中的使用" class="headerlink" title="Collections类中的使用"></a>Collections类中的使用</h1><p>此接口在Collections类中有很多地方都使用到了，比如下面的binarySearch方法</p>
-<blockquote>
-<p>Collection.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">int</span> <span class="title">binarySearch</span><span class="params">(List&lt;? extends T&gt; list, T key, Comparator&lt;? <span class="keyword">super</span> T&gt; c)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (c==<span class="keyword">null</span>)</span><br><span class="line">        <span class="keyword">return</span> binarySearch((List&lt;? extends Comparable&lt;? <span class="keyword">super</span> T&gt;&gt;) list, key);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess || list.size()&lt;BINARYSEARCH_THRESHOLD)</span><br><span class="line">        <span class="keyword">return</span> Collections.indexedBinarySearch(list, key, c);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="keyword">return</span> Collections.iteratorBinarySearch(list, key, c);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面的方法中，通过判断list是否实现了RandomAccess接口来判断执行indexedBinarySearch方法还是执行iteratorBinarySearch方法(<strong>instanceof关键字的作用是判断某个对象所在的类是否继承某个类或者是实现某个接口</strong>)。</p>
-<h1 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h1><p>下面先做一个分别使用for循环和Iterator遍历ArrayList和LinkedList的实验。</p>
-<blockquote>
-<p>RamdomAccessDemo.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: CollectionDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: RandomAccess接口Demo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-09-24 23:00</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RandomAccessDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"arrayList使用for循环遍历"</span> + arrayListFor());</span><br><span class="line">        System.out.println(<span class="string">"arrayList使用Iterator遍历"</span> + arrayListIterator());</span><br><span class="line">        System.out.println(<span class="string">"linkedList使用for循环遍历"</span> + linkedListFor());</span><br><span class="line">        System.out.println(<span class="string">"linkedList使用Iterator遍历"</span> + linkedListIterator());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//for循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">arrayListFor</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            Object object = list.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Iterator循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">arrayListIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> ArrayList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5000000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            Object object = iterator.next();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//for循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">linkedListFor</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        List list = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            Object object = list.get(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Iterator循环遍历ArrayList</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">long</span> <span class="title">linkedListIterator</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        List list = <span class="keyword">new</span> LinkedList();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">50000</span>; i++) &#123;</span><br><span class="line">            list.add(i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> startTime = System.currentTimeMillis();</span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            Object object = iterator.next();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> endTime = System.currentTimeMillis();</span><br><span class="line">        <span class="keyword">return</span> endTime - startTime;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.BlockingQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 消费者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-10 00:24</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BlockingQueue&lt;Integer&gt; queue;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(BlockingQueue&lt;Integer&gt; queue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxConsumeTime = <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxConsumeTime; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">                <span class="comment">//消费者消费并拿到产品</span></span><br><span class="line">                <span class="keyword">int</span> product = queue.take();</span><br><span class="line">                System.out.println(<span class="string">"Consumer consumed "</span> + product);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <blockquote>
-<p>运行结果</p>
+<p>Tester.java</p>
 </blockquote>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190924232402.png" alt></p>
-<p>可以发现，使用for循环比使用Iterator遍历ArrayList快，使用Iterator比使用for循环快。</p>
-<p>所以，我们在使用这些集合类的时候，应该想到对于不同的集合类采取不同的遍历方式，具体采取那种方式就可以<strong>采取通过判断该类是否实现了RandomAccess接口的方式</strong>。</p>
-<p>可以采用如下的模板：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traverseList</span><span class="params">(List list)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (list <span class="keyword">instanceof</span> RandomAccess) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        Iterator iterator = list.iterator();</span><br><span class="line">        <span class="keyword">while</span> (iterator.hasNext()) &#123;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>注：</strong>推荐使用增强for循环，增强for循环在底层也是实现的Iterator。</p>
-
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 测试类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-10 13:26</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        BlockingQueue&lt;Integer&gt; queue = <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class="number">5</span>);</span><br><span class="line">        Producer producer = <span class="keyword">new</span> Producer(queue);</span><br><span class="line">        Consumer consumer = <span class="keyword">new</span> Consumer(queue);</span><br><span class="line">        <span class="comment">//使用线程池，避免显式地创建线程</span></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line">        service.execute(producer);</span><br><span class="line">        service.execute(consumer);</span><br><span class="line">        service.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -495,6 +524,8 @@
           
             <a href="/tags/Java/" rel="tag"> <i class="fa fa-tag"> Java</i></a>
           
+            <a href="/tags/多线程/" rel="tag"> <i class="fa fa-tag"> 多线程</i></a>
+          
         </div>
       
 
@@ -506,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/09/21/阿里云OSS+PicGo建立图床踩坑/" rel="next" title="阿里云OSS+PicGo建立图床">
-                <i class="fa fa-chevron-left"></i> 阿里云OSS+PicGo建立图床
+              <a href="/2019/10/30/CentOS7配置Tomcat自启动/" rel="next" title="CentOS7配置Tomcat自启动">
+                <i class="fa fa-chevron-left"></i> CentOS7配置Tomcat自启动
               </a>
             
           </div>
@@ -516,8 +547,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/26/Java序列化/" rel="prev" title="Java序列化">
-                Java序列化 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/09/TimeUnit类使用/" rel="prev" title="TimeUnit类使用">
+                TimeUnit类使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -676,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#该接口的官方解释"><span class="nav-number">1.</span> <span class="nav-text">该接口的官方解释</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collections类中的使用"><span class="nav-number">2.</span> <span class="nav-text">Collections类中的使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用"><span class="nav-number">3.</span> <span class="nav-text">应用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BlockingQueue"><span class="nav-number">1.</span> <span class="nav-text">BlockingQueue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核心方法"><span class="nav-number">2.</span> <span class="nav-text">核心方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#压入元素"><span class="nav-number">2.1.</span> <span class="nav-text">压入元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹出元素"><span class="nav-number">2.2.</span> <span class="nav-text">弹出元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他操作"><span class="nav-number">2.3.</span> <span class="nav-text">其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现类"><span class="nav-number">3.</span> <span class="nav-text">实现类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生产者消费者例子"><span class="nav-number">4.</span> <span class="nav-text">生产者消费者例子</span></a></li></ol></div>
             
 
           </div>

@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="ergo&#39;s blog">
 <meta property="og:description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T08:03:17.050Z">
+<meta property="og:updated_time" content="2019-11-10T12:29:04.349Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程—BlockingQueue">
 <meta name="twitter:description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
@@ -330,7 +330,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-10T16:03:17+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-10T20:29:04+08:00">
                 2019-11-10
               </time>
             
@@ -464,7 +464,7 @@
 <tr>
 <td>SynchronousQueue</td>
 <td>无</td>
-<td>有界</td>
+<td>无界</td>
 <td>无缓冲的阻塞队列，只能容纳一个元素，向队列中插入一个新元素的线程将会阻塞，直到另一个线程将该元素从队列中抽走。</td>
 </tr>
 </tbody></table>

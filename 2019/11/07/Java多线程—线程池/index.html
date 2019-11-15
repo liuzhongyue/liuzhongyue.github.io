@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%E7%BB%98%E5%9B%BE1.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191109135515.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191112203009.png">
-<meta property="og:updated_time" content="2019-11-12T12:42:09.497Z">
+<meta property="og:updated_time" content="2019-11-15T11:15:54.171Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java多线程—线程池">
 <meta name="twitter:description" content="为什么要使用线程池？使用线程池可以：  降低资源的消耗。线程本身是一种很宝贵的资源，创建线程和销毁线程会有CPU开销，是一个比较昂贵的操作。 提高任务执行的响应速度。使用线程池以后，不必等到线程创建完毕以后再执行。 提高线程的可管理性。可以对线程进行统一的分配。  线程池处理主要流程 Executor  我们如果要自定义一个线程池或者使用java自带的几种线程池，都要使用ThreadPoolExe">
@@ -334,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-12T20:42:09+08:00">
-                2019-11-12
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-15T19:15:54+08:00">
+                2019-11-15
               </time>
             
           </span>
@@ -434,7 +434,7 @@
 <li>提供了用于检查线程池状态的两个方法，isShutdown方法和isTerminated方法，两个方法分别可以检测线程池是否被关闭和是否被终止。</li>
 <li>提供了submit和invokeAll可以执行实现Callable接口的线程，可以使用定义一个Future类型的对象获取到线程运行之后的返回值。</li>
 </ul>
-<h1 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">						  <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                          TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                          BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                          ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                          RejectedExecutionHandler handler)</span></span>;</span><br></pre></td></tr></table></figure>
+<h1 id="ThreadPoolExecutor"><a href="#ThreadPoolExecutor" class="headerlink" title="ThreadPoolExecutor"></a>ThreadPoolExecutor</h1><h2 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">ThreadPoolExecutor</span><span class="params">(<span class="keyword">int</span> corePoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">int</span> maximumPoolSize,</span></span></span><br><span class="line"><span class="function"><span class="params">                          <span class="keyword">long</span> keepAliveTime,</span></span></span><br><span class="line"><span class="function"><span class="params">                          TimeUnit unit,</span></span></span><br><span class="line"><span class="function"><span class="params">                          BlockingQueue&lt;Runnable&gt; workQueue,</span></span></span><br><span class="line"><span class="function"><span class="params">                          ThreadFactory threadFactory,</span></span></span><br><span class="line"><span class="function"><span class="params">                          RejectedExecutionHandler handler)</span></span>;</span><br></pre></td></tr></table></figure>
 
 <p>该类的构造方法如上，下面一一解释每个参数的含义：</p>
 <ul>
@@ -478,13 +478,13 @@
 <p>创建固定长度的线程池，和上面的线程池类似，只不过可以接收更多任务。</p>
 <h2 id="CachedThreadPool"><a href="#CachedThreadPool" class="headerlink" title="CachedThreadPool"></a>CachedThreadPool</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ExecutorService <span class="title">newCachedThreadPool</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> ThreadPoolExecutor(<span class="number">0</span>, Integer.MAX_VALUE,</span><br><span class="line">                                  <span class="number">60L</span>, TimeUnit.SECONDS,</span><br><span class="line">                                  <span class="keyword">new</span> SynchronousQueue&lt;Runnable&gt;());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>创建带缓存的线程池，使用该方式创建的线程核心线程数为0，最大线程数为<code>Integer.MAX_VALUE</code>，使用<code>SynchronousQueue</code>阻塞队列，此队列在<a href="2019/11/09/Java多线程—BlockingQueue">BlockingQueue</a>中有讲到，举个例子，如果此时来了一个线程A，由于当前<code>corePoolSize</code>为0，所以直接将其添加到队列中，由于该队列的特性，添加成功的前提是必须要有另一个线程已经在等待取出这个元素了，此时无可用线程，即没有等待取出线程A的线程，由于最大线程数为<code>Integer.MAX_VALUE</code>所以会创建一个新线程。此时如果又来了一个线程B，线程A仍然在运行中，同样无可用线程，会继续为B创建新线程。</p>
+<p>创建带缓存的线程池，使用该方式创建的线程核心线程数为0，最大线程数为<code>Integer.MAX_VALUE</code>，使用<code>SynchronousQueue</code>阻塞队列，此队列在<a href="/2019/11/09/Java多线程—BlockingQueue">BlockingQueue</a>中有讲到，举个例子，如果此时来了一个线程A，由于当前<code>corePoolSize</code>为0，所以直接将其添加到队列中，由于该队列的特性，添加成功的前提是必须要有另一个线程已经在等待取出这个元素了，此时无可用线程，即没有等待取出线程A的线程，由于最大线程数为<code>Integer.MAX_VALUE</code>所以会创建一个新线程。此时如果又来了一个线程B，线程A仍然在运行中，同样无可用线程，会继续为B创建新线程。</p>
 <p>此线程池是一个可根据需要创建新线程的线程池，如果现有线程没有可用的，则创建一个新线程并添加到池中，如果有被使用完但是还没销毁的线程，就复用该线程。终止并从缓存中移除那些已有 60 秒钟未被使用的线程。因此，长时间保持空闲的线程池不会使用任何资源。</p>
 <h2 id="ScheduledThreadPool"><a href="#ScheduledThreadPool" class="headerlink" title="ScheduledThreadPool"></a>ScheduledThreadPool</h2><p>创建定时调度的线程池，与上面三个线程池不同的是，该方法返回的是<code>ScheduledExecutorService</code>类型的线程池， 是一个能实现定时、周期性任务的线程池。 </p>
 <p>使用方法：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BlockingQueue&lt;Integer&gt; queue = <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class="number">5</span>);</span><br><span class="line">Producer producer = <span class="keyword">new</span> Producer(queue);</span><br><span class="line">Consumer consumer = <span class="keyword">new</span> Consumer(queue);</span><br><span class="line">ScheduledExecutorService service = Executors.newScheduledThreadPool(<span class="number">3</span>);</span><br><span class="line">service.schedule(producer, <span class="number">5</span>, TimeUnit.SECONDS);</span><br><span class="line">service.execute(consumer);</span><br></pre></td></tr></table></figure>
 
-<p>上面的例子(此例子来源于<a href="2019/11/09/Java多线程—BlockingQueue">BlockingQueue</a>讲解)就可以实现producer线程5s后被启动。</p>
+<p>上面的例子(此例子来源于<a href="/2019/11/09/Java多线程—BlockingQueue">BlockingQueue</a>讲解)就可以实现producer线程5s后被启动。</p>
 <h1 id="自定义线程池"><a href="#自定义线程池" class="headerlink" title="自定义线程池"></a>自定义线程池</h1><p>对于上面的几种线程池，是不推荐直接使用的，一般还是经常会根据需要自定义线程池。自定义线程池需要结合使用背景，主要就是参数的选取。</p>
 <h2 id="最大线程数"><a href="#最大线程数" class="headerlink" title="最大线程数"></a>最大线程数</h2><p>对于最大线程数的控制，最好不要使用无限制大小的最大线程数，可能引发OOM。</p>
 <p>对于线程数量的确定可以参考下面的方案：</p>
@@ -684,7 +684,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -695,7 +695,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -706,7 +706,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">18</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -797,7 +797,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">30.1k</span>
+    <span title="Site words total count">31.3k</span>
   
 </div>
 

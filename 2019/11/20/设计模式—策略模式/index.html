@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,">
+  <meta name="keywords" content="设计模式,">
 
 
 
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="内部类所谓内部类就是在一个类的内部再定义一个类，之前自己写代码的时候一直也没用过这种方式，系统地学习一下内部类。 /** * @paragram: InnerClassDemo * @description: 内部类 * @auhor: liuergo * @date: 2019-10-19 16:30 */public class OuterClass&amp;#123;    private Stri">
-<meta name="keywords" content="Java">
+<meta name="description" content="策略模式  在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。   在策略模式中，我们需要创建表示各种策略的对象和一个行为随着策略改变而改变的context对象，通过策略对象改变context对象的执行算法。 学习设计模式最重要的一点就是要搞清楚设计模式的应用场景，首先举几个例子，比如我们手机支付的时候，可以使用支付宝可以使用">
+<meta name="keywords" content="设计模式">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java内部类">
-<meta property="og:url" content="http://yoursite.com/2019/10/19/Java内部类/index.html">
+<meta property="og:title" content="设计模式—策略模式">
+<meta property="og:url" content="http://yoursite.com/2019/11/20/设计模式—策略模式/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="内部类所谓内部类就是在一个类的内部再定义一个类，之前自己写代码的时候一直也没用过这种方式，系统地学习一下内部类。 /** * @paragram: InnerClassDemo * @description: 内部类 * @auhor: liuergo * @date: 2019-10-19 16:30 */public class OuterClass&amp;#123;    private Stri">
+<meta property="og:description" content="策略模式  在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。   在策略模式中，我们需要创建表示各种策略的对象和一个行为随着策略改变而改变的context对象，通过策略对象改变context对象的执行算法。 学习设计模式最重要的一点就是要搞清楚设计模式的应用场景，首先举几个例子，比如我们手机支付的时候，可以使用支付宝可以使用">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-10-20T12:08:02.914Z">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191120200138.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191120210344.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191120210909.png">
+<meta property="og:updated_time" content="2019-11-20T13:10:51.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java内部类">
-<meta name="twitter:description" content="内部类所谓内部类就是在一个类的内部再定义一个类，之前自己写代码的时候一直也没用过这种方式，系统地学习一下内部类。 /** * @paragram: InnerClassDemo * @description: 内部类 * @auhor: liuergo * @date: 2019-10-19 16:30 */public class OuterClass&amp;#123;    private Stri">
+<meta name="twitter:title" content="设计模式—策略模式">
+<meta name="twitter:description" content="策略模式  在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。   在策略模式中，我们需要创建表示各种策略的对象和一个行为随着策略改变而改变的context对象，通过策略对象改变context对象的执行算法。 学习设计模式最重要的一点就是要搞清楚设计模式的应用场景，首先举几个例子，比如我们手机支付的时候，可以使用支付宝可以使用">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191120200138.png">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/19/Java内部类/">
+  <link rel="canonical" href="http://yoursite.com/2019/11/20/设计模式—策略模式/">
 
 
 
 
 
-  <title>Java内部类 | ergo's blog</title>
+  <title>设计模式—策略模式 | ergo's blog</title>
   
 
 
@@ -285,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/Java内部类/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/20/设计模式—策略模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -302,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Java内部类</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式—策略模式</h1>
         
 
         <div class="post-meta">
@@ -314,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-19T16:41:10+08:00">
-                2019-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-20T15:49:27+08:00">
+                2019-11-20
               </time>
             
 
@@ -330,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-10-20T20:08:02+08:00">
-                2019-10-20
+              <time title="更新于" itemprop="dateModified" datetime="2019-11-20T21:10:51+08:00">
+                2019-11-20
               </time>
             
           </span>
@@ -349,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
+                  <a href="/categories/设计模式/" itemprop="url" rel="index">
+                    <span itemprop="name">设计模式</span>
                   </a>
                 </span>
 
@@ -385,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.4k
+                  1.1k
                 </span>
               
 
@@ -410,49 +414,76 @@
       
 
       
-        <h1 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h1><p>所谓内部类就是在一个类的内部再定义一个类，之前自己写代码的时候一直也没用过这种方式，系统地学习一下内部类。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@paragram</span>: InnerClassDemo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 内部类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@auhor</span>: liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span>: 2019-10-19 16:30</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OuterClass</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">InnerClass</span> <span class="params">()</span></span>&#123;</span><br><span class="line">            name = <span class="string">"Jack"</span>;</span><br><span class="line">            age = <span class="number">20</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>上面就是内部类的一个简单的例子。</p>
-<h1 id="为什么要使用内部类"><a href="#为什么要使用内部类" class="headerlink" title="为什么要使用内部类"></a>为什么要使用内部类</h1><blockquote>
-<p>使用内部类最吸引人的原因是：每个内部类都能独立地继承一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。</p>
+        <h1 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h1><blockquote>
+<p> 在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。 </p>
 </blockquote>
-<p>上面是《Thinking in Java》中的一句话，我们知道，Java中是没有多继承的，所以才出现了接口来解决Java多继承的问题，但是如果使用了内部类，就可以使我们的类继承多个类。</p>
-<h1 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h1><p>最普通的内部类，将内部类作为外部类的一个成员，跟成员变量各种方法是并列的。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OuterClass</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">InnerClass</span> <span class="params">()</span></span>&#123;</span><br><span class="line">            name = <span class="string">"Jack"</span>;</span><br><span class="line">            age = <span class="number">20</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        OuterClass outerClass = <span class="keyword">new</span> OuterClass();</span><br><span class="line">        OuterClass.InnerClass innerClass = outerClass.new InnerClass();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>实例化一个内部类需要使用<code>外部类的对象.new</code>来创建内部类，在内部类中，是可以随便访问外部类的成员变量的;外部类是不可以随便访问内部类的。</p>
-<h1 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h1><p>在方法中定义的内部类，这时的内部类就不属于外部类的成员了，局部内部类可以访问当前代码块中的final关键字修饰的局部变量以及外部类的成员变量。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OuterClass</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getAge</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">final</span> <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span> </span>&#123;</span><br><span class="line">            <span class="keyword">private</span> String innerName;</span><br><span class="line">            <span class="function"><span class="keyword">void</span> <span class="title">InnerFun</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(name); <span class="comment">//直接访问外部类的变量</span></span><br><span class="line">                System.out.println(i); <span class="comment">//访问final类型的局部变量</span></span><br><span class="line">                System.out.println(<span class="keyword">this</span>.innerName); <span class="comment">//使用this.成员变量访问的是内部类的成员变量</span></span><br><span class="line">                System.out.println(OuterClass.<span class="keyword">this</span>.name); <span class="comment">//使用外部类名.this.成员变量的方式访问成员变量</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="静态内部类"><a href="#静态内部类" class="headerlink" title="静态内部类"></a>静态内部类</h1><p>在<a href="/2019/10/10/static关键字/">static关键字</a>一节中，提到static关键字可以修饰变量、方法、代码块，其实static还可以修饰内部类，在静态内部类中，是不保留对外部类的引用的，这就意味着，静态内部类的创建不需要依赖于外部类。这样，静态内部类也就只能访问静态变量和静态方法。外部类和内部类其实是没有关联的。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OuterClass</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> String innerName;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">InnerClass</span> <span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(num); <span class="comment">//只能访问static变量</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        OuterClass outerClass = <span class="keyword">new</span> OuterClass();</span><br><span class="line">        InnerClass innerClass = <span class="keyword">new</span> InnerClass(); <span class="comment">//创建实例不依赖外部类</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h1><blockquote>
-<p>匿名内部类这一语法适用于创建一次性使用的类。</p>
+<p>在策略模式中，我们需要创建表示各种策略的对象和一个行为随着策略改变而改变的context对象，通过策略对象改变context对象的执行算法。</p>
+<p>学习设计模式最重要的一点就是要搞清楚设计模式的应用场景，首先举几个例子，比如我们手机支付的时候，可以使用支付宝可以使用微信也可以使用云闪付，这些支付方式每一种都是一个策略对象，每一种策略都是可以互相替换的；再比如淘宝双十一的打折活动，可以叠津贴、用红包或者店家直接打折，每一种优惠方式也是一种策略。</p>
+<p>策略模式做到的就是 定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>首先我们画出该模式的UML类图：</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191120200138.png" alt></p>
+<p>其中，Context是上下文对象，是真正执行策略的对象，维护一个实现Strategy接口的类，Strategy接口是策略接口，是用于声明所有算法的接口，SpecificStrategy是Strategy接口的实现类，里面有算法的具体实现。</p>
+<blockquote>
+<p> Context.java</p>
 </blockquote>
-<p>在Android编程中，经常会用到点击事件，这就是一个匿名内部类的例子。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">btnClick.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() &#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View view)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//do something</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> Context上下文对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 16:16</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">(Strategy strategy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 执行策略的具体方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeStrategy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        strategy.algorithmStatement();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>可以看到，在上面的例子中，new了一个View.OnClickListener对象，然而这个对象是没有名字的，这就是匿名内部类的特点。</p>
-<h2 id="定义匿名内部类"><a href="#定义匿名内部类" class="headerlink" title="定义匿名内部类"></a>定义匿名内部类</h2><p>下面是官方文档中给出的一个匿名内部类的例子：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorldAnonymousClasses</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line">    <span class="class"><span class="keyword">interface</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greet</span><span class="params">()</span></span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greetSomeone</span><span class="params">(String someone)</span></span>;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">sayHello</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//实现HelloWorld接口的内部类</span></span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">EnglishGreeting</span> <span class="keyword">implements</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">            String name = <span class="string">"world"</span>;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                greetSomeone(<span class="string">"world"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greetSomeone</span><span class="params">(String someone)</span> </span>&#123;</span><br><span class="line">                name = someone;</span><br><span class="line">                System.out.println(<span class="string">"Hello "</span> + name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      	</span><br><span class="line">        HelloWorld englishGreeting = <span class="keyword">new</span> EnglishGreeting();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//匿名类实现HelloWorld接口</span></span><br><span class="line">        HelloWorld frenchGreeting = <span class="keyword">new</span> HelloWorld() &#123;</span><br><span class="line">            String name = <span class="string">"tout le monde"</span>;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                greetSomeone(<span class="string">"tout le monde"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greetSomeone</span><span class="params">(String someone)</span> </span>&#123;</span><br><span class="line">                name = someone;</span><br><span class="line">                System.out.println(<span class="string">"Salut "</span> + name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="comment">//匿名类实现HelloWorld接口</span></span><br><span class="line">        HelloWorld spanishGreeting = <span class="keyword">new</span> HelloWorld() &#123;</span><br><span class="line">            String name = <span class="string">"mundo"</span>;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greet</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                greetSomeone(<span class="string">"mundo"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">greetSomeone</span><span class="params">(String someone)</span> </span>&#123;</span><br><span class="line">                name = someone;</span><br><span class="line">                System.out.println(<span class="string">"Hola, "</span> + name);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        englishGreeting.greet();</span><br><span class="line">        frenchGreeting.greetSomeone(<span class="string">"Fred"</span>);</span><br><span class="line">        spanishGreeting.greet();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        HelloWorldAnonymousClasses myApp =</span><br><span class="line">            <span class="keyword">new</span> HelloWorldAnonymousClasses();</span><br><span class="line">        myApp.sayHello();</span><br><span class="line">    &#125;            </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Strategy.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 策略接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 16:09</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Strategy</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 某种算法的声明</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">algorithmStatement</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>上面的例子中，使用实现HelloWorld接口的方式来定义EnglishGreeting类，实例化之后才可以使用；frenchGreeting、spanishGreeting在定义的时候就实例化了，定义完之后就可以使用。上面的例子中，两种方法是一样的，如果一个类只需要用到一次，那么就没必要用继承父类或者是实现接口的方式再定义一个类，这时候就可以使用匿名内部类。</p>
-<h2 id="匿名内部类的语法"><a href="#匿名内部类的语法" class="headerlink" title="匿名内部类的语法"></a>匿名内部类的语法</h2><p>匿名内部类有两种使用方法：</p>
-<ol>
-<li>继承父类的匿名类</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.run();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>在这里，有两个类实现了Strategy接口。</p>
+<blockquote>
+<p>SpecificStrategyA.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 具体的策略对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 16:13</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpecificStrategyA</span> <span class="keyword">implements</span> <span class="title">Strategy</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">algorithmStatement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"算法A"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<ol start="2">
-<li>实现接口的匿名类</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"11"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>SpecificStrategyB.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 具体的策略对象</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 16:15</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SpecificStrategyA</span> <span class="keyword">implements</span> <span class="title">Strategy</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">algorithmStatement</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"算法B"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>第二个例子实际上是将一个实现接口的匿名类作为参数传进了Thread的构造函数中。</p>
-<p>关于匿名类的数据访问可以看这篇文章：<a href="/2019/10/10/Final%20arrays%20in%20Java/">匿名类的数据访问</a>。</p>
+<blockquote>
+<p>Tester.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context(<span class="keyword">new</span> SpecificStrategyA());</span><br><span class="line">        context.executeStrategy();</span><br><span class="line">        context = <span class="keyword">new</span> Context(<span class="keyword">new</span> SpecificStrategyB());</span><br><span class="line">        context.executeStrategy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Output:</span></span><br><span class="line"><span class="comment">//算法A</span></span><br><span class="line"><span class="comment">//算法B</span></span><br></pre></td></tr></table></figure>
 
+<p>可以看到，使用策略模式之后可以动态地在代码运行过程中替换Context对象所使用的算法。</p>
+<p>这里可以对Context对象继续做改进。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//Context.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Context</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Strategy strategy;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Context</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 执行策略的具体方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeStrategy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        strategy.algorithmStatement();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setStrategy</span><span class="params">(Strategy strategy)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.strategy = strategy;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//Tester.java</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Context context = <span class="keyword">new</span> Context();</span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> SpecificStrategyA());</span><br><span class="line">        context.executeStrategy();</span><br><span class="line">        context.setStrategy(<span class="keyword">new</span> SpecificStrategyB());</span><br><span class="line">        context.executeStrategy();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这样就不用重复地new Context对象了。</p>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>下面使用策略模式完成一个手机支付的例子。</p>
+<p>首先，画出UML类图：</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191120210344.png" alt></p>
+<blockquote>
+<p>Payment.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.liuergo.strategy.practical;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 支付策略</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 20:31</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Payment</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 支付方法</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> balance 消费前的余额</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> price 消费的物品的价格</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> 返回消费之后的余额</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">pay</span><span class="params">(<span class="keyword">double</span> balance, <span class="keyword">double</span> price)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Alipay.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.liuergo.strategy.practical;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 支付宝支付</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 20:31</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Alipay</span> <span class="keyword">implements</span> <span class="title">Payment</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">pay</span><span class="params">(<span class="keyword">double</span> balance, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//各种支付方式中此部分逻辑肯定不同</span></span><br><span class="line">        System.out.println(<span class="string">"正在打开支付宝..."</span>);</span><br><span class="line">        System.out.println(<span class="string">"使用支付宝支付了"</span> + price + <span class="string">"元"</span>);</span><br><span class="line">        <span class="keyword">return</span> balance - price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>WechetPay.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.liuergo.strategy.practical;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 微信支付</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 20:35</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WechatPay</span> <span class="keyword">implements</span> <span class="title">Payment</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">pay</span><span class="params">(<span class="keyword">double</span> balance, <span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//各种支付方式中此部分逻辑肯定不同</span></span><br><span class="line">        System.out.println(<span class="string">"正在打开微信..."</span>);</span><br><span class="line">        System.out.println(<span class="string">"使用微信支付了"</span> + price + <span class="string">"元"</span>);</span><br><span class="line">        <span class="keyword">return</span> balance - price;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Consumer.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> top.liuergo.strategy.practical;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> lombok.Data;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 消费者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-20 20:36</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">double</span> balance;</span><br><span class="line">    Payment payment;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">usePayment</span><span class="params">(<span class="keyword">double</span> price)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.balance = payment.pay(balance, price);</span><br><span class="line">        System.out.println(<span class="string">"当前余额:"</span>+ <span class="keyword">this</span>.balance);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tester.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> top.liuergo.strategy.practical.Alipay;</span><br><span class="line"><span class="keyword">import</span> top.liuergo.strategy.practical.Consumer;</span><br><span class="line"><span class="keyword">import</span> top.liuergo.strategy.practical.WechatPay;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span>: 测试类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-10-30 16:57</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Consumer consumer = <span class="keyword">new</span> Consumer();</span><br><span class="line">        consumer.setBalance(<span class="number">20000</span>);</span><br><span class="line">        consumer.setPayment(<span class="keyword">new</span> Alipay());</span><br><span class="line">        consumer.usePayment(<span class="number">20</span>);</span><br><span class="line">        consumer.setPayment(<span class="keyword">new</span> WechatPay());</span><br><span class="line">        consumer.usePayment(<span class="number">100</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>运行程序之后的输出：</p>
+<img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191120210909.png" style="zoom:65%;">
       
     </div>
     
@@ -493,7 +524,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Java/" rel="tag"> <i class="fa fa-tag"> Java</i></a>
+            <a href="/tags/设计模式/" rel="tag"> <i class="fa fa-tag"> 设计模式</i></a>
           
         </div>
       
@@ -506,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/19/Hexo部署到Github文件夹大小写问题/" rel="next" title="Hexo部署到Github文件夹大小写问题">
-                <i class="fa fa-chevron-left"></i> Hexo部署到Github文件夹大小写问题
+              <a href="/2019/11/13/Maven总结/" rel="next" title="Maven总结">
+                <i class="fa fa-chevron-left"></i> Maven总结
               </a>
             
           </div>
@@ -516,8 +547,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/20/Java中的深拷贝和浅拷贝/" rel="prev" title="Java中的深拷贝和浅拷贝">
-                Java中的深拷贝和浅拷贝 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/11/20/UML类图/" rel="prev" title="UML类图">
+                UML类图 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -676,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#内部类"><span class="nav-number">1.</span> <span class="nav-text">内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么要使用内部类"><span class="nav-number">2.</span> <span class="nav-text">为什么要使用内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#成员内部类"><span class="nav-number">3.</span> <span class="nav-text">成员内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#局部内部类"><span class="nav-number">4.</span> <span class="nav-text">局部内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#静态内部类"><span class="nav-number">5.</span> <span class="nav-text">静态内部类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#匿名内部类"><span class="nav-number">6.</span> <span class="nav-text">匿名内部类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义匿名内部类"><span class="nav-number">6.1.</span> <span class="nav-text">定义匿名内部类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#匿名内部类的语法"><span class="nav-number">6.2.</span> <span class="nav-text">匿名内部类的语法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#策略模式"><span class="nav-number">1.</span> <span class="nav-text">策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现"><span class="nav-number">1.1.</span> <span class="nav-text">实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.2.</span> <span class="nav-text">例子</span></a></li></ol></li></ol></div>
             
 
           </div>

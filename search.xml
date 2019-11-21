@@ -35,6 +35,18 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[设计模式—观察者模式]]></title>
+    <url>%2F2019%2F11%2F09%2F%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%2F</url>
+    <content type="text"><![CDATA[观察者模式定义 观察者模式（又被称为发布-订阅（Publish/Subscribe）模式，属于行为型模式的一种，它定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态变化时，会通知所有的观察者对象，使他们能够自动更新自己。 定义很明确，如果学过Android的童鞋肯定对Android中的广播不陌生，广播就是观察者模式的一种实现。 实现下面举个例子来说明观察者模式，某个明星在微博发布了一个动态，说他会唱跳rap篮球，然后所有关注他的粉丝都第一时间就收到了他的动态。这就是一个典型的观察者模式，粉丝作为观察者观察明星，明星一旦有状态改变就通知所有粉丝。 首先画出UML类图： Observer接口：在此接口中，只声明了一个update()方法，用来更新每个观察者的状态。 Ikun观察者类：此类实现了Observer接口，是一个实际的观察者，在我们例子中，一个Ikun对象就是Kunkun的粉丝之一。 Subject接口：在此接口中，声明了添加、删除以及通知观察者的方法。 Kunkun被观察者类：此类实现了Subject接口，是一个实际的被观察者，用一个ArrayList变量储存Observer，这样addObserver方法就是向ArrayList中add新元素，即为Kunkun添加一个新ikun；removeObserver就是remove某个元素，即为Kunkun踢出一个ikun；notify方法就是遍历所有的Observer，执行update方法，通知所有的ikun。 下面给出Java代码： Subject.java package top.liuergo.observer.simple;/** * @author liuergo * @description 被观察者 * @date 2019-11-21 09:59 */public interface Subject &#123; /** * 为该Subject添加观察者 * @param o 一个观察者对象 */ public void addObserver(Observer o); /** * 删除某个观察者 * @param o 一个观察者对象 */ public void removeObserver(Observer o); /** * 通知所有观察者 */ public void notifyAllObservers();&#125; Observer.java package top.liuergo.observer.simple;/** * @author liuergo * @description 观察者 * @date 2019-11-21 09:58 */public interface Observer &#123; /** * 更新观察者的状态 * @param message 状态 */ public void update(String message);&#125; Kunkun.java package top.liuergo.observer.pratical;import top.liuergo.observer.simple.Observer;import top.liuergo.observer.simple.Subject;import java.util.ArrayList;import java.util.List;/** * @author liuergo * @description 明星Kunkun * @date 2019-11-21 10:31 */public class Kunkun implements Subject &#123; private List&lt;Observer&gt; ikuns; private String message; public Kunkun() &#123; ikuns = new ArrayList&lt;&gt;(); &#125; @Override public void addObserver(Observer o) &#123; //为Kunkun增加一个ikun ikuns.add(o); &#125; @Override public void removeObserver(Observer o) &#123; //将一个ikun踢出粉丝群 ikuns.remove(o); &#125; @Override public void notifyAllObservers() &#123; for (Observer ikun : ikuns) &#123; ikun.update(this.message); &#125; &#125; public void sendMessage(String message) &#123; this.message = message; notifyAllObservers(); &#125;&#125; Ikun.java package top.liuergo.observer.pratical;import top.liuergo.observer.simple.Observer;/** * @author liuergo * @description Kunkun粉丝 * @date 2019-11-21 10:35 */public class Ikun implements Observer &#123; private String name; public Ikun(String name) &#123; this.name = name; &#125; @Override public void update(String message) &#123; //ikun更新自己的状态 System.out.println(name + "收到了消息：" + message); &#125;&#125; Tester.java package top.liuergo.observer.pratical;/** * @author liuergo * @description 测试类 * @date 2019-11-21 10:46 */public class Tester &#123; public static void main(String[] args) &#123; Ikun ikunA = new Ikun("张三"); Ikun ikunB = new Ikun("李四"); Kunkun kunkun = new Kunkun(); kunkun.addObserver(ikunA); kunkun.addObserver(ikunB); kunkun.sendMessage("我是练习时常两年半的偶像练习生，喜欢唱、跳、rap、篮球~"); &#125;&#125; 运行结果： 这样Kukun的两个ikun都收到了Kunkun发布的消息。]]></content>
+      <categories>
+        <category>设计模式</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[TimeUnit类使用]]></title>
     <url>%2F2019%2F11%2F09%2FTimeUnit%E7%B1%BB%E4%BD%BF%E7%94%A8%2F</url>
     <content type="text"><![CDATA[TimeUnit使用在学习线程池的时候发现ThreadPoolExecutor类中有个TimeUnit类的参数，此类是java.util.concurrent包下的类，记录一下该类的使用。 作用： 时间粒度转换 提供了可读性更好的线程暂停操作，通常用来代替Thread.sleep() 常用的几个时间粒度TimeUnit.DAYS //天TimeUnit.HOURS //小时TimeUnit.MINUTES //分钟TimeUnit.SECONDS //秒TimeUnit.MILLISECONDS //毫秒 时间粒度转换public long toMillis(long d) //转化成毫秒public long toSeconds(long d) //转化成秒public long toMinutes(long d) //转化成分钟public long toHours(long d) //转化成小时public long toDays(long d) //转化天 Example import java.util.concurrent.TimeUnit;/** * @paragram: ThreadPoolDemo * @description: TimeUnit类测试 * @auhor: liuergo * @date: 2019-11-09 14:08 */public class TimeUnitTest &#123; public static void main(String[] args) &#123; //将一天转换为24小时 System.out.println(TimeUnit.DAYS.toHours(1)); //将一小时转换为60分钟 System.out.println(TimeUnit.HOURS.toMinutes(1)); &#125;&#125;//输出结果//24//60 延时import java.sql.Time;import java.util.Timer;import java.util.concurrent.TimeUnit;/** * @paragram: ThreadPoolDemo * @description: TimeUnit类测试 * @auhor: liuergo * @date: 2019-11-09 14:08 */public class TimeUnitTest &#123; public static void main(String[] args) throws InterruptedException &#123; Thread.sleep(60 * 60 * 1000); //可读性不高 TimeUnit.HOURS.sleep(1); //同样是线程睡眠一小时，使用TimeUnit可读性会高很多。 &#125;&#125;]]></content>
@@ -243,8 +255,8 @@
       </categories>
       <tags>
         <tag>计算机网络</tag>
-        <tag>http</tag>
         <tag>WireShark</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>

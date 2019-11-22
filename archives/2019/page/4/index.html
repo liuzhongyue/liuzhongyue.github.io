@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Java,多线程,">
+  <meta name="keywords" content="Hexo, NexT">
 
 
 
@@ -79,18 +79,16 @@
 
 
 
-<meta name="description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
-<meta name="keywords" content="Java,多线程">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Java多线程—BlockingQueue">
-<meta property="og:url" content="http://yoursite.com/2019/11/09/Java多线程—BlockingQueue/index.html">
+<meta name="description" content="Later equals never.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ergo&#39;s blog">
+<meta property="og:url" content="http://yoursite.com/archives/2019/page/4/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
+<meta property="og:description" content="Later equals never.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-11-10T12:29:04.349Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java多线程—BlockingQueue">
-<meta name="twitter:description" content="BlockingQueue阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。 核心方法压入元素 add(E e)：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用offer()方法。 offer(E e)：向队尾增加元素">
+<meta name="twitter:title" content="ergo&#39;s blog">
+<meta name="twitter:description" content="Later equals never.">
 
 
 
@@ -120,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/11/09/Java多线程—BlockingQueue/">
+  <link rel="canonical" href="http://yoursite.com/archives/2019/page/4/">
 
 
 
 
 
-  <title>Java多线程—BlockingQueue | ergo's blog</title>
+  <title>归档 | ergo's blog</title>
   
 
 
@@ -145,7 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -271,305 +269,75 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        
+        
+         
+        
+        OK! 目前共计 31 篇日志。 继续努力。
+      </span>
 
-  
-  
-  
+      
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/09/Java多线程—BlockingQueue/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="机智刘二狗">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/icon.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="ergo's blog">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2019/09/16/WireShark基本操作/" itemprop="url">
+              
+                <span itemprop="name">WireShark基本操作</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">Java多线程—BlockingQueue</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-09T13:42:39+08:00">
-                2019-11-09
-              </time>
-            
-
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-10T20:29:04+08:00">
-                2019-11-10
-              </time>
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-            <span class="post-meta-divider">|</span>
-            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
-            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
-            </span>
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  738
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="BlockingQueue"><a href="#BlockingQueue" class="headerlink" title="BlockingQueue"></a>BlockingQueue</h1><p>阻塞队列，所谓的阻塞是指，当队列已满时，会阻塞当前添加元素的线程，直到队列不满或者等到超时；当队列为空时，会阻塞当前获取元素的线程，直到队列不空或者等待超时。</p>
-<h1 id="核心方法"><a href="#核心方法" class="headerlink" title="核心方法"></a>核心方法</h1><h2 id="压入元素"><a href="#压入元素" class="headerlink" title="压入元素"></a>压入元素</h2><ul>
-<li><code>add(E e)</code>：向队尾增加元素，设置成功返回true。如果使用了capacity-restricted队列，即限定了容量的队列，推荐使用<code>offer()</code>方法。</li>
-<li><code>offer(E e)</code>：向队尾增加元素，设置成功返回true，如果队列中没有多余的空间返回false。</li>
-<li><code>put(E e)</code>：向队尾增加元素，如果队列中没有多余的空间，该方法会一直阻塞。</li>
-</ul>
-<h2 id="弹出元素"><a href="#弹出元素" class="headerlink" title="弹出元素"></a>弹出元素</h2><ul>
-<li><p><code>poll()</code>：获取并移除队首元素，如果队列为空，返回null。</p>
-</li>
-<li><p><code>take()</code>：获取并移除队首元素，如果队列为空，该方法会一直阻塞。</p>
-</li>
-<li><p><code>peek()</code>：获取但是并不移除队首元素，如果队列为空，返回null。</p>
-</li>
-</ul>
-<h2 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h2><ul>
-<li><code>contains(Obeject o)</code>：判断队列中是否包含该元素。</li>
-<li><code>int drainTo(Collection&lt;? super E&gt; c)</code>：将队列转化为集合。</li>
-</ul>
-<h1 id="实现类"><a href="#实现类" class="headerlink" title="实现类"></a>实现类</h1><table>
-<thead>
-<tr>
-<th>实现类</th>
-<th>底层数据结构</th>
-<th>是否有界</th>
-<th>其他</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ArrayBlockingQueue</td>
-<td>arrayList</td>
-<td>有界</td>
-<td>只有一把锁，入队高并发或出队高并发的情况下推荐使用</td>
-</tr>
-<tr>
-<td>LinkedBlockingQueue</td>
-<td>linkedList</td>
-<td>默认无界，可指定上限</td>
-<td>两把锁，在入队与出队都高并发的情况下推荐使用</td>
-</tr>
-<tr>
-<td>DelayQueue</td>
-<td>heap</td>
-<td>无界</td>
-<td>延迟期满时才能从中提取元素</td>
-</tr>
-<tr>
-<td>PriorityBlockingQueue</td>
-<td>heap</td>
-<td>无界</td>
-<td>基于优先级的阻塞队列</td>
-</tr>
-<tr>
-<td>SynchronousQueue</td>
-<td>无</td>
-<td>无界</td>
-<td>无缓冲的阻塞队列，只能容纳一个元素，向队列中插入一个新元素的线程将会阻塞，直到另一个线程将该元素从队列中抽走。</td>
-</tr>
-</tbody></table>
-<h1 id="生产者消费者例子"><a href="#生产者消费者例子" class="headerlink" title="生产者消费者例子"></a>生产者消费者例子</h1><blockquote>
-<p>Producer.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.BlockingQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 生产者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-10 00:23</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BlockingQueue&lt;Integer&gt; queue;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(BlockingQueue&lt;Integer&gt; queue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxProductNum = <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxProductNum; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">1</span>);</span><br><span class="line">                 <span class="comment">//生产者生产</span></span><br><span class="line">                queue.put(i);</span><br><span class="line">                System.out.println(<span class="string">"Producer produced "</span> + i);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Consumer.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.BlockingQueue;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.TimeUnit;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 消费者</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-10 00:24</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> BlockingQueue&lt;Integer&gt; queue;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(BlockingQueue&lt;Integer&gt; queue)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.queue = queue;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> maxConsumeTime = <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; maxConsumeTime; i++) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                TimeUnit.SECONDS.sleep(<span class="number">2</span>);</span><br><span class="line">                <span class="comment">//消费者消费并拿到产品</span></span><br><span class="line">                <span class="keyword">int</span> product = queue.take();</span><br><span class="line">                System.out.println(<span class="string">"Consumer consumed "</span> + product);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>Tester.java</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> liuergo</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@description</span> 测试类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2019-11-10 13:26</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Tester</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        BlockingQueue&lt;Integer&gt; queue = <span class="keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class="number">5</span>);</span><br><span class="line">        Producer producer = <span class="keyword">new</span> Producer(queue);</span><br><span class="line">        Consumer consumer = <span class="keyword">new</span> Consumer(queue);</span><br><span class="line">        <span class="comment">//使用线程池，避免显式地创建线程</span></span><br><span class="line">        ExecutorService service = Executors.newFixedThreadPool(<span class="number">2</span>);</span><br><span class="line">        service.execute(producer);</span><br><span class="line">        service.execute(consumer);</span><br><span class="line">        service.shutdown();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-      <div>
-        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
-  <div></div>
-  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-    <span>打赏</span>
-  </button>
-  <div id="QR" style="display: none;">
-
-    
-
-    
-      <div id="alipay" style="display: inline-block">
-        <img id="alipay_qr" src="/images/alipay.jpg" alt="机智刘二狗 支付宝">
-        <p>支付宝</p>
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated" datetime="2019-09-16T00:00:00+08:00" content="2019-09-16">
+          09-16
+        </time>
       </div>
-    
 
-    
-
-  </div>
-</div>
-
-      </div>
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Java/" rel="tag"> <i class="fa fa-tag"> Java</i></a>
-          
-            <a href="/tags/多线程/" rel="tag"> <i class="fa fa-tag"> 多线程</i></a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/11/07/Java多线程—线程池/" rel="next" title="Java多线程—线程池">
-                <i class="fa fa-chevron-left"></i> Java多线程—线程池
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/11/09/TimeUnit类使用/" rel="prev" title="TimeUnit类使用">
-                TimeUnit类使用 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
     </div>
   </div>
+  
+  
+  
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/archives/2019/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/archives/2019/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2019/page/3/">3</a><span class="page-number current">4</span>
+  </nav>
+
+
 
 
           </div>
@@ -577,10 +345,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -601,17 +365,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -697,22 +452,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#BlockingQueue"><span class="nav-number">1.</span> <span class="nav-text">BlockingQueue</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#核心方法"><span class="nav-number">2.</span> <span class="nav-text">核心方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#压入元素"><span class="nav-number">2.1.</span> <span class="nav-text">压入元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#弹出元素"><span class="nav-number">2.2.</span> <span class="nav-text">弹出元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他操作"><span class="nav-number">2.3.</span> <span class="nav-text">其他操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实现类"><span class="nav-number">3.</span> <span class="nav-text">实现类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生产者消费者例子"><span class="nav-number">4.</span> <span class="nav-text">生产者消费者例子</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -885,10 +624,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
@@ -1278,6 +1013,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

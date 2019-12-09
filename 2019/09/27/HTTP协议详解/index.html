@@ -79,13 +79,13 @@
 
 
 
-<meta name="description" content="本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析HTTP">
+<meta name="description" content="HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析HTTP报文大致可分为报文首部和报文主体两部分，两者由一个空行划分。通常，不一定要有报文主体（GET方法就没有">
 <meta name="keywords" content="计算机网络,HTTP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HTTP协议详解">
 <meta property="og:url" content="http://yoursite.com/2019/09/27/HTTP协议详解/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析HTTP">
+<meta property="og:description" content="HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析HTTP报文大致可分为报文首部和报文主体两部分，两者由一个空行划分。通常，不一定要有报文主体（GET方法就没有">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%7BE07917AA-B3E1-F5F4-37DE-9A0992C8DC62%7D.jpg">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930162649.png">
@@ -93,10 +93,10 @@
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930165732.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170159.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190930170555.png">
-<meta property="og:updated_time" content="2019-11-07T15:54:42.842Z">
+<meta property="og:updated_time" content="2019-12-04T13:04:59.422Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HTTP协议详解">
-<meta name="twitter:description" content="本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。 HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析HTTP">
+<meta name="twitter:description" content="HTTP协议 HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。  协议报文解析HTTP报文大致可分为报文首部和报文主体两部分，两者由一个空行划分。通常，不一定要有报文主体（GET方法就没有">
 <meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/%7BE07917AA-B3E1-F5F4-37DE-9A0992C8DC62%7D.jpg">
 
 
@@ -337,8 +337,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-07T23:54:42+08:00">
-                2019-11-07
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-04T21:04:59+08:00">
+                2019-12-04
               </time>
             
           </span>
@@ -428,8 +428,7 @@
       
 
       
-        <p>本文主要是对《HTTP图解》这本书的学习记录，加上一些实验课中以及自己做的实验深入学习HTTP协议。</p>
-<h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><blockquote>
+        <h1 id="HTTP协议"><a href="#HTTP协议" class="headerlink" title="HTTP协议"></a>HTTP协议</h1><blockquote>
 <p>HTTP协议（HyperText Transfer Protocol，超文本传输协议）是因特网上应用最为广泛的一种网络传输协议，所有的WWW文件都必须遵守这个标准。</p>
 <p>HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。</p>
 </blockquote>
@@ -662,7 +661,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">37</span>
+                  <span class="site-state-item-count">39</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -684,7 +683,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -775,7 +774,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">41.8k</span>
+    <span title="Site words total count">44.9k</span>
   
 </div>
 

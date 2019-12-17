@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络,TCP协议,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="我们经常会拿UD跟TCP进行比较，在介绍TCP之前首先介绍一下UDP协议  UDP 全称：用户数据报协议（UDP，User Datagram Protocol），UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据报的方法。  数据报格式  源端口号和目的端口号：源端程序和目的端程序进程的端口号。 总长度：UDP包的字节数，包括头部和数据，最小长度为8 Byte(头部长度为8 B">
+<meta name="keywords" content="计算机网络,TCP协议">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计网—TCP协议详解">
+<meta property="og:url" content="http://yoursite.com/2019/12/10/计网—TCP协议/index.html">
+<meta property="og:site_name" content="ergo&#39;s blog">
+<meta property="og:description" content="我们经常会拿UD跟TCP进行比较，在介绍TCP之前首先介绍一下UDP协议  UDP 全称：用户数据报协议（UDP，User Datagram Protocol），UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据报的方法。  数据报格式  源端口号和目的端口号：源端程序和目的端程序进程的端口号。 总长度：UDP包的字节数，包括头部和数据，最小长度为8 Byte(头部长度为8 B">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205184140.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205184043.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205185214.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205192048.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205201323.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205204031.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205204135.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205204155.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209131417.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209171626.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209171823.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210185631.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210192214.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210203513.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210204445.png">
+<meta property="og:updated_time" content="2019-12-17T05:58:24.499Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计网—TCP协议详解">
+<meta name="twitter:description" content="我们经常会拿UD跟TCP进行比较，在介绍TCP之前首先介绍一下UDP协议  UDP 全称：用户数据报协议（UDP，User Datagram Protocol），UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据报的方法。  数据报格式  源端口号和目的端口号：源端程序和目的端程序进程的端口号。 总长度：UDP包的字节数，包括头部和数据，最小长度为8 Byte(头部长度为8 B">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205184140.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/10/计网—TCP协议/">
+
+
+
+
+
+  <title>计网—TCP协议详解 | ergo's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ergo's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/10/计网—TCP协议/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="机智刘二狗">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ergo's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">计网—TCP协议详解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-10T21:15:20+08:00">
+                2019-12-10
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2019-12-17T13:58:24+08:00">
+                2019-12-17
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>我们经常会拿UD跟TCP进行比较，在介绍TCP之前首先介绍一下UDP协议</p>
+</blockquote>
+<h1 id="UDP"><a href="#UDP" class="headerlink" title="UDP"></a>UDP</h1><blockquote>
+<p>全称：用户数据报协议（UDP，User Datagram Protocol），UDP 为应用程序提供了一种无需建立连接就可以发送封装的 IP 数据报的方法。</p>
+</blockquote>
+<h2 id="数据报格式"><a href="#数据报格式" class="headerlink" title="数据报格式"></a>数据报格式</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205184140.png" alt></p>
+<ul>
+<li>源端口号和目的端口号：源端程序和目的端程序进程的端口号。</li>
+<li>总长度：UDP包的字节数，包括头部和数据，最小长度为8 Byte(头部长度为8 Byte)。</li>
+<li>校验和：对伪包头 + UDP头部 + UDP数据三部分的校验。</li>
+</ul>
+<p>WireShark中抓到的包(DNS解析报文)</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205184043.png" alt></p>
+<h2 id="首部格式"><a href="#首部格式" class="headerlink" title="首部格式"></a>首部格式</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205185214.png" alt></p>
+<p><strong>UDP协议的首部有一个特别的地方就是伪首部，伪首部是不会被传输的，仅仅是在计算检验和时，临时把“伪首部”和 UDP 用户数据报连接在一起，伪首部只是为了计算检验和。</strong></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从UDP的数据报格式上就可以看出UDP是一种不可靠的传输层协议：</p>
+<p>(1) UDP无连接，即通信的双方无需建立连接就可以收发数据。</p>
+<p>(2) 不进行差错控制，而且不能保证数据可以准确到达。</p>
+<p>(3) 不会进行流量控制、拥塞控制。</p>
+<p>然而，UDP的缺点就是TCP的优点，UDP的缺点也正是TCP的优点。</p>
+<h1 id="TCP协议"><a href="#TCP协议" class="headerlink" title="TCP协议"></a>TCP协议</h1><blockquote>
+<p>传输控制协议（TCP，Transmission Control Protocol），是一种面向连接的、可靠的、基于字节流的传输层通信协议。</p>
+</blockquote>
+<h2 id="数据报格式-1"><a href="#数据报格式-1" class="headerlink" title="数据报格式"></a>数据报格式</h2><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205192048.png" alt></p>
+<ul>
+<li><p>源端口和目的端口：各2 Byte源端程序和目的端程序进程的端口号。</p>
+</li>
+<li><p>发送序号：4 Byte，指出本报文段中的数据的第一个字节在发送方本次连接上发送的数据流中的位置。</p>
+</li>
+<li><p>确认序号：4 Byte，期望收到对方下一个报文段的第一个数据字节的序号，与 ACK = 1配合使用；</p>
+</li>
+<li><p>头部长度：4 bit，以4字节为单位指出头部的长度，如该位为5，则头部长度为20 Byte。</p>
+</li>
+<li><p>URG：6 bit当 URG = 1 时，表明此报文是紧急数据，应尽快传送出去，接收方应优先处理。</p>
+</li>
+<li><p>ACK：当ACK = 1 时<strong>确认序号</strong>字段才有意义。</p>
+</li>
+<li><p>PSH：当 PSH = 1 时，该包连同传送缓冲区的其它包应立即进行传送，而无需等待缓冲区满了才送，接收端必须尽快将此数据交给程序处理。</p>
+</li>
+<li><p>RST：当 RST = 1 时，表明出现严重差错，复位产生差错的连接。</p>
+</li>
+<li><p>SYN、FIN：与三次握手和四次挥手有关，将在后面解释。</p>
+</li>
+<li><p>窗口大小：2 Byte，用于流量控制，将在后面解释。</p>
+</li>
+<li><p>校验和：2 Byte，和UDP相同，校验范围也是伪包头 + TCP头部 + TCP数据。</p>
+</li>
+<li><p>紧急指针：2 Byte，当 URG = 1 的时，紧急指针就会指示出紧急数据所在位置。</p>
+</li>
+<li><p>可选项：长度可变，可选项的长度要么是 0 ，要么就是 32 bit 的整倍数。TCP 只规定了一种选项，即最长报文段MSS(Maximum Segment Size)，限定了每个TCP报文段中数据字段的最大长度。</p>
+<blockquote>
+<p>最长报文段MSS：为了避免发送主机对IP报文进行分片，限定TCP报文段中数据量的最大长度，与数据链路层MTU有关。</p>
+</blockquote>
+</li>
+</ul>
+<p>可以看出，TCP协议从数据报格式上来看就比UDP麻烦了很多。</p>
+<h2 id="连接的建立和释放"><a href="#连接的建立和释放" class="headerlink" title="连接的建立和释放"></a>连接的建立和释放</h2><h3 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h3><p>TCP协议是面向连接的传输层协议，发送数据前首先要建立连接，TCP建立连接的方式就是三次握手。</p>
+<p><strong>三次握手的过程：</strong></p>
+<p>(1) 发起连接的一方，即客户端发送SYN = 1，ACK = 0，Sequence Number = x (这里的x是一个随机数，原因后面说明) 的TCP报文。</p>
+<p>(2) 接受连接的一方，即服务端接收到客户端发送的连接请求后，返回SYN = 0，ACK = 1，Ack Number = x + 1的报文。</p>
+<p>(3) 客户端收到服务端的响应后，再发送一个SYN = 0，ACK = 1，Sequence Number = x + 1的报文。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205201323.png" alt></p>
+<p><strong>为什么序列号初始值为随机数？</strong></p>
+<p>Sequence number的起始值就是从三次握手的第一次开始确定的，而且起始值是生成的随机数，这样做的原因是为了防止黑客猜出初始序列号进行攻击。</p>
+<p><strong>SEQ和ACK</strong></p>
+<p>SEQ代表：发送这个包中的第一位应该在整个数据流中所处的位置。</p>
+<p>ACK代表：接收方希望收到的下一个Sequence number是多少。</p>
+<p>举例：</p>
+<blockquote>
+<p>假如发出了Seq num为100的包，那么返回的Ack num就应该是对前100号包的确认，Ack num = 101，表示</p>
+</blockquote>
+<p><strong>实例</strong></p>
+<p>分析WireShark中抓到的三次握手的数据包。</p>
+<p>(1) 第一次握手</p>
+<p>由客户端发出，可以看到，第一次握手SYN被置1，同时给出了初始的Sequence number(此处WireShark为了便于分析将序列号变成了相对序列号，从0开始)。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205204031.png" alt></p>
+<p>(2) 第二次握手</p>
+<p>由服务端返回，第二次握手SYN和ACK都被置1，Ack number被置为了1，这里要注意，虽然Segment Len为0，但是Ack number增加了1。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205204135.png" alt></p>
+<p>(3) 第三次握手</p>
+<p>由客户端返回，ACK被置1，凡是由客户端发出的数据帧只有该包的ACK是被置为1的</p>
+<img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191205204155.png" style="zoom:80%;">
+
+<h2 id="差错控制"><a href="#差错控制" class="headerlink" title="差错控制"></a>差错控制</h2><p>差错控制的主要任务是发生下列异常情况的时候，要能检测到并且采取措施来纠正差错。</p>
+<p>(1) 报文段出错</p>
+<p>(2) 报文段丢失</p>
+<p>(3) 报文段确认丢失</p>
+<h3 id="报文段丢失"><a href="#报文段丢失" class="headerlink" title="报文段丢失"></a>报文段丢失</h3><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209131417.png" alt></p>
+<p>发送方每发送一个报文段，就会启动一个重传定时器，若某个报文段丢失，发送方的定时器就会超时，然后对其进行重传。</p>
+<h3 id="报文段出错"><a href="#报文段出错" class="headerlink" title="报文段出错"></a>报文段出错</h3><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209171626.png" alt></p>
+<p>当每次接收端收到一个报文段，都会首先对其进行差错检测，正确就接收并返回确认，错误则不进行确认相应，这样，当启动的定时器超时之后，发送方就会重传。</p>
+<h3 id="确认丢失"><a href="#确认丢失" class="headerlink" title="确认丢失"></a>确认丢失</h3><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209171823.png" alt></p>
+<p>如果确认包丢失了，那么发送方的定时器会超时，对数据包进行重传，接收方通过数据包的序号可以判断出是否收到了重复包，如果收到的是重复包会将该包丢弃，之后再返回一次确认。</p>
+<h2 id="流量控制"><a href="#流量控制" class="headerlink" title="流量控制"></a>流量控制</h2><p>差错控制中给出的几个图，都是基于停等技术来举的例子，然而发送方每发出一个报文段，就停下来等待接收方的确认的方法通信效率极低，所以需要一次性发送多个数据包以提升网络通信的效率。然而，如果一次性发送的数据包太多，数据发送过快，接收方会来不及接收，这样通信效率反而会降低。</p>
+<p>TCP协议有专门的流量控制技术，就是使用滑动窗口技术。</p>
+<h3 id="滑动窗口技术"><a href="#滑动窗口技术" class="headerlink" title="滑动窗口技术"></a>滑动窗口技术</h3><p>采用滑动窗口技术以后，允许发送方在未获得确认的情况下连续发送多个数据包，但是会限制连续发送多包的最大数量，缓和传输效率和流量控制的矛盾。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210185631.png" alt></p>
+<p>上图就是一个发送窗口的简单示例，窗口大小为4，那么发送端会一次性就会发送4个数据包，当发送端收到接收端的1号包的响应的时候，窗口就会向前滑动。</p>
+<p>在TCP协议中的滑动窗口技术是动态的，因为通讯过程是支持全双工的，所以TCP有两个滑动窗口，一个是发送窗口，一个是接收窗口，发送窗口大小 = 接收窗口大小。在TCP协议数据报格式一节中，其中TCP数据报的头部有一个窗口大小字段，该字段就是控制滑动窗口的大小的，双方会该字段来限制滑动窗口的大小，进行流量控制。</p>
+<h4 id="基于滑动窗口技术的差错控制"><a href="#基于滑动窗口技术的差错控制" class="headerlink" title="基于滑动窗口技术的差错控制"></a>基于滑动窗口技术的差错控制</h4><p>使用了滑动窗口技术之后，差错控制就不是仅仅为每个数据包开启一个定时器</p>
+<p>当对报文段的确认超时，根据发送方采取措施的不同，差错控制分为两种：</p>
+<ul>
+<li><strong>回退N差错控制</strong></li>
+</ul>
+<p>所谓的回退N差错控制指的是如果某个报文段确认超时，那么发送方会按需重发该包以及其后所发的所有包，接收端会对重复的包进行丢弃；接收方可以进行累计确认。</p>
+<img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210192214.png" style="zoom:67%;">
+
+
+
+<p>这种方法对于接收方来说做出的处理相对简答，但是缺点也很明显，就是会导致某些已经正确接受的数据重传，降低通信效率。</p>
+<ul>
+<li><strong>选择重传差错控制</strong></li>
+</ul>
+<p>某个报文段的确认超时，发送方只重传定时器超时的那一个报文段，接收方可以暂存序号在出错数据包之后（接收窗口内）的数据，直到收到正确的，排好序后上传应用层；接收方不采用累积确认。</p>
+<h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><p>在某段时间，若对网络中某资源的需求超过了该资源所能提供的可用部分，网络的性能就要变坏—产生拥塞(congestion)。</p>
+<p>TCP的拥塞控制机制需要发送方采取某些措施来<strong>尽量避免拥塞控制的发生或者对已经发生的拥塞做出响应。</strong></p>
+<p>这样，拥塞控制就可以分为两部分：拥塞避免和拥塞控制。</p>
+<h3 id="发送方如何探测网络的拥塞状况？"><a href="#发送方如何探测网络的拥塞状况？" class="headerlink" title="发送方如何探测网络的拥塞状况？"></a>发送方如何探测网络的拥塞状况？</h3><p>如果发生了网络拥塞，那么数据包的传输必定收到影响，拥塞的网络会导致数据包传输延迟变长或者被丢弃。</p>
+<p>在TCP中两种策略来检测当前网络是否拥堵。</p>
+<ol>
+<li><strong>重传定时器超时</strong>，虽然重传定时器超时是用来差错检测的，但是一般来说由于出数据包差错而被丢弃的概率是很小的。所以只要出现了超时的情况，就可以猜想网络出现了拥堵。</li>
+<li><strong>收到三个重复的ACK</strong>，个别报文段会在网络中丢失，预示可能会出现拥塞（实际未发生拥塞），因此可以尽快采取控制措施，避免拥塞。</li>
+</ol>
+<p>另外，如果TCP协议检测到了拥塞状况的产生，那么就会采取流量控制，通过改变滑动窗口的大小来控制流量。</p>
+<p><code>发送窗口大小 = Min(rwnd, cwnd)</code></p>
+<h3 id="拥塞控制算法"><a href="#拥塞控制算法" class="headerlink" title="拥塞控制算法"></a>拥塞控制算法</h3><p>TCP拥塞控制算法：慢开始、拥塞避免、快速重传、快速回复。</p>
+<p>TCP会为每个连接维持两个变量：</p>
+<ul>
+<li>拥塞窗口：cwnd</li>
+<li>慢开始门限：ssthresh</li>
+</ul>
+<h4 id="慢启动"><a href="#慢启动" class="headerlink" title="慢启动"></a>慢启动</h4><p><strong>算法思路</strong>：由小到大逐渐增大拥塞窗口的数值。</p>
+<p><strong>SMMS</strong>：Sender Maximum Segment Size，发送方一次传输发送的最大数据段长度。发送方发送的每个报文段也就是1 SMMS大小。</p>
+<p><strong>初始拥塞窗口数值的设定</strong>：</p>
+<p>在新的<a href="https://tools.ietf.org/html/rfc5681" target="_blank" rel="noopener">RFC 5681</a>中把初始的拥塞窗口值指定为2~4个SMMS的值：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">If SMSS &gt; 2190 bytes:</span><br><span class="line">	IW = 2 * SMSS bytes and MUST NOT be more than 2 segments</span><br><span class="line">If (SMSS &gt; 1095 bytes) and (SMSS &lt;= 2190 bytes):</span><br><span class="line">	IW = 3 * SMSS bytes and MUST NOT be more than 3 segments</span><br><span class="line">If SMSS &lt;= 1095 bytes:</span><br><span class="line">	IW = 4 * SMSS bytes and MUST NOT be more than 4 segments</span><br></pre></td></tr></table></figure>
+
+<p><strong>慢启动过程</strong>：现在假定拥塞窗口cwnd的初始值为1(1个SMSS的长度)，发送方每收到一个ACK，那么cwnd就增加1，也就是说每经过一个RTT的时间，cwnd就加倍。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210203513.png" alt></p>
+<blockquote>
+<p>注意：慢启动的慢指的是拥塞窗口的初值小，慢启动的过程可以说是一点都不慢</p>
+</blockquote>
+<p>在慢启动进行到一定的时间之后，如果不加以限制，就会造成网络拥塞，设定一个慢启动门限ssthresh，当cwnd &gt;= ssthresh时，开始进入下一个阶段：拥塞避免。</p>
+<h4 id="拥塞避免"><a href="#拥塞避免" class="headerlink" title="拥塞避免"></a>拥塞避免</h4><p><strong>算法思路</strong>：使拥塞窗口的值平缓地增大</p>
+<p><strong>算法过程</strong>：</p>
+<p>拥塞避免阶段不再采用指数增长的形式，而是采用线性增长的形式。</p>
+<p>(1) 当检测到cwnd &gt; ssthresh之后，就会将慢启动转换为拥塞避免。</p>
+<p>(2) 无论在慢启动还是拥塞避免阶段，只要发送方判断网络出现了拥塞(定时器超时或者收到三个重复的ACK)，就会采取下面的策略：</p>
+<ul>
+<li>ssthresh = cwnd / 2</li>
+<li>cwnd = 1</li>
+<li>开始执行慢启动算法</li>
+</ul>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191210204445.png" alt></p>
+<p>上图就是一个TCP执行拥塞避免的全过程：</p>
+<p>当TCP建立连接以后，将拥塞窗口设置为了1，开始慢启动，cwnd指数增长，cwnd等于ssthresh的初值之后进行拥塞避免，cwnd开始线性增长，在12传输轮次中，发生了超时事件，ssthresh = 16 / 2 = 8，cwnd = 1，并且重新进入慢启动、拥塞避免，到④后，发送了收到三个重复的ACK的情况，这时发送方改为执行==<strong>快重传和快恢复算法</strong>==。</p>
+<h4 id="快重传"><a href="#快重传" class="headerlink" title="快重传"></a>快重传</h4><p>发送方只要一连收到三个重复确认，就知道接收方确实没有收到报文段，因而应当立即进行重传（即“快重传”），这样就不会出现超时，发送方也不就会误认为出现了网络拥塞。</p>
+<h4 id="快恢复"><a href="#快恢复" class="headerlink" title="快恢复"></a>快恢复</h4><p>当发送端收到连续三个重复的确认时n由于发送方现在认为网络很可能没有发生拥塞，因此现在不执行慢开始算法，而是执行快恢复算法：</p>
+<ul>
+<li>ssthresh =  cwnd / 2</li>
+<li>cwnd = ssthresh</li>
+<li>开始执行拥塞避免算法</li>
+</ul>
+<p>所以，在上面的图中，到达④之后，进行了快恢复算法，ssthresh = 16 / 2 = 8，cwnd = ssthresh，下面开始进行拥塞避免算法。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="机智刘二狗 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机网络/" rel="tag"> <i class="fa fa-tag"> 计算机网络</i></a>
+          
+            <a href="/tags/TCP协议/" rel="tag"> <i class="fa fa-tag"> TCP协议</i></a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/09/在Packet Tracer中实现远程管理交换机/" rel="next" title="在Packet Tracer实现远程管理交换机">
+                <i class="fa fa-chevron-left"></i> 在Packet Tracer实现远程管理交换机
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/12/17/计网—ARP协议/" rel="prev" title="计网—ARP协议">
+                计网—ARP协议 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/icon.jpg" alt="机智刘二狗">
+            
+              <p class="site-author-name" itemprop="name">机智刘二狗</p>
+              <p class="site-description motion-element" itemprop="description">Later equals never.</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/liuzhongyue" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://www.flowray.xyz" title="Keyon" target="_blank">Keyon</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#UDP"><span class="nav-number">1.</span> <span class="nav-text">UDP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报格式"><span class="nav-number">1.1.</span> <span class="nav-text">数据报格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#首部格式"><span class="nav-number">1.2.</span> <span class="nav-text">首部格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TCP协议"><span class="nav-number">2.</span> <span class="nav-text">TCP协议</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报格式-1"><span class="nav-number">2.1.</span> <span class="nav-text">数据报格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连接的建立和释放"><span class="nav-number">2.2.</span> <span class="nav-text">连接的建立和释放</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三次握手"><span class="nav-number">2.2.1.</span> <span class="nav-text">三次握手</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#差错控制"><span class="nav-number">2.3.</span> <span class="nav-text">差错控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#报文段丢失"><span class="nav-number">2.3.1.</span> <span class="nav-text">报文段丢失</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#报文段出错"><span class="nav-number">2.3.2.</span> <span class="nav-text">报文段出错</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#确认丢失"><span class="nav-number">2.3.3.</span> <span class="nav-text">确认丢失</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#流量控制"><span class="nav-number">2.4.</span> <span class="nav-text">流量控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#滑动窗口技术"><span class="nav-number">2.4.1.</span> <span class="nav-text">滑动窗口技术</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于滑动窗口技术的差错控制"><span class="nav-number">2.4.1.1.</span> <span class="nav-text">基于滑动窗口技术的差错控制</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">2.5.</span> <span class="nav-text">拥塞控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#发送方如何探测网络的拥塞状况？"><span class="nav-number">2.5.1.</span> <span class="nav-text">发送方如何探测网络的拥塞状况？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#拥塞控制算法"><span class="nav-number">2.5.2.</span> <span class="nav-text">拥塞控制算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#慢启动"><span class="nav-number">2.5.2.1.</span> <span class="nav-text">慢启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拥塞避免"><span class="nav-number">2.5.2.2.</span> <span class="nav-text">拥塞避免</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快重传"><span class="nav-number">2.5.2.3.</span> <span class="nav-text">快重传</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快恢复"><span class="nav-number">2.5.2.4.</span> <span class="nav-text">快恢复</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">机智刘二狗</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">48.7k</span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i> 访问人数
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> 访问总量
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>

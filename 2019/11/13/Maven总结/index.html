@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="由于之前一直在做安卓项目，对Gradle了解比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。  Maven简单介绍，Maven是目前最受欢迎的 Java项目管理构建自动化综合工具。 Maven主要有三个功能：  管理依赖：只需要在pom文件中写入相关的属性就会自动下载并管理jar包。">
+<meta name="description" content="由于之前一直在做安卓项目，使用Gradle比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。  Maven简单介绍，Maven是目前最受欢迎的 Java项目管理构建自动化综合工具。 Maven主要有三个功能：  管理依赖：只需要在pom文件中写入相关的属性就会自动下载并管理jar包。 项">
 <meta name="keywords" content="Java Web">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Maven总结">
 <meta property="og:url" content="http://yoursite.com/2019/11/13/Maven总结/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="由于之前一直在做安卓项目，对Gradle了解比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。  Maven简单介绍，Maven是目前最受欢迎的 Java项目管理构建自动化综合工具。 Maven主要有三个功能：  管理依赖：只需要在pom文件中写入相关的属性就会自动下载并管理jar包。">
+<meta property="og:description" content="由于之前一直在做安卓项目，使用Gradle比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。  Maven简单介绍，Maven是目前最受欢迎的 Java项目管理构建自动化综合工具。 Maven主要有三个功能：  管理依赖：只需要在pom文件中写入相关的属性就会自动下载并管理jar包。 项">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191113173622.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191113173734.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191113170539.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191113170436.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191113192300.png">
-<meta property="og:updated_time" content="2019-11-13T11:36:09.367Z">
+<meta property="og:updated_time" content="2020-01-15T09:36:40.610Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Maven总结">
-<meta name="twitter:description" content="由于之前一直在做安卓项目，对Gradle了解比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。  Maven简单介绍，Maven是目前最受欢迎的 Java项目管理构建自动化综合工具。 Maven主要有三个功能：  管理依赖：只需要在pom文件中写入相关的属性就会自动下载并管理jar包。">
+<meta name="twitter:description" content="由于之前一直在做安卓项目，使用Gradle比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。  Maven简单介绍，Maven是目前最受欢迎的 Java项目管理构建自动化综合工具。 Maven主要有三个功能：  管理依赖：只需要在pom文件中写入相关的属性就会自动下载并管理jar包。 项">
 <meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191113173622.png">
 
 
@@ -320,7 +320,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-13T15:38:52+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-13T00:00:00+08:00">
                 2019-11-13
               </time>
             
@@ -336,8 +336,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-11-13T19:36:09+08:00">
-                2019-11-13
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-15T17:36:40+08:00">
+                2020-01-15
               </time>
             
           </span>
@@ -417,7 +417,7 @@
 
       
         <blockquote>
-<p>由于之前一直在做安卓项目，对Gradle了解比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。</p>
+<p>由于之前一直在做安卓项目，使用Gradle比较多，Maven用的比较少，最近趁着新一届的学弟学妹们加入团队，在学习Java Web基础，跟着学弟学妹们一起学习，对之前的笔记做一个整理，也当重新回顾一下。</p>
 </blockquote>
 <h1 id="Maven"><a href="#Maven" class="headerlink" title="Maven"></a>Maven</h1><p>简单介绍，Maven是目前最受欢迎的 Java项目管理构建自动化综合工具。</p>
 <p>Maven主要有三个功能：</p>
@@ -611,8 +611,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/09/设计模式—观察者模式/" rel="next" title="设计模式—观察者模式">
-                <i class="fa fa-chevron-left"></i> 设计模式—观察者模式
+              <a href="/2019/11/09/Java多线程—BlockingQueue/" rel="next" title="Java多线程—BlockingQueue">
+                <i class="fa fa-chevron-left"></i> Java多线程—BlockingQueue
               </a>
             
           </div>
@@ -801,7 +801,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

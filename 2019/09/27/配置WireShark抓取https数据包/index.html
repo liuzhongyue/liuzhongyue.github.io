@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机网络,交换机,Packet Tracer,STP,VLAN,">
+  <meta name="keywords" content="计算机网络,http,WireShark,">
 
 
 
@@ -79,38 +79,23 @@
 
 
 
-<meta name="description" content="交换局域网两个概念 冲突域：网络中的一组设备集合；域内的不同设备同时发出的以太网帧会互相冲突；特点为：每台主机的可用带宽很低，信息传输安全得不到保证。 广播域：网络中的一组设备集合；当这些设备中的一个发出一个广播时，所有其他的设备都能接收到这个广播帧。  为什么要使用交换机？使用集线器有下面几个缺点：  随着共享式以太网规模的扩大，冲突域不断扩大，导致网络带宽下降。 不同数据传输速率的以太网无法通">
-<meta name="keywords" content="计算机网络,交换机,Packet Tracer,STP,VLAN">
+<meta name="description" content="配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。    完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。    配置WireShark。打开编辑-&amp;gt;首选项-&amp;gt;Protocols，打开SSL对其进行编辑（注：wiresh">
+<meta name="keywords" content="计算机网络,http,WireShark">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计网—交换局域网">
-<meta property="og:url" content="http://yoursite.com/2019/12/09/计网—交换局域网/index.html">
+<meta property="og:title" content="配置WireShark抓取https数据包">
+<meta property="og:url" content="http://yoursite.com/2019/09/27/配置WireShark抓取https数据包/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="交换局域网两个概念 冲突域：网络中的一组设备集合；域内的不同设备同时发出的以太网帧会互相冲突；特点为：每台主机的可用带宽很低，信息传输安全得不到保证。 广播域：网络中的一组设备集合；当这些设备中的一个发出一个广播时，所有其他的设备都能接收到这个广播帧。  为什么要使用交换机？使用集线器有下面几个缺点：  随着共享式以太网规模的扩大，冲突域不断扩大，导致网络带宽下降。 不同数据传输速率的以太网无法通">
+<meta property="og:description" content="配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。    完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。    配置WireShark。打开编辑-&amp;gt;首选项-&amp;gt;Protocols，打开SSL对其进行编辑（注：wiresh">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207151920.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207152727.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207154811.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207163540.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207164153.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207171846.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207173737.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207173320.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207223944.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207230319.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145318.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145527.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145541.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145453.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145547.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191208145730.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191208171753.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209150133.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209150639.png">
-<meta property="og:updated_time" content="2019-12-17T05:57:44.488Z">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929131829.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929133607.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735492337.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735920347.png">
+<meta property="og:updated_time" content="2020-01-15T09:28:10.219Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计网—交换局域网">
-<meta name="twitter:description" content="交换局域网两个概念 冲突域：网络中的一组设备集合；域内的不同设备同时发出的以太网帧会互相冲突；特点为：每台主机的可用带宽很低，信息传输安全得不到保证。 广播域：网络中的一组设备集合；当这些设备中的一个发出一个广播时，所有其他的设备都能接收到这个广播帧。  为什么要使用交换机？使用集线器有下面几个缺点：  随着共享式以太网规模的扩大，冲突域不断扩大，导致网络带宽下降。 不同数据传输速率的以太网无法通">
-<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207151920.png">
+<meta name="twitter:title" content="配置WireShark抓取https数据包">
+<meta name="twitter:description" content="配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。    完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。    配置WireShark。打开编辑-&amp;gt;首选项-&amp;gt;Protocols，打开SSL对其进行编辑（注：wiresh">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929131829.png">
 
 
 
@@ -140,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/09/计网—交换局域网/">
+  <link rel="canonical" href="http://yoursite.com/2019/09/27/配置WireShark抓取https数据包/">
 
 
 
 
 
-  <title>计网—交换局域网 | ergo's blog</title>
+  <title>配置WireShark抓取https数据包 | ergo's blog</title>
   
 
 
@@ -305,7 +290,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/09/计网—交换局域网/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/27/配置WireShark抓取https数据包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -322,7 +307,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">计网—交换局域网</h1>
+          <h1 class="post-title" itemprop="name headline">配置WireShark抓取https数据包</h1>
         
 
         <div class="post-meta">
@@ -334,8 +319,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-09T15:15:35+08:00">
-                2019-12-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-27T00:00:00+08:00">
+                2019-09-27
               </time>
             
 
@@ -350,8 +335,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-12-17T13:57:44+08:00">
-                2019-12-17
+              <time title="更新于" itemprop="dateModified" datetime="2020-01-15T17:28:10+08:00">
+                2020-01-15
               </time>
             
           </span>
@@ -371,6 +356,17 @@
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/计算机网络/" itemprop="url" rel="index">
                     <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/计算机网络/WireShark/" itemprop="url" rel="index">
+                    <span itemprop="name">WireShark</span>
                   </a>
                 </span>
 
@@ -405,7 +401,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2.8k
+                  159
                 </span>
               
 
@@ -430,154 +426,22 @@
       
 
       
-        <h1 id="交换局域网"><a href="#交换局域网" class="headerlink" title="交换局域网"></a>交换局域网</h1><h2 id="两个概念"><a href="#两个概念" class="headerlink" title="两个概念"></a>两个概念</h2><ol>
-<li><strong>冲突域</strong>：网络中的一组设备集合；域内的不同设备同时发出的以太网帧会互相冲突；特点为：每台主机的可用带宽很低，信息传输安全得不到保证。</li>
-<li><strong>广播域</strong>：网络中的一组设备集合；当这些设备中的一个发出一个广播时，所有其他的设备都能接收到这个广播帧。</li>
+        <ol>
+<li>配置环境变量SSLKEYLOGFILE为E:\ssl_key\sslog.log。</li>
 </ol>
-<h2 id="为什么要使用交换机？"><a href="#为什么要使用交换机？" class="headerlink" title="为什么要使用交换机？"></a>为什么要使用交换机？</h2><p>使用集线器有下面几个缺点：</p>
-<ol>
-<li>随着共享式以太网规模的扩大，冲突域不断扩大，导致网络带宽下降。</li>
-<li>不同数据传输速率的以太网无法通过集线器互联。</li>
-</ol>
-<p>所以，使用交换机将共享式局域网转变为交换式局域网，可以解决上面两个问题。</p>
-<h2 id="交换机的工作原理"><a href="#交换机的工作原理" class="headerlink" title="交换机的工作原理"></a>交换机的工作原理</h2><h3 id="交换机表的生成和维护"><a href="#交换机表的生成和维护" class="headerlink" title="交换机表的生成和维护"></a>交换机表的生成和维护</h3><p>在Packet Tracer中查看Mac地址表：</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207151920.png" alt></p>
-<p>此时的Mac地址表为空，PC0向PC1发送Ping包之后，再次查看交换机表：</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207152727.png" alt></p>
-<p>此时表中就多了两条Mac地址的记录。</p>
-<p><strong>Mac地址表建立过程：</strong></p>
-<p>PC0向PC1发送了一个数据包(数据包中含有源Mac地址和目的Mac地址)，当数据帧从交换机的f0/1进入交换机后，首先检查Mac地址表中的记录，当前没有该记录，就会将此记录添加进Mac地址表，这样就将PC0的Mac地址和f0/1端口建立了联系，此时，Mac地址表中没有关于PC1的记录，这时候，交换机会向除了f0/1端口之外的所有端口转发，从而保证PC1可以接收到该数据帧。当PC1向PC0发送数据包的时候，就会将PC1的Mac地址添加到Mac地址表中，此时就只会向f0/1端口转发，不影响其他端口。</p>
-<p><strong>如果数据帧为广播帧，那么交换机会直接将数据帧转发至所有端口。</strong></p>
-<p>每当加入一条新记录或更新一条记录时，就会设置一个定时器，当定时器超时记录仍然没有被更新，就视为“过时”，被删除。在交换机中可以查看这个时间。</p>
-<p>过一会再查看Mac地址表，刚刚的两条的记录就消失了。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207154811.png" alt></p>
-<h2 id="端口安全"><a href="#端口安全" class="headerlink" title="端口安全"></a>端口安全</h2><p>交换机的端口安全特性可以阻止非授权用户将集线器、交换机等设备接入到局域网中。</p>
-<h3 id="在Packet-Tracer中实现端口安全"><a href="#在Packet-Tracer中实现端口安全" class="headerlink" title="在Packet Tracer中实现端口安全"></a>在Packet Tracer中实现端口安全</h3><p><strong>拓扑图</strong></p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207163540.png" alt></p>
-<p><strong>配置过程</strong></p>
-<p>这里限制f0/1接口只允许Router0接入。</p>
-<ol>
-<li>首先，查看R0的f0/0接口的Mac地址。</li>
-</ol>
-<ul>
-<li>配置f0/0的ip和子网掩码。</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line">Router&gt;enable</span><br><span class="line">Router<span class="comment">#config terminal </span></span><br><span class="line">Router(config)<span class="comment">#int f0/0</span></span><br><span class="line">Router(config-if)<span class="comment">#no shutdown</span></span><br><span class="line">Router(config-if)<span class="comment">#ip address 172.16.0.101 255.255.0.0</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用命令<code>show int f0/0</code>查看f0/0接口的Mac地址：</li>
-</ul>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207164153.png" alt></p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929131829.png" alt></p>
 <ol start="2">
-<li>配置交换端口安全</li>
+<li>完全退出chrome或者firefox浏览器，然后重新打开。打开浏览器，访问一个HTTPS 网页，然后打开刚才SSLKEYLOGFILE环境变量值的文件路径就可以看到随机字符串记录。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Switch(config)#int f0/1</span><br><span class="line">Switch(config-if)#shutdown</span><br><span class="line">//将端口改为访问模式，即用来接入计算机</span><br><span class="line">Switch(config-if)#switchport mode access</span><br><span class="line">//打开交换机的端口安全功能</span><br><span class="line">Switch(config-if)#switchport port-security</span><br><span class="line">//该端口下的Mac条目最大数量为1，即只允许一台设备接入</span><br><span class="line">Switch(config-if)#switchport port-security maximum 1</span><br><span class="line">//该命令的作用是当有新的计算机接入的时候，该接口的MAC条目超过最大数量时交换机的处理策略</span><br><span class="line">//switchport port-security violation &#123;shutdown|protect|restrict&#125;</span><br><span class="line">//一共有三种处理策略</span><br><span class="line">//1.protect:新的计算机将无法接入，而原有的计算机不受影响；</span><br><span class="line">//2.shutdown:该接口将会被关闭，则这个新的计算机和原有的计算机都无法接入，需要管理员使用no shutdown&quot;命令重新打开。</span><br><span class="line">//3.restrict:这个新的计算机可以接入，然而交换机将向发送警告信息。</span><br><span class="line">Switch(config-if)#switchport port-security violation shutdown</span><br><span class="line">//配置允许接入的设备的Mac地址</span><br><span class="line">Switch(config-if)#switchport port-security mac-address 0007.ec03.4401</span><br><span class="line">Switch(config-if)#no shutdown </span><br><span class="line">Switch(config-if)#int vlan 1</span><br><span class="line">Switch(config-if)#no shutdown </span><br><span class="line">Switch(config-if)#ip address 172.16.0.1 255.255.0.0</span><br></pre></td></tr></table></figure>
-
-<p>配置完毕以后，查看交换机的Mac地址表，刚刚的Mac地址Type为静态：</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207171846.png" alt></p>
-<p>使用命令<code>show port-security</code>可以查看当前的端口安全的设置情况：</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207173737.png" alt></p>
-<ol>
-<li>模拟非法接入，修改R0的f0/0接口的Mac地址，模拟另一台设备接入，</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Router(config)#int f0/0</span><br><span class="line">Router(config-if)#mac-address 0012.1234.5678</span><br></pre></td></tr></table></figure>
-
-<p>此时，在R0上执行<code>ping 172.16.0.1</code>，ping不通交换机配置的vlan。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207173320.png" alt></p>
-<h2 id="生成树协议"><a href="#生成树协议" class="headerlink" title="生成树协议"></a>生成树协议</h2><h3 id="为什么需要生成树协议？"><a href="#为什么需要生成树协议？" class="headerlink" title="为什么需要生成树协议？"></a>为什么需要生成树协议？</h3><p>下面是一个交换局域网的冗余设计，这样的拓扑设计消除了由于单点故障所以引起的网络不通的问题，但是也会使网络中产生环路，会带来广播风暴、重复帧和Mac地址表不稳定的问题，这时候就需要使用生成树协议来解决这个问题。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207223944.png" alt></p>
-<h3 id="广播风暴产生的过程"><a href="#广播风暴产生的过程" class="headerlink" title="广播风暴产生的过程"></a>广播风暴产生的过程</h3><p>那上图作为例子，其中有一个主机X、SW0、SW1、路由器Y。当主机X向路由器Y发出一个数据帧时，假如数据帧先到达了SW0，然而该交换机的Mac地址表中并没有路由器Y的记录，这时候SW1就会发广播，SW1接收到广播之后会按照SW0一样的处理方式发广播，这样的这个数据帧就在这个封闭的环路中无限的循环……</p>
-<h3 id="生成树协议STP"><a href="#生成树协议STP" class="headerlink" title="生成树协议STP"></a>生成树协议STP</h3><p>生成树协议所做的事情就是将其中的环路斩断，形成一个树形结构，这样就不会无线循环下去了。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191207230319.png" alt></p>
-<p><strong>算法过程</strong></p>
-<ol>
-<li><p><strong>选举根桥。</strong>首先选举根桥(Root)，将此交换机作为生成树的根。在选举出根交换机之前，每个交换机都会认为自己是根交换机，每个都会发送BPDU。通过比较BPDU的桥ID字段，桥ID最小的交换机就会成为根桥。桥ID由桥优先级（Bridge Priority） 和48位的MAC地址构成。桥ID可以人工设置， 优先级最高的设备（数值越小越优先）会被选举为根桥。 如果优先级相同， 则会比较MAC地址， MAC地址越小则越优先 。</p>
-</li>
-<li><p><strong>选举根端口。</strong>计算到所有端口的所有的路径代价，将代价最小的作为根端口(Root Port)。要注意的是，同一交换机上不同端口之间的路径开销值为0。如果有两个或两个以上的端口计算得到的累计路径开销相同，那么比较非根交换机的上行交换机桥ID，桥ID小的作为根端口。在根路径开销，指定桥ID都相同的情况下，上行交换机的最小端口号（物理编号）所连接的非交换机的端口为根端口。</p>
-</li>
-</ol>
-<ul>
-<li><p>比较过程：</p>
-<ul>
-<li>计算非根交换机到达根桥的链路开销；</li>
-<li>比较非根交换机的上行交换机桥ID（由优先级与MAC地址决定）；</li>
-<li>上行交换机的物理最小端口号所连接的非交换机的端口为根端口。</li>
-</ul>
-</li>
-</ul>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20190929133607.png" alt></p>
 <ol start="3">
-<li><p><strong>选举指定端口。</strong>根桥的每个端口都是指定端口，与根端口直连的端口也是指定端口。，比较该网段中每个端口到根桥的路径代价，代价最小的做指定端口。</p>
-</li>
-<li><p>所有未被选作根端口或指定端口的端口都是非指定端口，进入阻塞状态。</p>
-</li>
+<li>配置WireShark。打开编辑-&gt;首选项-&gt;Protocols，打开SSL对其进行编辑（注：wireshark在某次版本更新之后去掉了SSL选项，没有SSL选项的需要设置TSL），将日志文件的路径添加到(Pre)-Master-Securet log file。</li>
 </ol>
-<h3 id="在Packet-Tracer中测试STP生成树协议"><a href="#在Packet-Tracer中测试STP生成树协议" class="headerlink" title="在Packet Tracer中测试STP生成树协议"></a>在Packet Tracer中测试STP生成树协议</h3><h4 id="拓扑图"><a href="#拓扑图" class="headerlink" title="拓扑图"></a>拓扑图</h4><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145318.png" alt></p>
-<p>在每个交换机上执行<code>Switch#show spanning-tree</code>命令，查看生成树信息：</p>
-<p><strong>SW0：</strong></p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145527.png" alt></p>
-<p><strong>SW1：</strong></p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145541.png" alt></p>
-<p><strong>SW2：</strong></p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145453.png" alt></p>
-<p><strong>SW3：</strong></p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209145547.png" alt></p>
-<p>下面分析协议执行的过程：</p>
-<p>(1) 首先选举根桥，四个交换机的桥优先级相同，都是32769，所以比较Mac地址，SW3的Mac地址值最小，所以选举SW3为根桥。</p>
-<p>(2) 选举根端口，比较每个非根桥到根桥的路径代价，SW1的f0/2端口和SW2的f0/2端口到根桥的代价最小，都为19，所以SW1的f0/2接口和SW2接口为根端口。由于SW0的两个接口的路径代价都为38，代价相同，所以继续比较上行交换机的桥ID，SW1的桥ID小于SW2的桥ID，所以SW0的f0/1为根端口。</p>
-<p>(3) 选举指定端口，现在根桥的所有接口都是指定接口，即SW3的所有接口都是指定端口，与根端口直连的端口也是指定端口，所以SW1的f0/1也是指定端口，再比较SW0的f0/2和SW2的f0/1接口，SW2的f0/1接口代价小于SW0的f0/2接口的代价，所以SW2的f0/1为指定端口，现在只剩下SW0的f0/2接口，该接口就成为了非指定端口，所以该端口被阻塞，生成树过程结束。</p>
-<h2 id="虚拟局域网VLAN"><a href="#虚拟局域网VLAN" class="headerlink" title="虚拟局域网VLAN"></a>虚拟局域网VLAN</h2><h3 id="为什么使用VLAN？"><a href="#为什么使用VLAN？" class="headerlink" title="为什么使用VLAN？"></a>为什么使用VLAN？</h3><p>当广播域中的结点不断增多的时候，网络中过多的广播包会严重影响通信的效率，这时候就需要使用vlan在物理接线的基础上改变逻辑分组的方式来缩小广播域。</p>
-<h3 id="VLAN的划分"><a href="#VLAN的划分" class="headerlink" title="VLAN的划分"></a>VLAN的划分</h3><p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191208145730.png" alt></p>
-<p><strong>一个VLAN = 一个广播域 = 一个逻辑网段（子网）</strong></p>
-<h4 id="划分方法"><a href="#划分方法" class="headerlink" title="划分方法"></a>划分方法</h4><ul>
-<li><p>静态VLAN：使用端口号定义</p>
-<p>例如：</p>
-<p>VLAN1：1、3、4端口</p>
-<p>VLAN2：2、5、6端口</p>
-</li>
-<li><p>动态VLAN：使用MAC地址等定义</p>
-<p>例如：</p>
-<p>VLAN10：MAC2、MAC3、MAC4</p>
-</li>
-</ul>
-<p>​       VLAN20：MAC1、MAC5、MAC6</p>
-<h4 id="VLAN间的路由"><a href="#VLAN间的路由" class="headerlink" title="VLAN间的路由"></a>VLAN间的路由</h4><p>在交换机上划分VLAN后，VLAN内部的通信通过交换机转发，但是VLAN间的计算机就无法通信了。VLAN间的通信需要借助第3层具有路由功能的设备</p>
-<p>VLAN间的路由可以通过两种方式实现：</p>
-<ul>
-<li><strong>单臂路由</strong></li>
-</ul>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191208171753.png" alt></p>
-<p>如果每个VLAN连接一个路由器端口,则占用太多的路由器端口，单臂路由可以节省端口</p>
-<ul>
-<li><strong>三层交换机</strong></li>
-</ul>
-<p>三层交换机的功能本质上就是一个交换机+路由器。</p>
-<h3 id="在Packet-Tracer中配置VLAN"><a href="#在Packet-Tracer中配置VLAN" class="headerlink" title="在Packet Tracer中配置VLAN"></a>在Packet Tracer中配置VLAN</h3><p>使用三层交换机来配置VLAN，进行VLAN间的路由。</p>
-<p><strong>拓扑图</strong></p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209150133.png" alt></p>
-<p>图中的Multilayer Switch 0就是一台三层交换机。</p>
-<p><strong>配置过程</strong></p>
-<ol>
-<li>在SW0上，执行下面的命令：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//开启路由功能</span><br><span class="line">Switch(config)#ip routing</span><br><span class="line">//配置vlan 1</span><br><span class="line">Switch(config)#int vlan 1</span><br><span class="line">Switch(config-if)#no shutdown</span><br><span class="line">Switch(config-if)#ip address 172.16.1.254 255.255.255.0</span><br><span class="line">//配置vlan 2</span><br><span class="line">Switch(config)#int vlan 2</span><br><span class="line">Switch(config-if)#no shutdown</span><br><span class="line">Switch(config-if)#ip address 172.16.2.254 255.255.255.0</span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>配置完毕以后，可以执行<code>Switch#show ip route</code>来查看路由表：</li>
-</ol>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191209150639.png" alt></p>
-<ol start="3">
-<li>配置两台主机的IP、子网掩码和默认网关。</li>
-</ol>
-<p><strong>PC0</strong></p>
-<p>IP地址：172.16.1.1，子网掩码：255.255.255.0，默认网关：172.16.1.254</p>
-<p><strong>PC2</strong></p>
-<p>IP地址：172.16.2.1，子网掩码：255.255.255.0，默认网关：172.16.2.254</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735492337.png" alt></p>
 <ol start="4">
-<li>配置完毕以后，在PC0上Ping PC1，如果配置没有问题的话，就可以Ping通。</li>
+<li>访问<a href="http://www.liuergo.top" target="_blank" rel="noopener">www.liuergo.top</a> ，在WireShark中开始抓包，可以发现https的数据包可以被抓到了。</li>
 </ol>
-<p>参考博客：</p>
-<p><a href="https://blog.csdn.net/zainwei1766/article/details/41707447" target="_blank" rel="noopener">https://blog.csdn.net/zainwei1766/article/details/41707447</a></p>
-<p><a href="https://blog.csdn.net/lycb_gz/article/details/17347189" target="_blank" rel="noopener">https://blog.csdn.net/lycb_gz/article/details/17347189</a></p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/1569735920347.png" alt></p>
 
       
     </div>
@@ -621,13 +485,9 @@
           
             <a href="/tags/计算机网络/" rel="tag"> <i class="fa fa-tag"> 计算机网络</i></a>
           
-            <a href="/tags/交换机/" rel="tag"> <i class="fa fa-tag"> 交换机</i></a>
+            <a href="/tags/http/" rel="tag"> <i class="fa fa-tag"> http</i></a>
           
-            <a href="/tags/Packet-Tracer/" rel="tag"> <i class="fa fa-tag"> Packet Tracer</i></a>
-          
-            <a href="/tags/STP/" rel="tag"> <i class="fa fa-tag"> STP</i></a>
-          
-            <a href="/tags/VLAN/" rel="tag"> <i class="fa fa-tag"> VLAN</i></a>
+            <a href="/tags/WireShark/" rel="tag"> <i class="fa fa-tag"> WireShark</i></a>
           
         </div>
       
@@ -640,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/26/软件工程—UML/" rel="next" title="软件工程—UML">
-                <i class="fa fa-chevron-left"></i> 软件工程—UML
+              <a href="/2019/09/26/Java序列化/" rel="next" title="Java序列化">
+                <i class="fa fa-chevron-left"></i> Java序列化
               </a>
             
           </div>
@@ -650,8 +510,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/12/09/在Packet Tracer中实现远程管理交换机/" rel="prev" title="在Packet Tracer实现远程管理交换机">
-                在Packet Tracer实现远程管理交换机 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/09/27/计算机网络知识点整理/" rel="prev" title="计算机网络知识点整理">
+                计算机网络知识点整理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -704,17 +564,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -801,22 +652,6 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#交换局域网"><span class="nav-number">1.</span> <span class="nav-text">交换局域网</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#两个概念"><span class="nav-number">1.1.</span> <span class="nav-text">两个概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用交换机？"><span class="nav-number">1.2.</span> <span class="nav-text">为什么要使用交换机？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#交换机的工作原理"><span class="nav-number">1.3.</span> <span class="nav-text">交换机的工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#交换机表的生成和维护"><span class="nav-number">1.3.1.</span> <span class="nav-text">交换机表的生成和维护</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#端口安全"><span class="nav-number">1.4.</span> <span class="nav-text">端口安全</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#在Packet-Tracer中实现端口安全"><span class="nav-number">1.4.1.</span> <span class="nav-text">在Packet Tracer中实现端口安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成树协议"><span class="nav-number">1.5.</span> <span class="nav-text">生成树协议</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么需要生成树协议？"><span class="nav-number">1.5.1.</span> <span class="nav-text">为什么需要生成树协议？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#广播风暴产生的过程"><span class="nav-number">1.5.2.</span> <span class="nav-text">广播风暴产生的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成树协议STP"><span class="nav-number">1.5.3.</span> <span class="nav-text">生成树协议STP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Packet-Tracer中测试STP生成树协议"><span class="nav-number">1.5.4.</span> <span class="nav-text">在Packet Tracer中测试STP生成树协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#拓扑图"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">拓扑图</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟局域网VLAN"><span class="nav-number">1.6.</span> <span class="nav-text">虚拟局域网VLAN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用VLAN？"><span class="nav-number">1.6.1.</span> <span class="nav-text">为什么使用VLAN？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VLAN的划分"><span class="nav-number">1.6.2.</span> <span class="nav-text">VLAN的划分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#划分方法"><span class="nav-number">1.6.2.1.</span> <span class="nav-text">划分方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VLAN间的路由"><span class="nav-number">1.6.2.2.</span> <span class="nav-text">VLAN间的路由</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#在Packet-Tracer中配置VLAN"><span class="nav-number">1.6.3.</span> <span class="nav-text">在Packet Tracer中配置VLAN</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
-      
 
       
 
@@ -830,7 +665,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

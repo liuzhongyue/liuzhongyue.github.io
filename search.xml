@@ -52,17 +52,6 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[计网—概述]]></title>
-    <url>%2F2019%2F12%2F17%2F%E8%AE%A1%E7%BD%91%E2%80%94%E6%A6%82%E8%BF%B0%2F</url>
-    <content type="text"><![CDATA[计算机网络的分类按照不同作用范围分类 广域网 WAN (Wide Area Network) 城域网 MAN (Metropolitan Area Network) 局域网 LAN (Local Area Network) 个人区域网 PAN (Personal Area Network) 按照不同网络的使用者进行分类 公用网 (public network) 专用网 (private network) 虚拟专用网（Virtual Private Network）：在公用网上建立专用网的技术。 按照拓扑结构分类 星型结构 环型结构 总线型结构 网状结构 计算机网络中的性能指标1 速率 比特（bit）是计算机中数据量的单位，也是信息论中使用的信息量的单位。一个比特就是二进制数字中的一个 1 或 0。 速率即比特率(bit rate)，单位时间内网络传递的比特数。是计算机网络中最重要的一个性能指标。速率的单位是 b/s，或kb/s, Mb/s, Gb/s 等。 2 带宽 “带宽”(bandwidth)本来是指信号具有的频带宽度，单位是赫（或千赫、兆赫、吉赫等）。 现在“带宽”是数字信道所能传送的“最高数据率” ，单位是“比特每秒”，或 b/s (bit/s)。 常用单位 n千比每秒，即 kb/s （10^3b/s） n兆比每秒，即 Mb/s（10^6 b/s） n吉比每秒，即 Gb/s（10^9 b/s） n太比每秒，即 Tb/s（10^12 b/s） 关于速率、网速和带宽 此处讲到的速率和我们平时说的网速不是一个概念，平时说的网速比如下载一个文件的速度是2MB/s，此处是用储存单位衡量的这个网速实际上是每秒2M Byte，然而此处的速率是在信息论中使用的单位，如果网络的速率为2Mb/s指的是每秒2M bit，1Byte = 8 bit，带宽的单位就是和速率相同了，如果你家的带宽为100Mb/s，那么理论上的下载速度即网速应该为12.5MB/s。 3 吞吐量 吞吐量(throughput)表示在单位时间内通过某个网络（或信道、接口）的实际数据量。 吞吐量经常用于对现实世界中的网络的一种测量，以便知道实际上到底有多少数据量能够通过网络。 4 时延 时延是指数据从网络的一端传送到另一端所需要的时间。网络时延是由传输时延（发送时延）、传播时延、处理时延、排队时延累加得到的。 传输时延(发送时延) 传输时延（发送时延 ）：发送数据时，数据块从结点进入到传输媒体所需要的时间。 也就是从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。 $$发送时延 = 数据块长度(bit) / 发送速率(bit/s)$$ 传播时延电磁波在信道中需要传播一定的距离所花费的时间。$$传播时延 = 信道长度(m) / 信号在信道上的传播速率(m/s)$$ 关于传输时延和传播时延 传输时延重在发送的时候产生的时延，与网络两端的距离无关，而当消息被发送到网线中后的时延就是传播时延，传播时延就是距离的函数了。 处理时延交换结点为存储转发而进行一些必要的处理所花费的时间。 排队时延 结点缓存队列中分组排队所经历的时延。排队时延的长短往往取决于网络中当时的通信量。 总时延 = 发送时延 + 传播时延 + 排队时延 + 处理时延 5 往返时间(RTT)从发送方发送数据开始，到发送方收到来自接收方的确认，总共经历的时间(在TCP协议中可以判断拥堵)。 6 时延带宽积若发送端连续发送数据，从发送数据开始，到发送的第一个比特即将到达终点时，发送端已经发送的比特数。$$时延带宽积 = 传播时延 * 信道带宽$$ 7 利用率利用率分为信道利用率和网络利用率。 信道利用率指出某信道有百分之几的时间是被利用的（有数据通过）。完全空闲的信道的利用率是零。 网络利用率则是全网络的信道利用率的加权平均值。 时延与网络利用率的关系 若令 $D_0$ 表示网络空闲时的时延，D表示网络当前的时延，则在适当的假定条件下，可以用下面的简单公式表示 D 和 $D_0$之间的关系：$$D = \frac{D_0}{1-U}$$ U是网络的利用率，数值在 0 到 1 之间。]]></content>
-      <categories>
-        <category>计算机网络</category>
-      </categories>
-      <tags>
-        <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[计网—以太网帧]]></title>
     <url>%2F2019%2F12%2F17%2F%E8%AE%A1%E7%BD%91%E2%80%94%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%2F</url>
     <content type="text"><![CDATA[MAC地址 MAC地址固化在网卡中，又称物理地址，它是网络节点全球唯一的物理标识，与其物理位置无关。 MAC地址是数据链路层进行寻址的依据。 网络节点的每一个网络接口都有一个唯一的MAC地址。一个节点允许有多个MAC地址，取决于该站点网络接口的个数。 格式 总长度为48位每八位做一个分隔。 在windows下输入ipconfig/all查看本机的MAC地址： MAC帧的格式常用的以太网MAC帧格式有两种标准： DIX Ethernet V2 标准 IEEE 的 802.3 标准 下面主要分析Ethernet V2标准的以太网帧格式 当以太网帧到达物理层后，会在帧的前面插入的 8 字节中的第一个字段共 7 个字节，是前同步码，用来迅速实现 MAC 帧的比特同步。第二个字段是帧开始定界符，表示后面的信息就是以太网帧。以太网帧并不是最终的传输形式。 Ethernet Ⅱ 帧格式 前导符和起始符：8 Bytes 7个10101010 字节尾随1个10101011字节，用来同步收发双方的时钟速率，稳定收发电路状态，并进行帧定界 。 目的地址和源地址：6 Bytes + 6 Bytes 发送主机和接收主机的物理MAC地址。 类型：2 Bytes 以太网支持多种网络层的协议，比如IP协议的编号就是0800，ARP协议的编号就是0806。 数据：46~1500 Bytes 以太网规定，以太网数据帧数据域长度最小为46 Bytes，总长度最小为64 Bytes，即6 + 6 + 2 + 46 + 4 = 64，当数据的字节不足46 Bytes时，会对其进行填充；以太网的MTU为1500 Bytes，即最大字节数为1500 Bytes。 CRC：4 Bytes 采用32位的CRC校验，在接收端校验，如果出错，则将该帧丢弃。 最小帧长度问题在CSMA/CD协议一节中提到了使用载波侦听技术来检测冲突，靠判断总线的电平是否出现跳变来判断总线的闲忙。以太网帧的最小帧长度的限制就和CSMA/CD协议有关。 在上图的第一个过程中，A主机发送了一个以太网帧，如果帧长度过短的话，就会造成在发生冲突之前就收到了发送完毕的信号，就检测不到冲突了，所以最小帧长度必须要保证发送时间大于所有工作站监测到冲突并发送碰撞的时间。 所以为了避免上述情况的产生，就要求以太网帧至少需要冲突窗口时间才能发送完毕，即发送方在发送的时候，如果有冲突一定在发送完以前能检测到。$$数据帧的传输时延t_1 = 数据帧长度 / 数据传输速率$$ $$信号的传输时延t_2 = 两站点之间的距离 / 信号传播速度$$ 如果要保证帧在传输中可以正常检测到冲突，则有$$t_1 &gt;= 2t_2$$按照标准，10Mbps以太网采用中继器时，连接的最大长度是2500米，最多经过4个中继器，因此规定对10Mbps以太网一帧的最小发送时间为51.2微秒。这段时间所能传输的数据为512位，512位＝64字节，这就是以太网帧最小64字节的原因。 结论 在以太网中，由于冲突窗口的限制，最小帧长 $F_{min}$、传输速率 $R$、网络跨距 $S$ 三者之间必须满足一定的关系：$$F_{min} = kSR，(k:系数)$$]]></content>
@@ -72,6 +61,17 @@
       <tags>
         <tag>计算机网络</tag>
         <tag>以太网</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[计网—概述]]></title>
+    <url>%2F2019%2F12%2F17%2F%E8%AE%A1%E7%BD%91%E2%80%94%E6%A6%82%E8%BF%B0%2F</url>
+    <content type="text"><![CDATA[计算机网络的分类按照不同作用范围分类 广域网 WAN (Wide Area Network) 城域网 MAN (Metropolitan Area Network) 局域网 LAN (Local Area Network) 个人区域网 PAN (Personal Area Network) 按照不同网络的使用者进行分类 公用网 (public network) 专用网 (private network) 虚拟专用网（Virtual Private Network）：在公用网上建立专用网的技术。 按照拓扑结构分类 星型结构 环型结构 总线型结构 网状结构 计算机网络中的性能指标1 速率 比特（bit）是计算机中数据量的单位，也是信息论中使用的信息量的单位。一个比特就是二进制数字中的一个 1 或 0。 速率即比特率(bit rate)，单位时间内网络传递的比特数。是计算机网络中最重要的一个性能指标。速率的单位是 b/s，或kb/s, Mb/s, Gb/s 等。 2 带宽 “带宽”(bandwidth)本来是指信号具有的频带宽度，单位是赫（或千赫、兆赫、吉赫等）。 现在“带宽”是数字信道所能传送的“最高数据率” ，单位是“比特每秒”，或 b/s (bit/s)。 常用单位 n千比每秒，即 kb/s （10^3b/s） n兆比每秒，即 Mb/s（10^6 b/s） n吉比每秒，即 Gb/s（10^9 b/s） n太比每秒，即 Tb/s（10^12 b/s） 关于速率、网速和带宽 此处讲到的速率和我们平时说的网速不是一个概念，平时说的网速比如下载一个文件的速度是2MB/s，此处是用储存单位衡量的这个网速实际上是每秒2M Byte，然而此处的速率是在信息论中使用的单位，如果网络的速率为2Mb/s指的是每秒2M bit，1Byte = 8 bit，带宽的单位就是和速率相同了，如果你家的带宽为100Mb/s，那么理论上的下载速度即网速应该为12.5MB/s。 3 吞吐量 吞吐量(throughput)表示在单位时间内通过某个网络（或信道、接口）的实际数据量。 吞吐量经常用于对现实世界中的网络的一种测量，以便知道实际上到底有多少数据量能够通过网络。 4 时延 时延是指数据从网络的一端传送到另一端所需要的时间。网络时延是由传输时延（发送时延）、传播时延、处理时延、排队时延累加得到的。 传输时延(发送时延) 传输时延（发送时延 ）：发送数据时，数据块从结点进入到传输媒体所需要的时间。 也就是从发送数据帧的第一个比特算起，到该帧的最后一个比特发送完毕所需的时间。 $$发送时延 = 数据块长度(bit) / 发送速率(bit/s)$$ 传播时延电磁波在信道中需要传播一定的距离所花费的时间。$$传播时延 = 信道长度(m) / 信号在信道上的传播速率(m/s)$$ 关于传输时延和传播时延 传输时延重在发送的时候产生的时延，与网络两端的距离无关，而当消息被发送到网线中后的时延就是传播时延，传播时延就是距离的函数了。 处理时延交换结点为存储转发而进行一些必要的处理所花费的时间。 排队时延 结点缓存队列中分组排队所经历的时延。排队时延的长短往往取决于网络中当时的通信量。 总时延 = 发送时延 + 传播时延 + 排队时延 + 处理时延 5 往返时间(RTT)从发送方发送数据开始，到发送方收到来自接收方的确认，总共经历的时间(在TCP协议中可以判断拥堵)。 6 时延带宽积若发送端连续发送数据，从发送数据开始，到发送的第一个比特即将到达终点时，发送端已经发送的比特数。$$时延带宽积 = 传播时延 * 信道带宽$$ 7 利用率利用率分为信道利用率和网络利用率。 信道利用率指出某信道有百分之几的时间是被利用的（有数据通过）。完全空闲的信道的利用率是零。 网络利用率则是全网络的信道利用率的加权平均值。 时延与网络利用率的关系 若令 $D_0$ 表示网络空闲时的时延，D表示网络当前的时延，则在适当的假定条件下，可以用下面的简单公式表示 D 和 $D_0$之间的关系：$$D = \frac{D_0}{1-U}$$ U是网络的利用率，数值在 0 到 1 之间。]]></content>
+      <categories>
+        <category>计算机网络</category>
+      </categories>
+      <tags>
+        <tag>计算机网络</tag>
       </tags>
   </entry>
   <entry>
@@ -100,17 +100,17 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[软件工程—七大设计原则]]></title>
-    <url>%2F2019%2F11%2F26%2F%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E2%80%94%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%2F</url>
-    <content type="text"><![CDATA[1、开闭原则（Open Close Principle） 对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，而是在原有的代码上进行扩展，实现一个热插拔的效果。所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类。 2、里氏替换原则（Liskov Substitution Principle） 任意父类可以出现的地方，子类也可以出现。最重要的一点就是子类对象可以替换基类对象。尽量继承虚类，避免继承实体类。 3、依赖倒置原则（Dependence Inversion Principle） 高层模块不应该依赖于低层模块，二者都应该依赖于抽象。这个是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体。 4、接口隔离原则（Interface Segregation Principle） 使用多个隔离的接口，比使用单个接口要好。客户不应该依赖他们不用到的方法，只给每个客户它所需要的接口。 5、迪米特法则（最少知道原则）（Demeter Principle） 为什么叫最少知道原则，就是说：一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。 6、组合复用原则（Composite Reuse Principle） 多用组合少用继承。 7. 单一职责原则（Single Responsibility Principle） 一个类，只有一个引起它变化的原因。一个类（或者大到模块，小到方法）承担的职责越多，它被复用的可能性越小。如果一个类承担的职责过多，就相当于把职责耦合在一起，当其中一个职责发生变化时，可能会影响其他职责的运行。]]></content>
+    <title><![CDATA[软件工程—UML]]></title>
+    <url>%2F2019%2F11%2F26%2F%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E2%80%94UML%2F</url>
+    <content type="text"><![CDATA[用例图 用例图(Use Case Diagram): 也称为用户模型图，是从软件需求分析到最终实现的第一步，从客户的角度来描述系统功能。 基本组件 参与者：与系统打交道的人或其他系统即使用该系统 的人或事物。 用例：代表系统的某项完整的功能。 子系统：用来展示系统的一部分功能，这部分功能联系紧密。 关系：用例之间的关系。 关系类型 说明 符号 关联 参与者和用例之间的关系 泛化 参与者之间或用例之间的关系 包含 用例之间的关系 扩展 用例之间的关系 ​ (1) 关联 表示参与者与用例之间的通信，任何一方都可发送或接受消息。 ​ (2) 泛化 和类图中的泛化相同，都是表示继承关系，子用例可以继承父用例，子参与者也可以继承父参与者。 ​ (3) 包含 包含关系用来把一个较复杂用例所表示的功能分解成较小的步骤。 ​ (4) 扩展 扩展关系是指用例功能的延伸，相当于为基础用例提供一个附加功能。 顺序图 顺序图也叫时序图，描述对象之间的动态交互关系，着重表现对象间消息传递的时间顺序 顺序图的X轴表示不同的对象，Y轴表示时间 对象间的通信表示为对象生命线之间的消息传递 基本组件 对象 对象是类的实例。 图示： 生命线 表示对象的生存时间。生命线从对象创建开始到对象销毁时终止。 消息 对象之间的交互是通过相互发消息来实现的。一个对象可以请求（要求）另一个对象做某件事件。 消息的分类 状态图状态图刻划特定对象所有可能的状态及状态变迁。 基本组件状态：矩形，四角为圆弧转移：箭头起点：一个黑点终点：一个圈加一个黑点 实例 图书馆的书籍状态说明：书籍在未变成图书馆在库书籍时，为新书籍状态。书籍处于在库状态时既可以预订也可以外借，外借后变为借出状态。处于预订状态时也可以外借，超出预订时间期限则从预订状态直接转为可用状态。借阅者在规定的预订时间内也可以考虑取消预订，取消预订后书籍的状态转为可用。外借书籍归还后变为可用状态。]]></content>
       <categories>
         <category>软件工程</category>
       </categories>
   </entry>
   <entry>
-    <title><![CDATA[软件工程—UML]]></title>
-    <url>%2F2019%2F11%2F26%2F%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E2%80%94UML%2F</url>
-    <content type="text"><![CDATA[用例图 用例图(Use Case Diagram): 也称为用户模型图，是从软件需求分析到最终实现的第一步，从客户的角度来描述系统功能。 基本组件 参与者：与系统打交道的人或其他系统即使用该系统 的人或事物。 用例：代表系统的某项完整的功能。 子系统：用来展示系统的一部分功能，这部分功能联系紧密。 关系：用例之间的关系。 关系类型 说明 符号 关联 参与者和用例之间的关系 泛化 参与者之间或用例之间的关系 包含 用例之间的关系 扩展 用例之间的关系 ​ (1) 关联 表示参与者与用例之间的通信，任何一方都可发送或接受消息。 ​ (2) 泛化 和类图中的泛化相同，都是表示继承关系，子用例可以继承父用例，子参与者也可以继承父参与者。 ​ (3) 包含 包含关系用来把一个较复杂用例所表示的功能分解成较小的步骤。 ​ (4) 扩展 扩展关系是指用例功能的延伸，相当于为基础用例提供一个附加功能。 顺序图 顺序图也叫时序图，描述对象之间的动态交互关系，着重表现对象间消息传递的时间顺序 顺序图的X轴表示不同的对象，Y轴表示时间 对象间的通信表示为对象生命线之间的消息传递 基本组件 对象 对象是类的实例。 图示： 生命线 表示对象的生存时间。生命线从对象创建开始到对象销毁时终止。 消息 对象之间的交互是通过相互发消息来实现的。一个对象可以请求（要求）另一个对象做某件事件。 消息的分类 状态图状态图刻划特定对象所有可能的状态及状态变迁。 基本组件状态：矩形，四角为圆弧转移：箭头起点：一个黑点终点：一个圈加一个黑点 实例 图书馆的书籍状态说明：书籍在未变成图书馆在库书籍时，为新书籍状态。书籍处于在库状态时既可以预订也可以外借，外借后变为借出状态。处于预订状态时也可以外借，超出预订时间期限则从预订状态直接转为可用状态。借阅者在规定的预订时间内也可以考虑取消预订，取消预订后书籍的状态转为可用。外借书籍归还后变为可用状态。]]></content>
+    <title><![CDATA[软件工程—七大设计原则]]></title>
+    <url>%2F2019%2F11%2F26%2F%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E2%80%94%E5%85%AD%E5%A4%A7%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%2F</url>
+    <content type="text"><![CDATA[1、开闭原则（Open Close Principle） 对扩展开放，对修改关闭。在程序需要进行拓展的时候，不能去修改原有的代码，而是在原有的代码上进行扩展，实现一个热插拔的效果。所以一句话概括就是：为了使程序的扩展性好，易于维护和升级。想要达到这样的效果，我们需要使用接口和抽象类。 2、里氏替换原则（Liskov Substitution Principle） 任意父类可以出现的地方，子类也可以出现。最重要的一点就是子类对象可以替换基类对象。尽量继承虚类，避免继承实体类。 3、依赖倒置原则（Dependence Inversion Principle） 高层模块不应该依赖于低层模块，二者都应该依赖于抽象。这个是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体。 4、接口隔离原则（Interface Segregation Principle） 使用多个隔离的接口，比使用单个接口要好。客户不应该依赖他们不用到的方法，只给每个客户它所需要的接口。 5、迪米特法则（最少知道原则）（Demeter Principle） 为什么叫最少知道原则，就是说：一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。 6、组合复用原则（Composite Reuse Principle） 多用组合少用继承。 7. 单一职责原则（Single Responsibility Principle） 一个类，只有一个引起它变化的原因。一个类（或者大到模块，小到方法）承担的职责越多，它被复用的可能性越小。如果一个类承担的职责过多，就相当于把职责耦合在一起，当其中一个职责发生变化时，可能会影响其他职责的运行。]]></content>
       <categories>
         <category>软件工程</category>
       </categories>
@@ -308,6 +308,14 @@
       </tags>
   </entry>
   <entry>
+    <title><![CDATA[Hexo部署到Github文件夹大小写问题]]></title>
+    <url>%2F2019%2F10%2F19%2FHexo%E9%83%A8%E7%BD%B2%E5%88%B0Github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%A7%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%2F</url>
+    <content type="text"><![CDATA[问题描述 今天写完博客上传github时，发现algorithm标签404了，上Github仓库一看发现tags文件夹下的algorithm是大写的Algorithm，访问tags/Algorithm，可以正常显示 原因 查询资料发现，git是默认不区分大小写的，之前hexo生成了一个Algorithm文件夹，后来将文件夹的名称改为了algorithm，然而在Github上是不会将大写改为小写的。 解决方法 进入.git文件夹，将config文件的 ignorecase=true 改为 ignorecase=false。]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Java内部类]]></title>
     <url>%2F2019%2F10%2F19%2FJava%E5%86%85%E9%83%A8%E7%B1%BB%2F</url>
     <content type="text"><![CDATA[内部类所谓内部类就是在一个类的内部再定义一个类，之前自己写代码的时候一直也没用过这种方式，系统地学习一下内部类。 /** * @paragram: InnerClassDemo * @description: 内部类 * @auhor: liuergo * @date: 2019-10-19 16:30 */public class OuterClass&#123; private String name; private int age; public String getName() &#123; return name; &#125; public void setName(String name) &#123; this.name = name; &#125; public int getAge() &#123; return age; &#125; public void setAge(int age) &#123; this.age = age; &#125; class InnerClass&#123; public InnerClass ()&#123; name = "Jack"; age = 20; &#125; &#125;&#125; 上面就是内部类的一个简单的例子。 为什么要使用内部类 使用内部类最吸引人的原因是：每个内部类都能独立地继承一个（接口的）实现，所以无论外围类是否已经继承了某个（接口的）实现，对于内部类都没有影响。 上面是《Thinking in Java》中的一句话，我们知道，Java中是没有多继承的，所以才出现了接口来解决Java多继承的问题，但是如果使用了内部类，就可以使我们的类继承多个类。 成员内部类最普通的内部类，将内部类作为外部类的一个成员，跟成员变量各种方法是并列的。 public class OuterClass&#123; private String name; private int age; public class InnerClass&#123; public InnerClass ()&#123; name = "Jack"; age = 20; &#125; &#125; public static void main(String[] args) &#123; OuterClass outerClass = new OuterClass(); OuterClass.InnerClass innerClass = outerClass.new InnerClass(); &#125;&#125; 实例化一个内部类需要使用外部类的对象.new来创建内部类，在内部类中，是可以随便访问外部类的成员变量的;外部类是不可以随便访问内部类的。 局部内部类在方法中定义的内部类，这时的内部类就不属于外部类的成员了，局部内部类可以访问当前代码块中的final关键字修饰的局部变量以及外部类的成员变量。 public class OuterClass&#123; private String name; private int age; public String getName() &#123; return name; &#125; public void setName(String name) &#123; this.name = name; &#125; public int getAge() &#123; return age; &#125; public void setAge(int age) &#123; this.age = age; &#125; public void function() &#123; final int i = 0; class InnerClass &#123; private String innerName; void InnerFun() &#123; System.out.println(name); //直接访问外部类的变量 System.out.println(i); //访问final类型的局部变量 System.out.println(this.innerName); //使用this.成员变量访问的是内部类的成员变量 System.out.println(OuterClass.this.name); //使用外部类名.this.成员变量的方式访问成员变量 &#125; &#125; &#125;&#125; 静态内部类在static关键字一节中，提到static关键字可以修饰变量、方法、代码块，其实static还可以修饰内部类，在静态内部类中，是不保留对外部类的引用的，这就意味着，静态内部类的创建不需要依赖于外部类。这样，静态内部类也就只能访问静态变量和静态方法。外部类和内部类其实是没有关联的。 public class OuterClass&#123; private String name; private int age; static int num = 0; static class InnerClass&#123; private String innerName; public InnerClass ()&#123; System.out.println(num); //只能访问static变量 &#125; &#125; public static void main(String[] args) &#123; OuterClass outerClass = new OuterClass(); InnerClass innerClass = new InnerClass(); //创建实例不依赖外部类 &#125;&#125; 匿名内部类 匿名内部类这一语法适用于创建一次性使用的类。 在Android编程中，经常会用到点击事件，这就是一个匿名内部类的例子。 btnClick.setOnClickListener(new View.OnClickListener() &#123; @Override public void onClick(View view) &#123; //do something &#125;&#125;); 可以看到，在上面的例子中，new了一个View.OnClickListener对象，然而这个对象是没有名字的，这就是匿名内部类的特点。 定义匿名内部类下面是官方文档中给出的一个匿名内部类的例子： public class HelloWorldAnonymousClasses &#123; interface HelloWorld &#123; public void greet(); public void greetSomeone(String someone); &#125; public void sayHello() &#123; //实现HelloWorld接口的内部类 class EnglishGreeting implements HelloWorld &#123; String name = "world"; public void greet() &#123; greetSomeone("world"); &#125; public void greetSomeone(String someone) &#123; name = someone; System.out.println("Hello " + name); &#125; &#125; HelloWorld englishGreeting = new EnglishGreeting(); //匿名类实现HelloWorld接口 HelloWorld frenchGreeting = new HelloWorld() &#123; String name = "tout le monde"; public void greet() &#123; greetSomeone("tout le monde"); &#125; public void greetSomeone(String someone) &#123; name = someone; System.out.println("Salut " + name); &#125; &#125;; //匿名类实现HelloWorld接口 HelloWorld spanishGreeting = new HelloWorld() &#123; String name = "mundo"; public void greet() &#123; greetSomeone("mundo"); &#125; public void greetSomeone(String someone) &#123; name = someone; System.out.println("Hola, " + name); &#125; &#125;; englishGreeting.greet(); frenchGreeting.greetSomeone("Fred"); spanishGreeting.greet(); &#125; public static void main(String... args) &#123; HelloWorldAnonymousClasses myApp = new HelloWorldAnonymousClasses(); myApp.sayHello(); &#125; &#125; 上面的例子中，使用实现HelloWorld接口的方式来定义EnglishGreeting类，实例化之后才可以使用；frenchGreeting、spanishGreeting在定义的时候就实例化了，定义完之后就可以使用。上面的例子中，两种方法是一样的，如果一个类只需要用到一次，那么就没必要用继承父类或者是实现接口的方式再定义一个类，这时候就可以使用匿名内部类。 匿名内部类的语法匿名内部类有两种使用方法： 继承父类的匿名类 Thread thread = new Thread() &#123; @Override public void run() &#123; super.run(); &#125;&#125;; 实现接口的匿名类 Thread thread = new Thread(new Runnable() &#123; @Override public void run() &#123; System.out.println("11"); &#125;&#125;); 第二个例子实际上是将一个实现接口的匿名类作为参数传进了Thread的构造函数中。 关于匿名类的数据访问可以看这篇文章：匿名类的数据访问。]]></content>
@@ -316,14 +324,6 @@
       </categories>
       <tags>
         <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Hexo部署到Github文件夹大小写问题]]></title>
-    <url>%2F2019%2F10%2F19%2FHexo%E9%83%A8%E7%BD%B2%E5%88%B0Github%E6%96%87%E4%BB%B6%E5%A4%B9%E5%A4%A7%E5%B0%8F%E5%86%99%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[问题描述 今天写完博客上传github时，发现algorithm标签404了，上Github仓库一看发现tags文件夹下的algorithm是大写的Algorithm，访问tags/Algorithm，可以正常显示 原因 查询资料发现，git是默认不区分大小写的，之前hexo生成了一个Algorithm文件夹，后来将文件夹的名称改为了algorithm，然而在Github上是不会将大写改为小写的。 解决方法 进入.git文件夹，将config文件的 ignorecase=true 改为 ignorecase=false。]]></content>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -394,8 +394,8 @@
       </categories>
       <tags>
         <tag>计算机网络</tag>
-        <tag>http</tag>
         <tag>WireShark</tag>
+        <tag>http</tag>
       </tags>
   </entry>
   <entry>

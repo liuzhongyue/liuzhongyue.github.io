@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2020/02/01/zsh/</loc>
+    
+    <lastmod>2020-02-02T09:48:55.049Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2020/01/20/Linux%E7%9F%A5%E8%AF%86%E5%9B%9E%E9%A1%BE/</loc>
+    
+    <lastmod>2020-02-02T09:45:42.813Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2019/11/26/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E2%80%94UML/</loc>
     
     <lastmod>2020-01-15T09:42:42.968Z</lastmod>

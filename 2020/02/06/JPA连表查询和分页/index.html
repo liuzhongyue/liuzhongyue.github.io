@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Java Web,Spring Data JPA,">
 
 
 
@@ -79,16 +79,18 @@
 
 
 
-<meta name="description" content="Later equals never.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="ergo&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/categories/设计模式/index.html">
+<meta name="description" content="此节是在的基础上写的 相关实体类 Person.java  /** * @author LiuZhongYue * @date 2020/02/06 */@Data@Entity@Builder(toBuilder = true)@AllArgsConstructor@NoArgsConstructorpublic class Person &amp;#123;    @Id    @GeneratedV">
+<meta name="keywords" content="Java Web,Spring Data JPA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JPA连表查询和分页">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/JPA连表查询和分页/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="Later equals never.">
+<meta property="og:description" content="此节是在的基础上写的 相关实体类 Person.java  /** * @author LiuZhongYue * @date 2020/02/06 */@Data@Entity@Builder(toBuilder = true)@AllArgsConstructor@NoArgsConstructorpublic class Person &amp;#123;    @Id    @GeneratedV">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-11T09:55:50.238Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ergo&#39;s blog">
-<meta name="twitter:description" content="Later equals never.">
+<meta name="twitter:title" content="JPA连表查询和分页">
+<meta name="twitter:description" content="此节是在的基础上写的 相关实体类 Person.java  /** * @author LiuZhongYue * @date 2020/02/06 */@Data@Entity@Builder(toBuilder = true)@AllArgsConstructor@NoArgsConstructorpublic class Person &amp;#123;    @Id    @GeneratedV">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/categories/设计模式/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/06/JPA连表查询和分页/">
 
 
 
 
 
-  <title>分类: 设计模式 | ergo's blog</title>
+  <title>JPA连表查询和分页 | ergo's blog</title>
   
 
 
@@ -143,7 +145,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,131 +271,278 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block category">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>设计模式<small>分类</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/JPA连表查询和分页/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="机智刘二狗">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ergo's blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/11/20/设计模式—工厂模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式—工厂模式</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">JPA连表查询和分页</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-20T00:00:00+08:00" content="2019-11-20">
-          11-20
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-06T00:00:00+08:00">
+                2020-02-06
+              </time>
+            
 
-    </header>
-  </article>
+            
+              <span class="post-meta-divider">|</span>
+            
 
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-11T17:55:50+08:00">
+                2020-02-11
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java-Web/" itemprop="url" rel="index">
+                    <span itemprop="name">Java Web</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i> 浏览
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  630
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/11/20/设计模式—策略模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式—策略模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-20T00:00:00+08:00" content="2019-11-20">
-          11-20
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
+        <p>此节是在的基础上写的</p>
+<h2 id="相关实体类"><a href="#相关实体类" class="headerlink" title="相关实体类"></a>相关实体类</h2><blockquote>
+<p>Person.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LiuZhongYue</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020/02/06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@Builder</span>(toBuilder = <span class="keyword">true</span>)</span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">long</span> id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(unique = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> Long companyId;</span><br><span class="line">    <span class="keyword">private</span> Long schoolId;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, Integer age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+<blockquote>
+<p>Company.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 公司类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LiuZhongYue</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020/02/06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Company</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(unique = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">private</span> String companyName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Company</span><span class="params">(String companyName, String description)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.companyName = companyName;</span><br><span class="line">        <span class="keyword">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/11/09/设计模式—观察者模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式—观察者模式</span>
-              
-            </a>
-        
-      </h2>
+<blockquote>
+<p>School.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 学校类</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LiuZhongYue</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020/02/06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@Entity</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">School</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Id</span></span><br><span class="line">    <span class="meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)</span><br><span class="line">    <span class="keyword">private</span> Long id;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Column</span>(unique = <span class="keyword">true</span>)</span><br><span class="line">    <span class="keyword">private</span> String schoolName;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String description;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">School</span><span class="params">(String schoolName, String description)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.schoolName = schoolName;</span><br><span class="line">        <span class="keyword">this</span>.description = description;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-09T00:00:00+08:00" content="2019-11-09">
-          11-09
-        </time>
-      </div>
+<h2 id="多表联查实现"><a href="#多表联查实现" class="headerlink" title="多表联查实现"></a>多表联查实现</h2><ol>
+<li>首先建立一个UserDTO用来储存联查后的结果。</li>
+</ol>
+<blockquote>
+<p>UserDTO.java</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> LiuZhongYue</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2020/02/06</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span></span><br><span class="line"><span class="meta">@AllArgsConstructor</span></span><br><span class="line"><span class="meta">@Builder</span>(toBuilder = <span class="keyword">true</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserDTO</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> String companyName;</span><br><span class="line">    <span class="keyword">private</span> String schoolName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </article>
+<ol start="2">
+<li>在PersonRepository接口中增加下面的方法</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Query</span>(<span class="string">"select new top.liuergo.demo.DTO.UserDTO"</span> +</span><br><span class="line">       <span class="string">"(p.name, p.age, c.companyName, s.schoolName) "</span> +</span><br><span class="line">       <span class="string">"from Person p "</span> +</span><br><span class="line">       <span class="string">"left join Company c on p.companyId = c.id "</span> +</span><br><span class="line">       <span class="string">"left join School s on p.schoolId = s.id "</span> +</span><br><span class="line">		<span class="string">"where p.id = :id"</span>)</span><br><span class="line"><span class="function">Optional&lt;UserDTO&gt; <span class="title">findUserInformation</span><span class="params">(@Param(<span class="string">"id"</span>)</span> Long personId)</span>;</span><br></pre></td></tr></table></figure>
 
+<p>上面的 sql 语句中有两个需要注意的点：</p>
+<ul>
+<li>select 后面 new 了一个 UserDTO 对象，直接将 sql 返回的数据映射到一个新的 UserDTO 对象上。</li>
+<li>注意 left join 的使用，这样如果一个用户没有设置 compnayId 或者 schoolId，也会返回相应的结果，注意根据业务使用不同的连接方法。</li>
+</ul>
+<h2 id="分页实现"><a href="#分页实现" class="headerlink" title="分页实现"></a>分页实现</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Query</span>(value = <span class="string">"select new top.liuergo.demo.DTO.UserDTO"</span> +</span><br><span class="line">        <span class="string">"(p.name, p.age, c.companyName, s.schoolName) "</span> +</span><br><span class="line">        <span class="string">"from Person p "</span> +</span><br><span class="line">        <span class="string">"left join Company c on p.companyId = c.id "</span> +</span><br><span class="line">        <span class="string">"left join School s on p.schoolId = s.id "</span>,</span><br><span class="line">       countQuery = <span class="string">"select count(p.id) "</span> +</span><br><span class="line">       	<span class="string">"from Person p "</span> +</span><br><span class="line">        <span class="string">"left join Company c on  p.companyId = c.id "</span> +</span><br><span class="line">		<span class="string">"left join School s on p.schoolId = s.id"</span>)</span><br><span class="line"><span class="function">Page&lt;UserDTO&gt; <span class="title">getUserInformationList</span><span class="params">(Pageable pageable)</span></span>;</span><br></pre></td></tr></table></figure>
 
-      
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/10/30/设计模式—单例模式/" itemprop="url">
-              
-                <span itemprop="name">设计模式—单例模式</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-10-30T00:00:00+08:00" content="2019-10-30">
-          10-30
-        </time>
-      </div>
-
-    </header>
-  </article>
+<p>为了实现分页，需要设置一个Pageable参数，对于其中的countQuery属性，源码中是这样解释的：</p>
+<blockquote>
+<p>Defines a special count query that shall be used for pagination queries to lookup the total number of elements for a page. If non is configured we will derive the count query from the original query or {@link #countProjection()} query if any.</p>
+</blockquote>
+<p>大体意思就是说这是一个可能被分页查询用到的特殊的 sql 语句，其作用是为了查询每个页面的元素总数，如果你不设置这个属性JPA会直接从原始的 sql 中自动获取。</p>
+<p>分页使用：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">PageRequest pageRequest = PageRequest.of(<span class="number">2</span>, <span class="number">10</span>, Sort.Direction.DESC, <span class="string">"age"</span>);</span><br><span class="line">Page&lt;UserDTO&gt; result = personRepository.getUserInformationList(pageRequest);</span><br><span class="line">System.out.println(<span class="string">"总页数："</span> + result.getTotalPages());</span><br><span class="line">System.out.println(result.getContent());</span><br></pre></td></tr></table></figure>
 
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="机智刘二狗 支付宝">
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java-Web/" rel="tag"> <i class="fa fa-tag"> Java Web</i></a>
+          
+            <a href="/tags/Spring-Data-JPA/" rel="tag"> <i class="fa fa-tag"> Spring Data JPA</i></a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/02/05/Spring Data JPA/" rel="next" title="Spring Data JPA 学习">
+                <i class="fa fa-chevron-left"></i> Spring Data JPA 学习
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/07/Spring Boot整合过滤器/" rel="prev" title="Spring Boot 整合过滤器">
+                Spring Boot 整合过滤器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -401,6 +550,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -421,8 +574,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -508,6 +670,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关实体类"><span class="nav-number">1.</span> <span class="nav-text">相关实体类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多表联查实现"><span class="nav-number">2.</span> <span class="nav-text">多表联查实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分页实现"><span class="nav-number">3.</span> <span class="nav-text">分页实现</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -680,6 +858,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
@@ -1069,26 +1251,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

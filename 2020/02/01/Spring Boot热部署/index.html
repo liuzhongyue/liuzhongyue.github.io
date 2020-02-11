@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Spring Boot,">
 
 
 
@@ -80,18 +80,19 @@
 
 
 <meta name="description" content="使用spring-boot-devtools实现简单的热部署 热部署指的是在我们调试程序的时候无需每次都重新启动项目，就可以更新程序，特别是项目比较大，每次重新运行都需要耗费大量时间的时候，使用热部署可以很有效地节省时间。   添加依赖  Maven &amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;">
+<meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ergo&#39;s blog">
-<meta property="og:url" content="http://yoursite.com/2020/02/11/Spring Boot热部署/index.html">
+<meta property="og:title" content="Spring Boot实现热部署">
+<meta property="og:url" content="http://yoursite.com/2020/02/01/Spring Boot热部署/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
 <meta property="og:description" content="使用spring-boot-devtools实现简单的热部署 热部署指的是在我们调试程序的时候无需每次都重新启动项目，就可以更新程序，特别是项目比较大，每次重新运行都需要耗费大量时间的时候，使用热部署可以很有效地节省时间。   添加依赖  Maven &amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200206114957.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200206115101.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200206115254.png">
-<meta property="og:updated_time" content="2020-02-06T04:04:35.003Z">
+<meta property="og:updated_time" content="2020-02-11T09:58:12.532Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ergo&#39;s blog">
+<meta name="twitter:title" content="Spring Boot实现热部署">
 <meta name="twitter:description" content="使用spring-boot-devtools实现简单的热部署 热部署指的是在我们调试程序的时候无需每次都重新启动项目，就可以更新程序，特别是项目比较大，每次重新运行都需要耗费大量时间的时候，使用热部署可以很有效地节省时间。   添加依赖  Maven &amp;lt;dependency&amp;gt;	&amp;lt;groupId&amp;gt;org.springframework.boot&amp;lt;/groupId&amp;gt;">
 <meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200206114957.png">
 
@@ -123,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/02/11/Spring Boot热部署/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/01/Spring Boot热部署/">
 
 
 
 
 
-  <title> | ergo's blog</title>
+  <title>Spring Boot实现热部署 | ergo's blog</title>
   
 
 
@@ -288,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/11/Spring Boot热部署/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/01/Spring Boot热部署/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -305,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">Spring Boot实现热部署</h1>
         
 
         <div class="post-meta">
@@ -317,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-11T17:53:46+08:00">
-                2020-02-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-01T00:00:00+08:00">
+                2020-02-01
               </time>
             
 
@@ -333,12 +334,34 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-06T12:04:35+08:00">
-                2020-02-06
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-11T17:58:12+08:00">
+                2020-02-11
               </time>
             
           </span>
 
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Spring-Boot/" itemprop="url" rel="index">
+                    <span itemprop="name">Spring Boot</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -448,6 +471,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Spring-Boot/" rel="tag"> <i class="fa fa-tag"> Spring Boot</i></a>
+          
+        </div>
+      
 
       
       
@@ -457,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/02/11/git命令整合/" rel="next" title="git命令整理">
-                <i class="fa fa-chevron-left"></i> git命令整理
+              <a href="/2020/01/20/Linux知识回顾/" rel="next" title="Linux知识回顾">
+                <i class="fa fa-chevron-left"></i> Linux知识回顾
               </a>
             
           </div>
@@ -466,6 +495,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/02/01/zsh/" rel="prev" title="zsh基本配置以及操作">
+                zsh基本配置以及操作 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>

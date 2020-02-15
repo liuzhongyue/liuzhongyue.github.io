@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="algorithm,two-pointers,HashTable,">
+  <meta name="keywords" content="algorithm,binary tree,">
 
 
 
@@ -79,18 +79,22 @@
 
 
 
-<meta name="description" content="在LeetCode的ArrayTag中，有一系列的__数之和题，这几道题都有一些相似之处，在这里做一下总结。 总览 两数之和 三数之和 最接近的三数之和 四数之和  求解方法 暴力法（不可取），时间复杂度往往为n的“几数”次方（如两数之和为$O(n^2)$）。 HashTable减少循环次数，降低时间复杂度。 排序+双指针（推荐）。  两数之和给定一个整数数组 nums 和一个目标值 target">
-<meta name="keywords" content="algorithm,two-pointers,HashTable">
+<meta name="description" content="最近在刷算法题，趁着这个机会将数据结构再复习一遍，树这一部分准备按照二叉树-&amp;gt;二叉搜索树-&amp;gt;AVL树-&amp;gt;红黑树的顺序学习。 二叉树二叉树的常用算法树的节点类如下：  TreeNode.java  public class TreeNode&amp;lt;T&amp;gt; &amp;#123;    /**     * 右节点     */    private TreeNode&amp;lt;T&amp;gt; ri">
+<meta name="keywords" content="algorithm,binary tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="几数之和系列">
-<meta property="og:url" content="http://yoursite.com/2019/10/19/几数之和系列/index.html">
+<meta property="og:title" content="二叉树">
+<meta property="og:url" content="http://yoursite.com/2020/02/08/二叉树/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="在LeetCode的ArrayTag中，有一系列的__数之和题，这几道题都有一些相似之处，在这里做一下总结。 总览 两数之和 三数之和 最接近的三数之和 四数之和  求解方法 暴力法（不可取），时间复杂度往往为n的“几数”次方（如两数之和为$O(n^2)$）。 HashTable减少循环次数，降低时间复杂度。 排序+双指针（推荐）。  两数之和给定一个整数数组 nums 和一个目标值 target">
+<meta property="og:description" content="最近在刷算法题，趁着这个机会将数据结构再复习一遍，树这一部分准备按照二叉树-&amp;gt;二叉搜索树-&amp;gt;AVL树-&amp;gt;红黑树的顺序学习。 二叉树二叉树的常用算法树的节点类如下：  TreeNode.java  public class TreeNode&amp;lt;T&amp;gt; &amp;#123;    /**     * 右节点     */    private TreeNode&amp;lt;T&amp;gt; ri">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-15T09:34:15.296Z">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/tree.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200215162902.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200215163512.png">
+<meta property="og:updated_time" content="2020-02-15T08:42:04.683Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="几数之和系列">
-<meta name="twitter:description" content="在LeetCode的ArrayTag中，有一系列的__数之和题，这几道题都有一些相似之处，在这里做一下总结。 总览 两数之和 三数之和 最接近的三数之和 四数之和  求解方法 暴力法（不可取），时间复杂度往往为n的“几数”次方（如两数之和为$O(n^2)$）。 HashTable减少循环次数，降低时间复杂度。 排序+双指针（推荐）。  两数之和给定一个整数数组 nums 和一个目标值 target">
+<meta name="twitter:title" content="二叉树">
+<meta name="twitter:description" content="最近在刷算法题，趁着这个机会将数据结构再复习一遍，树这一部分准备按照二叉树-&amp;gt;二叉搜索树-&amp;gt;AVL树-&amp;gt;红黑树的顺序学习。 二叉树二叉树的常用算法树的节点类如下：  TreeNode.java  public class TreeNode&amp;lt;T&amp;gt; &amp;#123;    /**     * 右节点     */    private TreeNode&amp;lt;T&amp;gt; ri">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/tree.png">
 
 
 
@@ -120,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/19/几数之和系列/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/08/二叉树/">
 
 
 
 
 
-  <title>几数之和系列 | ergo's blog</title>
+  <title>二叉树 | ergo's blog</title>
   
 
 
@@ -285,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/几数之和系列/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/08/二叉树/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -302,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">几数之和系列</h1>
+          <h1 class="post-title" itemprop="name headline">二叉树</h1>
         
 
         <div class="post-meta">
@@ -314,8 +318,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-10-19T00:00:00+08:00">
-                2019-10-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-08T00:00:00+08:00">
+                2020-02-08
               </time>
             
 
@@ -330,8 +334,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-15T17:34:15+08:00">
-                2020-01-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-15T16:42:04+08:00">
+                2020-02-15
               </time>
             
           </span>
@@ -349,8 +353,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/LeetCode/" itemprop="url" rel="index">
-                    <span itemprop="name">LeetCode</span>
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm</span>
                   </a>
                 </span>
 
@@ -385,7 +389,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1.8k
+                  893
                 </span>
               
 
@@ -410,101 +414,46 @@
       
 
       
-        <p>在LeetCode的ArrayTag中，有一系列的__数之和题，这几道题都有一些相似之处，在这里做一下总结。</p>
-<h1 id="总览"><a href="#总览" class="headerlink" title="总览"></a>总览</h1><ul>
-<li>两数之和</li>
-<li>三数之和</li>
-<li>最接近的三数之和</li>
-<li>四数之和</li>
-</ul>
-<h1 id="求解方法"><a href="#求解方法" class="headerlink" title="求解方法"></a>求解方法</h1><ol>
-<li>暴力法（不可取），时间复杂度往往为n的“几数”次方（如两数之和为$O(n^2)$）。</li>
-<li>HashTable减少循环次数，降低时间复杂度。</li>
-<li>排序+双指针（推荐）。</li>
-</ol>
-<h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1><p>给定一个整数数组 <code>nums</code> 和一个目标值 <code>target</code>，请你在该数组中找出和为目标值的那 <strong>两个</strong> 整数，并返回他们的数组下标。</p>
-<p>你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。</p>
-<p><strong>示例:</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给定 nums = [2, 7, 11, 15], target = 9</span><br><span class="line"></span><br><span class="line">因为 nums[0] + nums[1] = 2 + 7 = 9</span><br><span class="line">所以返回 [0, 1]</span><br></pre></td></tr></table></figure>
-
+        <p>最近在刷算法题，趁着这个机会将数据结构再复习一遍，树这一部分准备按照二叉树-&gt;二叉搜索树-&gt;AVL树-&gt;红黑树的顺序学习。</p>
+<h1 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h1><h2 id="二叉树的常用算法"><a href="#二叉树的常用算法" class="headerlink" title="二叉树的常用算法"></a>二叉树的常用算法</h2><p>树的节点类如下：</p>
 <blockquote>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/two-sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/two-sum</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p>TreeNode.java</p>
 </blockquote>
-<p>此题是LeetCode入坑第一题，作为一名算法小白，首先就想到了暴力求解法，方法也是简单粗暴，不做解释。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="comment">//暴力求解</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;i ,j&#125;;</span><br><span class="line">                &#125;    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"no sulotion!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 右节点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> TreeNode&lt;T&gt; rightNode;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 左节点</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> TreeNode&lt;T&gt; leftNode;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 数据</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> T data;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TreeNode</span><span class="params">(T data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.data = data;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// getter and setter</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>暴力终究不可取，此题还可以使用HashTable求解，减少了一次循环；上一种解法相当于是每个数都要去找一个能和别人配对的数，而利用HashTable的解法是将每个数想要配对的数存起来，并且在存起来之前，检查一遍当前的HashTable中是否已经存在了想要配对的数，如果配对成功，直接返回结果。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] twoSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;        </span><br><span class="line">        <span class="comment">//HashMap</span></span><br><span class="line">        HashMap&lt;Integer, Integer&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> a = target - nums[i]; <span class="comment">//想要配对的数</span></span><br><span class="line">            <span class="keyword">if</span> (hashMap.containsKey(a) ) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;hashMap.get(a),i&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            hashMap.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"no sulotion!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h1 id="三数之和"><a href="#三数之和" class="headerlink" title="三数之和"></a>三数之和</h1><p>给定一个包含 <em>n</em> 个整数的数组 <code>nums</code>，判断 <code>nums</code> 中是否存在三个元素 <em>a，b，c ，*使得 *a + b + c =</em> 0 ？找出所有满足条件且不重复的三元组。</p>
-<p><strong>注意：</strong>答案中不可以包含重复的三元组。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，</span><br><span class="line"></span><br><span class="line">满足要求的三元组集合为：</span><br><span class="line">[</span><br><span class="line">  [-1, 0, 1],</span><br><span class="line">  [-1, -1, 2]</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
+<h3 id="遍历"><a href="#遍历" class="headerlink" title="遍历"></a>遍历</h3><p>二叉树的遍历有三种方式：先序遍历、中序遍历、后序遍历。这里的先中后都是指的根节点在遍历中的顺序，对于左右孩子的顺序都是先左后右，先序遍历就是按照<strong>根-&gt;左-&gt;右</strong>的顺序，中序遍历就是按照<strong>左-&gt;中-&gt;右</strong>的顺序，后序遍历就是<strong>左-&gt;右-&gt;中</strong>的顺序。</p>
+<p>如果有下面的一棵二叉树，下面分别使用递归和非递归方式遍历这棵树。</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/tree.png" alt></p>
+<p><strong>递归方式</strong></p>
+<p>使用递归方式遍历就非常简单了，如果递归理解不了可以多做一些递归的题目练习。</p>
 <blockquote>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/3sum/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/3sum/</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<p>先序遍历</p>
 </blockquote>
-<p>此题可以参照两数之和的解法继续使用暴力法或者是HashTable解法，但是题目要求不可以包含重复的三元组，所以去重是个大问题，目前除了想到对每个三元组进行排序再使用HashSet去重外，还没有想到别的好办法。</p>
-<p>接下来主要介绍排序+双指针的方法。</p>
-<p>此题最合适的方法是采用双指针的方法求解，关于双指针在之前的一道题已经使用过了，最主要的一点就是关于指针如何移动的问题。</p>
-<p><strong>算法详解</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preorderTraversal</span><span class="params">(TreeNode&lt;?&gt; root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root != <span class="keyword">null</span>) &#123;</span><br><span class="line">        System.out.print(root.getData());</span><br><span class="line">        preorderTraversal(root.getLeftNode());</span><br><span class="line">        preorderTraversal(root.getRightNode());     </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>非递归方式(层次遍历)</strong></p>
+<p>非递归方式相对于递归方式来说就稍微有些麻烦了，需要用到队列先进先出的性质。</p>
 <ol>
-<li>对数据进行排序，一般使用双指针求解都要先对数据进行排序。</li>
-<li>确定三个指针的初始位置，k指向最左边也就是最小的数，i和j分别指向除了k处的两端，分别向中间移动，也就是说，移动方式为i++或者j–。</li>
-<li>计算三数之和sum，如果sum = 0，直接返回结果；如果sum &gt; 0，应该向右移动i指针，解释一下，我们的目的是需要让当前的sum值减小慢慢向0趋近，i++的方式会让sum的值增大，而j–的方式会让sum的值减小，所以应该向右移动i指针；如果sum &lt; 0，应该向左移动j指针。</li>
-<li>由于事先对数据进行了排序，去重也变得有迹可循，首先，我们需要分析重复数据是如何产生的。看下面一个例子。</li>
-<li>去除重复数据</li>
+<li>创建一个队列将根节点入队。</li>
+<li>将队首的节点出队，每次出队一个节点，就将其左孩子和右孩子入队(如果存在的话)。</li>
+<li>重复上述操作，直到队列为空，就遍历完了所有的元素。</li>
 </ol>
-<p>拿示例数据[-1, 0, 1, 2, -1, -4]来说，首先对数据排序，当前k指向-1，i指向0，j指向1，当前结果就是一个符合条件的结果</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">k</th>
-<th align="center"></th>
-<th align="center">i</th>
-<th align="center">j</th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">-4</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-</tr>
-</tbody></table>
-<p>当k继续移动一位以后，发现当前的情况也是一个符合条件的结果，但是很明显和上一种结果重复了。由此，产生重复结果的原因就在于k了，如果存在两个k指针所指的数重复，那么下一次循环就可以直接跳过，这样就避免了重复结果的产生。</p>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center"></th>
-<th align="center">k</th>
-<th align="center">i</th>
-<th align="center">j</th>
-<th align="center"></th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">-4</td>
-<td align="center">-1</td>
-<td align="center">-1</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">2</td>
-</tr>
-</tbody></table>
-<p>另外，对于其他两个指针，同样会产生重复的情况，分析过程和上面对k指针的分析相同。</p>
-<p>代码：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; threeSum(<span class="keyword">int</span>[] nums) &#123;</span><br><span class="line">        <span class="comment">//排序 + 双指针</span></span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; ternaryList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="comment">//[-4, -1, -1, 0, 1, 2]</span></span><br><span class="line">        <span class="comment">//[-1, -1, 0, 1]</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (nums[i] &gt; <span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) <span class="keyword">continue</span>; <span class="comment">//去重</span></span><br><span class="line">            <span class="keyword">int</span> i = i + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> j = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt; j) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = nums[i] + nums[i] + nums[j];</span><br><span class="line">                <span class="keyword">if</span> (sum == <span class="number">0</span>) &#123;</span><br><span class="line">                    ternaryList.add(Arrays.asList(nums[i], nums[i], nums[j]));</span><br><span class="line">                    <span class="keyword">while</span> (i &lt; j &amp;&amp; nums[i] == nums[i + <span class="number">1</span>]) i++; <span class="comment">// 去重</span></span><br><span class="line">                    <span class="keyword">while</span> (i &lt; j &amp;&amp; nums[j] == nums[j - <span class="number">1</span>]) j--; <span class="comment">// 去重</span></span><br><span class="line">                    j--;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    i++;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    j--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ternaryList;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>还是以上面的二叉树为例，层次遍历的过程如下</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200215162902.png" alt></p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">ArrayList&lt;T&gt; <span class="title">levelTraversal</span><span class="params">(TreeNode&lt;T&gt; root)</span> </span>&#123;</span><br><span class="line">    ArrayList&lt;T&gt; resultList = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) <span class="keyword">return</span> resultList;</span><br><span class="line">    Queue&lt;TreeNode&lt;T&gt;&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">    queue.add(root);</span><br><span class="line">    <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">        TreeNode&lt;T&gt; treeNode = queue.poll();</span><br><span class="line">        resultList.add(treeNode.getData());</span><br><span class="line">        <span class="keyword">if</span> (treeNode.getLeftNode() != <span class="keyword">null</span>) </span><br><span class="line">            queue.add(treeNode.getLeftNode());</span><br><span class="line">        <span class="keyword">if</span> (treeNode.getRightNode() != <span class="keyword">null</span>)</span><br><span class="line">            queue.add(treeNode.getRightNode());</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> resultList;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p><strong><em>剩下的两道题解法和三数之和基本相同，只给出代码。</em></strong></p>
-<h1 id="最接近的三数之和"><a href="#最接近的三数之和" class="headerlink" title="最接近的三数之和"></a>最接近的三数之和</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> result = nums[<span class="number">0</span>] + nums[<span class="number">1</span>] + nums[<span class="number">2</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> j = i + <span class="number">1</span>, k = nums.length - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (j &lt; k) &#123;</span><br><span class="line">                <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[k];</span><br><span class="line">                <span class="keyword">if</span> (Math.abs(sum - target) &lt; Math.abs(result - target)) &#123;</span><br><span class="line">                    result = sum;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">// 移动指针</span></span><br><span class="line">                <span class="keyword">if</span> (sum == target) &#123;</span><br><span class="line">                    <span class="keyword">return</span> sum;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> (sum &gt; target) &#123;</span><br><span class="line">                    k--;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    j++;    </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="其他算法"><a href="#其他算法" class="headerlink" title="其他算法"></a>其他算法</h3><p><strong>计算树的深度</strong></p>
+<p>该算法也是使用递归的方式，需要比较左子树和右子树的深度，大的才是数的深度。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function"><span class="keyword">int</span> <span class="title">getDepth</span><span class="params">(TreeNode&lt;T&gt; root)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">int</span> leftDepth = getDepth(root.getLeftNode());</span><br><span class="line">        <span class="keyword">int</span> rightDepth = getDepth(root.getRightNode());</span><br><span class="line">        <span class="keyword">return</span> Math.max(leftDepth, rightDepth) + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="四数之和"><a href="#四数之和" class="headerlink" title="四数之和"></a>四数之和</h1><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; fourSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        List&lt;List&lt;Integer&gt;&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">0</span> &amp;&amp; nums[i] == nums[i - <span class="number">1</span>]) <span class="keyword">continue</span>; <span class="comment">//去重</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span> (j &gt; i + <span class="number">1</span> &amp;&amp; nums[j] == nums[j - <span class="number">1</span>]) <span class="keyword">continue</span>; <span class="comment">//去重</span></span><br><span class="line">                <span class="keyword">int</span> k = j + <span class="number">1</span>, l = nums.length - <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">while</span> (k &lt; l) &#123;</span><br><span class="line">                    <span class="keyword">int</span> sum = nums[i] + nums[j] + nums[k] + nums[l];</span><br><span class="line">                    <span class="keyword">if</span> (sum == target) &#123;</span><br><span class="line">                        result.add(Arrays.asList(nums[i], nums[j], nums[k], nums[l]));</span><br><span class="line">                        <span class="keyword">while</span> (k &lt; l &amp;&amp; nums[k] == nums[k + <span class="number">1</span>]) k++;</span><br><span class="line">                        <span class="keyword">while</span> (k &lt; l &amp;&amp; nums[l] == nums[l - <span class="number">1</span>]) l--;</span><br><span class="line">                        k++;</span><br><span class="line">                        l--;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; target) &#123;</span><br><span class="line">                        l--;</span><br><span class="line">                    &#125; </span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (sum &lt; target)&#123;</span><br><span class="line">                        k++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>测试</strong></p>
+<p>编写一个测试类，这里使用的是JUnit 5。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BTreeTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TreeNode&lt;String&gt; root = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"A"</span>);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@BeforeEach</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        TreeNode&lt;String&gt; node1 = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"B"</span>);</span><br><span class="line">        TreeNode&lt;String&gt; node2 = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"C"</span>);</span><br><span class="line">        TreeNode&lt;String&gt; node3 = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"D"</span>);</span><br><span class="line">        TreeNode&lt;String&gt; node4 = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"E"</span>);</span><br><span class="line">        TreeNode&lt;String&gt; node5 = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"F"</span>);</span><br><span class="line">        TreeNode&lt;String&gt; node6 = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"G"</span>);</span><br><span class="line">        TreeNode&lt;String&gt; node7 = <span class="keyword">new</span> TreeNode&lt;String&gt;(<span class="string">"V"</span>);</span><br><span class="line">        root.setChildren(node1, node2);</span><br><span class="line">        node1.setChildren(node3, node4);</span><br><span class="line">        node2.setChildren(node5, node6);</span><br><span class="line">        node6.setRightNode(node7);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">traversal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.print(<span class="string">"前序遍历::"</span>);</span><br><span class="line">        BTreeUtils.preorderTraversal(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.print(<span class="string">"中序遍历::"</span>);</span><br><span class="line">        BTreeUtils.inorderTraversal(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.print(<span class="string">"后序遍历::"</span>);</span><br><span class="line">        BTreeUtils.postorderTraversal(root);</span><br><span class="line">        System.out.println();</span><br><span class="line">        System.out.print(<span class="string">"层次遍历::"</span>);</span><br><span class="line">        System.out.println(BTreeUtils.levelTraversal(root));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<p>测试结果如下：</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200215163512.png" alt></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在二叉树中，最重要的一个思想就是递归，鲁迅说过：“人理解迭代，神理解递归”(鲁迅：我没说过)，递归虽难理解，但是是很重要的一种思想，等多刷些题目之后，会再对递归做一个全面的总结。</p>
 
       
     </div>
@@ -548,9 +497,7 @@
           
             <a href="/tags/algorithm/" rel="tag"> <i class="fa fa-tag"> algorithm</i></a>
           
-            <a href="/tags/two-pointers/" rel="tag"> <i class="fa fa-tag"> two-pointers</i></a>
-          
-            <a href="/tags/HashTable/" rel="tag"> <i class="fa fa-tag"> HashTable</i></a>
+            <a href="/tags/binary-tree/" rel="tag"> <i class="fa fa-tag"> binary tree</i></a>
           
         </div>
       
@@ -563,8 +510,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/16/Two pointers/" rel="next" title="Two pointer">
-                <i class="fa fa-chevron-left"></i> Two pointer
+              <a href="/2020/02/07/Spring Boot整合过滤器/" rel="next" title="Spring Boot 整合过滤器">
+                <i class="fa fa-chevron-left"></i> Spring Boot 整合过滤器
               </a>
             
           </div>
@@ -573,8 +520,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/19/Java内部类/" rel="prev" title="Java内部类">
-                Java内部类 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/08/Spring Boot整合拦截器/" rel="prev" title="Spring Boot 整合拦截器">
+                Spring Boot 整合拦截器 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -733,7 +680,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#总览"><span class="nav-number">1.</span> <span class="nav-text">总览</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#求解方法"><span class="nav-number">2.</span> <span class="nav-text">求解方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#两数之和"><span class="nav-number">3.</span> <span class="nav-text">两数之和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三数之和"><span class="nav-number">4.</span> <span class="nav-text">三数之和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最接近的三数之和"><span class="nav-number">5.</span> <span class="nav-text">最接近的三数之和</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#四数之和"><span class="nav-number">6.</span> <span class="nav-text">四数之和</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉树"><span class="nav-number">1.</span> <span class="nav-text">二叉树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉树的常用算法"><span class="nav-number">1.1.</span> <span class="nav-text">二叉树的常用算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遍历"><span class="nav-number">1.1.1.</span> <span class="nav-text">遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他算法"><span class="nav-number">1.1.2.</span> <span class="nav-text">其他算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.2.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
             
 
           </div>

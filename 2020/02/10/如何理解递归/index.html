@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="计算机网络,以太网,">
+  <meta name="keywords" content="algorithm,">
 
 
 
@@ -79,22 +79,21 @@
 
 
 
-<meta name="description" content="MAC地址 MAC地址固化在网卡中，又称物理地址，它是网络节点全球唯一的物理标识，与其物理位置无关。 MAC地址是数据链路层进行寻址的依据。 网络节点的每一个网络接口都有一个唯一的MAC地址。一个节点允许有多个MAC地址，取决于该站点网络接口的个数。  格式 总长度为48位每八位做一个分隔。 在windows下输入ipconfig/all查看本机的MAC地址：  MAC帧的格式常用的以太网MAC帧">
-<meta name="keywords" content="计算机网络,以太网">
+<meta name="description" content="基本思想写好递归要掌握几个技巧： 1 明确递归函数的作用，将递归函数看作一个黑盒我自己把该技巧称为黑盒思想，我认为黑盒思想对于理解递归有很大的作用，递归函数就是隐藏了很多细节，我们没必要去一步一步地模拟递归函数的运行，那样大脑也受不了。 比如最简单的阶乘函数，我们定义一个函数int Factorial(int n)，规定此函数的作用就是输入一个整数，返回该数的阶乘，我们解题的过程中需要时刻保持这种">
+<meta name="keywords" content="algorithm">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计网—以太网帧">
-<meta property="og:url" content="http://yoursite.com/2019/12/17/计网—以太网帧/index.html">
+<meta property="og:title" content="如何理解递归">
+<meta property="og:url" content="http://yoursite.com/2020/02/10/如何理解递归/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="MAC地址 MAC地址固化在网卡中，又称物理地址，它是网络节点全球唯一的物理标识，与其物理位置无关。 MAC地址是数据链路层进行寻址的依据。 网络节点的每一个网络接口都有一个唯一的MAC地址。一个节点允许有多个MAC地址，取决于该站点网络接口的个数。  格式 总长度为48位每八位做一个分隔。 在windows下输入ipconfig/all查看本机的MAC地址：  MAC帧的格式常用的以太网MAC帧">
+<meta property="og:description" content="基本思想写好递归要掌握几个技巧： 1 明确递归函数的作用，将递归函数看作一个黑盒我自己把该技巧称为黑盒思想，我认为黑盒思想对于理解递归有很大的作用，递归函数就是隐藏了很多细节，我们没必要去一步一步地模拟递归函数的运行，那样大脑也受不了。 比如最简单的阶乘函数，我们定义一个函数int Factorial(int n)，规定此函数的作用就是输入一个整数，返回该数的阶乘，我们解题的过程中需要时刻保持这种">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191215231833.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191215232320.png">
-<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191216000713.png">
-<meta property="og:updated_time" content="2020-01-15T09:40:23.170Z">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155405.png">
+<meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155927.png">
+<meta property="og:updated_time" content="2020-02-16T09:01:25.863Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="计网—以太网帧">
-<meta name="twitter:description" content="MAC地址 MAC地址固化在网卡中，又称物理地址，它是网络节点全球唯一的物理标识，与其物理位置无关。 MAC地址是数据链路层进行寻址的依据。 网络节点的每一个网络接口都有一个唯一的MAC地址。一个节点允许有多个MAC地址，取决于该站点网络接口的个数。  格式 总长度为48位每八位做一个分隔。 在windows下输入ipconfig/all查看本机的MAC地址：  MAC帧的格式常用的以太网MAC帧">
-<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191215231833.png">
+<meta name="twitter:title" content="如何理解递归">
+<meta name="twitter:description" content="基本思想写好递归要掌握几个技巧： 1 明确递归函数的作用，将递归函数看作一个黑盒我自己把该技巧称为黑盒思想，我认为黑盒思想对于理解递归有很大的作用，递归函数就是隐藏了很多细节，我们没必要去一步一步地模拟递归函数的运行，那样大脑也受不了。 比如最简单的阶乘函数，我们定义一个函数int Factorial(int n)，规定此函数的作用就是输入一个整数，返回该数的阶乘，我们解题的过程中需要时刻保持这种">
+<meta name="twitter:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155405.png">
 
 
 
@@ -124,13 +123,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/12/17/计网—以太网帧/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/10/如何理解递归/">
 
 
 
 
 
-  <title>计网—以太网帧 | ergo's blog</title>
+  <title>如何理解递归 | ergo's blog</title>
   
 
 
@@ -289,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/17/计网—以太网帧/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/10/如何理解递归/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="机智刘二狗">
@@ -306,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">计网—以太网帧</h1>
+          <h1 class="post-title" itemprop="name headline">如何理解递归</h1>
         
 
         <div class="post-meta">
@@ -318,8 +317,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-12-17T00:00:00+08:00">
-                2019-12-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-02-10T00:00:00+08:00">
+                2020-02-10
               </time>
             
 
@@ -334,8 +333,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2020-01-15T17:40:23+08:00">
-                2020-01-15
+              <time title="更新于" itemprop="dateModified" datetime="2020-02-16T17:01:25+08:00">
+                2020-02-16
               </time>
             
           </span>
@@ -353,8 +352,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算机网络/" itemprop="url" rel="index">
-                    <span itemprop="name">计算机网络</span>
+                  <a href="/categories/algorithm/" itemprop="url" rel="index">
+                    <span itemprop="name">algorithm</span>
                   </a>
                 </span>
 
@@ -389,7 +388,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  925
+                  2.9k
                 </span>
               
 
@@ -414,52 +413,94 @@
       
 
       
-        <h2 id="MAC地址"><a href="#MAC地址" class="headerlink" title="MAC地址"></a>MAC地址</h2><ul>
-<li>MAC地址固化在网卡中，又称物理地址，它是网络节点全球唯一的物理标识，与其物理位置无关。</li>
-<li>MAC地址是数据链路层进行寻址的依据。</li>
-<li>网络节点的每一个网络接口都有一个唯一的MAC地址。一个节点允许有多个MAC地址，取决于该站点网络接口的个数。</li>
-</ul>
-<p><strong>格式</strong></p>
-<p>总长度为48位每八位做一个分隔。</p>
-<p>在windows下输入<code>ipconfig/all</code>查看本机的MAC地址：</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191215231833.png" alt></p>
-<h2 id="MAC帧的格式"><a href="#MAC帧的格式" class="headerlink" title="MAC帧的格式"></a>MAC帧的格式</h2><p>常用的以太网MAC帧格式有两种标准：</p>
-<ul>
-<li>DIX Ethernet V2 标准</li>
-<li>IEEE 的 802.3 标准</li>
-</ul>
-<p>下面主要分析Ethernet V2标准的以太网帧格式</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191215232320.png" alt></p>
-<p>当以太网帧到达物理层后，会在帧的前面插入的 8 字节中的第一个字段共 7 个字节，是前同步码，用来迅速实现 MAC 帧的比特同步。第二个字段是帧开始定界符，表示后面的信息就是以太网帧。以太网帧并不是最终的传输形式。</p>
-<p><strong>Ethernet Ⅱ 帧格式</strong></p>
-<ul>
-<li><strong>前导符和起始符</strong>：8 Bytes</li>
-</ul>
-<p>7个10101010 字节尾随1个10101011字节，用来同步收发双方的时钟速率，稳定收发电路状态，并进行帧定界 。</p>
-<ul>
-<li><strong>目的地址和源地址</strong>：6 Bytes + 6 Bytes</li>
-</ul>
-<p>发送主机和接收主机的物理MAC地址。</p>
-<ul>
-<li><strong>类型</strong>：2 Bytes</li>
-</ul>
-<p>以太网支持多种网络层的协议，比如IP协议的编号就是0800，ARP协议的编号就是0806。</p>
-<ul>
-<li><strong>数据</strong>：46~1500 Bytes</li>
-</ul>
-<p>以太网规定，以太网数据帧数据域长度最小为46 Bytes，总长度最小为64 Bytes，即6 + 6 + 2 + 46 + 4 = 64，当数据的字节不足46 Bytes时，会对其进行填充；以太网的MTU为1500 Bytes，即最大字节数为1500 Bytes。</p>
-<ul>
-<li><strong>CRC</strong>：4 Bytes</li>
-</ul>
-<p>采用32位的CRC校验，在接收端校验，如果出错，则将该帧丢弃。</p>
-<h2 id="最小帧长度问题"><a href="#最小帧长度问题" class="headerlink" title="最小帧长度问题"></a>最小帧长度问题</h2><p>在CSMA/CD协议一节中提到了使用载波侦听技术来检测冲突，靠判断总线的电平是否出现跳变来判断总线的闲忙。以太网帧的最小帧长度的限制就和CSMA/CD协议有关。</p>
-<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20191216000713.png" alt></p>
-<p>在上图的第一个过程中，A主机发送了一个以太网帧，如果帧长度过短的话，就会造成在发生冲突之前就收到了发送完毕的信号，就检测不到冲突了，所以最小帧长度必须要保证发送时间大于所有工作站监测到冲突并发送碰撞的时间。</p>
-<p>所以为了避免上述情况的产生，就要求以太网帧至少需要冲突窗口时间才能发送完毕，即发送方在发送的时候，如果有冲突一定在发送完以前能检测到。<br>$$<br>数据帧的传输时延t_1 = 数据帧长度 / 数据传输速率<br>$$</p>
-<p>$$<br>信号的传输时延t_2 = 两站点之间的距离 / 信号传播速度<br>$$</p>
-<p>如果要保证帧在传输中可以正常检测到冲突，则有<br>$$<br>t_1 &gt;= 2t_2<br>$$<br>按照标准，10Mbps以太网采用中继器时，连接的最大长度是2500米，最多经过4个中继器，因此规定对10Mbps以太网一帧的最小发送时间为51.2微秒。这段时间所能传输的数据为512位，512位＝64字节，这就是以太网帧最小64字节的原因。</p>
-<p><strong>结论</strong></p>
-<p>在以太网中，由于冲突窗口的限制，最小帧长 $F_{min}$、传输速率 $R$、网络跨距 $S$ 三者之间必须满足一定的关系：<br>$$<br>F_{min} = kSR，(k:系数)<br>$$</p>
+        <h2 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h2><p>写好递归要掌握几个技巧：</p>
+<h3 id="1-明确递归函数的作用，将递归函数看作一个黑盒"><a href="#1-明确递归函数的作用，将递归函数看作一个黑盒" class="headerlink" title="1 明确递归函数的作用，将递归函数看作一个黑盒"></a>1 明确递归函数的作用，将递归函数看作一个黑盒</h3><p>我自己把该技巧称为<strong>黑盒思想</strong>，我认为黑盒思想对于理解递归有很大的作用，递归函数就是隐藏了很多细节，我们没必要去一步一步地模拟递归函数的运行，那样大脑也受不了。</p>
+<p>比如最简单的阶乘函数，我们定义一个函数<code>int Factorial(int n)</code>，规定此函数的作用就是<strong>输入一个整数，返回该数的阶乘</strong>，我们解题的过程中需要时刻保持这种思想。</p>
+<h3 id="2-明确递归结束的条件"><a href="#2-明确递归结束的条件" class="headerlink" title="2 明确递归结束的条件"></a>2 明确递归结束的条件</h3><p>递归另外一个重要的因素就是要明确递归的结束条件，我们知道，如果递归无法正常终止，最终会导致栈溢出，所以明确递归结束的条件是很重要的，一般我们在找这个条件的时候都要寻找这么一个情况：<strong>在该参数下该函数可以返回确切的值，一般我们需要寻找某些简单情况，这些情况下可以直接获取返回值。</strong></p>
+<p>例如，还是阶乘的例子，我们知道1的阶乘是1，2的阶乘是2，那么我们就可以得出如果n等于1或者2，就可以直接返回n的值，那么该函数就变成了：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-缩小递归范围，获得等价条件"><a href="#3-缩小递归范围，获得等价条件" class="headerlink" title="3 缩小递归范围，获得等价条件"></a>3 缩小递归范围，获得等价条件</h3><p>我觉着这是递归中最难的部分了，说是要确定等价条件，其实有的时候等价条件很好找，但是有些情况下并不是很明显的等价条件，一般我会分为两种问题，<strong>一种是可以很容易推导出公式的，这种问题推出公式来问题也就基本解决了，另外一种是寻找缩小递归范围的办法，使递归不断趋近递归结束条件（其实第一种也是为了达到该目的）</strong>。这一部分需要不断做题积累总结，同时黑盒思想在此处充分体现出来了。</p>
+<p>完善阶乘的例子：</p>
+<p>我们知道，阶乘的公式是 $f(n)=n!$，容易得出$f(n-1)=(n-1)!$，$f(n)=n(n-1)!$，那么最终得到的公式就是$f(n)=nf(n-1)$，这里的f(n)就是等价于第一步我们确定的函数<code>Factorial(int n)</code>，那么该函数就变成了：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">return</span> n * Factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>现在的函数就和我们一开始推出的公式是一个意思了，向一个作用为<strong>输入一个正整数得到该数的阶乘的函数中</strong>输入参数n，根据刚刚得到的公式返回获得的结果，每次计算都会将递归范围减小，直到达到结束条件。</p>
+<h2 id="题目整理"><a href="#题目整理" class="headerlink" title="题目整理"></a>题目整理</h2><p>下面的题目都是在刷剑指offer和LeetCode中遇到的可以用递归求解的几个题目，挑了几个典型的题目，难度在我看来是按照顺序递增的。</p>
+<blockquote>
+<ol>
+<li>大家都知道斐波那契数列，现在要求输入一个整数n，请你输出斐波那契数列的第n项（从0开始，第0项为0）。</li>
+</ol>
+</blockquote>
+<p>斐波那契数列的公式是 $f(n) = f(n-1) + f(n-2)$，那么我们只需要确定递归的结束条件。f(0)=0，f(1)=1，f(2)=f(1)+f(0)…所以当n&lt;=1时，输入n返回n，那么我们就可以解出改题目了。</p>
+<p><strong>实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Fibonacci(n - <span class="number">1</span>) + Fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="2">
+<li>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</li>
+</ol>
+</blockquote>
+<p>这道题目最重要的就是推出公式了，我们可以先试着模拟几次，如果n=1，只有一个台阶，f(1)=1，同样地，f(2)=1。当有三个台阶，即n=3时候，要分两次跳，第一次跳有两种选择1或2，如果第一次选1，那么还剩两节台阶，问题就回到了f(2)，第二次就只有一种跳法；如果第一次选2，那么还剩一节台阶，问题回到f(1)，第二次只有一种跳法，故f(3)=f(2)+f(1)。所以，当跳n级台阶时，第一次有两种跳法，如果第一次选择了1，那么有f(n-1)中跳法；如果第一次选择了2，那么有f(n-2)种跳法，总共有f(n-1)+f(n-2)种跳法，公式为f(n)=f(n-1)+f(n-2)。</p>
+<p>结束条件也很明显了，n&lt;=2时，返回n。</p>
+<p><strong>实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">JumpFloor</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (target &lt;= <span class="number">2</span>) <span class="keyword">return</span> target;</span><br><span class="line">    <span class="keyword">return</span> JumpFloor(target - <span class="number">1</span>) + JumpFloor(target - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="3">
+<li>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</li>
+</ol>
+</blockquote>
+<p>根据上题容易推出$f(n)=f(n-1)+f(n-2)+…+f(0)$，</p>
+<p>$f(n-1)=f(n-2)+f(n-3)+…+f(0)$</p>
+<p>两式相减，得$f(n)=2f(n-1)$</p>
+<p><strong>实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">JumpFloor</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (target &lt;= <span class="number">2</span>) <span class="keyword">return</span> target;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * JumpFloor(target - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="4">
+<li>输入一个链表，反转链表后，输出新链表的表头。</li>
+</ol>
+</blockquote>
+<p>对于此题来说，黑盒思想就很重要，首先明确此函数的作用，此函数的作用是输入一个链表的头节点，之后对链表进行反转，返回反转后新链表的头节点。</p>
+<p>首先，明确结束条件，同样我们可以将某些简单情况作为结束条件，当<code>head==null</code>或者<code>head.next==null</code>（只有一个节点）时，反转链表的结果就是直接返回<code>head</code>，那么结束递归的条件就是<code>if (head == null || head.next == null) return head;</code>。</p>
+<p>最后一步就是寻找等价关系，缩小递归范围，我们知道该函数的返回值是反转之后的新节点，这个新节点就是旧链表的尾节点，要想一步步逼近答案，显然需要一步步向后搜索，递归部分就是<code>reverse(head.next)</code>，先将这一句加进代码中去：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">Node <span class="title">reverse</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">    Node newNode = reverse(head.next); <span class="comment">// 暂时不return，先用变量储存</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>reverse(head.next)</code>的作用即为输入头节点的下一个节点，并且将头节点后面的节点都反转，如下图所示，第二个链表就是执行<code>reverse(head.next)</code>之后的变化。</p>
+<p>（可能到这里会有疑问了，我们并没有写任何将链表反转的逻辑，链表不可能自己就反转了，确实，到目前为止没有任何实际代码可以将链表反转，但是递归的一个特点就是省略了细节，而且一定要记住黑盒思想，将递归函数看作黑盒，即使函数看起什么都没有做，也要从心底里面让自己相信它现在就起了这个功能，否则你的大脑就爆栈了💥）</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155405.png" alt></p>
+<p>下一步观察上图中第二个链表，此时该链表并没有反转完毕，旧链表的头节点还没有变化，下面我们需要做的就是就要将链表完全反转。让图中2节点的next指针指向1节点，1节点的next指针指向空就可以了，最后我们再将刚刚储存的新链表的头节点返回就可以了。最终的链表就是这样子的：</p>
+<p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155927.png" alt></p>
+<p>最后，完整代码如下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">Node <span class="title">reverse</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">    Node newNode = reverse(head.next);</span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<ol start="5">
+<li>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</li>
+</ol>
+</blockquote>
+<p>关于什么是数的子结构，可以自行百度。</p>
+<p>在一开始做这个题的时候，我的想法既然前序序列和中序序列就可以唯一确定一棵二叉树，那么通过分别前序遍历和中序遍历去得到两个数的遍历序列，然而这种方法是行不通的，很容易找出反例，不要用这种方法去判断。</p>
+<p>整个算法过程应该是这样的：首先判断两个树的根节点是否相等，如果相等，就继续判断两个树的左孩子、右孩子…否则，直接结束判断对A树的根节点的左孩子执行上面的判断。</p>
+<p>此题需要分为两个过程：一个是对A树不断遍历，一个是对AB树的节点进行逐一判断。</p>
+<p>首先规定函数<code>boolean HasSubtree(TreeNode root1,TreeNode root2)</code>的作用为输入树A、B的根节点，如果B是A的子结构，返回true，否则返回false。</p>
+<p>第二步，确定递归结束条件，题目中提到，约定空树不是任意一个树的子结构，那么可以从这里入手，如果A、B有任何一个为空，直接返回false。<strong>实际上，此处的节点为空还包含着另一个语义，就是递归遍历结束，下面也会用到这个条件</strong>。现在函数就变成了：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">HasSubtree</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span> || root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后确定该函数的主体部分，我们先不写出另一个递归判断过程的函数，先将第一个递归函数的架子搭好，在本题中，缩小递归范围的方法就是遍历，放在本题中对二叉树的遍历就是判断完根节点判断左孩子、右孩子，如果根节点通过了判断，就返回true，没有通过，就递归判断左孩子…代码如下（利用了逻辑运算符的短路运算）：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">HasSubtree</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span> || root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> judge(root1, root2) || </span><br><span class="line">        HasSubtree(root1.left, root2.left) ||</span><br><span class="line">        HasSubtree(root1.right, root2.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面就是补全<code>boolean judge(TreeNode root1,TreeNode root2)</code>方法了，该方法的作用实际上是输入两个二叉树AB，只比较根节点，判断B是否是A的为子结构。</p>
+<p>首先，确定递归结束条件，因为此处AB树的都不可能为空了，所以第一个递归函数的判断条件就不适用了，由于仍然需要对树进行递归判断，我们可以通过遍历结束时候的情况作为结束条件，很容易得出：如果A树先遍历完毕即root1==null，那么此时应该返回false；如果B树先遍历完毕即root2==null，那么此时应该返回true（实在理解不了画图分析一下）。</p>
+<p>下面，补全剩下的部分，如果两个树当前的节点不相等，直接返回false；如果相等，递归判断左子树、右子树，如果都相等，返回true。</p>
+<p>完整代码如下</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">HasSubtree</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span> || root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> judge(root1, root2) || </span><br><span class="line">        HasSubtree(root1.left, root2.left) ||</span><br><span class="line">        HasSubtree(root1.right, root2.right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">judge</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (root1.val == root2.val) </span><br><span class="line">        <span class="keyword">return</span> judge(root1.left, root2.left) &amp;&amp; </span><br><span class="line">        judge(root1.right, root2.right);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>理解上面几个题目后，递归差不多就可以入门了，我总结的办法不一定适用于所有的递归题目，不可生搬硬套，多做题，多总结经验和方法。</p>
+<p><strong>参考资料：</strong></p>
+<p><a href="https://www.zhihu.com/question/31412436/answer/683820765" target="_blank" rel="noopener">https://www.zhihu.com/question/31412436/answer/683820765</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/86745433" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/86745433</a></p>
 
       
     </div>
@@ -501,9 +542,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/计算机网络/" rel="tag"> <i class="fa fa-tag"> 计算机网络</i></a>
-          
-            <a href="/tags/以太网/" rel="tag"> <i class="fa fa-tag"> 以太网</i></a>
+            <a href="/tags/algorithm/" rel="tag"> <i class="fa fa-tag"> algorithm</i></a>
           
         </div>
       
@@ -516,8 +555,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/12/17/计网—概述/" rel="next" title="计网—概述">
-                <i class="fa fa-chevron-left"></i> 计网—概述
+              <a href="/2020/02/09/二叉搜索树/" rel="next" title="二叉搜索树">
+                <i class="fa fa-chevron-left"></i> 二叉搜索树
               </a>
             
           </div>
@@ -525,10 +564,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/12/17/计网—交换局域网/" rel="prev" title="计网—交换局域网">
-                计网—交换局域网 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -686,7 +721,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC地址"><span class="nav-number">1.</span> <span class="nav-text">MAC地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC帧的格式"><span class="nav-number">2.</span> <span class="nav-text">MAC帧的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小帧长度问题"><span class="nav-number">3.</span> <span class="nav-text">最小帧长度问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本思想"><span class="nav-number">1.</span> <span class="nav-text">基本思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-明确递归函数的作用，将递归函数看作一个黑盒"><span class="nav-number">1.1.</span> <span class="nav-text">1 明确递归函数的作用，将递归函数看作一个黑盒</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-明确递归结束的条件"><span class="nav-number">1.2.</span> <span class="nav-text">2 明确递归结束的条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-缩小递归范围，获得等价条件"><span class="nav-number">1.3.</span> <span class="nav-text">3 缩小递归范围，获得等价条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题目整理"><span class="nav-number">2.</span> <span class="nav-text">题目整理</span></a></li></ol></div>
             
 
           </div>

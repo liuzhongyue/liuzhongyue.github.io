@@ -89,7 +89,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155405.png">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155927.png">
-<meta property="og:updated_time" content="2020-02-16T09:01:25.863Z">
+<meta property="og:updated_time" content="2020-02-16T09:30:56.253Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何理解递归">
 <meta name="twitter:description" content="基本思想写好递归要掌握几个技巧： 1 明确递归函数的作用，将递归函数看作一个黑盒我自己把该技巧称为黑盒思想，我认为黑盒思想对于理解递归有很大的作用，递归函数就是隐藏了很多细节，我们没必要去一步一步地模拟递归函数的运行，那样大脑也受不了。 比如最简单的阶乘函数，我们定义一个函数int Factorial(int n)，规定此函数的作用就是输入一个整数，返回该数的阶乘，我们解题的过程中需要时刻保持这种">
@@ -323,19 +323,7 @@
             
 
             
-              <span class="post-meta-divider">|</span>
-            
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">更新于&#58;</span>
-              
-              <time title="更新于" itemprop="dateModified" datetime="2020-02-16T17:01:25+08:00">
-                2020-02-16
-              </time>
             
           </span>
 
@@ -419,12 +407,10 @@
 <h3 id="2-明确递归结束的条件"><a href="#2-明确递归结束的条件" class="headerlink" title="2 明确递归结束的条件"></a>2 明确递归结束的条件</h3><p>递归另外一个重要的因素就是要明确递归的结束条件，我们知道，如果递归无法正常终止，最终会导致栈溢出，所以明确递归结束的条件是很重要的，一般我们在找这个条件的时候都要寻找这么一个情况：<strong>在该参数下该函数可以返回确切的值，一般我们需要寻找某些简单情况，这些情况下可以直接获取返回值。</strong></p>
 <p>例如，还是阶乘的例子，我们知道1的阶乘是1，2的阶乘是2，那么我们就可以得出如果n等于1或者2，就可以直接返回n的值，那么该函数就变成了：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-缩小递归范围，获得等价条件"><a href="#3-缩小递归范围，获得等价条件" class="headerlink" title="3 缩小递归范围，获得等价条件"></a>3 缩小递归范围，获得等价条件</h3><p>我觉着这是递归中最难的部分了，说是要确定等价条件，其实有的时候等价条件很好找，但是有些情况下并不是很明显的等价条件，一般我会分为两种问题，<strong>一种是可以很容易推导出公式的，这种问题推出公式来问题也就基本解决了，另外一种是寻找缩小递归范围的办法，使递归不断趋近递归结束条件（其实第一种也是为了达到该目的）</strong>。这一部分需要不断做题积累总结，同时黑盒思想在此处充分体现出来了。</p>
 <p>完善阶乘的例子：</p>
 <p>我们知道，阶乘的公式是 $f(n)=n!$，容易得出$f(n-1)=(n-1)!$，$f(n)=n(n-1)!$，那么最终得到的公式就是$f(n)=nf(n-1)$，这里的f(n)就是等价于第一步我们确定的函数<code>Factorial(int n)</code>，那么该函数就变成了：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Factorial</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">return</span> n * Factorial(n - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>现在的函数就和我们一开始推出的公式是一个意思了，向一个作用为<strong>输入一个正整数得到该数的阶乘的函数中</strong>输入参数n，根据刚刚得到的公式返回获得的结果，每次计算都会将递归范围减小，直到达到结束条件。</p>
 <h2 id="题目整理"><a href="#题目整理" class="headerlink" title="题目整理"></a>题目整理</h2><p>下面的题目都是在刷剑指offer和LeetCode中遇到的可以用递归求解的几个题目，挑了几个典型的题目，难度在我看来是按照顺序递增的。</p>
 <blockquote>
@@ -435,9 +421,8 @@
 <p>斐波那契数列的公式是 $f(n) = f(n-1) + f(n-2)$，那么我们只需要确定递归的结束条件。f(0)=0，f(1)=1，f(2)=f(1)+f(0)…所以当n&lt;=1时，输入n返回n，那么我们就可以解出改题目了。</p>
 <p><strong>实现：</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> Fibonacci(n - <span class="number">1</span>) + Fibonacci(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<ol start="2">
+<ol>
 <li>一只青蛙一次可以跳上1级台阶，也可以跳上2级。求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。</li>
 </ol>
 </blockquote>
@@ -445,9 +430,8 @@
 <p>结束条件也很明显了，n&lt;=2时，返回n。</p>
 <p><strong>实现：</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">JumpFloor</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (target &lt;= <span class="number">2</span>) <span class="keyword">return</span> target;</span><br><span class="line">    <span class="keyword">return</span> JumpFloor(target - <span class="number">1</span>) + JumpFloor(target - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<ol start="3">
+<ol>
 <li>一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。</li>
 </ol>
 </blockquote>
@@ -456,9 +440,8 @@
 <p>两式相减，得$f(n)=2f(n-1)$</p>
 <p><strong>实现：</strong></p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">JumpFloor</span><span class="params">(<span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (target &lt;= <span class="number">2</span>) <span class="keyword">return</span> target;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span> * JumpFloor(target - <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<ol start="4">
+<ol>
 <li>输入一个链表，反转链表后，输出新链表的表头。</li>
 </ol>
 </blockquote>
@@ -466,7 +449,6 @@
 <p>首先，明确结束条件，同样我们可以将某些简单情况作为结束条件，当<code>head==null</code>或者<code>head.next==null</code>（只有一个节点）时，反转链表的结果就是直接返回<code>head</code>，那么结束递归的条件就是<code>if (head == null || head.next == null) return head;</code>。</p>
 <p>最后一步就是寻找等价关系，缩小递归范围，我们知道该函数的返回值是反转之后的新节点，这个新节点就是旧链表的尾节点，要想一步步逼近答案，显然需要一步步向后搜索，递归部分就是<code>reverse(head.next)</code>，先将这一句加进代码中去：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">Node <span class="title">reverse</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">    Node newNode = reverse(head.next); <span class="comment">// 暂时不return，先用变量储存</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p><code>reverse(head.next)</code>的作用即为输入头节点的下一个节点，并且将头节点后面的节点都反转，如下图所示，第二个链表就是执行<code>reverse(head.next)</code>之后的变化。</p>
 <p>（可能到这里会有疑问了，我们并没有写任何将链表反转的逻辑，链表不可能自己就反转了，确实，到目前为止没有任何实际代码可以将链表反转，但是递归的一个特点就是省略了细节，而且一定要记住黑盒思想，将递归函数看作黑盒，即使函数看起什么都没有做，也要从心底里面让自己相信它现在就起了这个功能，否则你的大脑就爆栈了💥）</p>
 <p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155405.png" alt></p>
@@ -474,9 +456,8 @@
 <p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200216155927.png" alt></p>
 <p>最后，完整代码如下：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function">Node <span class="title">reverse</span><span class="params">(Node head)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head == <span class="keyword">null</span> || head.next == <span class="keyword">null</span>) <span class="keyword">return</span> head;</span><br><span class="line">    Node newNode = reverse(head.next);</span><br><span class="line">    head.next.next = head;</span><br><span class="line">    head.next = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">return</span> newNode;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<ol start="5">
+<ol>
 <li>输入两棵二叉树A，B，判断B是不是A的子结构。（ps：我们约定空树不是任意一个树的子结构）</li>
 </ol>
 </blockquote>
@@ -487,16 +468,13 @@
 <p>首先规定函数<code>boolean HasSubtree(TreeNode root1,TreeNode root2)</code>的作用为输入树A、B的根节点，如果B是A的子结构，返回true，否则返回false。</p>
 <p>第二步，确定递归结束条件，题目中提到，约定空树不是任意一个树的子结构，那么可以从这里入手，如果A、B有任何一个为空，直接返回false。<strong>实际上，此处的节点为空还包含着另一个语义，就是递归遍历结束，下面也会用到这个条件</strong>。现在函数就变成了：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">HasSubtree</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span> || root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>最后确定该函数的主体部分，我们先不写出另一个递归判断过程的函数，先将第一个递归函数的架子搭好，在本题中，缩小递归范围的方法就是遍历，放在本题中对二叉树的遍历就是判断完根节点判断左孩子、右孩子，如果根节点通过了判断，就返回true，没有通过，就递归判断左孩子…代码如下（利用了逻辑运算符的短路运算）：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">HasSubtree</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span> || root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> judge(root1, root2) || </span><br><span class="line">        HasSubtree(root1.left, root2.left) ||</span><br><span class="line">        HasSubtree(root1.right, root2.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>下面就是补全<code>boolean judge(TreeNode root1,TreeNode root2)</code>方法了，该方法的作用实际上是输入两个二叉树AB，只比较根节点，判断B是否是A的为子结构。</p>
 <p>首先，确定递归结束条件，因为此处AB树的都不可能为空了，所以第一个递归函数的判断条件就不适用了，由于仍然需要对树进行递归判断，我们可以通过遍历结束时候的情况作为结束条件，很容易得出：如果A树先遍历完毕即root1==null，那么此时应该返回false；如果B树先遍历完毕即root2==null，那么此时应该返回true（实在理解不了画图分析一下）。</p>
 <p>下面，补全剩下的部分，如果两个树当前的节点不相等，直接返回false；如果相等，递归判断左子树、右子树，如果都相等，返回true。</p>
 <p>完整代码如下</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">HasSubtree</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span> || root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">return</span> judge(root1, root2) || </span><br><span class="line">        HasSubtree(root1.left, root2.left) ||</span><br><span class="line">        HasSubtree(root1.right, root2.right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">judge</span><span class="params">(TreeNode root1,TreeNode root2)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (root2 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    <span class="keyword">if</span> (root1 == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">if</span> (root1.val == root2.val) </span><br><span class="line">        <span class="keyword">return</span> judge(root1.left, root2.left) &amp;&amp; </span><br><span class="line">        judge(root1.right, root2.right);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>理解上面几个题目后，递归差不多就可以入门了，我总结的办法不一定适用于所有的递归题目，不可生搬硬套，多做题，多总结经验和方法。</p>
 <p><strong>参考资料：</strong></p>
 <p><a href="https://www.zhihu.com/question/31412436/answer/683820765" target="_blank" rel="noopener">https://www.zhihu.com/question/31412436/answer/683820765</a></p>
@@ -1292,6 +1270,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

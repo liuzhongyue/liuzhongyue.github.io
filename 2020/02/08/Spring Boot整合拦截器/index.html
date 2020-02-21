@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="Spring Boot 整合拦截器Interceptor介绍拦截器（Interceptor）同过滤器（Filter）一样，都是 AOP 的实现，当请求发送到 Controller 时，在被 Controller 处理之前，它必须经过 Interceptors（0或更多）。 关于拦截器和过滤器的区别，可以移步知乎：请教一下关于过滤器，拦截器，监听器具体应用上的区别？ 自定义Interceptor如果">
+<meta name="description" content="Spring Boot 整合拦截器Interceptor介绍拦截器（Interceptor）同过滤器（Filter）一样，都是 AOP 的实现，当请求发送到 Controller 时，在被 Controller 处理之前，它必须经过 Interceptors（0或更多）。 关于拦截器和过滤器在框架中的区别： Filter 不依赖于框架，依赖于Servlet容器。使用时需要在注册bean并在在类上加">
 <meta name="keywords" content="Spring Boot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Spring Boot 整合拦截器">
 <meta property="og:url" content="http://yoursite.com/2020/02/08/Spring Boot整合拦截器/index.html">
 <meta property="og:site_name" content="ergo&#39;s blog">
-<meta property="og:description" content="Spring Boot 整合拦截器Interceptor介绍拦截器（Interceptor）同过滤器（Filter）一样，都是 AOP 的实现，当请求发送到 Controller 时，在被 Controller 处理之前，它必须经过 Interceptors（0或更多）。 关于拦截器和过滤器的区别，可以移步知乎：请教一下关于过滤器，拦截器，监听器具体应用上的区别？ 自定义Interceptor如果">
+<meta property="og:description" content="Spring Boot 整合拦截器Interceptor介绍拦截器（Interceptor）同过滤器（Filter）一样，都是 AOP 的实现，当请求发送到 Controller 时，在被 Controller 处理之前，它必须经过 Interceptors（0或更多）。 关于拦截器和过滤器在框架中的区别： Filter 不依赖于框架，依赖于Servlet容器。使用时需要在注册bean并在在类上加">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-02-08T09:02:52.190Z">
+<meta property="og:updated_time" content="2020-02-17T09:28:41.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring Boot 整合拦截器">
-<meta name="twitter:description" content="Spring Boot 整合拦截器Interceptor介绍拦截器（Interceptor）同过滤器（Filter）一样，都是 AOP 的实现，当请求发送到 Controller 时，在被 Controller 处理之前，它必须经过 Interceptors（0或更多）。 关于拦截器和过滤器的区别，可以移步知乎：请教一下关于过滤器，拦截器，监听器具体应用上的区别？ 自定义Interceptor如果">
+<meta name="twitter:description" content="Spring Boot 整合拦截器Interceptor介绍拦截器（Interceptor）同过滤器（Filter）一样，都是 AOP 的实现，当请求发送到 Controller 时，在被 Controller 处理之前，它必须经过 Interceptors（0或更多）。 关于拦截器和过滤器在框架中的区别： Filter 不依赖于框架，依赖于Servlet容器。使用时需要在注册bean并在在类上加">
 
 
 
@@ -373,7 +373,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  828
+                  919
                 </span>
               
 
@@ -399,36 +399,32 @@
 
       
         <h1 id="Spring-Boot-整合拦截器"><a href="#Spring-Boot-整合拦截器" class="headerlink" title="Spring Boot 整合拦截器"></a>Spring Boot 整合拦截器</h1><h2 id="Interceptor介绍"><a href="#Interceptor介绍" class="headerlink" title="Interceptor介绍"></a>Interceptor介绍</h2><p>拦截器（Interceptor）同过滤器（Filter）一样，都是 AOP 的实现，当请求发送到 Controller 时，在被 Controller 处理之前，它必须经过 Interceptors（0或更多）。</p>
-<p>关于拦截器和过滤器的区别，可以移步知乎：<a href="https://www.zhihu.com/question/35225845" target="_blank" rel="noopener">请教一下关于过滤器，拦截器，监听器具体应用上的区别？</a></p>
+<p><strong>关于拦截器和过滤器在框架中的区别：</strong></p>
+<p>Filter 不依赖于框架，依赖于Servlet容器。使用时需要在注册bean并在在类上加 @Component就可以被spring框架扫描到。</p>
+<p>Interceptor 依赖spring框架，是建议优先使用Interceptor，而不是Filter。毕竟框架封装的，接口功能会更丰富一些。</p>
+<p>更多关于拦截器和过滤器的区别，可以移步知乎：<a href="https://www.zhihu.com/question/35225845" target="_blank" rel="noopener">请教一下关于过滤器，拦截器，监听器具体应用上的区别？</a></p>
 <h2 id="自定义Interceptor"><a href="#自定义Interceptor" class="headerlink" title="自定义Interceptor"></a>自定义Interceptor</h2><p>如果需要自定义Interceptor，需要实现 <code>HandlerInterceptor</code> 接口或者继承 <code>HandlerInterceptorAdapter</code> 类，并且重写下面三个方法：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">default</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">default</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, @Nullable Exception ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>上面的 <code>preHandle</code> 方法如果返回 <code>true</code> 意味着请求会继续到达 Controller ，否则不会到达 Controller。</p>
 <h3 id="创建自定义-Interceptor"><a href="#创建自定义-Interceptor" class="headerlink" title="创建自定义 Interceptor"></a>创建自定义 Interceptor</h3><blockquote>
 <p>MyInterceptor,java</p>
 </blockquote>
 <p>此 <code>Interceptor</code> 过滤所有请求。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String className = <span class="keyword">this</span>.getClass().getName();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(className + <span class="string">"::::"</span> + <span class="string">"preHandle\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(className + <span class="string">"::::"</span> + <span class="string">"postHandler\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(className + <span class="string">"::::"</span> + <span class="string">"afterCompletion\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>OldLoginInterceptor.java</p>
 </blockquote>
 <p>此拦截器的作用是：如果用户输入一个已经废弃的连接”/admin/oldLogin” ，将会重定向到新的”admin/login”</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OldLoginInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String className = <span class="keyword">this</span>.getClass().getName();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(className + <span class="string">"::::"</span> + <span class="string">"preHandle"</span>);</span><br><span class="line">        System.out.println(<span class="string">"Request URL: "</span> + request.getRequestURL());</span><br><span class="line">        System.out.println(<span class="string">"Sorry! This URL is no longer used, Redirect to /admin/login\n"</span>);</span><br><span class="line">        response.sendRedirect(request.getContextPath() + <span class="string">"/admin/login"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>AdminInterceptor.java</p>
 </blockquote>
 <p>此拦截器的作用是拦截”/admin/*”下的请求。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdminInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String className = <span class="keyword">this</span>.getClass().getName();</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(className + <span class="string">"::::"</span> + <span class="string">"preHandle\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">postHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(className + <span class="string">"::::"</span> + <span class="string">"postHandler\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">afterCompletion</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        System.out.println(className + <span class="string">"::::"</span> + <span class="string">"afterCompletion\n"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="注册拦截器"><a href="#注册拦截器" class="headerlink" title="注册拦截器"></a>注册拦截器</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InterceptorConfig</span> <span class="keyword">implements</span> <span class="title">WebMvcConfigurer</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    AdminInterceptor adminInterceptor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    MyInterceptor myInterceptor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    OldLoginInterceptor oldLoginInterceptor;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">        registry.addInterceptor(myInterceptor);</span><br><span class="line"></span><br><span class="line">        registry.addInterceptor(oldLoginInterceptor)</span><br><span class="line">                .addPathPatterns(<span class="string">"/admin/oldLogin"</span>);</span><br><span class="line"></span><br><span class="line">        registry.addInterceptor(adminInterceptor)</span><br><span class="line">                .addPathPatterns(<span class="string">"/admin/*"</span>)</span><br><span class="line">                .excludePathPatterns(<span class="string">"admin/oldLogin"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="自定义-Controller-验证拦截器"><a href="#自定义-Controller-验证拦截器" class="headerlink" title="自定义 Controller 验证拦截器"></a>自定义 Controller 验证拦截器</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoginController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/test"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Now in Controller\n"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"test"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/admin/oldLogin"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">oldLogin</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Code here never run.</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"oldLogin"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/admin/login"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">login</span><span class="params">(Model model)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"login"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>当访问”/test”时，后台输出如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">top.liuergo.demo.interceptor.MyInterceptor::::preHandle</span><br><span class="line"></span><br><span class="line">Now in Controller</span><br><span class="line"></span><br><span class="line">top.liuergo.demo.interceptor.MyInterceptor::::postHandler</span><br><span class="line"></span><br><span class="line">top.liuergo.demo.interceptor.MyInterceptor::::afterCompletion</span><br></pre></td></tr></table></figure>
-
 <p>可以看出，在进入 Controller 之前首先执行拦截器的 <code>preHandler()</code> 方法，如果 <code>preHandler()</code> 方法返回 <code>true</code> ，就会进入 Controller ，当 Controller 执行完毕之后才会进入 <code>postHandler()</code>  方法。</p>
 <p>三个方法的作用：</p>
 <ul>
@@ -582,7 +578,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">53</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -593,7 +589,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-count">19</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -604,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
@@ -681,7 +677,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">59.9k</span>
+    <span title="Site words total count">61.7k</span>
   
 </div>
 

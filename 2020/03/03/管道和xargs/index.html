@@ -88,7 +88,7 @@
 <meta property="og:description" content="先看一个例子今天上了一门Linux课，其中有一道题是这样的：  将文件/lib/目录下所有以包含.so的文件复制到cmd_test目录下  一开始看到这个题，想法是先用find命令找出包含.so的文件，然后使用管道符cp 如下： find /lib -name &quot;*.so*&quot; | cp ./cmd_test 然而上面的命令是错误的，cp命令是不支持 | 管道来传递参数的。 后来搜集资料，找到了xa">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200303174452.png">
-<meta property="og:updated_time" content="2020-03-03T09:55:27.057Z">
+<meta property="og:updated_time" content="2020-03-03T10:05:10.511Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="xargs和管道">
 <meta name="twitter:description" content="先看一个例子今天上了一门Linux课，其中有一道题是这样的：  将文件/lib/目录下所有以包含.so的文件复制到cmd_test目录下  一开始看到这个题，想法是先用find命令找出包含.so的文件，然后使用管道符cp 如下： find /lib -name &quot;*.so*&quot; | cp ./cmd_test 然而上面的命令是错误的，cp命令是不支持 | 管道来传递参数的。 后来搜集资料，找到了xa">
@@ -375,7 +375,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  420
+                  462
                 </span>
               
 
@@ -417,7 +417,7 @@
 <p><code>echo &quot;--help&quot;|xargs cat</code></p>
 <p>会得到下面的不同结果：</p>
 <p><img src="https://lzy-md-image.oss-cn-qingdao.aliyuncs.com/20200303174452.png" alt></p>
-<p>你品，你细品。如果你直接在命令行输入cat后回车，而不输入命令参数，这时cat会等待标准输入，你通过键盘输入内容并按回车，cat进程会读取输入并原样返回。所以如果此时你输入—help，那么cat程序会在标准输出上输出—help。</p>
+<p>你品，你细品。如果你直接在命令行输入cat后回车，而不输入命令参数，这时cat会等待标准输入，你通过键盘输入内容并按回车，cat进程会读取输入并原样返回。所以如果此时你输入—help，那么cat程序会在标准输出上输出—help，这就是使用管道符时的情况，然而使用 |xargs 时，就相当于直接将 —help 作为了 cat  命令的参数，执行了<code>cat --help</code>命令。</p>
 <p>上述内容来自：<a href="https://www.cnblogs.com/lexiaofei/p/7422826.html" target="_blank" rel="noopener">https://www.cnblogs.com/lexiaofei/p/7422826.html</a></p>
 <p><strong>对于管道符：</strong>| 后的命令接收的并不是命令所执行的参数，而是将 | 前面的标准输出作为 | 后面的标准输入</p>
 <p><strong>对于 xargs：</strong>xargs 后的命令可以将前面的命令的输出作为执行的参数。</p>

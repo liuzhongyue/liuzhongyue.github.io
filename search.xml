@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[xargs和管道]]></title>
+    <url>%2F2020%2F03%2F03%2F%E7%AE%A1%E9%81%93%E5%92%8Cxargs%2F</url>
+    <content type="text"><![CDATA[先看一个例子今天上了一门Linux课，其中有一道题是这样的： 将文件/lib/目录下所有以包含.so的文件复制到cmd_test目录下 一开始看到这个题，想法是先用find命令找出包含.so的文件，然后使用管道符cp 如下： find /lib -name "*.so*" | cp ./cmd_test 然而上面的命令是错误的，cp命令是不支持 | 管道来传递参数的。 后来搜集资料，找到了xargs命令，它可以将标准输入数据转换成命令行参数，正确的命令应该是下面的样子： find /lib -name "*.so*" | xargs -i cp &#123;&#125; ./cmd_test (-i 选项表示可以指定一个替换字符串{}，当 -i 与 xargs 结合使用时，每一个参数命令都会被执行一次) xargs和管道所以两者到底有什么不同呢？ 执行下面两个命令： echo &quot;--help&quot;|cat echo &quot;--help&quot;|xargs cat 会得到下面的不同结果： 你品，你细品。如果你直接在命令行输入cat后回车，而不输入命令参数，这时cat会等待标准输入，你通过键盘输入内容并按回车，cat进程会读取输入并原样返回。所以如果此时你输入—help，那么cat程序会在标准输出上输出—help。 上述内容来自：https://www.cnblogs.com/lexiaofei/p/7422826.html 对于管道符：| 后的命令接收的并不是命令所执行的参数，而是将 | 前面的标准输出作为 | 后面的标准输入 对于 xargs：xargs 后的命令可以将前面的命令的输出作为执行的参数。]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[剑指offer-最小的K个数]]></title>
     <url>%2F2020%2F02%2F22%2F%E5%89%91%E6%8C%87offer-%E6%9C%80%E5%B0%8F%E7%9A%84K%E4%B8%AA%E6%95%B0%2F</url>
     <content type="text"><![CDATA[题目描述输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。 思路 先排序，再遍历排序后的数组，取前K个（傻子算法）。 使用最小堆，维持最小堆里只有K个元素，如果下一个入堆的元素比堆顶小，删除堆顶，新数入堆。 题解 import java.util.*;public class Solution &#123; public ArrayList&lt;Integer&gt; GetLeastNumbers_Solution(int [] input, int k) &#123; ArrayList&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;(); if (k &gt; input.length) return result; Arrays.sort(input); for (int i = 0; i &lt; k; i++) &#123; result.add(input[i]); &#125; return result; &#125;&#125; import java.util.*;public class Solution &#123; public ArrayList&lt;Integer&gt; GetLeastNumbers_Solution(int [] input, int k) &#123; ArrayList&lt;Integer&gt; result = new ArrayList&lt;Integer&gt;(); if (k &gt; input.length || k == 0) return result; PriorityQueue&lt;Integer&gt; queue = new PriorityQueue&lt;&gt;(Comparator.reverseOrder()); for (int i = 0; i &lt; input.length; i++) &#123; if (queue.size() != k) &#123; queue.add(input[i]); &#125; else if (input[i] &lt; queue.peek()) &#123; queue.remove(); queue.add(input[i]); &#125; &#125; for (Integer integer : queue) &#123; result.add(integer); &#125; return result; &#125;&#125;]]></content>
